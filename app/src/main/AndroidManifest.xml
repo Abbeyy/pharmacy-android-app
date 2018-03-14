@@ -17,6 +17,7 @@
             <!--</intent-filter>-->
         <!--</activity>-->
         <activity android:name=".ListPharmaciesActivity">
+        <activity android:name=".FilterPreferenceActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
