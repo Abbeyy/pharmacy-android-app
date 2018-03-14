@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">WelshPharmacy</string>
     <string name="get_list_buttontext">Get List</string>
+    <string name="pharmacy_one">Pharmacy1</string>
 </resources>
