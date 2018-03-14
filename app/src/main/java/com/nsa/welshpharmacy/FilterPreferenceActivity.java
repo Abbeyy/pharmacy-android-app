@@ -13,12 +13,13 @@ import android.widget.Toast;
  * Created by c1712480 on 14/03/2018.
  */
 
-public class FilterPreferenceActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener{
+public class FilterPreferenceActivity extends AppCompatActivity implements View.OnClickListener, View.OnLongClickListener, SharedPreferences.OnSharedPreferenceChangeListener{
 
     private AppCompatEditText textWidget;
     //private AppCompatCheckBox checkWidget;
 
     private AppCompatButton submitButton;
+    private AppCompatButton resetButton;
 
     private SharedPreferences sharedPreferences;
 
@@ -29,10 +30,16 @@ public class FilterPreferenceActivity extends AppCompatActivity implements Share
 
         this.textWidget = this.findViewById(R.id.widget_text);
 
-        //this.submitButton = this.findViewById(R.id.submit_button);
-        //this.submitButton = this.findViewById(R.id.reset_button);
+        this.submitButton = this.findViewById(R.id.submit_button);
+        this.resetButton = this.findViewById(R.id.reset_button);
 
         this.sharedPreferences = this.getPreferences(MODE_PRIVATE);
+
+        initValues();
+
+        submitButton.setOnClickListener(this);
+        resetButton.setOnLongClickListener(this);
+
     }
 
     private void initValues(){
@@ -42,31 +49,35 @@ public class FilterPreferenceActivity extends AppCompatActivity implements Share
     }
 
     @Override
-    protected void onResume(){
+    protected void onResume() {
+        super.onResume();
         if (this.sharedPreferences != null)
             this.sharedPreferences.registerOnSharedPreferenceChangeListener(this);
     }
 
     @Override
-    protected void onPause(){
+    protected void onPause() {
+        super.onPause();
         if (this.sharedPreferences != null)
             this.sharedPreferences.unregisterOnSharedPreferenceChangeListener(this);
     }
 
-    /*
     @Override
-    protected void onClick(View view){
-
+    public void onClick(View view){
         int id = view.getId();
 
         if (id == R.id.submit_button && this.sharedPreferences != null){
             SharedPreferences.Editor editor = this.sharedPreferences.edit();
-            editor.putString(KeyValueHelper.KEY_WIDGET_EDIT, this.editWidget.getText().toString());
+            editor.apply();
         }
+    }
+    @Override
+    public boolean onLongClick(View view){
+        int id = view.getId();
 
         if (id == R.id.reset_button && this.sharedPreferences != null) {
             //Reset values to their default
-            this.sharedPreferences.edit().clear().commit();
+            this.sharedPreferences.edit().clear().apply();
             //Pop up toast message to say that values have been reset
             Toast.makeText(this, getString(R.string.reset_text), Toast.LENGTH_SHORT).show();
             //Initialise sharedPreferences
@@ -74,17 +85,11 @@ public class FilterPreferenceActivity extends AppCompatActivity implements Share
         }
         return true;
     }
-    */
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s){
-        /*
-        this.changesTextView.setText(String.format(
-                this.getResources().getString(R.string.number_of_changes_text),
-                this.sharedPreferences.getInt(KeyValueHelper.KEY_CHANGE_AMOUNT, KeyValueHelper.DEFAULT_CHANGE_AMOUNT)
-        ));
 
-        Toast.makeText(this, "Filters have been reset", Toast.LENGTH_SHORT).show();
-         */
+        Toast.makeText(this, R.string.on_shared_pref_saved_text, Toast.LENGTH_SHORT).show();
+
     }
 }

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">WelshPharmacy</string>
+    <string name="on_shared_pref_saved_text">Filters have been reset</string>
+    <string name="reset_text">Configuration has been reset</string>
+    <string name="button_submit_text">Submit</string>
+    <string name="button_filter_text">Reset</string>
 </resources>

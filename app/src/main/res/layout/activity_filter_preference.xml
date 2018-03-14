@@ -2,7 +2,7 @@
 <android.support.v7.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:gravity="center"
+    android:gravity="center|top"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -18,4 +18,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     -->
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/submit_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_marginTop="@dimen/submit_margin"
+        android:drawableStart="@drawable/ic_check"
+        android:drawableLeft="@drawable/ic_check"
+        android:drawablePadding="@dimen/drawablePadding"
+        android:text="@string/button_submit_text"
+        />
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/reset_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_marginTop="@dimen/submit_margin"
+        android:drawableStart="@drawable/ic_check"
+        android:drawableLeft="@drawable/ic_check"
+        android:drawablePadding="@dimen/drawablePadding"
+        android:text="@string/button_filter_text"
+        />
+
 </android.support.v7.widget.LinearLayoutCompat>
