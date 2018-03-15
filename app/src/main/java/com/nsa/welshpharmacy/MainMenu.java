@@ -1,7 +1,9 @@
+
 package com.nsa.welshpharmacy;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
 
 public class MainMenu extends AppCompatActivity {
 
@@ -10,4 +12,5 @@ public class MainMenu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
     }
+
 }
