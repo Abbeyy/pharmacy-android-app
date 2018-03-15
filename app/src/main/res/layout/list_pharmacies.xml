@@ -18,6 +18,9 @@
 
         <android.support.v7.widget.ListViewCompat
             android:id="@+id/listview_pharmacies"
+            android:listSelector="@android:color/transparent"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@android:drawable/divider_horizontal_bright"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

@@ -2,7 +2,7 @@ package com.nsa.welshpharmacy;
 
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.v4.widget.ListViewCompat;
+import android.support.v7.widget.ListViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
 
@@ -38,7 +38,7 @@ public class ListPharmaciesActivity extends AppCompatActivity {
         //activity inflating layout
 
         //line below is not working - not recognisning my listview on my layout by id?!
-//        this.lView = this.findViewById(R.id.);
+        this.lView = this.findViewById(R.id.listview_pharmacies);
 
         //Created mock datasource of an arraylist of strings;
         this.aList = new ArrayList<>();
@@ -53,7 +53,7 @@ public class ListPharmaciesActivity extends AppCompatActivity {
                 this.aList
         );
 
-//        this.lView.setAdapter(this.arrayAdpt);
+        this.lView.setAdapter(this.arrayAdpt);
 
     }
 
