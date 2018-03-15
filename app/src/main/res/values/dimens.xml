@@ -3,4 +3,5 @@
     <dimen name="widget_width_1">256dp</dimen>
     <dimen name="submit_margin">48dp</dimen>
     <dimen name="drawablePadding">8dp</dimen>
+    <dimen name="lv_names_row_dimension">10dp</dimen>
 </resources>
