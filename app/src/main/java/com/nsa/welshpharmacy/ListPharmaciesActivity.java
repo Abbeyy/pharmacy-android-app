@@ -5,10 +5,14 @@ import android.os.Bundle;
 import android.support.v7.widget.ListViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.text.SimpleDateFormat;
 
 /**
  * Created by c1714546 on 3/14/2018.
@@ -37,6 +41,9 @@ public class ListPharmaciesActivity extends AppCompatActivity {
         setContentView(R.layout.list_pharmacies);
         //activity inflating layout
 
+        //date stuff
+        setUpDate();
+
         //line below is not working - not recognisning my listview on my layout by id?!
         this.lView = this.findViewById(R.id.listview_pharmacies);
 
@@ -55,6 +62,17 @@ public class ListPharmaciesActivity extends AppCompatActivity {
 
         this.lView.setAdapter(this.arrayAdpt);
 
+    }
+
+    public void setUpDate() {
+        //Code help gathered from: https://stackoverflow.com/questions/40310773/android-studio-textview-show-date
+        TextView dateTV = (TextView)findViewById(R.id.date_text_view);
+
+        Date todaysDate = Calendar.getInstance().getTime();
+        SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+        String date_today = format.format(todaysDate);
+
+        dateTV.setText("  Today's Date: " + date_today);
     }
 
 }
