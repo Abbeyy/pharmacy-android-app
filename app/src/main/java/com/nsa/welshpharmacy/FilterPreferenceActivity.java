@@ -16,8 +16,12 @@ import android.widget.Toast;
 
 public class FilterPreferenceActivity extends AppCompatActivity implements View.OnClickListener, View.OnLongClickListener, SharedPreferences.OnSharedPreferenceChangeListener{
 
+    private AppCompatCheckBox checkMinorAilments;
+    private AppCompatCheckBox checkFluVac;
+    private AppCompatCheckBox checkHealthCheck;
+    private AppCompatCheckBox checkSmoking;
+    private AppCompatCheckBox checkAlcohol;
     private AppCompatEditText textWidget;
-    //private AppCompatCheckBox checkWidget;
 
     private AppCompatButton submitButton;
     private AppCompatButton resetButton;
@@ -29,6 +33,11 @@ public class FilterPreferenceActivity extends AppCompatActivity implements View.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filter_preference);
 
+        this.checkMinorAilments = this.findViewById(R.id.check_minor_ailments);
+        this.checkFluVac = this.findViewById(R.id.check_flu_vaccines);
+        this.checkHealthCheck = this.findViewById(R.id.check_health_check);
+        this.checkSmoking = this.findViewById(R.id.check_smoking);
+        this.checkAlcohol = this.findViewById(R.id.check_alcohol);
         this.textWidget = this.findViewById(R.id.widget_text);
 
         this.submitButton = this.findViewById(R.id.submit_button);

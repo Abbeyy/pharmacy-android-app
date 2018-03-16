@@ -6,4 +6,9 @@
     <string name="button_submit_text">Submit</string>
     <string name="button_filter_text">Reset</string>
     <string name="pharmacy_one">Pharmacy1</string>
+    <string name="checkbox_ailments">Minor ailments</string>
+    <string name="checkbox_flu">Flu vaccination</string>
+    <string name="checkbox_health">NHS Health check</string>
+    <string name="checkbox_smoking">Stop smoking service</string>
+    <string name="checkbox_alcohol">Advice on alcohol consumption</string>
 </resources>
