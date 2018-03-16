@@ -1,5 +1,6 @@
 package com.nsa.welshpharmacy;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -69,6 +70,8 @@ public class FilterPreferenceActivity extends AppCompatActivity implements View.
         if (id == R.id.submit_button && this.sharedPreferences != null){
             SharedPreferences.Editor editor = this.sharedPreferences.edit();
             editor.apply();
+            Intent pharmacyListView = new Intent(this, ListPharmaciesActivity.class);
+            startActivity(pharmacyListView);
         }
     }
     @Override
