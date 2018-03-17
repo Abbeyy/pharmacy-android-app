@@ -4,4 +4,5 @@
     <dimen name="submit_margin">48dp</dimen>
     <dimen name="drawablePadding">8dp</dimen>
     <dimen name="lv_names_row_dimension">10dp</dimen>
+    <dimen name="title_padding">12dp</dimen>
 </resources>

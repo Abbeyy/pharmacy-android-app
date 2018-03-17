@@ -20,4 +20,5 @@
     <string name="location_permission">Allow location tracking</string>
     <string name="location_divider">------------ OR ------------</string>
     <string name="enter_valid_location">Either enter a valid postcode or allow location tracking</string>
+    <string name="list_of_pharmacies">List of Pharmacies</string>
 </resources>
