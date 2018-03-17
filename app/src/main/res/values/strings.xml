@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">WelshPharmacy</string>
+    <string name="Welcom">Walesh pharmases</string>
+    <string name="GeneralUsesrs">General usesrs</string>
+    <string name="Pharmacist">Parmacist</string>
+    <string name="Language">English</string>
+    <string name="RateTheApp">Rate the app</string>
 </resources>
