@@ -7,4 +7,5 @@
     <string name="button_filter_text">Reset</string>
     <string name="pharmacy_one">Pharmacy1</string>
     <string name="list_of_pharmacies">List of Pharmacies</string>
+    <string name="toast_listview_item_tapped_on">User has selected %s</string>
 </resources>
