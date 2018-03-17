@@ -71,7 +71,7 @@ public class ListPharmaciesActivity extends AppCompatActivity implements Adapter
         //In future, mock this to collect from another
         // datasource. For now, hardcoded generation.
 
-        int numOfPharms = 20;
+        int numOfPharms = 8;
         String[][] pharmaciesInfo = {
                 {"Boots", "Capital Shopping Centre, Cardiff", "02920 664506", "Common Ailments Service; Out of Hours Service; Provides EC; Seasonal Flu Vaccine"}
                 ,{"Well"}
@@ -81,23 +81,10 @@ public class ListPharmaciesActivity extends AppCompatActivity implements Adapter
                 ,{"Woodville Road Pharmacy"}
                 ,{"Lloyds Pharmacy Ltd"}
                 ,{"Central Pharmacy"}};
-//        String[][] pharmaciesInfo = new String[8][4];
-//        pharmaciesInfo[0][0] = "Boots";
-//        pharmaciesInfo[0][1] = "Capital Shopping Centre, Cardiff";
-//        pharmaciesInfo[0][2] = "02920 664506";
-//        pharmaciesInfo[0][3] = "Common Ailments Service; Out fo Hours Service; Provides EC; Seasonal Flu Vaccine";
-//        pharmaciesInfo[1][0] = "Well";
-//        pharmaciesInfo[2][0] = "Cardiff Royal Infirmary Pharmacy";
-//        pharmaciesInfo[3][0] = "Clifton Pharmacy";
-//        pharmaciesInfo[4][0] = "Superdrug Pharmacy";
-//        pharmaciesInfo[5][0] = "Woodville Road Pharmacy";
-//        pharmaciesInfo[6][0] = "Lloyds Pharmacy Ltd";
-//        pharmaciesInfo[7][0] = "Central Pharmacy";
         //^Hardcoded store of pharmacy info
 
         for (int i = 0; i < numOfPharms; i++) {
             this.aList.add(pharmaciesInfo[i][0]);
-//            this.aList.add("Pharmacy #" + i);
         }
     }
 
