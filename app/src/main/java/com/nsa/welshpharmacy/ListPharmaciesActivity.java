@@ -2,10 +2,14 @@ package com.nsa.welshpharmacy;
 
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.annotation.StringRes;
 import android.support.v7.widget.ListViewCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import java.util.ArrayList;
@@ -28,7 +32,7 @@ import java.text.SimpleDateFormat;
  * @version 1.0 March 14th, 2018.
  */
 
-public class ListPharmaciesActivity extends AppCompatActivity {
+public class ListPharmaciesActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     ListViewCompat lView;
     List<String> aList;
@@ -60,6 +64,7 @@ public class ListPharmaciesActivity extends AppCompatActivity {
 
         this.lView.setAdapter(this.arrayAdpt);
 
+        this.lView.setOnItemClickListener(this);
     }
 
     public void collectPharmacyInfo() {
@@ -83,4 +88,10 @@ public class ListPharmaciesActivity extends AppCompatActivity {
         dateTV.setText("  Today's Date: " + date_today);
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Toast.makeText(getApplicationContext(),
+                String.format("User has selected %s", lView.getItemAtPosition(position)),
+                Toast.LENGTH_SHORT).show();
+    }
 }
