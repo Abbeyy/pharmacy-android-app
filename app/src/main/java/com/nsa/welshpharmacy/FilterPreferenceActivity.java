@@ -54,7 +54,12 @@ public class FilterPreferenceActivity extends AppCompatActivity implements View.
 
     private void initValues(){
         if (this.sharedPreferences != null) {
-            this.textWidget.setText(this.sharedPreferences.getString(KeyValueHelper.KEY_WIDGET_TEXT, KeyValueHelper.DEFAULT_WIDGET_TEXT));
+            this.checkMinorAilments.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_AILMENTS, KeyValueHelper.DEFAULT_WIDGET_CHECKBOX));
+            this.checkFluVac.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_FLU, KeyValueHelper.DEFAULT_WIDGET_CHECKBOX));
+            this.checkHealthCheck.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_HEALTH, KeyValueHelper.DEFAULT_WIDGET_CHECKBOX));
+            this.checkSmoking.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_SMOKING, KeyValueHelper.DEFAULT_WIDGET_CHECKBOX));
+            this.checkAlcohol.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_ALCOHOL, KeyValueHelper.DEFAULT_WIDGET_CHECKBOX));
+            //this.textWidget.setText(this.sharedPreferences.getString(KeyValueHelper.KEY_WIDGET_TEXT, KeyValueHelper.DEFAULT_WIDGET_TEXT));
         }
     }
 
@@ -78,7 +83,13 @@ public class FilterPreferenceActivity extends AppCompatActivity implements View.
 
         if (id == R.id.submit_button && this.sharedPreferences != null){
             SharedPreferences.Editor editor = this.sharedPreferences.edit();
+            editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_AILMENTS, this.checkMinorAilments.isChecked());
+            editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_FLU, this.checkFluVac.isChecked());
+            editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_HEALTH, this.checkHealthCheck.isChecked());
+            editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_SMOKING, this.checkSmoking.isChecked());
+            editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_ALCOHOL, this.checkAlcohol.isChecked());
             editor.apply();
+
             Intent pharmacyListView = new Intent(this, ListPharmaciesActivity.class);
             startActivity(pharmacyListView);
         }
