@@ -102,8 +102,13 @@ public class ListPharmaciesActivity extends AppCompatActivity implements Adapter
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        //1. Toast
         Toast.makeText(getApplicationContext(),
                 String.format("User has selected %s", lView.getItemAtPosition(position)),
                 Toast.LENGTH_SHORT).show();
+        //2. Expand Textview (Method > implement
+        // another listview of the 1 pharmacy item,
+        // with multiple textviews)
+
     }
 }
