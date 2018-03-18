@@ -38,11 +38,22 @@ public class ListPharmaciesActivity extends AppCompatActivity implements Adapter
     List<String> aList;
     //Built-in adapter for string datasource
     ArrayAdapter<String> arrayAdpt;
+    String[][] pharmaciesInfo = {
+        {"Boots", "Capital Shopping Centre, Cardiff", "02920 664506", "Common Ailments Service; Out of Hours Service; Provides EC; Seasonal Flu Vaccine"}
+                ,{"Well"}
+                ,{"Cardiff Royal Infirmary Pharmacy"}
+                ,{"Clifton Pharmacy"}
+                ,{"Superdrug Pharmacy"}
+                ,{"Woodville Road Pharmacy"}
+                ,{"Lloyds Pharmacy Ltd"}
+                ,{"Central Pharmacy"}};
+    //Hardcoded pharmacy mocked data.
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_pharmacies);
+        setContentView(R.layout.list_pharmacies_main);
         //activity inflating layout
 
         //date stuff
@@ -72,16 +83,6 @@ public class ListPharmaciesActivity extends AppCompatActivity implements Adapter
         // datasource. For now, hardcoded generation.
 
         int numOfPharms = 8;
-        String[][] pharmaciesInfo = {
-                {"Boots", "Capital Shopping Centre, Cardiff", "02920 664506", "Common Ailments Service; Out of Hours Service; Provides EC; Seasonal Flu Vaccine"}
-                ,{"Well"}
-                ,{"Cardiff Royal Infirmary Pharmacy"}
-                ,{"Clifton Pharmacy"}
-                ,{"Superdrug Pharmacy"}
-                ,{"Woodville Road Pharmacy"}
-                ,{"Lloyds Pharmacy Ltd"}
-                ,{"Central Pharmacy"}};
-        //^Hardcoded store of pharmacy info
 
         for (int i = 0; i < numOfPharms; i++) {
             this.aList.add(pharmaciesInfo[i][0]);
@@ -109,6 +110,13 @@ public class ListPharmaciesActivity extends AppCompatActivity implements Adapter
         //2. Expand Textview (Method > implement
         // another listview of the 1 pharmacy item,
         // with multiple textviews)
+        expandPharmacyInfo(position);
+    }
+
+    public void expandPharmacyInfo(int position) {
+        //Method - move to a fragment to display
+        //a new listview of 4 textviews
+        //to output all the pharmacy's info?
 
     }
 }
