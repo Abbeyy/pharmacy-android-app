@@ -22,9 +22,9 @@
     <string name="enter_valid_location">Either enter a valid postcode or allow location tracking</string>
     <string name="list_of_pharmacies">List of Pharmacies</string>
     <string name="toast_listview_item_tapped_on">User has selected %s</string>
-    <string name="Welcom">Walesh pharmases</string>
-    <string name="GeneralUsesrs">General usesrs</string>
-    <string name="Pharmacist">Parmacist</string>
+    <string name="Welcome">Welsh pharmacies</string>
+    <string name="GeneralUsers">General users</string>
+    <string name="Pharmacist">Pharmacists</string>
     <string name="Language">English</string>
     <string name="RateTheApp">Rate the app</string>
 
