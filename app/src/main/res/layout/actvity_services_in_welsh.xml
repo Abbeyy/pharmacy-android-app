@@ -1,29 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.widget.RelativeLayout
+<android.support.v7.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:gravity="end"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/layout">
 
+    <android.support.v7.widget.ListViewCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/list_view"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="@string/services_in_welsh"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
 
 
     <ToggleButton
         android:id="@+id/toggleButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ToggleButton"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:text="@string/toggle_unavailable"
+        android:textOff="@string/toggle_unavailable"
+        android:textOn="@string/toggle_available"
+        android:textSize="10sp"
+        tools:layout_editor_absoluteX="241dp"
+        tools:layout_editor_absoluteY="194dp" />
+
+    <ToggleButton
+        android:id="@+id/toggleButton2"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:text="@string/toggle_unavailable"
+        android:textOff="@string/toggle_unavailable"
+        android:textOn="@string/toggle_available"
+        android:textSize="10sp"
+        tools:layout_editor_absoluteX="241dp"
+        tools:layout_editor_absoluteY="194dp" />
+
+    <ToggleButton
+        android:id="@+id/toggleButton3"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:text="@string/toggle_unavailable"
+        android:textOff="@string/toggle_unavailable"
+        android:textOn="@string/toggle_available"
+        android:textSize="10sp"
+        tools:layout_editor_absoluteX="241dp"
+        tools:layout_editor_absoluteY="194dp" />
+
+    <ToggleButton
+        android:id="@+id/toggleButton4"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:text="@string/toggle_unavailable"
+        android:textOff="@string/toggle_unavailable"
+        android:textOn="@string/toggle_available"
+        android:textSize="10sp"
+        tools:layout_editor_absoluteX="241dp"
+        tools:layout_editor_absoluteY="194dp" />
+
+    <ToggleButton
+        android:id="@+id/toggleButton5"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:text="@string/save_button"
+        android:textOff="@string/toggle_unavailable"
+        android:textOn="@string/toggle_available"
+        android:textSize="10sp"
         tools:layout_editor_absoluteX="241dp"
         tools:layout_editor_absoluteY="194dp" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="20dp"
+        android:layout_width="90dp"
         android:layout_height="40dp"
-        android:textOff="Bright Colour"
-        android:textOn="Dark Colour"
+        android:text="@string/save_button"
         tools:layout_editor_absoluteX="223dp"
         tools:layout_editor_absoluteY="59dp" />
 
-</android.support.widget.RelativeLayout>
+
+</android.support.v7.widget.LinearLayoutCompat>
