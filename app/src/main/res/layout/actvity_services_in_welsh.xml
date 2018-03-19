@@ -1,36 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout
+<android.support.widget.RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/layout">
+
+
+
 
     <ToggleButton
         android:id="@+id/toggleButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ToggleButton"
-        tools:layout_editor_absoluteX="125dp"
-        tools:layout_editor_absoluteY="139dp" />
-
-    <ToggleButton
-        android:id="@+id/toggleButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ToggleButton"
-        tools:layout_editor_absoluteX="125dp"
-        tools:layout_editor_absoluteY="255dp" />
-
-    <ToggleButton
-        android:id="@+id/toggleButton3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ToggleButton"
-        tools:layout_editor_absoluteX="168dp"
-        tools:layout_editor_absoluteY="347dp" />
-
-    <ToggleButton
-        android:id="@+id/toggleButton4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ToggleButton"
@@ -39,10 +19,11 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
+        android:layout_width="20dp"
+        android:layout_height="40dp"
+        android:textOff="Bright Colour"
+        android:textOn="Dark Colour"
         tools:layout_editor_absoluteX="223dp"
         tools:layout_editor_absoluteY="59dp" />
 
-</android.support.v4.widget.DrawerLayout>
+</android.support.widget.RelativeLayout>
