@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutCompat;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.ToggleButton;
 import android.support.v7.widget.ListViewCompat;
 
@@ -17,7 +18,7 @@ import java.util.List;
  * Created by c1502032 on 15/03/2018.
  */
 
-public class ServicesInWelshActivity extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener {
+public class ServicesInWelshActivity extends AppCompatActivity {
 
     LinearLayoutCompat layout;
     ToggleButton toggleButton1;
@@ -29,18 +30,20 @@ public class ServicesInWelshActivity extends AppCompatActivity implements Compou
     List<String> servicesInWelsh;
     ArrayAdapter<String> arrayAdapter;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.actvity_services_in_welsh);
+        setContentView(R.layout.activity_set_services_in_welsh);
         toggleButton1 = (ToggleButton) findViewById(R.id.toggleButton);
         toggleButton2 = (ToggleButton) findViewById(R.id.toggleButton2);
         toggleButton3 = (ToggleButton) findViewById(R.id.toggleButton3);
         toggleButton4 = (ToggleButton) findViewById(R.id.toggleButton4);
         toggleButton5 = (ToggleButton) findViewById(R.id.toggleButton5);
         layout = (LinearLayoutCompat) findViewById(R.id.layout);
-        this.listView = this.findViewById(R.id.list_view);
-        toggleButton1.setOnCheckedChangeListener(this);
+
+        /*this.listView = this.findViewById(R.id.list_view);
+
 
 
         this.servicesInWelsh = new ArrayList<>();
@@ -60,21 +63,9 @@ public class ServicesInWelshActivity extends AppCompatActivity implements Compou
                 android.R.layout.simple_list_item_1,
                 this.servicesInWelsh);
         this.listView.setAdapter(this.arrayAdapter);
+    }*/
+
+
     }
 
-
-
-    @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-        if (isChecked) {
-
-            toggleButton1.setBackgroundColor(Color.BLUE);
-
-        }else {
-
-            toggleButton1.setBackgroundColor(Color.GRAY);
-
-        }
-    }
 }
-

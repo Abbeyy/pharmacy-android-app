@@ -12,11 +12,9 @@
     <string name="dark_colour">Dark Colour</string>
     <string name="bright_colour">Bright Colour</string>
     <string name="services_in_welsh">Services in Welsh</string>
-    <string-array name="services_in_welsh">
-        <item>Flu Vaccinations</item>
-        <item>NHS Health Check"</item>
-        <item>Stop Smoking Service</item>
-        <item>Advice on Alcohol Consumption</item>
-        <item>Minor Ailments</item>
-    </string-array>
+    <string name="NHS_health_check">NHS Health Check</string>
+    <string name="stop_smoking_service">Stop Smoking Service</string>
+    <string name="alcohol_consumption">Advice On Alcohol Consumption</string>
+    <string name="minor_ailments">Minor Ailments</string>
+    <string name="flu_vaccinations">Flu Vaccinations</string>
 </resources>

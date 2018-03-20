@@ -4,7 +4,7 @@
     android:padding="@dimen/lv_names_row_dimension"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/names_row"
