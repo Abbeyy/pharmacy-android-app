@@ -16,6 +16,7 @@
         app:forceKeyboard="true"
         app:cursorVisible="false"
         app:hint="0"
+        app:inputType="number"
         />
 
 </RelativeLayout>
