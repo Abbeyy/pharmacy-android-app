@@ -17,6 +17,7 @@
         app:cursorVisible="false"
         app:hint="0"
         app:inputType="number"
+        app:password="true"
         />
 
 </RelativeLayout>
