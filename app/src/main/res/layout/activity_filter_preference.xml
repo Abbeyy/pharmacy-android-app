@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center|top"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/check_minor_ailments"
+            android:layout_alignStart="@+id/check_flu_vaccines"
+            android:text="@string/instructions_service_selection" />
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/check_minor_ailments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/check_flu_vaccines"
+            android:layout_alignEnd="@+id/check_flu_vaccines"
+            android:drawableStart="@drawable/ic_check"
+            android:text="@string/checkbox_ailments" />
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/check_flu_vaccines"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/check_health_check"
+            android:layout_alignStart="@+id/check_health_check"
+            android:drawableStart="@drawable/ic_check"
+            android:text="@string/checkbox_flu" />
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/check_health_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/check_smoking"
+            android:layout_alignStart="@+id/check_smoking"
+            android:drawableStart="@drawable/ic_check"
+            android:text="@string/checkbox_health" />
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/check_smoking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/check_alcohol"
+            android:layout_alignStart="@+id/check_alcohol"
+            android:drawableStart="@drawable/ic_check"
+            android:text="@string/checkbox_smoking" />
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/check_alcohol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/text_postcode"
+            android:layout_alignStart="@+id/text_postcode"
+            android:layout_marginBottom="29dp"
+            android:drawableStart="@drawable/ic_check"
+            android:text="@string/checkbox_alcohol" />
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/text_postcode"
+            android:layout_width="@dimen/widget_width_1"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textView3"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="28dp"
+            android:maxLength="50"
+            android:text="@string/instruction_postcode" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/submit_button"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="44dp"
+            android:text="@string/location_divider" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_above="@+id/submit_button"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:paddingStart="60dp">
+
+            <android.support.v7.widget.SwitchCompat
+                android:id="@+id/switch_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/location_permission" />
+        </LinearLayout>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/submit_button"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/reset_button"
+            android:layout_alignStart="@+id/text_postcode"
+            android:drawablePadding="@dimen/drawablePadding"
+            android:drawableStart="@drawable/ic_check"
+            android:text="@string/button_submit_text" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/reset_button"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/submit_button"
+            android:layout_marginBottom="24dp"
+            android:drawablePadding="@dimen/drawablePadding"
+            android:drawableStart="@drawable/ic_check"
+            android:text="@string/button_filter_text" />
+
+    </RelativeLayout>
+</android.support.v7.widget.LinearLayoutCompat>
