@@ -2,18 +2,21 @@
     <string name="app_name">WelshPharmacy</string>
     <string name="get_list_buttontext" translatable="false">Get List</string>
 
-    <string name="on_shared_pref_saved_text" translatable="false">Filters have been reset</string>
-    <string name="reset_text" translatable="false">Configuration has been reset</string>
-    <string name="button_submit_text" translatable="false">Submit</string>
-    <string name="button_filter_text" translatable="false">Reset</string>
-    <string name="pharmacy_one" translatable="false">Pharmacy1</string>
-    <string name="checkbox_ailments" translatable="false">Minor ailments</string>
-    <string name="checkbox_flu" translatable="false">Flu vaccination</string>
-    <string name="checkbox_health" translatable="false">NHS Health check</string>
-    <string name="checkbox_smoking" translatable="false">Stop smoking service</string>
-    <string name="checkbox_alcohol" translatable="false">Advice on alcohol consumption</string>
-    <string name="instructions_service_selection" translatable="false">Select required services</string>
-    <string name="instruction_postcode" translatable="false">Enter postcode</string>
+    <string name="on_shared_pref_saved_text">Filters have been reset</string>
+    <string name="reset_text">Configuration has been reset</string>
+    <string name="button_submit_text">Submit</string>
+    <string name="toggle_available">Available</string>
+    <string name="toggle_unavailable">Unavailable</string>
+    <string name="save_button">Save</string>
+    <string name="button_filter_text">Reset</string>
+    <string name="pharmacy_one">Pharmacy1</string>
+    <string name="checkbox_ailments">Minor ailments</string>
+    <string name="checkbox_flu">Flu vaccination</string>
+    <string name="checkbox_health">NHS Health check</string>
+    <string name="checkbox_smoking">Stop smoking service</string>
+    <string name="checkbox_alcohol">Advice on alcohol consumption</string>
+    <string name="instructions_service_selection">Select required services</string>
+    <string name="instruction_postcode">Enter postcode</string>
     <!--Retrieved from: https://howtodoinjava.com/regex/java-regex-validate-u-k-postal-codes-postcodes/ 17/3/18-->
     <string name="postcode_regex" translatable="false">^[A-Z]{1,2}[0-9R][0-9A-Z]? [0-9][ABD-HJLNP-UW-Z]{2}$</string>
     <string name="postcode_invalid" translatable="false">Postcode is not valid</string>
@@ -23,9 +26,9 @@
     <string name="list_of_pharmacies" translatable="false">List of Pharmacies</string>
     <string name="toast_listview_item_tapped_on" translatable="false">User has selected %s</string>
     <string name="Welcome">Welsh pharmacies</string>
-    <string name="GeneralUsers" translatable="false">General users</string>
-    <string name="Pharmacist" translatable="false">Pharmacists</string>
-    <string name="Language" translatable="false">English</string>
-    <string name="RateTheApp" translatable="false">Rate the app</string>
-
+    <string name="GeneralUsers">General users</string>
+    <string name="Pharmacist">Pharmacists</string>
+    <string name="Language">English</string>
+    <string name="RateTheApp">Rate the app</string>
+    <string name="services_in_welsh">Services in Welsh</string>
 </resources>
