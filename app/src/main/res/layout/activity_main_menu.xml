@@ -10,10 +10,11 @@
     tools:layout_editor_absoluteY="81dp">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/Welcome"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginBottom="130dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="41dp"
         android:autoText="false"
         android:text="@string/Welcome"
@@ -22,13 +23,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:text="Welcome to Walesh Pharmases " />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/ratting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="27dp"
         android:layout_marginEnd="152dp"
         android:layout_marginStart="153dp"
         android:layout_marginTop="30dp"
@@ -45,19 +46,19 @@
         android:id="@+id/GeneralUsers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="52dp"
+        android:layout_marginTop="32dp"
         android:autoText="false"
         android:text="@string/GeneralUsers"
         app:layout_constraintBottom_toTopOf="@+id/Parmacist"
         app:layout_constraintEnd_toEndOf="@+id/Parmacist"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/Parmacist"
         android:layout_width="139dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="76dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/Pharmacist"
         app:layout_constraintBottom_toTopOf="@+id/RattingBar"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,11 +67,13 @@
         tools:ignore="MissingConstraints" />
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/Language"
         android:layout_width="wrap_content"
         android:layout_height="28dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="300dp"
         android:text="@string/Language"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="6dp" />
@@ -90,7 +93,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/ratting" />
 
 
 
