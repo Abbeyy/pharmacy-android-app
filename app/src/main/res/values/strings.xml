@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">WelshPharmacy</string>
-    <string name="get_list_buttontext">Get List</string>
+    <string name="get_list_buttontext" translatable="false">Get List</string>
 
     <string name="on_shared_pref_saved_text">Filters have been reset</string>
     <string name="reset_text">Configuration has been reset</string>
@@ -18,13 +18,13 @@
     <string name="instructions_service_selection">Select required services</string>
     <string name="instruction_postcode">Enter postcode</string>
     <!--Retrieved from: https://howtodoinjava.com/regex/java-regex-validate-u-k-postal-codes-postcodes/ 17/3/18-->
-    <string name="postcode_regex">^[A-Z]{1,2}[0-9R][0-9A-Z]? [0-9][ABD-HJLNP-UW-Z]{2}$</string>
-    <string name="postcode_invalid">Postcode is not valid</string>
-    <string name="location_permission">Allow location tracking</string>
-    <string name="location_divider">------------ OR ------------</string>
-    <string name="enter_valid_location">Either enter a valid postcode or allow location tracking</string>
-    <string name="list_of_pharmacies">List of Pharmacies</string>
-    <string name="toast_listview_item_tapped_on">User has selected %s</string>
+    <string name="postcode_regex" translatable="false">^[A-Z]{1,2}[0-9R][0-9A-Z]? [0-9][ABD-HJLNP-UW-Z]{2}$</string>
+    <string name="postcode_invalid" translatable="false">Postcode is not valid</string>
+    <string name="location_permission" translatable="false">Allow location tracking</string>
+    <string name="location_divider" translatable="false">------------ OR ------------</string>
+    <string name="enter_valid_location" translatable="false">Either enter a valid postcode or allow location tracking</string>
+    <string name="list_of_pharmacies" translatable="false">List of Pharmacies</string>
+    <string name="toast_listview_item_tapped_on" translatable="false">User has selected %s</string>
     <string name="Welcome">Welsh pharmacies</string>
     <string name="GeneralUsers">General users</string>
     <string name="Pharmacist">Pharmacists</string>
