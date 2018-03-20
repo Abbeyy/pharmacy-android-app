@@ -5,7 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
     android:orientation="vertical"
     tools:layout_editor_absoluteY="81dp">
 
@@ -34,6 +33,7 @@
         android:layout_marginStart="153dp"
         android:layout_marginTop="30dp"
         android:text="@string/RateTheApp"
+        android:textColor="@android:color/background_dark"
         app:layout_constraintBottom_toTopOf="@+id/RattingBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,13 +44,17 @@
 
     <Button
         android:id="@+id/GeneralUsers"
-        android:layout_width="wrap_content"
+        android:layout_width="139dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="120dp"
         android:layout_marginTop="32dp"
-        android:autoText="false"
+        android:background="@color/colorAccent"
+        android:elevation="0dp"
         android:text="@string/GeneralUsers"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/Parmacist"
         app:layout_constraintEnd_toEndOf="@+id/Parmacist"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
 
@@ -59,7 +63,10 @@
         android:layout_width="139dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:background="@color/colorAccent"
+        android:elevation="0dp"
         android:text="@string/Pharmacist"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/RattingBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
