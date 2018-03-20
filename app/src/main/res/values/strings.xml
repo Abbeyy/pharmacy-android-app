@@ -5,6 +5,9 @@
     <string name="on_shared_pref_saved_text">Filters have been reset</string>
     <string name="reset_text">Configuration has been reset</string>
     <string name="button_submit_text">Submit</string>
+    <string name="toggle_available">Available</string>
+    <string name="toggle_unavailable">Unavailable</string>
+    <string name="save_button">Save</string>
     <string name="button_filter_text">Reset</string>
     <string name="pharmacy_one">Pharmacy1</string>
     <string name="checkbox_ailments">Minor ailments</string>
@@ -27,5 +30,5 @@
     <string name="Pharmacist">Pharmacists</string>
     <string name="Language">English</string>
     <string name="RateTheApp">Rate the app</string>
-
+    <string name="services_in_welsh">Services in Welsh</string>
 </resources>
