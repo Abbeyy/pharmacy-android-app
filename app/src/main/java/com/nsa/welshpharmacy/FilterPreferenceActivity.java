@@ -1,13 +1,19 @@
 package com.nsa.welshpharmacy;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.AppCompatEditText;
+import android.support.v7.widget.SwitchCompat;
 import android.view.View;
 import android.widget.Toast;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by c1712480 on 14/03/2018.
@@ -15,8 +21,13 @@ import android.widget.Toast;
 
 public class FilterPreferenceActivity extends AppCompatActivity implements View.OnClickListener, View.OnLongClickListener, SharedPreferences.OnSharedPreferenceChangeListener{
 
+    private AppCompatCheckBox checkMinorAilments;
+    private AppCompatCheckBox checkFluVac;
+    private AppCompatCheckBox checkHealthCheck;
+    private AppCompatCheckBox checkSmoking;
+    private AppCompatCheckBox checkAlcohol;
     private AppCompatEditText textWidget;
-    //private AppCompatCheckBox checkWidget;
+    private SwitchCompat switchWidget;
 
     private AppCompatButton submitButton;
     private AppCompatButton resetButton;
@@ -28,7 +39,13 @@ public class FilterPreferenceActivity extends AppCompatActivity implements View.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filter_preference);
 
-        this.textWidget = this.findViewById(R.id.widget_text);
+        this.checkMinorAilments = this.findViewById(R.id.check_minor_ailments);
+        this.checkFluVac = this.findViewById(R.id.check_flu_vaccines);
+        this.checkHealthCheck = this.findViewById(R.id.check_health_check);
+        this.checkSmoking = this.findViewById(R.id.check_smoking);
+        this.checkAlcohol = this.findViewById(R.id.check_alcohol);
+        this.textWidget = this.findViewById(R.id.text_postcode);
+        this.switchWidget = this.findViewById(R.id.switch_location);
 
         this.submitButton = this.findViewById(R.id.submit_button);
         this.resetButton = this.findViewById(R.id.reset_button);
@@ -37,6 +54,7 @@ public class FilterPreferenceActivity extends AppCompatActivity implements View.
 
         initValues();
 
+        textWidget.setOnClickListener(this);
         submitButton.setOnClickListener(this);
         resetButton.setOnLongClickListener(this);
 
@@ -44,7 +62,13 @@ public class FilterPreferenceActivity extends AppCompatActivity implements View.
 
     private void initValues(){
         if (this.sharedPreferences != null) {
-            this.textWidget.setText(this.sharedPreferences.getString(KeyValueHelper.KEY_WIDGET_TEXT, KeyValueHelper.DEFAULT_WIDGET_TEXT));
+            this.checkMinorAilments.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_AILMENTS, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
+            this.checkFluVac.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_FLU, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
+            this.checkHealthCheck.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_HEALTH, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
+            this.checkSmoking.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_SMOKING, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
+            this.checkAlcohol.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_ALCOHOL, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
+            this.switchWidget.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_SWITCH_LOCATION, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
+
         }
     }
 
@@ -65,10 +89,27 @@ public class FilterPreferenceActivity extends AppCompatActivity implements View.
     @Override
     public void onClick(View view){
         int id = view.getId();
+        //Adapted from https://stackoverflow.com/a/4531500 Retrieved: 17/3/18
+        //Adapted from https://stackoverflow.com/a/8204716 Retrieved 17/3/18
+        Pattern POSTCODE_REGEX = Pattern.compile(getString(R.string.postcode_regex));
 
-        if (id == R.id.submit_button && this.sharedPreferences != null){
-            SharedPreferences.Editor editor = this.sharedPreferences.edit();
-            editor.apply();
+        Matcher matcher = POSTCODE_REGEX.matcher(textWidget.getText());
+        if(!matcher.matches() && !switchWidget.isChecked()){
+            Toast.makeText(this, R.string.enter_valid_location, Toast.LENGTH_LONG).show();
+        }else{
+            if (id == R.id.submit_button && this.sharedPreferences != null){
+                SharedPreferences.Editor editor = this.sharedPreferences.edit();
+                editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_AILMENTS, this.checkMinorAilments.isChecked());
+                editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_FLU, this.checkFluVac.isChecked());
+                editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_HEALTH, this.checkHealthCheck.isChecked());
+                editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_SMOKING, this.checkSmoking.isChecked());
+                editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_ALCOHOL, this.checkAlcohol.isChecked());
+                editor.putBoolean(KeyValueHelper.KEY_SWITCH_LOCATION, this.switchWidget.isChecked());
+                editor.apply();
+
+                Intent pharmacyListView = new Intent(this, ListPharmaciesActivity.class);
+                startActivity(pharmacyListView);
+            }
         }
     }
     @Override
@@ -90,6 +131,5 @@ public class FilterPreferenceActivity extends AppCompatActivity implements View.
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s){
 
         Toast.makeText(this, R.string.on_shared_pref_saved_text, Toast.LENGTH_SHORT).show();
-
     }
 }
