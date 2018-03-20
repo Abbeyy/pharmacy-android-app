@@ -24,7 +24,7 @@
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:gravity="start"
-            android:text="@string/alcohol_consumption"
+            android:text="@string/checkbox_alcohol"
             android:textSize="18sp" />
 
         <ToggleButton
@@ -50,7 +50,7 @@
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:gravity="start"
-            android:text="@string/flu_vaccinations"
+            android:text="@string/checkbox_flu"
             android:textSize="18sp" />
 
         <ToggleButton
@@ -76,7 +76,7 @@
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:gravity="start"
-            android:text="@string/NHS_health_check"
+            android:text="@string/checkbox_health"
             android:textSize="18sp" />
 
         <ToggleButton
@@ -102,7 +102,7 @@
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:gravity="start"
-            android:text="@string/stop_smoking_service"
+            android:text="@string/checkbox_ailments"
             android:textSize="18sp" />
 
         <ToggleButton
@@ -127,7 +127,7 @@
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:gravity="start"
-            android:text="@string/minor_ailments"
+            android:text="@string/checkbox_smoking"
             android:textSize="18sp" />
 
         <ToggleButton
