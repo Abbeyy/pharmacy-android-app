@@ -23,7 +23,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints"
-        tools:text="Welcome to Walesh Pharmases " />
+        tools:text="Welcome to Walesh pharmacies " />
 
     <TextView
         android:id="@+id/ratting"

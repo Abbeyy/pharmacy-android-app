@@ -33,7 +33,7 @@ public class MainMenu extends AppCompatActivity {
         ratting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ratting.setText("Ratting have submitted successfully ");
+                ratting.setText("Rating have submitted successfully ");
                 int[] i = new int[]{ R.id.RattingBar};
             }
 
