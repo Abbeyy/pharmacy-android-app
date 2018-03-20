@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.ListViewCompat
+        android:id="@+id/listview_pharmacy_details"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@android:drawable/divider_horizontal_bright"
+        android:listSelector="@android:color/transparent" />
+
+</android.support.v7.widget.LinearLayoutCompat>
