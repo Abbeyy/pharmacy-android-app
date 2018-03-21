@@ -69,7 +69,7 @@ public class ListPharmaciesActivity extends AppCompatActivity implements Adapter
         this.arrayAdpt = new ArrayAdapter<String> (
                 this,
                 android.R.layout.simple_list_item_1,
-                //switch layout to be lv_pharmacy_names_row once sorted access!
+                //switch layout to be lv_pharmacy_names once sorted access!
                 this.aList
         );
 
