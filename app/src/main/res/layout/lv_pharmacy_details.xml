@@ -1,7 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<android.support.v7.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="@dimen/lv_names_row_dimension"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
-</android.support.constraint.ConstraintLayout>
+    <!-- Layout for listview of "list_pharmacy_details" -->
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/pharmacy_name_row"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/lv_rows_space" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/address"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/lv_rows_space" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/phone"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/lv_rows_space" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/email"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/lv_rows_space" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/website"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        />
+
+</android.support.v7.widget.LinearLayoutCompat>
