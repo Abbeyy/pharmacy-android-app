@@ -1,8 +1,10 @@
 package com.nsa.welshpharmacy;
 
+import android.app.FragmentManager;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.StringRes;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.ListViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -56,10 +58,16 @@ public class ListPharmaciesActivity extends AppCompatActivity implements Adapter
         setContentView(R.layout.list_pharmacies_main);
         //activity inflating layout
 
+        //setting up main fragment of view
+//        android.support.v4.app.FragmentManager fmtManager = getSupportFragmentManager();
+//        FragmentTransaction fmtTransaction = fmtManager.beginTransaction();
+//        fmtTransaction.add(R.id.fragments_container, new ListPharmaciesMainFragment());
+//        fmtTransaction.commit();
+
+
         //date stuff
         setUpDate();
 
-        //line below is not working - not recognisning my listview on my layout by id?!
         this.lView = this.findViewById(R.id.listview_pharmacies);
 
         //Created mock datasource of an arraylist of strings;
@@ -74,7 +82,6 @@ public class ListPharmaciesActivity extends AppCompatActivity implements Adapter
         );
 
         this.lView.setAdapter(this.arrayAdpt);
-
         this.lView.setOnItemClickListener(this);
     }
 
