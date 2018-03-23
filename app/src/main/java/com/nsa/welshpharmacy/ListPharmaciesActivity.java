@@ -14,11 +14,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.nsa.welshpharmacy.mockingdata.Pharmacy;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.text.SimpleDateFormat;
+import java.util.Vector;
 
 /**
  * Created by c1714546 on 3/14/2018.
@@ -40,16 +43,12 @@ public class ListPharmaciesActivity extends AppCompatActivity implements Adapter
     List<String> aList;
     //Built-in adapter for string datasource
     ArrayAdapter<String> arrayAdpt;
-    String[][] pharmaciesInfo = {
-        {"Boots", "Capital Shopping Centre, Cardiff", "02920 664506", "Common Ailments Service; Out of Hours Service; Provides EC; Seasonal Flu Vaccine"}
-                ,{"Well"}
-                ,{"Cardiff Royal Infirmary Pharmacy"}
-                ,{"Clifton Pharmacy"}
-                ,{"Superdrug Pharmacy"}
-                ,{"Woodville Road Pharmacy"}
-                ,{"Lloyds Pharmacy Ltd"}
-                ,{"Central Pharmacy"}};
-    //Hardcoded pharmacy mocked data.
+    private Vector<Pharmacy> pharmaciesContainer = new Vector<Pharmacy>();
+    private String[] pharmacyNames = new String[]
+            {"Boots", "Well", "Cardiff Royal Infirmary Pharmacy",
+                    "Clifton Pharmacy", "Superdrug Pharmacy",
+                    "Superdrug Pharmacy", "Woodville Road Pharmacy",
+                    "Lloyds Pharmacy Ltd", "Central Pharmacy"};
 
 
     @Override
@@ -58,13 +57,6 @@ public class ListPharmaciesActivity extends AppCompatActivity implements Adapter
         setContentView(R.layout.list_pharmacies_main);
         //activity inflating layout
 
-        //setting up main fragment of view
-//        android.support.v4.app.FragmentManager fmtManager = getSupportFragmentManager();
-//        FragmentTransaction fmtTransaction = fmtManager.beginTransaction();
-//        fmtTransaction.add(R.id.fragments_container, new ListPharmaciesMainFragment());
-//        fmtTransaction.commit();
-
-
         //date stuff
         setUpDate();
 
@@ -72,6 +64,7 @@ public class ListPharmaciesActivity extends AppCompatActivity implements Adapter
 
         //Created mock datasource of an arraylist of strings;
         this.aList = new ArrayList<>();
+        generatePharmacies(8);
         collectPharmacyInfo();
 
         this.arrayAdpt = new ArrayAdapter<String> (
@@ -83,6 +76,24 @@ public class ListPharmaciesActivity extends AppCompatActivity implements Adapter
 
         this.lView.setAdapter(this.arrayAdpt);
         this.lView.setOnItemClickListener(this);
+
+        //setting up main fragment of view
+//        android.support.v4.app.FragmentManager fmtManager = getSupportFragmentManager();
+//        FragmentTransaction fmtTransaction = fmtManager.beginTransaction();
+//        fmtTransaction.add(R.id.fragments_container, new ListPharmaciesMainFragment());
+//        fmtTransaction.commit();
+    }
+
+    public void generatePharmacies(int numOfPharmacies) {
+        for (int k = 0; k < numOfPharmacies; k++) {
+            Pharmacy pharmacy = new Pharmacy(pharmacyNames[k],
+                    "02920664506","example@live.com",
+                    "Capital Shopping Centre, Cardiff",
+                    "Common Ailments Service", "Out of Hours Service",
+                    "Provides EC", "Seasonal Flu Vaccine");
+
+            pharmaciesContainer.add(pharmacy);
+        }
     }
 
     public void collectPharmacyInfo() {
@@ -92,7 +103,7 @@ public class ListPharmaciesActivity extends AppCompatActivity implements Adapter
         int numOfPharms = 8;
 
         for (int i = 0; i < numOfPharms; i++) {
-            this.aList.add(pharmaciesInfo[i][0]);
+            this.aList.add(pharmaciesContainer.get(i).getName());
         }
     }
 
