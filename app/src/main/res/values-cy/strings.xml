@@ -2,4 +2,8 @@
 <resources>
     <string name="app_name">WelshPharmacy</string>
     <string name="Welcome">" croeso"</string>
+    <string name="RateTheApp" translatable="false">"Cyfraddwch yr app "</string>
+    <string name="Language">To English</string>
+    <string name="Pharmacist">Fferyllwyr</string>
+    <string name="GeneralUsers">"Defnyddwyr cyffredinol "</string>
 </resources>

@@ -26,7 +26,7 @@
         tools:text="Welcome to Walesh pharmacies " />
 
     <TextView
-        android:id="@+id/ratting"
+        android:id="@+id/rating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="152dp"
@@ -34,7 +34,7 @@
         android:layout_marginTop="30dp"
         android:text="@string/RateTheApp"
         android:textColor="@android:color/background_dark"
-        app:layout_constraintBottom_toTopOf="@+id/RattingBar"
+        app:layout_constraintBottom_toTopOf="@+id/RatingBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Parmacist"
@@ -67,7 +67,7 @@
         android:elevation="0dp"
         android:text="@string/Pharmacist"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/RattingBar"
+        app:layout_constraintBottom_toTopOf="@+id/RatingBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/GeneralUsers"
@@ -86,7 +86,7 @@
         tools:layout_editor_absoluteY="6dp" />
 
     <android.support.v7.widget.AppCompatRatingBar
-        android:id="@+id/RattingBar"
+        android:id="@+id/RatingBar"
         style="@style/Base.TextAppearance.AppCompat.Medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -100,7 +100,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ratting" />
+        app:layout_constraintTop_toBottomOf="@+id/rating" />
 
 
 
