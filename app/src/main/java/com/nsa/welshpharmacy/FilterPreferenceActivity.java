@@ -1,6 +1,5 @@
 package com.nsa.welshpharmacy;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -16,6 +15,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
+ * This activity allows the user to select their required service and to have their location
+ * inputted. The user has a choice of either a valid postcode or allowing the phone GPS to be used.
+ * 
  * Created by c1712480 on 14/03/2018.
  */
 
@@ -57,7 +59,6 @@ public class FilterPreferenceActivity extends AppCompatActivity implements View.
         textWidget.setOnClickListener(this);
         submitButton.setOnClickListener(this);
         resetButton.setOnLongClickListener(this);
-
     }
 
     private void initValues(){
@@ -68,7 +69,6 @@ public class FilterPreferenceActivity extends AppCompatActivity implements View.
             this.checkSmoking.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_SMOKING, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
             this.checkAlcohol.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_ALCOHOL, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
             this.switchWidget.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_SWITCH_LOCATION, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
-
         }
     }
 
@@ -129,7 +129,5 @@ public class FilterPreferenceActivity extends AppCompatActivity implements View.
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s){
-
-        Toast.makeText(this, R.string.on_shared_pref_saved_text, Toast.LENGTH_SHORT).show();
     }
 }

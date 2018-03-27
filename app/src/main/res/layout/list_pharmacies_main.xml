@@ -4,11 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!-- Layout for fragment declaration(s) -->
+
     <fragment
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:name="com.nsa.welshpharmacy.ListPharmaciesMainFragment"
         android:id="@+id/starting_fragment"
         />
+
+    <!--<LinearLayout-->
+        <!--android:orientation="horizontal"-->
+        <!--android:id="@+id/fragments_container"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"/>-->
 
 </android.support.constraint.ConstraintLayout>
