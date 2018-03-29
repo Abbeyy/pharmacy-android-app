@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.v7.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:id="@+id/fragments_container"
+    android:id="@+id/first_fragment_layout"
     android:padding="10dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <!-- Layout for first fragment of activity ListPharmaciesActivity -->
 
-        <LinearLayout
+        <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -34,7 +34,7 @@
                 android:gravity="end"
                 />
 
-        </LinearLayout>
+        </android.support.v7.widget.LinearLayoutCompat>
 
         <RelativeLayout
             android:orientation="vertical"
@@ -51,4 +51,4 @@
 
         </RelativeLayout>
 
-</LinearLayout>
+</android.support.v7.widget.LinearLayoutCompat>
