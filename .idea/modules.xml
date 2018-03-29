@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Welsh-Pharmacy-Team4.iml" filepath="$PROJECT_DIR$/Welsh-Pharmacy-Team4.iml" />
+      <module fileurl="file://C:\Users\c1660911\Desktop\Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4.iml" filepath="C:\Users\c1660911\Desktop\Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\c1660911\Desktop\Welsh-Pharmacy-Team4\app\app.iml" filepath="C:\Users\c1660911\Desktop\Welsh-Pharmacy-Team4\app\app.iml" />
     </modules>
   </component>
 </project>
