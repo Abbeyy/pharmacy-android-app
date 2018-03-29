@@ -1,22 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:id="@+id/fragments_container"
+    android:padding="10dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
-    <!-- Layout for fragment declaration(s) -->
+    <!-- Layout for first fragment of activity ListPharmaciesActivity -->
 
-    <fragment
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:name="com.nsa.welshpharmacy.ListPharmaciesMainFragment"
-        android:id="@+id/starting_fragment"
-        />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/title_padding">
 
-    <!--<LinearLayout-->
-        <!--android:orientation="horizontal"-->
-        <!--android:id="@+id/fragments_container"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"/>-->
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/list_of_pharmacies"
+                android:textSize="18sp"
+                android:background="@color/colourMiddle"
+                android:textColor="@color/white"
+                android:padding="6dp"
+                android:gravity="center_vertical"
+                />
 
-</android.support.constraint.ConstraintLayout>
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/date_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textSize="18sp"
+                android:gravity="end"
+                />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <android.support.v7.widget.ListViewCompat
+                android:id="@+id/listview_pharmacies"
+                android:listSelector="@android:color/transparent"
+                android:cacheColorHint="@android:color/transparent"
+                android:divider="@android:drawable/divider_horizontal_bright"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+</LinearLayout>

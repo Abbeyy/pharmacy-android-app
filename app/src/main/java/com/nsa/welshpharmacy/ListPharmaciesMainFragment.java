@@ -3,19 +3,110 @@ package com.nsa.welshpharmacy;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.ListViewCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Toast;
+
+import com.nsa.welshpharmacy.mockingdata.Pharmacy;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Vector;
 
 /**
  * Created by c1714546 on 3/18/2018.
  */
 
-public class ListPharmaciesMainFragment extends Fragment {
+public class ListPharmaciesMainFragment extends Fragment implements AdapterView.OnItemClickListener {
+    ListViewCompat lView;
+    List<String> aList;
+    //Built-in adapter for string datasource
+    ArrayAdapter<String> arrayAdpt;
+    private Vector<Pharmacy> pharmaciesContainer = new Vector<Pharmacy>();
+    private String[] pharmacyNames = new String[]
+            {"Boots", "Well", "Cardiff Royal Infirmary Pharmacy",
+                    "Clifton Pharmacy", "Superdrug Pharmacy",
+                    "Superdrug Pharmacy", "Woodville Road Pharmacy",
+                    "Lloyds Pharmacy Ltd", "Central Pharmacy"};
+
+
+    public ListPharmaciesMainFragment() {
+    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.list_pharmacies, container, false);
+        View v = inflater.inflate(R.layout.list_pharmacies_main, container, false);
+        //inflating layout list_pharmacies_main as layout for my fragment, holding both
+        //textviews and the listview!
+
+
+        this.lView = v.findViewById(R.id.listview_pharmacies); //line 64
+
+        //Created mock datasource of an arraylist of strings;
+        this.aList = new ArrayList<>();
+        generatePharmacies(8);
+        collectPharmacyInfo();
+
+        this.arrayAdpt = new ArrayAdapter<String>(
+                getActivity(), //line 72
+                android.R.layout.simple_list_item_1,
+                //switch layout to be lv_pharmacy_names once sorted access!
+                this.aList
+        );
+
+        this.lView.setAdapter(this.arrayAdpt);
+        //this.lView.setOnItemClickListener(this);
+        //line 80
+
+
+        return v;
     }
+
+    public void generatePharmacies(int numOfPharmacies) {
+        for (int k = 0; k < numOfPharmacies; k++) {
+            Pharmacy pharmacy = new Pharmacy(pharmacyNames[k],
+                    "02920664506","example@live.com",
+                    "Capital Shopping Centre, Cardiff",
+                    "Common Ailments Service", "Out of Hours Service",
+                    "Provides EC", "Seasonal Flu Vaccine");
+
+            pharmaciesContainer.add(pharmacy);
+        }
+    }
+
+    public void collectPharmacyInfo() {
+        //In future, mock this to collect from another
+        // datasource. For now, hardcoded generation.
+
+        int numOfPharms = 8;
+
+        for (int i = 0; i < numOfPharms; i++) {
+            this.aList.add(pharmaciesContainer.get(i).getName());
+        }
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        //1. Toast
+        Toast.makeText(getActivity(),
+                String.format("User has selected %s", lView.getItemAtPosition(position)),
+                Toast.LENGTH_SHORT).show();
+        //2. Expand Textview (Method > implement
+        // another listview of the 1 pharmacy item,
+        // with multiple textviews)
+       // expandPharmacyInfo(position);
+    }
+
+//    public void expandPharmacyInfo(int position) {
+//        //Method - move to a fragment to display
+//        //a new listview of 4 textviews
+//        //to output all the pharmacy's info?
+//
+//    }
+
 }
