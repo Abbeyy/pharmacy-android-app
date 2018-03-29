@@ -33,9 +33,11 @@ public class ListPharmaciesMainFragment extends Fragment implements AdapterView.
     private Vector<Pharmacy> pharmaciesContainer = new Vector<Pharmacy>();
     private String[] pharmacyNames = new String[]
             {"Boots", "Well", "Cardiff Royal Infirmary Pharmacy",
-                    "Clifton Pharmacy", "Superdrug Pharmacy",
+                    "Clifton Pharmacy", "Pearn's Pharmacies Ltd",
                     "Superdrug Pharmacy", "Woodville Road Pharmacy",
-                    "Lloyds Pharmacy Ltd", "Central Pharmacy"};
+                    "Lloyds Pharmacy Ltd", "Central Pharmacy",
+                    "Crwys Pharmacy", "The Co-operative Pharmacy",
+                    "Rees & Moore Pharmacy", "M W Philips"};
 
 
     public ListPharmaciesMainFragment() {
