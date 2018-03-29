@@ -37,7 +37,8 @@ public class ListPharmaciesMainFragment extends Fragment implements AdapterView.
                     "Superdrug Pharmacy", "Woodville Road Pharmacy",
                     "Lloyds Pharmacy Ltd", "Central Pharmacy",
                     "Crwys Pharmacy", "The Co-operative Pharmacy",
-                    "Rees & Moore Pharmacy", "M W Philips"};
+                    "Rees & Moore Pharmacy", "M W Philips",
+                    "MW Phillips Chemists"};
 
 
     public ListPharmaciesMainFragment() {
@@ -55,8 +56,7 @@ public class ListPharmaciesMainFragment extends Fragment implements AdapterView.
 
         //Created mock datasource of an arraylist of strings;
         this.aList = new ArrayList<>();
-        generatePharmacies(8);
-        collectPharmacyInfo();
+        generatePharmacies(pharmacyNames.length);
 
         this.arrayAdpt = new ArrayAdapter<String>(
                 getActivity(), //line 72
@@ -97,17 +97,7 @@ public class ListPharmaciesMainFragment extends Fragment implements AdapterView.
                     "Provides EC", "Seasonal Flu Vaccine");
 
             pharmaciesContainer.add(pharmacy);
-        }
-    }
-
-    public void collectPharmacyInfo() {
-        //In future, mock this to collect from another
-        // datasource. For now, hardcoded generation.
-
-        int numOfPharms = 8;
-
-        for (int i = 0; i < numOfPharms; i++) {
-            this.aList.add(pharmaciesContainer.get(i).getName());
+            this.aList.add(pharmaciesContainer.get(k).getName());
         }
     }
 
