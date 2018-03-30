@@ -9,7 +9,7 @@
     <fragment
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:name="com.nsa.welshpharmacy.ListPharmaciesMainFragment"
+        android:name="com.nsa.welshpharmacy.view.ListPharmaciesMainFragment"
         android:id="@+id/starting_fragment"
         />
 

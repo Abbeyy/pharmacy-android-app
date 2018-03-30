@@ -9,18 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainMenu">
+        <activity android:name=".view.MainMenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FilterPreferenceActivity">
+        <activity android:name=".view.UserFilterPreferenceActivity">
         </activity>
-        <activity android:name=".ListPharmaciesActivity">
+        <activity android:name=".view.ListPharmaciesActivity">
         </activity>
-        <activity android:name=".ServicesInWelshActivity">
+        <activity android:name=".view.StaffFilterPreferenceActivity">
         </activity>
     </application>
 

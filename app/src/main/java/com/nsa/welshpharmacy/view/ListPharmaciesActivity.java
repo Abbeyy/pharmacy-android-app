@@ -1,10 +1,6 @@
-package com.nsa.welshpharmacy;
+package com.nsa.welshpharmacy.view;
 
-import android.app.FragmentManager;
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.support.annotation.StringRes;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.ListViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -14,7 +10,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.nsa.welshpharmacy.mockingdata.Pharmacy;
+import com.nsa.welshpharmacy.R;
+import com.nsa.welshpharmacy.model.Pharmacy;
+import com.nsa.welshpharmacy.model.PharmacyStore;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -85,15 +83,17 @@ public class ListPharmaciesActivity extends AppCompatActivity implements Adapter
     }
 
     public void generatePharmacies(int numOfPharmacies) {
+        PharmacyStore.loadPharmacies();
+        /*
         for (int k = 0; k < numOfPharmacies; k++) {
             Pharmacy pharmacy = new Pharmacy(pharmacyNames[k],
                     "02920664506","example@live.com",
                     "Capital Shopping Centre, Cardiff",
                     "Common Ailments Service", "Out of Hours Service",
                     "Provides EC", "Seasonal Flu Vaccine");
-
             pharmaciesContainer.add(pharmacy);
         }
+        */
     }
 
     public void collectPharmacyInfo() {
