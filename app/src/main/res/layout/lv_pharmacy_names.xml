@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <!-- Layout for listview of "list_pharmacies.xml" & 2nd in "list_pharmacy_details" -->
+    <!-- Layout for listview list_pharmacies_activity_layout_activity_layout.xml.xml" & 2nd in "list_pharmacy_details" -->
 
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/names_row"
