@@ -30,9 +30,10 @@ public class PharmacyStore {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot){
                 // see:  https://firebase.google.com/docs/database/android/lists-of-data#listen_for_value_events
-                // Retrieve all  Pharmacy records from the firebase database in one go
+                // Retrieve all  Pharmacy records from the Firebase database in one go
                 for(DataSnapshot pharmacySnapshot : dataSnapshot.getChildren()){
                     Pharmacy pharmacy = pharmacySnapshot.getValue(Pharmacy.class);
+                    pharmacy.setId(pharmacySnapshot.getKey());
                     System.out.println(pharmacy);
                 }
             }
