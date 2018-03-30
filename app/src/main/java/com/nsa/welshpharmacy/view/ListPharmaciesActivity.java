@@ -1,25 +1,8 @@
 package com.nsa.welshpharmacy.view;
 
 import android.os.Bundle;
-<<<<<<< HEAD:app/src/main/java/com/nsa/welshpharmacy/view/ListPharmaciesActivity.java
-import android.support.v7.widget.ListViewCompat;
-=======
->>>>>>> 53b9dbb6f43fbc063fb6ecc039bc093a35917d74:app/src/main/java/com/nsa/welshpharmacy/ListPharmaciesActivity.java
 import android.support.v7.app.AppCompatActivity;
-import android.widget.TextView;
-
-
-<<<<<<< HEAD:app/src/main/java/com/nsa/welshpharmacy/view/ListPharmaciesActivity.java
 import com.nsa.welshpharmacy.R;
-import com.nsa.welshpharmacy.model.Pharmacy;
-import com.nsa.welshpharmacy.model.PharmacyStore;
-
-import java.util.ArrayList;
-=======
->>>>>>> 53b9dbb6f43fbc063fb6ecc039bc093a35917d74:app/src/main/java/com/nsa/welshpharmacy/ListPharmaciesActivity.java
-import java.util.Calendar;
-import java.util.Date;
-import java.text.SimpleDateFormat;
 
 /**
  * Created by c1714546 on 3/14/2018.

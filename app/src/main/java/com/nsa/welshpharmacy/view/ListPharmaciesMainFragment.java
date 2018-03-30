@@ -12,8 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.nsa.welshpharmacy.mockingdata.Pharmacy;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -22,6 +20,7 @@ import java.util.List;
 import java.util.Vector;
 
 import com.nsa.welshpharmacy.R;
+import com.nsa.welshpharmacy.model.Pharmacy;
 
 /**
  * Created by c1714546 on 3/18/2018.
@@ -91,6 +90,7 @@ public class ListPharmaciesMainFragment extends Fragment implements AdapterView.
     }
 
     public void generatePharmacies(int numOfPharmacies) {
+        /*
         for (int k = 0; k < numOfPharmacies; k++) {
             Pharmacy pharmacy = new Pharmacy(pharmacyNames[k],
                     "02920664506","example@live.com",
@@ -101,6 +101,7 @@ public class ListPharmaciesMainFragment extends Fragment implements AdapterView.
             pharmaciesContainer.add(pharmacy);
             this.aList.add(pharmaciesContainer.get(k).getName());
         }
+        */
     }
 
     @Override
