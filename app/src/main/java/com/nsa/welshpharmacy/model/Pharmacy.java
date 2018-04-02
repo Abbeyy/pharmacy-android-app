@@ -36,7 +36,7 @@ public class Pharmacy {
         return id;
     }
 
-    //This is only for when reading from Firebase
+    //This is only for use when reading from Firebase
     public void setId(String id) {
         this.id = id;
     }

@@ -1,4 +1,4 @@
-package com.nsa.welshpharmacy.model;
+package com.nsa.welshpharmacy.stores;
 
 import android.nfc.Tag;
 import android.support.constraint.solver.widgets.Snapshot;
@@ -9,6 +9,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.nsa.welshpharmacy.model.Pharmacy;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,7 +22,7 @@ import java.util.Map;
 public class PharmacyStore {
 
     public static void loadPharmacies(){
-        //Get a reference to our pharmacies
+        //Get a reference to the pharmacies
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference("pharmacies");
 

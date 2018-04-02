@@ -11,9 +11,11 @@ import android.support.v7.widget.SwitchCompat;
 import android.view.View;
 import android.widget.Toast;
 
-import com.nsa.welshpharmacy.KeyValueHelper;
 import com.nsa.welshpharmacy.R;
-import com.nsa.welshpharmacy.model.PharmacyStore;
+import com.nsa.welshpharmacy.model.PharmacyService;
+import com.nsa.welshpharmacy.stores.LanguagesStore;
+import com.nsa.welshpharmacy.stores.PharmacyStore;
+import com.nsa.welshpharmacy.stores.ServicesStore;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -120,6 +122,8 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
     public boolean onLongClick(View view){
         //TODO remove
         PharmacyStore.loadPharmacies();
+        ServicesStore.loadServices();
+        LanguagesStore.loadLanguages();
         int id = view.getId();
 
         if (id == R.id.reset_button && this.sharedPreferences != null) {

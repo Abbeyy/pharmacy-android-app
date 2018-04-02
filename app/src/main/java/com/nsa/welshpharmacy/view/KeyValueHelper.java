@@ -1,10 +1,11 @@
-package com.nsa.welshpharmacy;
+package com.nsa.welshpharmacy.view;
 
 /**
  * Created by c1712480 on 14/03/2018.
  */
 
 public class KeyValueHelper {
+    // Constants
     public static final String KEY_CHECKBOX_AILMENTS = "checkbox_ailments";
     public static final String KEY_CHECKBOX_FLU = "checkbox_flu";
     public static final String KEY_CHECKBOX_HEALTH = "checkbox_health";
