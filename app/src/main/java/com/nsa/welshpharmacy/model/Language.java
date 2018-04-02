@@ -4,16 +4,16 @@ package com.nsa.welshpharmacy.model;
  * Created by c1712480 on 29/03/2018.
  */
 
-public class Languages {
+public class Language {
     public String id;
     public String description;
 
-    public Languages(String id, String description) {
+    public Language(String id, String description) {
         this.id = id;
         this.description = description;
     }
 
-    public Languages(){
+    public Language(){
         //Default constructor
         //Reflection
     }
@@ -33,7 +33,7 @@ public class Languages {
 
     @Override
     public String toString() {
-        return "Languages{" +
+        return "Language{" +
                 "id='" + id + '\'' +
                 ", description='" + description + '\'' +
                 '}';
