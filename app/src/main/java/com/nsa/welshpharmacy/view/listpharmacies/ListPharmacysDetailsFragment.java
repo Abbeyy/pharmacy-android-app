@@ -1,4 +1,4 @@
-package com.nsa.welshpharmacy.listpharmacies;
+package com.nsa.welshpharmacy.view.listpharmacies;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

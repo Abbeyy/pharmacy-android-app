@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.nsa.welshpharmacy.KeyValueHelper;
 import com.nsa.welshpharmacy.R;
+import com.nsa.welshpharmacy.view.listpharmacies.ListPharmaciesActivity;
 import com.nsa.welshpharmacy.model.PharmacyStore;
 
 import java.util.regex.Matcher;
