@@ -18,7 +18,7 @@
         </activity>
         <activity android:name=".view.UserFilterPreferenceActivity">
         </activity>
-        <activity android:name=".view.ListPharmaciesActivity">
+        <activity android:name=".view.listpharmacies.ListPharmaciesActivity">
         </activity>
         <activity android:name=".view.StaffFilterPreferenceActivity">
         </activity>

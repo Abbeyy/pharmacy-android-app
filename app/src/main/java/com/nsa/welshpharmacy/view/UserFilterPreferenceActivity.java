@@ -16,6 +16,7 @@ import com.nsa.welshpharmacy.model.PharmacyService;
 import com.nsa.welshpharmacy.stores.LanguagesStore;
 import com.nsa.welshpharmacy.stores.PharmacyStore;
 import com.nsa.welshpharmacy.stores.ServicesStore;
+import com.nsa.welshpharmacy.view.listpharmacies.ListPharmaciesActivity;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

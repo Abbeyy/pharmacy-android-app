@@ -1,4 +1,4 @@
-package com.nsa.welshpharmacy.listpharmacies;
+package com.nsa.welshpharmacy.view.listpharmacies;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nsa.welshpharmacy.R;
-import com.nsa.welshpharmacy.mockingdata.Pharmacy;
+import com.nsa.welshpharmacy.model.Pharmacy;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
