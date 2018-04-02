@@ -1,8 +1,10 @@
-package com.nsa.welshpharmacy;
+package com.nsa.welshpharmacy.listpharmacies;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.ListViewCompat;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.nsa.welshpharmacy.R;
 import com.nsa.welshpharmacy.mockingdata.Pharmacy;
 
 import java.text.SimpleDateFormat;
@@ -25,7 +28,7 @@ import java.util.Vector;
  * Created by c1714546 on 3/18/2018.
  */
 
-public class ListPharmaciesMainFragment extends Fragment implements AdapterView.OnItemClickListener {
+public class ListPharmaciesFragment extends Fragment implements AdapterView.OnItemClickListener {
     ListViewCompat lView;
     List<String> aList;
     //Built-in adapter for string datasource
@@ -39,9 +42,11 @@ public class ListPharmaciesMainFragment extends Fragment implements AdapterView.
                     "Crwys Pharmacy", "The Co-operative Pharmacy",
                     "Rees & Moore Pharmacy", "M W Philips",
                     "MW Phillips Chemists"};
+    private FragmentManager fmtManager;
+    private FragmentTransaction fmtTrans;
 
 
-    public ListPharmaciesMainFragment() {
+    public ListPharmaciesFragment() {
     }
 
     @Nullable
@@ -107,17 +112,15 @@ public class ListPharmaciesMainFragment extends Fragment implements AdapterView.
         Toast.makeText(getActivity(),
                 String.format("User has selected %s", lView.getItemAtPosition(position)),
                 Toast.LENGTH_SHORT).show();
-        //2. Expand Textview (Method > implement
-        // another listview of the 1 pharmacy item,
-        // with multiple textviews)
-       // expandPharmacyInfo(position);
+        //2. Switch Fragments
+        expandPharmacyInfo(position);
     }
 
-//    public void expandPharmacyInfo(int position) {
-//        //Method - move to a fragment to display
-//        //a new listview of 4 textviews
-//        //to output all the pharmacy's info?
-//
-//    }
+    public void expandPharmacyInfo(int position) {
+        this.fmtManager = getActivity().getSupportFragmentManager();
+        this.fmtTrans = this.fmtManager.beginTransaction();
+        this.fmtTrans.replace(R.id.fragments_container, new ListPharmacysDetailsFragment());
+        this.fmtTrans.commit();
+    }
 
 }

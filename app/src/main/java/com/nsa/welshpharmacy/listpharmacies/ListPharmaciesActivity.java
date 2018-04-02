@@ -1,13 +1,10 @@
-package com.nsa.welshpharmacy;
+package com.nsa.welshpharmacy.listpharmacies;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.TextView;
 
 
-import java.util.Calendar;
-import java.util.Date;
-import java.text.SimpleDateFormat;
+import com.nsa.welshpharmacy.R;
 
 /**
  * Created by c1714546 on 3/14/2018.
@@ -36,7 +33,7 @@ public class ListPharmaciesActivity extends AppCompatActivity {
         //setting up main fragment of view
         android.support.v4.app.FragmentManager fmtManager = getSupportFragmentManager();
         android.support.v4.app.FragmentTransaction fmtTransaction = fmtManager.beginTransaction();
-        fmtTransaction.add(R.id.fragments_container, new ListPharmaciesMainFragment());
+        fmtTransaction.add(R.id.fragments_container, new ListPharmaciesFragment());
         fmtTransaction.commit();
     }
 

@@ -11,6 +11,8 @@ import android.support.v7.widget.SwitchCompat;
 import android.view.View;
 import android.widget.Toast;
 
+import com.nsa.welshpharmacy.listpharmacies.ListPharmaciesActivity;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
