@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WelshPharmacy</string>
+    <string name="service_alcohol">hgjjh</string>
+    <string name="instruction_postcode">hjhj</string>
+    <string name="button_filter_text">gjgj</string>
+    <string name="toggle_available">ghgh</string>
+    <string name="Welcome">jgj</string>
+    <string name="GeneralUsers_Translation">uttuu</string>
+    <string name="get_list_buttontext" translatable="false">uuyy</string>
+    <string name="text_translation">hjjhjhj</string>
+    <string name="service_ailments" translatable="false">hjjh</string>
+    <string name="Pharmacist_Transelilation">ugtgtu</string>
+    <string name="service_health">ggjjg</string>
+    <string name="instructions_service_selection">gjjg</string>
+    <string name="reset_text">rf</string>
+    <string name="pharmacy_one">adafdsaf</string>
+    <string name="services_in_welsh" translatable="false">jhh</string>
+    <string name="save_button">jggjjg</string>
+    <string name="toggle_unavailable">gjjg</string>
+    <string name="button_submit_text">rgdr</string>
+    <string name="service_smoking">svd</string>
+    <string name="service_flu">grws</string>
+</resources>

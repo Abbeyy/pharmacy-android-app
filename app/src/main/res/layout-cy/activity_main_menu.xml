@@ -13,8 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp" />
-
-
     <TextView
         android:id="@+id/Welcome"
         android:layout_width="wrap_content"
@@ -30,7 +28,7 @@
         android:text="@string/text_translation"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints"
-        tools:text=" Welcome to Wales pharmacies " />
+        tools:text="Welcome to Walesh pharmacies " />
 
     <TextView
         android:id="@+id/rating"
@@ -57,7 +55,7 @@
         android:layout_marginTop="32dp"
         android:background="@color/colorAccent"
         android:elevation="0dp"
-        android:text="@string/GeneralUsers"
+        android:text="@string/GeneralUsers_Translation"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/Parmacist"
         app:layout_constraintEnd_toEndOf="@+id/Parmacist"
@@ -72,7 +70,7 @@
         android:layout_marginBottom="8dp"
         android:background="@color/colorAccent"
         android:elevation="0dp"
-        android:text="@string/Pharmacist"
+        android:text="@string/Pharmacist_Transelilation"
         android:textColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/RatingBar"
         app:layout_constraintEnd_toEndOf="parent"

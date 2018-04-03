@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 public class ListPharmaciesMainFragment extends Fragment {
 
     @Nullable
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.list_pharmacies, container, false);

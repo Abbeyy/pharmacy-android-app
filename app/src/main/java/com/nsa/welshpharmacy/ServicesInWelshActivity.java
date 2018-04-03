@@ -1,5 +1,6 @@
 package com.nsa.welshpharmacy;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,6 +32,10 @@ public class ServicesInWelshActivity extends AppCompatActivity {
     ArrayAdapter<String> arrayAdapter;
 
 
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleManager.onAttach(base, "en"));
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -1,5 +1,6 @@
 package com.nsa.welshpharmacy;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -36,6 +37,10 @@ public class FilterPreferenceActivity extends AppCompatActivity implements View.
 
     private SharedPreferences sharedPreferences;
 
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(LocaleManager.onAttach(base, "en"));
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

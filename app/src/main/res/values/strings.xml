@@ -1,6 +1,15 @@
 <resources>
     <string name="app_name">WelshPharmacy</string>
-    <string name="get_list_buttontext" translatable="false">Get List</string>
+    <string name="get_list_buttontext">Get List</string>
+
+    <string-array name="language_option">
+        <item>English</item>
+        <item>Wales</item>
+        <item>Arabic</item>
+
+
+
+    </string-array>
 
     <!-- General -->
     <string name="service_ailments">Minor ailments</string>
@@ -27,14 +36,19 @@
     <string name="save_button">Save</string>
 
 
+
     <string name="pharmacy_one">Pharmacy 1</string>
     <string name="enter_valid_location" translatable="false">Either enter a valid postcode or allow location tracking</string>
     <string name="list_of_pharmacies" translatable="false">List of Pharmacies</string>
     <string name="toast_listview_item_tapped_on" translatable="false">User has selected %s</string>
-    <string name="Welcome" translatable="false">Welsh pharmacies</string>
+    <string name="Welcome">Welsh pharmacies</string>
     <string name="GeneralUsers" translatable="false">General users</string>
     <string name="Pharmacist" translatable="false">Pharmacists</string>
     <string name="Language" translatable="false">English</string>
     <string name="RateTheApp" translatable="false">Rate the app</string>
     <string name="services_in_welsh" translatable="false">Services in Welsh</string>
+    <string name="text_translation">rate the app</string>
+    <string name="GeneralUsers_Translation">GeneralUsesrs</string>
+    <string name="Pharmacist_Transelilation">Parmacist</string>
+
 </resources>

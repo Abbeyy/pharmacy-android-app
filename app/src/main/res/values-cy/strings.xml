@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">WelshPharmacy</string>
+
+    <string name="app_name">1WelshPharmacy</string>
     <string name="Welcome">" croeso"</string>
+    <string name="text_translation">Walech Pharmacies</string>
+    <string name="GeneralUsers_Translation">GeneralUsesrs</string>
+    <string name="Pharmacist_Transelilation">zz</string>
+    <string name="get_list_buttontext" translatable="false">1</string>
+    <string name="service_ailments">1</string>
+    <string name="service_flu">1</string>
+    <string name="service_health">1</string>
+    <string name="service_smoking">1</string>
+    <string name="service_alcohol">1</string>
+    <string name="instructions_service_selection">1</string>
+    <string name="instruction_postcode">1</string>
+    <string name="button_submit_text">1</string>
+    <string name="button_filter_text">1</string>
+    <string name="reset_text">1</string>
+    <string name="toggle_available">1</string>
+    <string name="toggle_unavailable">1</string>
+    <string name="save_button">1</string>
+    <string name="pharmacy_one">1</string>
 </resources>
