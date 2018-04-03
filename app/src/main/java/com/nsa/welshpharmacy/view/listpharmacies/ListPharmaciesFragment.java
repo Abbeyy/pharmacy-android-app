@@ -94,6 +94,7 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
     }
 
     public void generatePharmacies(int numOfPharmacies) {
+        /*
         for (int k = 0; k < numOfPharmacies; k++) {
             Pharmacy pharmacy = new Pharmacy(pharmacyNames[k],
                     "02920664506","example@live.com",
@@ -104,6 +105,7 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
             pharmaciesContainer.add(pharmacy);
             this.aList.add(pharmaciesContainer.get(k).getName());
         }
+        */
     }
 
     @Override

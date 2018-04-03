@@ -12,7 +12,8 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.nsa.welshpharmacy.R;
-import com.nsa.welshpharmacy.model.PharmacyService;
+import com.nsa.welshpharmacy.model.Pharmacy;
+import com.nsa.welshpharmacy.model.PharmacyServiceAvailability;
 import com.nsa.welshpharmacy.stores.LanguagesStore;
 import com.nsa.welshpharmacy.stores.PharmacyStore;
 import com.nsa.welshpharmacy.stores.ServicesStore;
@@ -121,10 +122,6 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
     }
     @Override
     public boolean onLongClick(View view){
-        //TODO remove
-        PharmacyStore.loadPharmacies();
-        ServicesStore.loadServices();
-        LanguagesStore.loadLanguages();
         int id = view.getId();
 
         if (id == R.id.reset_button && this.sharedPreferences != null) {

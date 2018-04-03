@@ -10,9 +10,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.nsa.welshpharmacy.model.Pharmacy;
+import com.nsa.welshpharmacy.services.FirebaseServices;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -21,28 +23,12 @@ import java.util.Map;
 
 public class PharmacyStore {
 
-    public static void loadPharmacies(){
-        //Get a reference to the pharmacies
-        final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference("pharmacies");
+    private List<Pharmacy> pharmacies = null;
 
-        // Attach a listener to read the data at our pharmacies reference
-        ref.addValueEventListener(new ValueEventListener(){
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot){
-                // see:  https://firebase.google.com/docs/database/android/lists-of-data#listen_for_value_events
-                // Retrieve all  Pharmacy records from the Firebase database in one go
-                for(DataSnapshot pharmacySnapshot : dataSnapshot.getChildren()){
-                    Pharmacy pharmacy = pharmacySnapshot.getValue(Pharmacy.class);
-                    pharmacy.setId(pharmacySnapshot.getKey());
-                    System.out.println(pharmacy);
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError){
-                System.out.println("The read failed: " + databaseError.getCode());
-            }
-        });
+    public List<Pharmacy> getPharmacies(){
+        if(pharmacies == null){
+            pharmacies = FirebaseServices.loadPharmacies();
+        }
+        return pharmacies;
     }
 }
