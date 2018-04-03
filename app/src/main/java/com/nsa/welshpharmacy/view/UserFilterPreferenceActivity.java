@@ -2,6 +2,7 @@ package com.nsa.welshpharmacy.view;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
@@ -12,11 +13,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.nsa.welshpharmacy.R;
-import com.nsa.welshpharmacy.model.Pharmacy;
-import com.nsa.welshpharmacy.model.PharmacyServiceAvailability;
-import com.nsa.welshpharmacy.stores.LanguagesStore;
-import com.nsa.welshpharmacy.stores.PharmacyStore;
-import com.nsa.welshpharmacy.stores.ServicesStore;
+import com.nsa.welshpharmacy.services.LocationServices;
 import com.nsa.welshpharmacy.view.listpharmacies.ListPharmaciesActivity;
 
 import java.util.regex.Matcher;
@@ -37,7 +34,7 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
     private AppCompatCheckBox checkSmoking;
     private AppCompatCheckBox checkAlcohol;
     private AppCompatEditText textWidget;
-    private SwitchCompat switchWidget;
+    private SwitchCompat switchOnLocationWidget;
 
     private AppCompatButton submitButton;
     private AppCompatButton resetButton;
@@ -55,7 +52,7 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
         this.checkSmoking = this.findViewById(R.id.check_smoking);
         this.checkAlcohol = this.findViewById(R.id.check_alcohol);
         this.textWidget = this.findViewById(R.id.text_postcode);
-        this.switchWidget = this.findViewById(R.id.switch_location);
+        this.switchOnLocationWidget = this.findViewById(R.id.switch_location);
 
         this.submitButton = this.findViewById(R.id.submit_button);
         this.resetButton = this.findViewById(R.id.reset_button);
@@ -76,7 +73,7 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
             this.checkHealthCheck.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_HEALTH, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
             this.checkSmoking.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_SMOKING, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
             this.checkAlcohol.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_ALCOHOL, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
-            this.switchWidget.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_SWITCH_LOCATION, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
+            this.switchOnLocationWidget.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_SWITCH_LOCATION, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
         }
     }
 
@@ -102,22 +99,31 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
         Pattern POSTCODE_REGEX = Pattern.compile(getString(R.string.postcode_regex));
 
         Matcher matcher = POSTCODE_REGEX.matcher(textWidget.getText());
-        if(!matcher.matches() && !switchWidget.isChecked()){
+        //If there is not a valid postcode and the switch is not checked show a toast warning
+        //And if both a valid postcode and the switch is checked show the toast warning
+        if((!matcher.matches() && !switchOnLocationWidget.isChecked()) || (matcher.matches() && switchOnLocationWidget.isChecked())){
             Toast.makeText(this, R.string.enter_valid_location, Toast.LENGTH_LONG).show();
-        }else{
-            if (id == R.id.submit_button && this.sharedPreferences != null){
-                SharedPreferences.Editor editor = this.sharedPreferences.edit();
-                editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_AILMENTS, this.checkMinorAilments.isChecked());
-                editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_FLU, this.checkFluVac.isChecked());
-                editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_HEALTH, this.checkHealthCheck.isChecked());
-                editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_SMOKING, this.checkSmoking.isChecked());
-                editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_ALCOHOL, this.checkAlcohol.isChecked());
-                editor.putBoolean(KeyValueHelper.KEY_SWITCH_LOCATION, this.switchWidget.isChecked());
-                editor.apply();
+            return;
+        }
 
-                Intent pharmacyListView = new Intent(this, ListPharmaciesActivity.class);
-                startActivity(pharmacyListView);
-            }
+        if(id == R.id.submit_button && switchOnLocationWidget.isChecked()){
+            //First update last known location from nextwork
+            LocationServices.loadPhoneLocationViaNetwork(this);
+            //Then switch view to next activity
+            Intent pharmacyListView = new Intent(this, ListPharmaciesActivity.class);
+            startActivity(pharmacyListView);
+        }
+
+        //If the submit button is pressed and the shared preferences are null add the shared preferences
+        if (id == R.id.submit_button && this.sharedPreferences != null){
+            SharedPreferences.Editor editor = this.sharedPreferences.edit();
+            editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_AILMENTS, this.checkMinorAilments.isChecked());
+            editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_FLU, this.checkFluVac.isChecked());
+            editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_HEALTH, this.checkHealthCheck.isChecked());
+            editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_SMOKING, this.checkSmoking.isChecked());
+            editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_ALCOHOL, this.checkAlcohol.isChecked());
+            editor.putBoolean(KeyValueHelper.KEY_SWITCH_LOCATION, this.switchOnLocationWidget.isChecked());
+            editor.apply();
         }
     }
     @Override
