@@ -32,13 +32,13 @@ public class Pharmacy {
         //Reflection
     }
 
-    public String getId() {
-        return id;
-    }
-
     //This is only for use when reading from Firebase
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getName() {
