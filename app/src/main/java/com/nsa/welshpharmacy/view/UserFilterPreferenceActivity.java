@@ -2,7 +2,6 @@ package com.nsa.welshpharmacy.view;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.location.Location;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
@@ -33,7 +32,7 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
     private AppCompatCheckBox checkHealthCheck;
     private AppCompatCheckBox checkSmoking;
     private AppCompatCheckBox checkAlcohol;
-    private AppCompatEditText textWidget;
+    private AppCompatEditText textPostcodeWidget;
     private SwitchCompat switchOnLocationWidget;
 
     private AppCompatButton submitButton;
@@ -51,7 +50,7 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
         this.checkHealthCheck = this.findViewById(R.id.check_health_check);
         this.checkSmoking = this.findViewById(R.id.check_smoking);
         this.checkAlcohol = this.findViewById(R.id.check_alcohol);
-        this.textWidget = this.findViewById(R.id.text_postcode);
+        this.textPostcodeWidget = this.findViewById(R.id.text_postcode);
         this.switchOnLocationWidget = this.findViewById(R.id.switch_location);
 
         this.submitButton = this.findViewById(R.id.submit_button);
@@ -61,7 +60,7 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
 
         initValues();
 
-        textWidget.setOnClickListener(this);
+        textPostcodeWidget.setOnClickListener(this);
         submitButton.setOnClickListener(this);
         resetButton.setOnLongClickListener(this);
     }
@@ -98,7 +97,7 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
         //Adapted from https://stackoverflow.com/a/8204716 Retrieved 17/3/18
         Pattern POSTCODE_REGEX = Pattern.compile(getString(R.string.postcode_regex));
 
-        Matcher matcher = POSTCODE_REGEX.matcher(textWidget.getText());
+        Matcher matcher = POSTCODE_REGEX.matcher(textPostcodeWidget.getText());
         //If there is not a valid postcode and the switch is not checked show a toast warning
         //And if both a valid postcode and the switch is checked show the toast warning
         if((!matcher.matches() && !switchOnLocationWidget.isChecked()) || (matcher.matches() && switchOnLocationWidget.isChecked())){
@@ -107,9 +106,15 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
         }
 
         if(id == R.id.submit_button && switchOnLocationWidget.isChecked()){
-            //First update last known location from nextwork
+            //First update last known location from network
             LocationServices.loadPhoneLocationViaNetwork(this);
             //Then switch view to next activity
+            Intent pharmacyListView = new Intent(this, ListPharmaciesActivity.class);
+            startActivity(pharmacyListView);
+        }
+
+        if(id == R.id.submit_button && matcher.matches()){
+            LocationServices.loadPhoneLocationViaPostcode(this, textPostcodeWidget.toString());
             Intent pharmacyListView = new Intent(this, ListPharmaciesActivity.class);
             startActivity(pharmacyListView);
         }
