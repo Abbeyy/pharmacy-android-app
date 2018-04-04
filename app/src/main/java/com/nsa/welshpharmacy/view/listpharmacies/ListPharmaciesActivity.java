@@ -1,5 +1,7 @@
 package com.nsa.welshpharmacy.view.listpharmacies;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
@@ -21,6 +23,7 @@ import com.nsa.welshpharmacy.R;
  */
 
 public class ListPharmaciesActivity extends AppCompatActivity {
+    private SharedPreferences sharedPreferences;
 
 
     @Override
@@ -29,6 +32,8 @@ public class ListPharmaciesActivity extends AppCompatActivity {
         setContentView(R.layout.list_pharmacies_activity_layout);
         //activity should be inflating list_pharmacies_activity_layout - mostly empty layout
         //due to use of fragments - but that doesnt work? This does?.... fix!
+
+        sharedPreferences = getPreferences(Context.MODE_PRIVATE);
 
         //setting up main fragment of view
         android.support.v4.app.FragmentManager fmtManager = getSupportFragmentManager();
