@@ -1,5 +1,7 @@
 package com.nsa.welshpharmacy.view.listpharmacies;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -118,6 +120,13 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
     }
 
     public void expandPharmacyInfo(int position) {
+        //First updateSharedPrefs to store position data in activity.
+        SharedPreferences sharedPrefs = this.getActivity().getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit = sharedPrefs.edit();
+        edit.putInt("position", position);
+        edit.apply();
+
+        //Then switch fragments.
         this.fmtManager = getActivity().getSupportFragmentManager();
         this.fmtTrans = this.fmtManager.beginTransaction();
         this.fmtTrans.replace(R.id.fragments_container, new ListPharmacysDetailsFragment());
