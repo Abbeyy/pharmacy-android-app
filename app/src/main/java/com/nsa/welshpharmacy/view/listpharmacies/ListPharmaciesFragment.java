@@ -36,7 +36,7 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
     List<String> aList;
     //Built-in adapter for string datasource
     ArrayAdapter<String> arrayAdpt;
-    private Vector<MockPharmacy> pharmaciesContainer = new Vector<MockPharmacy>();
+    public static Vector<MockPharmacy> pharmaciesContainer = new Vector<MockPharmacy>();
     private String[] pharmacyNames = new String[]
             {"Boots", "Well", "Cardiff Royal Infirmary Pharmacy",
                     "Clifton Pharmacy", "Pearn's Pharmacies Ltd",
@@ -121,7 +121,7 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
 
     public void expandPharmacyInfo(int position) {
         //First updateSharedPrefs to store position data in activity.
-        SharedPreferences sharedPrefs = this.getActivity().getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences sharedPrefs = this.getActivity().getSharedPreferences("pharmacyPos", Context.MODE_PRIVATE);
         SharedPreferences.Editor edit = sharedPrefs.edit();
         edit.putInt("position", position);
         edit.apply();

@@ -44,14 +44,14 @@
         android:layout_width="wrap_content"
         />
 
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/lv_rows_space" />
+    <!--<Space-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="@dimen/lv_rows_space" />-->
 
-    <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/website"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        />
+    <!--<android.support.v7.widget.AppCompatTextView-->
+        <!--android:id="@+id/website"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--/>-->
 
 </android.support.v7.widget.LinearLayoutCompat>
