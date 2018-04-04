@@ -1,5 +1,5 @@
 
-package com.nsa.welshpharmacy;
+package com.nsa.welshpharmacy.view;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,8 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.nsa.welshpharmacy.R;
 
-public class MainMenu extends AppCompatActivity {
+
+public class MainMenuActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +22,7 @@ public class MainMenu extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent pharmacyListView = new Intent(getApplicationContext(), FilterPreferenceActivity.class);
+                Intent pharmacyListView = new Intent(getApplicationContext(), UserFilterPreferenceActivity.class);
                 startActivity(pharmacyListView);
             }
         });

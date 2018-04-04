@@ -1,4 +1,4 @@
-package com.nsa.welshpharmacy;
+package com.nsa.welshpharmacy.view;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,7 +11,13 @@ import android.support.v7.widget.SwitchCompat;
 import android.view.View;
 import android.widget.Toast;
 
-import com.nsa.welshpharmacy.listpharmacies.ListPharmaciesActivity;
+import com.nsa.welshpharmacy.R;
+import com.nsa.welshpharmacy.model.Pharmacy;
+import com.nsa.welshpharmacy.model.PharmacyServiceAvailability;
+import com.nsa.welshpharmacy.stores.LanguagesStore;
+import com.nsa.welshpharmacy.stores.PharmacyStore;
+import com.nsa.welshpharmacy.stores.ServicesStore;
+import com.nsa.welshpharmacy.view.listpharmacies.ListPharmaciesActivity;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -23,7 +29,7 @@ import java.util.regex.Pattern;
  * Created by c1712480 on 14/03/2018.
  */
 
-public class FilterPreferenceActivity extends AppCompatActivity implements View.OnClickListener, View.OnLongClickListener, SharedPreferences.OnSharedPreferenceChangeListener{
+public class UserFilterPreferenceActivity extends AppCompatActivity implements View.OnClickListener, View.OnLongClickListener, SharedPreferences.OnSharedPreferenceChangeListener{
 
     private AppCompatCheckBox checkMinorAilments;
     private AppCompatCheckBox checkFluVac;

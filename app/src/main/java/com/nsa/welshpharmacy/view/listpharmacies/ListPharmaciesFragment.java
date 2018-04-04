@@ -1,4 +1,4 @@
-package com.nsa.welshpharmacy.listpharmacies;
+package com.nsa.welshpharmacy.view.listpharmacies;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,7 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nsa.welshpharmacy.R;
-import com.nsa.welshpharmacy.mockingdata.Pharmacy;
+import com.nsa.welshpharmacy.model.Pharmacy;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -94,6 +94,7 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
     }
 
     public void generatePharmacies(int numOfPharmacies) {
+        /*
         for (int k = 0; k < numOfPharmacies; k++) {
             Pharmacy pharmacy = new Pharmacy(pharmacyNames[k],
                     "02920664506","example@live.com",
@@ -104,6 +105,7 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
             pharmaciesContainer.add(pharmacy);
             this.aList.add(pharmaciesContainer.get(k).getName());
         }
+        */
     }
 
     @Override
