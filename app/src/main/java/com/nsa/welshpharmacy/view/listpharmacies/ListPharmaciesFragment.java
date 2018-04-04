@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nsa.welshpharmacy.R;
+import com.nsa.welshpharmacy.model.MockPharmacy;
 import com.nsa.welshpharmacy.model.Pharmacy;
 
 import java.text.SimpleDateFormat;
@@ -33,7 +34,7 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
     List<String> aList;
     //Built-in adapter for string datasource
     ArrayAdapter<String> arrayAdpt;
-    private Vector<Pharmacy> pharmaciesContainer = new Vector<Pharmacy>();
+    private Vector<MockPharmacy> pharmaciesContainer = new Vector<MockPharmacy>();
     private String[] pharmacyNames = new String[]
             {"Boots", "Well", "Cardiff Royal Infirmary Pharmacy",
                     "Clifton Pharmacy", "Pearn's Pharmacies Ltd",
@@ -94,9 +95,8 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
     }
 
     public void generatePharmacies(int numOfPharmacies) {
-        /*
         for (int k = 0; k < numOfPharmacies; k++) {
-            Pharmacy pharmacy = new Pharmacy(pharmacyNames[k],
+            MockPharmacy pharmacy = new MockPharmacy(pharmacyNames[k],
                     "02920664506","example@live.com",
                     "Capital Shopping Centre, Cardiff",
                     "Common Ailments Service", "Out of Hours Service",
@@ -105,7 +105,6 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
             pharmaciesContainer.add(pharmacy);
             this.aList.add(pharmaciesContainer.get(k).getName());
         }
-        */
     }
 
     @Override
