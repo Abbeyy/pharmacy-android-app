@@ -1,5 +1,5 @@
 
-package com.nsa.welshpharmacy;
+package com.nsa.welshpharmacy.view;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -17,8 +17,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.nsa.welshpharmacy.R;
 
-public class MainMenu extends AppCompatActivity {
+
+public class MainMenuActivity extends AppCompatActivity {
 
     TextView mTextView;
     Spinner mLanguage;
@@ -36,7 +38,7 @@ public class MainMenu extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent pharmacyListView = new Intent(getApplicationContext(), FilterPreferenceActivity.class);
+                Intent pharmacyListView = new Intent(getApplicationContext(), UserFilterPreferenceActivity.class);
                 startActivity(pharmacyListView);
             }
         });

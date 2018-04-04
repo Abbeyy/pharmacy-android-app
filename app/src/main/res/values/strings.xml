@@ -30,7 +30,7 @@
     <string name="button_filter_text">Reset</string>
     <string name="reset_text">Configuration has been reset</string>
 
-    <!--ServicesInWelshActivity-->
+    StaffFilterPreferenceActivityvity-->
     <string name="toggle_available">Available</string>
     <string name="toggle_unavailable">Unavailable</string>
     <string name="save_button">Save</string>
@@ -50,5 +50,7 @@
     <string name="text_translation">rate the app</string>
     <string name="GeneralUsers_Translation">GeneralUsesrs</string>
     <string name="Pharmacist_Transelilation">Parmacist</string>
+
+    <string name="contact_details">Contact Details</string>
 
 </resources>

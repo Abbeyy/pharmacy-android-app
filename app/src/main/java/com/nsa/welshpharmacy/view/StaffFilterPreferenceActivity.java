@@ -1,4 +1,4 @@
-package com.nsa.welshpharmacy;
+package com.nsa.welshpharmacy.view;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -12,6 +12,8 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 import android.support.v7.widget.ListViewCompat;
 
+import com.nsa.welshpharmacy.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +21,7 @@ import java.util.List;
  * Created by c1502032 on 15/03/2018.
  */
 
-public class ServicesInWelshActivity extends AppCompatActivity {
+public class StaffFilterPreferenceActivity extends AppCompatActivity {
 
     LinearLayoutCompat layout;
     ToggleButton toggleButton1;
