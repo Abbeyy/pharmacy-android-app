@@ -51,34 +51,32 @@ public class ListPharmacysDetailsFragment extends Fragment {
         String json = pharmacies.getString("pharmacy" + position, "Error");
         MockPharmacy pharmacyToDisplay = gson.fromJson(json, MockPharmacy.class);
 
-        Log.i("Pharmacy name: ", pharmacyToDisplay.getName());
-        Log.i("Pharmacy address: ", pharmacyToDisplay.getAddress());
-        Log.i("Pharmacy phone: ", pharmacyToDisplay.getPhoneNumber());
-        Log.i("Pharmacy email: ", pharmacyToDisplay.getEmail());
+//        Log.i("Pharmacy name: ", pharmacyToDisplay.getName());
+//        Log.i("Pharmacy address: ", pharmacyToDisplay.getAddress());
+//        Log.i("Pharmacy phone: ", pharmacyToDisplay.getPhoneNumber());
+//        Log.i("Pharmacy email: ", pharmacyToDisplay.getEmail());
 
+        this.lView = v.findViewById(R.id.listview_pharmacys_details);
 
-//        this.lView = v.findViewById(R.id.listview_pharmacys_details);
-//        this.aList = new ArrayList<>();
-//        populateMockedData();
-//
-//        this.arrayAdpt = new ArrayAdapter<String>(
-//                getActivity(), //line 72
-//                R.layout.lv_pharmacy_details,
-//                this.aList
-//        );
-//
-//        this.lView.setAdapter(this.arrayAdpt);
+        this.aList = new ArrayList<>();
+        populateMockedData(pharmacyToDisplay);
+
+        this.arrayAdpt = new ArrayAdapter<String>(
+                getActivity(),
+                android.R.layout.simple_list_item_1,
+                this.aList
+        );
+
+        this.lView.setAdapter(this.arrayAdpt);
 
         return v;
     }
 
-    public void populateMockedData() {
-        for (int f = 0; f<4;f++) {
-            this.aList.add(ListPharmaciesFragment.pharmaciesContainer.get(position).getName());
-            this.aList.add(ListPharmaciesFragment.pharmaciesContainer.get(position).getAddress());
-            this.aList.add(ListPharmaciesFragment.pharmaciesContainer.get(position).getPhoneNumber());
-            this.aList.add(ListPharmaciesFragment.pharmaciesContainer.get(position).getEmail());
-        }
+    public void populateMockedData(MockPharmacy pharmacyToDisplay) {
+        this.aList.add(pharmacyToDisplay.getName());
+        this.aList.add(pharmacyToDisplay.getAddress());
+        this.aList.add(pharmacyToDisplay.getPhoneNumber());
+        this.aList.add(pharmacyToDisplay.getEmail());
     }
 
 }
