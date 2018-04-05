@@ -5,6 +5,7 @@ import java.util.Map;
 
 /**
  * Represents all of the relevant information about a pharmacy
+ * The fields correspond with the information contained in the db
  *
  * Created by c1714546 on 3/23/2018.
  */

@@ -1,6 +1,8 @@
 package com.nsa.welshpharmacy.model;
 
 /**
+ * Represents the languages in which the services provided by the pharmacy can be conducted in
+ *
  * Created by c1712480 on 29/03/2018.
  */
 
