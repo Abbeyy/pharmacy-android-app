@@ -1,7 +1,9 @@
 package com.nsa.welshpharmacy.view.listpharmacies;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,7 +14,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.nsa.welshpharmacy.R;
@@ -26,7 +30,7 @@ import java.util.List;
  * Created by c1714546 on 4/2/2018.
  */
 
-public class ListPharmacysDetailsFragment extends Fragment {
+public class ListPharmacysDetailsFragment extends Fragment implements AdapterView.OnItemClickListener {
     private int position;
     ListViewCompat lView;
     List<String> aList;
@@ -69,6 +73,7 @@ public class ListPharmacysDetailsFragment extends Fragment {
         );
 
         this.lView.setAdapter(this.arrayAdpt);
+        this.lView.setOnItemClickListener(this);
 
         return v;
     }
@@ -80,4 +85,48 @@ public class ListPharmacysDetailsFragment extends Fragment {
         this.aList.add(pharmacyToDisplay.getEmail());
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        switch (position) {
+//            case 2:
+//                //Get phone number first
+//                String phoneNumber = this.aList.get(2);
+//                Log.i("Got phone number", phoneNumber);
+//                //Create phone call intent
+//                Intent aPhoneCallIntent = new Intent(Intent.ACTION_CALL);
+//                Log.i("Created phone intent", "yes!");
+//                //Pass information to intent
+//                aPhoneCallIntent.setData(Uri.parse("tel:"+phoneNumber));
+//                Log.i("Successfully passed intent data", "Yes!");
+//                //Start intent
+//                startActivity(aPhoneCallIntent);
+//                break;
+            case 3 :
+                //THE BELOW WORKS IF THE USER SELECTS TO
+                //SEND MAIL VIA "MESSAGES" ON ANDROIDS OPTIONS.
+
+                //Get email address first
+                String emailAddress = this.aList.get(3);
+                //Create emailing intent
+                Intent anEmailIntent = new Intent(Intent.ACTION_SEND);
+                //Define mail data
+                anEmailIntent.setData(Uri.parse("mailto:"));
+                anEmailIntent.setType("text/plain");
+                //Define to Who
+                anEmailIntent.putExtra(Intent.EXTRA_EMAIL, emailAddress);
+                //Receiver/Message content
+                anEmailIntent.putExtra(Intent.EXTRA_SUBJECT, "Test/Query");
+                anEmailIntent.putExtra(Intent.EXTRA_TEXT, "Test message.");
+                Log.i("About to start email activity...", "yes!");
+
+                try {
+                    startActivity(Intent.createChooser(anEmailIntent, "Send email.."));
+                } catch (android.content.ActivityNotFoundException ex) {
+                    Toast.makeText(getActivity(), "There's no email client installed!", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            default:
+                break;
+        }
+    }
 }

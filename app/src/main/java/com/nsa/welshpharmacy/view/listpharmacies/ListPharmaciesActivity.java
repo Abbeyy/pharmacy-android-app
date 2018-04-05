@@ -61,7 +61,7 @@ public class ListPharmaciesActivity extends AppCompatActivity {
 
         for (int k = 0; k < numOfPharmacies; k++) {
             MockPharmacy pharmacy = new MockPharmacy(pharmacyNames[k],
-                    "02920664506","example@live.com",
+                    "02920688695","Rossa9@cardiff.ac.uk",
                     "Capital Shopping Centre, Cardiff",
                     "Common Ailments Service", "Out of Hours Service",
                     "Provides EC", "Seasonal Flu Vaccine");
