@@ -46,6 +46,7 @@ public class ListPharmacysDetailsFragment extends Fragment {
         int pharmacyPosition = sharedPrefs.getInt("position", -1);
         //Reminder, 1st listed item will have a position of 0.
 
+        //Help gathered from: https://stackoverflow.com/questions/7145606/how-android-sharedpreferences-save-store-object
         SharedPreferences pharmacies = this.getActivity().getSharedPreferences("pharmacies", Context.MODE_PRIVATE);
         Gson gson = new Gson();
         String json = pharmacies.getString("pharmacy" + position, "Error");
