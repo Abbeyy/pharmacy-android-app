@@ -3,6 +3,8 @@ package com.nsa.welshpharmacy.model;
 import java.util.HashMap;
 
 /**
+ * Represents whether a service provided by the pharmacy is available or not
+ *
  * Created by c1712480 on 30/03/2018.
  */
 
