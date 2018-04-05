@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.nsa.welshpharmacy.R;
@@ -86,22 +87,46 @@ public class ListPharmacysDetailsFragment extends Fragment implements AdapterVie
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//        switch (position) {
+        switch (position) {
 //            case 2:
 //                //Get phone number first
 //                String phoneNumber = this.aList.get(2);
 //                Log.i("Got phone number", phoneNumber);
 //                //Create phone call intent
-//                Intent phoneCallIntent = new Intent(Intent.ACTION_CALL);
+//                Intent aPhoneCallIntent = new Intent(Intent.ACTION_CALL);
 //                Log.i("Created phone intent", "yes!");
 //                //Pass information to intent
-//                phoneCallIntent.setData(Uri.parse("tel:"+phoneNumber));
+//                aPhoneCallIntent.setData(Uri.parse("tel:"+phoneNumber));
 //                Log.i("Successfully passed intent data", "Yes!");
 //                //Start intent
-//                startActivity(phoneCallIntent);
+//                startActivity(aPhoneCallIntent);
 //                break;
-//            default:
-//                break;
-//        }
+            case 3 :
+                //THE BELOW WORKS IF THE USER SELECTS TO
+                //SEND MAIL VIA "MESSAGES" ON ANDROIDS OPTIONS.
+
+                //Get email address first
+                String emailAddress = this.aList.get(3);
+                //Create emailing intent
+                Intent anEmailIntent = new Intent(Intent.ACTION_SEND);
+                //Define mail data
+                anEmailIntent.setData(Uri.parse("mailto:"));
+                anEmailIntent.setType("text/plain");
+                //Define to Who
+                anEmailIntent.putExtra(Intent.EXTRA_EMAIL, emailAddress);
+                //Receiver/Message content
+                anEmailIntent.putExtra(Intent.EXTRA_SUBJECT, "Test/Query");
+                anEmailIntent.putExtra(Intent.EXTRA_TEXT, "Test message.");
+                Log.i("About to start email activity...", "yes!");
+
+                try {
+                    startActivity(Intent.createChooser(anEmailIntent, "Send email.."));
+                } catch (android.content.ActivityNotFoundException ex) {
+                    Toast.makeText(getActivity(), "There's no email client installed!", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            default:
+                break;
+        }
     }
 }
