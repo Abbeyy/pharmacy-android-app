@@ -1,5 +1,7 @@
 package com.nsa.welshpharmacy.view.listpharmacies;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nsa.welshpharmacy.R;
+import com.nsa.welshpharmacy.model.MockPharmacy;
 import com.nsa.welshpharmacy.model.Pharmacy;
 
 import java.text.SimpleDateFormat;
@@ -33,7 +36,7 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
     List<String> aList;
     //Built-in adapter for string datasource
     ArrayAdapter<String> arrayAdpt;
-    private Vector<Pharmacy> pharmaciesContainer = new Vector<Pharmacy>();
+    public static Vector<MockPharmacy> pharmaciesContainer = new Vector<MockPharmacy>();
     private String[] pharmacyNames = new String[]
             {"Boots", "Well", "Cardiff Royal Infirmary Pharmacy",
                     "Clifton Pharmacy", "Pearn's Pharmacies Ltd",
@@ -94,9 +97,8 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
     }
 
     public void generatePharmacies(int numOfPharmacies) {
-        /*
         for (int k = 0; k < numOfPharmacies; k++) {
-            Pharmacy pharmacy = new Pharmacy(pharmacyNames[k],
+            MockPharmacy pharmacy = new MockPharmacy(pharmacyNames[k],
                     "02920664506","example@live.com",
                     "Capital Shopping Centre, Cardiff",
                     "Common Ailments Service", "Out of Hours Service",
@@ -105,7 +107,6 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
             pharmaciesContainer.add(pharmacy);
             this.aList.add(pharmaciesContainer.get(k).getName());
         }
-        */
     }
 
     @Override
@@ -119,6 +120,13 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
     }
 
     public void expandPharmacyInfo(int position) {
+        //First updateSharedPrefs to store position data in activity.
+        SharedPreferences sharedPrefs = this.getActivity().getSharedPreferences("pharmacyPos", Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit = sharedPrefs.edit();
+        edit.putInt("position", position);
+        edit.apply();
+
+        //Then switch fragments.
         this.fmtManager = getActivity().getSupportFragmentManager();
         this.fmtTrans = this.fmtManager.beginTransaction();
         this.fmtTrans.replace(R.id.fragments_container, new ListPharmacysDetailsFragment());
