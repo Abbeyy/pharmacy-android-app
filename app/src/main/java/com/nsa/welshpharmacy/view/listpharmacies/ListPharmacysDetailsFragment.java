@@ -1,7 +1,9 @@
 package com.nsa.welshpharmacy.view.listpharmacies;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 import com.google.gson.Gson;
@@ -26,7 +29,7 @@ import java.util.List;
  * Created by c1714546 on 4/2/2018.
  */
 
-public class ListPharmacysDetailsFragment extends Fragment {
+public class ListPharmacysDetailsFragment extends Fragment implements AdapterView.OnItemClickListener {
     private int position;
     ListViewCompat lView;
     List<String> aList;
@@ -69,6 +72,7 @@ public class ListPharmacysDetailsFragment extends Fragment {
         );
 
         this.lView.setAdapter(this.arrayAdpt);
+        this.lView.setOnItemClickListener(this);
 
         return v;
     }
@@ -80,4 +84,24 @@ public class ListPharmacysDetailsFragment extends Fragment {
         this.aList.add(pharmacyToDisplay.getEmail());
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//        switch (position) {
+//            case 2:
+//                //Get phone number first
+//                String phoneNumber = this.aList.get(2);
+//                Log.i("Got phone number", phoneNumber);
+//                //Create phone call intent
+//                Intent phoneCallIntent = new Intent(Intent.ACTION_CALL);
+//                Log.i("Created phone intent", "yes!");
+//                //Pass information to intent
+//                phoneCallIntent.setData(Uri.parse("tel:"+phoneNumber));
+//                Log.i("Successfully passed intent data", "Yes!");
+//                //Start intent
+//                startActivity(phoneCallIntent);
+//                break;
+//            default:
+//                break;
+//        }
+    }
 }
