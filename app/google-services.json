@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1071304751213",
+    "firebase_url": "https://welshpharmacyproject.firebaseio.com",
+    "project_id": "welshpharmacyproject",
+    "storage_bucket": "welshpharmacyproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1071304751213:android:b21911a5200178db",
+        "android_client_info": {
+          "package_name": "com.nsa.welshpharmacy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1071304751213-k4ks332jtfduot55mg1083j8o1dksc6r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nsa.welshpharmacy",
+            "certificate_hash": "2f54e5245c16fd7dabcb9682d649ef8b9014c824"
+          }
+        },
+        {
+          "client_id": "1071304751213-lc6q359o563v2l0ecd58pr60cq6hp2hg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuXuEkBKURRDD5uznJb3luN02seslygs4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1071304751213-lc6q359o563v2l0ecd58pr60cq6hp2hg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
