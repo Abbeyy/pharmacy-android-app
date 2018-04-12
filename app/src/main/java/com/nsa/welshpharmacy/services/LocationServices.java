@@ -46,30 +46,25 @@ public class LocationServices {
             // for ActivityCompat#requestPermissions for more details.
             return null;
         }
-        //userLocation = locationManager.getLastKnownLocation(locationProvider);
         userLocation = new LatLng(locationManager.getLastKnownLocation(locationProvider).getLatitude(),
                 locationManager.getLastKnownLocation(locationProvider).getLongitude());
         return userLocation;
     }
 
-    //TODO loadPhoneLocationViaPostcode
     public static LatLng loadPhoneLocationViaPostcode(Context context, String userPostcode){
 
         //Adapted from: https://stackoverflow.com/a/4833943 Retrieved: 3/4/18
+        //Create a list of type Address using the user inputted postcode and then converting it into LatLng
         final Geocoder geocoder = new Geocoder(context);
         try {
             List<Address> addresses = geocoder.getFromLocationName(userPostcode, 1);
             if (addresses != null && !addresses.isEmpty()) {
                 Address address = addresses.get(0);
-                // Use the address as needed
-                //String message = String.format("Latitude: %f, Longitude: %f",
-                //        address.getLatitude(), address.getLongitude());
-                //Toast.makeText(context, message, Toast.LENGTH_LONG).show();
                 userLocation = new LatLng(address.getLatitude(), address.getLongitude());
                 return userLocation;
             }
         } catch (IOException e) {
-            // handle exception
+            // TODO: handle exception
         }
         return userLocation;
     }
