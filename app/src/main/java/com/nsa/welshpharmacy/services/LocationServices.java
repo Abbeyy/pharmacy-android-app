@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
+import android.location.Location;
 import android.location.LocationManager;
 import android.support.v4.app.ActivityCompat;
 
@@ -28,48 +29,40 @@ public class LocationServices {
         return userLocation;
     }
 
-    public static LatLng loadPhoneLocationViaNetwork(Context context) {
+    public static LatLng loadPhoneLocationViaNetwork(Context context){
         // Documentation: https://developer.android.com/guide/topics/location/strategies.html
-        //Retrieve the users last known location via their network
+        // Retrieve the users last known location via their network
         // Acquire a reference to the system Location Manager
         LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
 
         String locationProvider = LocationManager.NETWORK_PROVIDER;
 
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return null;
         }
-        //userLocation = locationManager.getLastKnownLocation(locationProvider);
-        userLocation = new LatLng(locationManager.getLastKnownLocation(locationProvider).getLatitude(),
-                locationManager.getLastKnownLocation(locationProvider).getLongitude());
-        return userLocation;
+        Location lastKnownLocation = locationManager.getLastKnownLocation(locationProvider);
+        if(lastKnownLocation != null){
+            userLocation = new LatLng(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude());
+            return userLocation;
+        }else{
+            return null;
+        }
     }
 
-    //TODO loadPhoneLocationViaPostcode
-    public static LatLng loadPhoneLocationViaPostcode(Context context, String userPostcode){
+    public static LatLng loadPhoneLocationViaPostcode(Context context, String userPostcode) throws IOException {
 
         //Adapted from: https://stackoverflow.com/a/4833943 Retrieved: 3/4/18
+        //Create a list of type Address using the user inputted postcode and then converting it into LatLng
         final Geocoder geocoder = new Geocoder(context);
         try {
             List<Address> addresses = geocoder.getFromLocationName(userPostcode, 1);
             if (addresses != null && !addresses.isEmpty()) {
                 Address address = addresses.get(0);
-                // Use the address as needed
-                //String message = String.format("Latitude: %f, Longitude: %f",
-                //        address.getLatitude(), address.getLongitude());
-                //Toast.makeText(context, message, Toast.LENGTH_LONG).show();
                 userLocation = new LatLng(address.getLatitude(), address.getLongitude());
                 return userLocation;
             }
         } catch (IOException e) {
-            // handle exception
+            throw e;
         }
         return userLocation;
     }
