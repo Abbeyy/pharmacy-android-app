@@ -1,20 +1,24 @@
 package com.nsa.welshpharmacy.view;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.SwitchCompat;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.nsa.welshpharmacy.R;
 import com.nsa.welshpharmacy.services.LocationServices;
-import com.nsa.welshpharmacy.view.listpharmacies.ListPharmaciesActivity;
+import com.nsa.welshpharmacy.view.listPharmacies.ListPharmaciesActivity;
 
+import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -40,10 +44,12 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
 
     private SharedPreferences sharedPreferences;
 
+    private static final int REQUEST_FINE_LOCATION = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_filter_preference);
+        setContentView(R.layout.activity_user_filter_preference);
 
         this.checkMinorAilments = this.findViewById(R.id.check_minor_ailments);
         this.checkFluVac = this.findViewById(R.id.check_flu_vaccines);
@@ -105,18 +111,34 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
             return;
         }
 
-        if(id == R.id.submit_button && switchOnLocationWidget.isChecked()){
-            //First update last known location from network
-            LocationServices.loadPhoneLocationViaNetwork(this);
-            //Then switch view to next activity
+        if(id == R.id.submit_button && matcher.matches()){
+            try {
+                LocationServices.loadPhoneLocationViaPostcode(this, textPostcodeWidget.toString());
+            }catch (IOException e){
+                Toast.makeText(this, R.string.location_catch_statement, Toast.LENGTH_SHORT).show();
+                return;
+            }
             Intent pharmacyListView = new Intent(this, ListPharmaciesActivity.class);
             startActivity(pharmacyListView);
         }
 
-        if(id == R.id.submit_button && matcher.matches()){
-            LocationServices.loadPhoneLocationViaPostcode(this, textPostcodeWidget.toString());
-            Intent pharmacyListView = new Intent(this, ListPharmaciesActivity.class);
-            startActivity(pharmacyListView);
+        if(id == R.id.submit_button && switchOnLocationWidget.isChecked()){
+            if(checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+                //If fine location permission is already granted then update last known location from network
+                LocationServices.loadPhoneLocationViaNetwork(this);
+                Toast.makeText(this, LocationServices.getUserLocation().toString(), Toast.LENGTH_LONG).show();
+                //Then switch view to next activity
+                Intent pharmacyListView = new Intent(this, ListPharmaciesActivity.class);
+                startActivity(pharmacyListView);
+            } else{
+                //Fine location permission has not been granted
+                //Rationale as to why the user should grant permission
+                if(shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)){
+                    Toast.makeText(this, "Fine location permission is needed to retrieve the location.",
+                            Toast.LENGTH_LONG).show();
+                }
+                requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_FINE_LOCATION);
+            }
         }
 
         //If the submit button is pressed and the shared preferences are null add the shared preferences
@@ -148,5 +170,20 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s){
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        if (requestCode == REQUEST_FINE_LOCATION) {
+            //Check if the permission has been granted
+            if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                LocationServices.loadPhoneLocationViaNetwork(this);
+            }else{
+                //Fine permission was denied so the feature cannot be used
+                Toast.makeText(this, "Permission was not granted", Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
     }
 }

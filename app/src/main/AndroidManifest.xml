@@ -2,10 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nsa.welshpharmacy">
 
-    <!-- Permissions to the phone to use location -->
+    <!-- App permissions -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-feature android:name="android.hardware.location.network" />
-
+    <uses-feature android:name="android.hardware.location.gps" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
@@ -22,9 +22,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.UserFilterPreferenceActivity">
+        <activity android:name=".view.UserFilterPreferenceActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".view.listpharmacies.ListPharmaciesActivity">
+        <activity android:name=".view.listPharmacies.ListPharmaciesActivity">
         </activity>
         <activity android:name=".view.StaffFilterPreferenceActivity">
         </activity>

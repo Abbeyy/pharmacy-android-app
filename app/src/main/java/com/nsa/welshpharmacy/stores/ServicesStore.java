@@ -12,6 +12,7 @@ import com.nsa.welshpharmacy.services.FirebaseServices;
 import java.util.List;
 
 /**
+ * Creates a list of pharmacy services as loaded in from the database
  * Created by c1712480 on 30/03/2018.
  */
 

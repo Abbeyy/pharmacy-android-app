@@ -1,4 +1,4 @@
-package com.nsa.welshpharmacy.view.listpharmacies;
+package com.nsa.welshpharmacy.view.listPharmacies;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -18,7 +18,6 @@ import android.widget.Toast;
 
 import com.nsa.welshpharmacy.R;
 import com.nsa.welshpharmacy.model.MockPharmacy;
-import com.nsa.welshpharmacy.model.Pharmacy;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
