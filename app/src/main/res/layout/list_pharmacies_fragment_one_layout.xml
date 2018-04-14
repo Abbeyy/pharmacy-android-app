@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:id="@+id/first_fragment_layout"
+    android:padding="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!-- Layout for first fragment of activity ListPharmaciesActivity -->
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/title_padding">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/list_of_pharmacies"
+                android:textSize="18sp"
+                android:background="@color/colourMiddle"
+                android:textColor="@color/white"
+                android:padding="6dp"
+                android:gravity="center_vertical"
+                />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/date_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textSize="18sp"
+                android:gravity="end"
+                />
+
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <RelativeLayout
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <android.support.v7.widget.ListViewCompat
+                android:id="@+id/listview_pharmacies"
+                android:listSelector="@android:color/transparent"
+                android:cacheColorHint="@android:color/transparent"
+                android:divider="@android:drawable/divider_horizontal_bright"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+</android.support.v7.widget.LinearLayoutCompat>
