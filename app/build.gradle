@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
+    flavorDimensions "flavor"
     defaultConfig {
         applicationId "com.nsa.welshpharmacy"
         minSdkVersion 26
@@ -16,13 +17,25 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors {
+        flavor {
+            minSdkVersion 23
+            targetSdkVersion 23
+        }
+    }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.google.firebase:firebase-database:12.0.0'
+    implementation 'com.google.firebase:firebase-crash:12.0.0'
+    //Do NOT change the version numbers: the Firebase and play services have to have the same version number to work
+    implementation 'com.google.android.gms:play-services-maps:12.0.0'
+    implementation 'com.google.code.gson:gson:2.8.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 }
+apply plugin: 'com.google.gms.google-services'
