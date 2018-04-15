@@ -9,6 +9,7 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
 import android.support.v4.app.ActivityCompat;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 
@@ -36,17 +37,17 @@ public class LocationServices {
         LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
 
         String locationProvider = LocationManager.NETWORK_PROVIDER;
-
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return null;
         }
-        Location lastKnownLocation = locationManager.getLastKnownLocation(locationProvider);
-        if(lastKnownLocation != null){
-            userLocation = new LatLng(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude());
-            return userLocation;
-        }else{
-            return null;
+        if(locationManager != null){
+            Location lastKnownLocation = locationManager.getLastKnownLocation(locationProvider);
+            if (lastKnownLocation != null) {
+                userLocation = new LatLng(lastKnownLocation.getLatitude(), lastKnownLocation.getLongitude());
+                return userLocation;
+            }
         }
+        return null;
     }
 
     public static LatLng loadPhoneLocationViaPostcode(Context context, String userPostcode) throws IOException {
@@ -65,5 +66,21 @@ public class LocationServices {
             throw e;
         }
         return userLocation;
+    }
+
+    public static boolean isNetworkEnabled(Context context){
+        //Adapted from: http://hmkcode.com/android-check-enable-location-service/
+        LocationManager locationManager = null;
+        boolean network_enabled = false;
+
+        locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+
+        if(locationManager != null){
+            network_enabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+        }else{
+            //TODO dialog box
+            Toast.makeText(context, "Turn on location in settings", Toast.LENGTH_SHORT).show();
+        }
+        return network_enabled;
     }
 }

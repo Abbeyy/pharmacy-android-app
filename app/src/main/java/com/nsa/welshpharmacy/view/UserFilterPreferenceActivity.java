@@ -10,7 +10,6 @@ import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.SwitchCompat;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -107,10 +106,9 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
         //If there is not a valid postcode and the switch is not checked show a toast warning
         //And if both a valid postcode and the switch is checked show the toast warning
         if((!matcher.matches() && !switchOnLocationWidget.isChecked()) || (matcher.matches() && switchOnLocationWidget.isChecked())){
-            Toast.makeText(this, R.string.enter_valid_location, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.enter_valid_location, Toast.LENGTH_SHORT).show();
             return;
         }
-
         if(id == R.id.submit_button && matcher.matches()){
             try {
                 LocationServices.loadPhoneLocationViaPostcode(this, textPostcodeWidget.toString());
@@ -121,26 +119,26 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
             Intent pharmacyListView = new Intent(this, ListPharmaciesActivity.class);
             startActivity(pharmacyListView);
         }
-
         if(id == R.id.submit_button && switchOnLocationWidget.isChecked()){
             if(checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
-                //If fine location permission is already granted then update last known location from network
-                LocationServices.loadPhoneLocationViaNetwork(this);
-                Toast.makeText(this, LocationServices.getUserLocation().toString(), Toast.LENGTH_LONG).show();
-                //Then switch view to next activity
-                Intent pharmacyListView = new Intent(this, ListPharmaciesActivity.class);
-                startActivity(pharmacyListView);
+                if (LocationServices.isNetworkEnabled(this)){
+                    //If fine location permission is already granted then update last known location from network
+                    LocationServices.loadPhoneLocationViaNetwork(this);
+                    Toast.makeText(this, LocationServices.getUserLocation().toString(), Toast.LENGTH_LONG).show();
+                    //Then switch view to next activity
+                    Intent pharmacyListView = new Intent(this, ListPharmaciesActivity.class);
+                    startActivity(pharmacyListView);
+                }
             } else{
                 //Fine location permission has not been granted
                 //Rationale as to why the user should grant permission
                 if(shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)){
                     Toast.makeText(this, "Fine location permission is needed to retrieve the location.",
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_SHORT).show();
                 }
                 requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_FINE_LOCATION);
             }
         }
-
         //If the submit button is pressed and the shared preferences are null add the shared preferences
         if (id == R.id.submit_button && this.sharedPreferences != null){
             SharedPreferences.Editor editor = this.sharedPreferences.edit();
