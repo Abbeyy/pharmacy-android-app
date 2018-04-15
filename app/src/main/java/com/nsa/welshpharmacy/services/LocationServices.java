@@ -69,12 +69,13 @@ public class LocationServices {
     }
 
     public static boolean isNetworkEnabled(Context context){
+        //Adapted from: http://hmkcode.com/android-check-enable-location-service/
         LocationManager locationManager = null;
         boolean network_enabled = false;
 
         locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
 
-        if(locationManager == null){
+        if(locationManager != null){
             network_enabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
         }else{
             //TODO dialog box

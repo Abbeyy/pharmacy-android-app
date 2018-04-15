@@ -106,7 +106,7 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
         //If there is not a valid postcode and the switch is not checked show a toast warning
         //And if both a valid postcode and the switch is checked show the toast warning
         if((!matcher.matches() && !switchOnLocationWidget.isChecked()) || (matcher.matches() && switchOnLocationWidget.isChecked())){
-            Toast.makeText(this, R.string.enter_valid_location, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.enter_valid_location, Toast.LENGTH_SHORT).show();
             return;
         }
         if(id == R.id.submit_button && matcher.matches()){
@@ -134,7 +134,7 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
                 //Rationale as to why the user should grant permission
                 if(shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)){
                     Toast.makeText(this, "Fine location permission is needed to retrieve the location.",
-                            Toast.LENGTH_LONG).show();
+                            Toast.LENGTH_SHORT).show();
                 }
                 requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_FINE_LOCATION);
             }
