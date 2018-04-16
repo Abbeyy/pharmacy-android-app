@@ -1,4 +1,4 @@
-package com.nsa.welshpharmacy.view.listPharmacies;
+package com.nsa.welshpharmacy.view.listpharmacies;
 
 import android.content.Context;
 import android.content.Intent;
