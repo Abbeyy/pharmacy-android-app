@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import com.nsa.welshpharmacy.R;
 import com.nsa.welshpharmacy.services.LocationServices;
-import com.nsa.welshpharmacy.view.listPharmacies.ListPharmaciesActivity;
+import com.nsa.welshpharmacy.view.listpharmacies.ListPharmaciesActivity;
 
 import java.io.IOException;
 import java.util.regex.Matcher;
