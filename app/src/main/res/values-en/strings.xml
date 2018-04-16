@@ -5,7 +5,6 @@
     <string name="instruction_postcode">hjhj</string>
     <string name="button_filter_text">gjgj</string>
     <string name="toggle_available">ghgh</string>
-    <string name="Welcome">jgj</string>
     <string name="GeneralUsers_Translation">uttuu</string>
     <string name="get_list_buttontext" translatable="false">uuyy</string>
     <string name="text_translation">hjjhjhj</string>
@@ -21,4 +20,17 @@
     <string name="button_submit_text">rgdr</string>
     <string name="service_smoking">svd</string>
     <string name="service_flu">grws</string>
+    <string name="Welcome">gh</string>
+    <string name="postcode_regex">gh</string>
+    <string name="location_divider">hkh</string>
+    <string name="postcode_invalid">gh</string>
+    <string name="location_permission">gh</string>
+    <string name="enter_valid_location">gh</string>
+    <string name="list_of_pharmacies">hj</string>
+    <string name="toast_listview_item_tapped_on">nk</string>
+    <string name="GeneralUsers">gh</string>
+    <string name="Pharmacist">ujk</string>
+    <string name="Language">jg</string>
+    <string name="RateTheApp">gh</string>
+    <string name="contact_details">gh</string>
 </resources>
