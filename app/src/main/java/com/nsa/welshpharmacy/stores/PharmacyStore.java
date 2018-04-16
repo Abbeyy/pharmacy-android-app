@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * Creates a list of pharmacies as loaded in from the database
  * Created by c1712480 on 29/03/2018.
  */
 

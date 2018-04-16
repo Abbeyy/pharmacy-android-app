@@ -21,7 +21,7 @@
     <string name="button_filter_text">Reset</string>
     <string name="reset_text">Configuration has been reset</string>
 
-    StaffFilterPreferenceActivityvity-->
+    StaffFilterPreferenceActivity-->
     <string name="toggle_available">Available</string>
     <string name="toggle_unavailable">Unavailable</string>
     <string name="save_button">Save</string>
@@ -38,4 +38,5 @@
     <string name="RateTheApp" translatable="false">Rate the app</string>
     <string name="services_in_welsh" translatable="false">Services in Welsh</string>
     <string name="contact_details">Contact Details</string>
+    <string name="location_catch_statement">Location could not be determined from postcode</string>
 </resources>

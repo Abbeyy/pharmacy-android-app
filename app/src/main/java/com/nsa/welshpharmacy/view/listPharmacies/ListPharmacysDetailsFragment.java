@@ -1,4 +1,4 @@
-package com.nsa.welshpharmacy.view.listpharmacies;
+package com.nsa.welshpharmacy.view.listPharmacies;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,8 +7,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.AppCompatButton;
-import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.ListViewCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,7 +19,6 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.nsa.welshpharmacy.R;
 import com.nsa.welshpharmacy.model.MockPharmacy;
-import com.nsa.welshpharmacy.model.Pharmacy;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * This service is linked to Firebase and reads to the Firebase database.
+ * It loads in the data from the database into the project.
  * Created by c1712480 on 02/04/2018.
  */
 
