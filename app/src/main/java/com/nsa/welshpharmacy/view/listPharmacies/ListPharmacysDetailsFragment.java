@@ -44,7 +44,7 @@ public class ListPharmacysDetailsFragment extends Fragment implements AdapterVie
 
         SharedPreferences sharedPrefs = this.getActivity().getSharedPreferences("pharmacyPos", Context.MODE_PRIVATE);
         int pharmacyPosition = sharedPrefs.getInt("position", -1);
-        Log.i("Pharmacy position chosen: ", pharmacyPosition+ "!");
+        Log.i("Pharmacy position: ", pharmacyPosition+ "!");
         //Reminder, 1st listed item will have a position of 0.
 
         //Help gathered from: https://stackoverflow.com/questions/7145606/how-android-sharedpreferences-save-store-object
