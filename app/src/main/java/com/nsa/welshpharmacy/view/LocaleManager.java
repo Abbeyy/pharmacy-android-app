@@ -1,7 +1,6 @@
-package com.nsa.welshpharmacy;
+package com.nsa.welshpharmacy.view;
 
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -9,14 +8,12 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.preference.PreferenceManager;
 
-
-
 import java.util.Locale;
 
-
 /**
- * Created by c1660911 on 3/29/2018.
+ * Created by c1660911 on 4/16/2018.
  */
+
 class LocaleManager {
 
     private static final String SELECTED_LANGUAGE = "Locale.Helper.Selected.Language";
@@ -88,3 +85,4 @@ class LocaleManager {
         return context;
     }
 }
+

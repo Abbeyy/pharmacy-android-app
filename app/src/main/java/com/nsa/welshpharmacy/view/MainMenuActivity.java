@@ -59,12 +59,12 @@ public class MainMenuActivity extends AppCompatActivity {
         });
         mLanguage = (Spinner) findViewById(R.id.spLanguage);
         mTextView = (TextView) findViewById(R.id.textView);
-        mAdapter = new ArrayAdapter<String>(MainMenu.this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.language_option));
+        mAdapter = new ArrayAdapter<String>(MainMenuActivity.this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.language_option));
         mLanguage.setAdapter(mAdapter);
 
-        if (LocaleManager.getLanguage(MainMenu.this).equalsIgnoreCase("en")) {
+        if (LocaleManager.getLanguage(MainMenuActivity.this).equalsIgnoreCase("en")) {
             mLanguage.setSelection(mAdapter.getPosition("English"));
-        } else if (LocaleManager.getLanguage(MainMenu.this).equalsIgnoreCase("in")) {
+        } else if (LocaleManager.getLanguage(MainMenuActivity.this).equalsIgnoreCase("in")) {
             mLanguage.setSelection(mAdapter.getPosition("Indonesian"));
         } else {
             mLanguage.setSelection(mAdapter.getPosition("Spanish"));
@@ -78,12 +78,12 @@ public class MainMenuActivity extends AppCompatActivity {
                  switch (i) {
 
                      case 1:
-                         context = LocaleManager.setLocale(MainMenu.this, "en");
+                         context = LocaleManager.setLocale(MainMenuActivity.this, "en");
                          resources = context.getResources();
                          mTextView.setText(resources.getString(R.string.text_translation));
                          break;
                      case 2:
-                         context = LocaleManager.setLocale(MainMenu.this, "cy");
+                         context = LocaleManager.setLocale(MainMenuActivity.this, "cy");
                          resources = context.getResources();
                          mTextView.setText(resources.getString(R.string.text_translation));
                          break;

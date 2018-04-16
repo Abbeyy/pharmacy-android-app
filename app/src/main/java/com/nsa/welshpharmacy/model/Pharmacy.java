@@ -27,7 +27,7 @@ public class Pharmacy {
         this.website = website;
     }
 
-    public Pharmacy(){
+    public Pharmacy(String pharmacyName, String s, String s1, String s2, String s3, String s4, String s5, String s6){
         //Default constructor
         //Reflection
     }

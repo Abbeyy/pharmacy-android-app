@@ -10,7 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.nsa.welshpharmacy.mockingdata.Pharmacy;
+import com.nsa.welshpharmacy.model.Pharmacy;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -54,7 +54,7 @@ public class ListPharmaciesActivity extends AppCompatActivity implements Adapter
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_pharmacies_main);
+        setContentView(R.layout.activity_main_menu );
         //activity inflating layout
 
         //date stuff
@@ -86,11 +86,7 @@ public class ListPharmaciesActivity extends AppCompatActivity implements Adapter
 
     public void generatePharmacies(int numOfPharmacies) {
         for (int k = 0; k < numOfPharmacies; k++) {
-            Pharmacy pharmacy = new Pharmacy(pharmacyNames[k],
-                    "02920664506","example@live.com",
-                    "Capital Shopping Centre, Cardiff",
-                    "Common Ailments Service", "Out of Hours Service",
-                    "Provides EC", "Seasonal Flu Vaccine");
+            Pharmacy pharmacy = new Pharmacy(pharmacyNames[k], "02920664506", "example@live.com", "Capital Shopping Centre, Cardiff", "Common Ailments Service", "Out of Hours Service", "Provides EC", "Seasonal Flu Vaccine");
 
             pharmaciesContainer.add(pharmacy);
         }
