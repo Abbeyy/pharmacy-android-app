@@ -31,7 +31,6 @@ import java.util.List;
  */
 
 public class ListPharmacysDetailsFragment extends Fragment implements AdapterView.OnItemClickListener {
-    private int position;
     ListViewCompat lView;
     List<String> aList;
     //Built-in adapter for string datasource
@@ -54,7 +53,7 @@ public class ListPharmacysDetailsFragment extends Fragment implements AdapterVie
         //Help gathered from: https://stackoverflow.com/questions/7145606/how-android-sharedpreferences-save-store-object
         SharedPreferences pharmacies = this.getActivity().getSharedPreferences("pharmacies", Context.MODE_PRIVATE);
         Gson gson = new Gson();
-        String json = pharmacies.getString("pharmacy" + position, "Error");
+        String json = pharmacies.getString("pharmacy" + pharmacyPosition, "Error");
         MockPharmacy pharmacyToDisplay = gson.fromJson(json, MockPharmacy.class);
 
         Log.i("Pharmacy name: ", pharmacyToDisplay.getName());
