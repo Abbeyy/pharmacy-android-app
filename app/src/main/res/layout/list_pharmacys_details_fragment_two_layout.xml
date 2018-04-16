@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:text="@string/contact_details"
         android:textSize="18sp"
-        android:background="@color/colourMiddle"
+        android:background="@color/colorThemeMiddle"
         android:textColor="@color/white"
         android:padding="6dp"
         android:gravity="center_vertical"/>

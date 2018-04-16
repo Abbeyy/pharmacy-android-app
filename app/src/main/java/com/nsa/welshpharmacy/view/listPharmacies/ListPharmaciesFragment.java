@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.ListViewCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.nsa.welshpharmacy.R;
 import com.nsa.welshpharmacy.model.MockPharmacy;
 
@@ -66,15 +68,13 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
         generatePharmacies(pharmacyNames.length);
 
         this.arrayAdpt = new ArrayAdapter<String>(
-                getActivity(), //line 72
+                getActivity(),
                 android.R.layout.simple_list_item_1,
-                //switch layout to be lv_pharmacy_names once sorted access!
                 this.aList
         );
 
         this.lView.setAdapter(this.arrayAdpt);
         this.lView.setOnItemClickListener(this);
-        //line 80
 
         //date stuff
         setUpDate(v);
@@ -96,15 +96,15 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
     }
 
     public void generatePharmacies(int numOfPharmacies) {
+        SharedPreferences pharmsInstances = getActivity().getSharedPreferences("pharmacies", Context.MODE_PRIVATE);
         for (int k = 0; k < numOfPharmacies; k++) {
-            MockPharmacy pharmacy = new MockPharmacy(pharmacyNames[k],
-                    "02920664506","example@live.com",
-                    "Capital Shopping Centre, Cardiff",
-                    "Common Ailments Service", "Out of Hours Service",
-                    "Provides EC", "Seasonal Flu Vaccine");
 
-            pharmaciesContainer.add(pharmacy);
-            this.aList.add(pharmaciesContainer.get(k).getName());
+            Gson gson = new Gson();
+            String json = pharmsInstances.getString("pharmacy" + k, "Error");
+            MockPharmacy aPharmacy = gson.fromJson(json, MockPharmacy.class);
+
+            pharmaciesContainer.add(aPharmacy);
+            this.aList.add(aPharmacy.getName());
         }
     }
 
