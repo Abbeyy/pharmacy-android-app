@@ -42,17 +42,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         // Add a marker in Sydney and move the camera
         LatLng Boots = new LatLng(51.478004, -3.179581);
-        mMap.addMarker(new MarkerOptions().position(Boots).title("Marker in Pharmacy 1"));
+        mMap.addMarker(new MarkerOptions().position(Boots).title("Marker in Boots"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(Boots));
-        LatLng Pharmacy2 = new LatLng(51.490875, -3.185637);
-        mMap.addMarker(new MarkerOptions().position(Pharmacy2).title("Marker in Pharmacy 2"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(Pharmacy2));
-        LatLng Pharmacy3 = new LatLng(51.486577, -3.165777);
-        mMap.addMarker(new MarkerOptions().position(Pharmacy3).title("Marker in Pharmacy 3"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(Pharmacy3));
-        LatLng Pharmacy4 = new LatLng(51.489220, -3.166650);
-        mMap.addMarker(new MarkerOptions().position(Pharmacy4).title("Marker in Pharmacy 4"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(Pharmacy4));
+        LatLng Wells = new LatLng(51.470269, -3.186349);
+        mMap.addMarker(new MarkerOptions().position(Wells).title("Marker in Wells"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(Wells));
+        LatLng Clifton = new LatLng(51.486759, -3.158758);
+        mMap.addMarker(new MarkerOptions().position(Clifton).title("Marker in Clifton Pharmacy"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(Clifton));
+        LatLng SuperDrug = new LatLng(51.489220, -3.166650);
+        mMap.addMarker(new MarkerOptions().position(SuperDrug).title("Marker in Superdrug"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(SuperDrug));
         CameraUpdate zoom = CameraUpdateFactory.zoomTo(9);
         mMap.moveCamera(zoom);
         mMap.animateCamera(zoom);

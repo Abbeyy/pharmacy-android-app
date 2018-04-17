@@ -21,12 +21,12 @@
     <string name="button_filter_text">Reset</string>
     <string name="reset_text">Configuration has been reset</string>
 
-    StaffFilterPreferenceActivityvity-->
+    StaffFilterPreferenceActivity-->
     <string name="toggle_available">Available</string>
     <string name="toggle_unavailable">Unavailable</string>
     <string name="save_button">Save</string>
 
-
+    <string name="next">NEXT</string>
     <string name="pharmacy_one">Pharmacy 1</string>
     <string name="enter_valid_location" translatable="false">Either enter a valid postcode or allow location tracking</string>
     <string name="list_of_pharmacies" translatable="false">List of Pharmacies</string>
@@ -39,5 +39,5 @@
     <string name="services_in_welsh" translatable="false">Services in Welsh</string>
     <string name="contact_details">Contact Details</string>
     <string name="location_catch_statement">Location could not be determined from postcode</string>
-    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_maps2">Map</string>
 </resources>

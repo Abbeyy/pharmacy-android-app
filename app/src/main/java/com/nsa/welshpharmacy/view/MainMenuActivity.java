@@ -22,7 +22,7 @@ public class MainMenuActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent pharmacyListView = new Intent(getApplicationContext(), UserFilterPreferenceActivity.class);
+                Intent pharmacyListView = new Intent(getApplicationContext(), UserFilterPreferenceActivitySection1.class);
                 startActivity(pharmacyListView);
             }
         });

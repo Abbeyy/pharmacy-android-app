@@ -29,6 +29,9 @@
             android:screenOrientation="portrait" />
         <activity android:name=".view.listPharmacies.ListPharmaciesActivity" />
         <activity android:name=".view.StaffFilterPreferenceActivity" />
+        <activity
+            android:name=".view.MapsActivity"
+            android:exported="true" />
 
         <!-- Connect the app with google play services including maps -->
         <meta-data
@@ -39,9 +42,11 @@
             android:value="AIzaSyCahqq_aJohqGLFIgMLUmrXKjQZPSLK8HU" />
 
         <activity
-            android:name=".view.MapsActivity"
-            android:label="@string/title_activity_maps"
-            android:exported="true"/>
+            android:name=".view.UserFilterPreferenceActivitySection2"
+            android:exported="true" />
+        <activity
+            android:name=".view.UserFilterPreferenceActivitySection1"
+            android:exported="true" />
     </application>
 
 </manifest>

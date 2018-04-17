@@ -24,17 +24,17 @@ import java.util.regex.Pattern;
 /**
  * This activity allows the user to select their required service and to have their location
  * inputted. The user has a choice of either a valid postcode or allowing the phone GPS to be used.
- * 
+ *
  * Created by c1712480 on 14/03/2018.
  */
 
-public class UserFilterPreferenceActivity extends AppCompatActivity implements View.OnClickListener, View.OnLongClickListener, SharedPreferences.OnSharedPreferenceChangeListener{
+public class UserFilterPreferenceActivitySection2 extends AppCompatActivity implements View.OnClickListener, View.OnLongClickListener, SharedPreferences.OnSharedPreferenceChangeListener{
 
-    private AppCompatCheckBox checkMinorAilments;
+    /*private AppCompatCheckBox checkMinorAilments;
     private AppCompatCheckBox checkFluVac;
     private AppCompatCheckBox checkHealthCheck;
     private AppCompatCheckBox checkSmoking;
-    private AppCompatCheckBox checkAlcohol;
+    private AppCompatCheckBox checkAlcohol;*/
     private AppCompatEditText textPostcodeWidget;
     private SwitchCompat switchOnLocationWidget;
 
@@ -48,13 +48,21 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_filter_preference);
+        setContentView(R.layout.activity_user_filter_preference_section2);
 
-        this.checkMinorAilments = this.findViewById(R.id.check_minor_ailments);
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent submit = new Intent(UserFilterPreferenceActivitySection2.this, MapsActivity.class);
+                startActivity(submit);
+            }
+        });
+
+        /*this.checkMinorAilments = this.findViewById(R.id.check_minor_ailments);
         this.checkFluVac = this.findViewById(R.id.check_flu_vaccines);
         this.checkHealthCheck = this.findViewById(R.id.check_health_check);
         this.checkSmoking = this.findViewById(R.id.check_smoking);
-        this.checkAlcohol = this.findViewById(R.id.check_alcohol);
+        this.checkAlcohol = this.findViewById(R.id.check_alcohol);*/
         this.textPostcodeWidget = this.findViewById(R.id.text_postcode);
         this.switchOnLocationWidget = this.findViewById(R.id.switch_location);
 
@@ -72,11 +80,11 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
 
     private void initValues(){
         if (this.sharedPreferences != null) {
-            this.checkMinorAilments.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_AILMENTS, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
+          /*  this.checkMinorAilments.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_AILMENTS, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
             this.checkFluVac.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_FLU, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
             this.checkHealthCheck.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_HEALTH, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
             this.checkSmoking.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_SMOKING, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
-            this.checkAlcohol.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_ALCOHOL, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
+            this.checkAlcohol.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_ALCOHOL, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));*/
             this.switchOnLocationWidget.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_SWITCH_LOCATION, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
         }
     }
@@ -143,11 +151,11 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
         //If the submit button is pressed and the shared preferences are null add the shared preferences
         if (id == R.id.submit_button && this.sharedPreferences != null){
             SharedPreferences.Editor editor = this.sharedPreferences.edit();
-            editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_AILMENTS, this.checkMinorAilments.isChecked());
+            /*editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_AILMENTS, this.checkMinorAilments.isChecked());
             editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_FLU, this.checkFluVac.isChecked());
             editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_HEALTH, this.checkHealthCheck.isChecked());
             editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_SMOKING, this.checkSmoking.isChecked());
-            editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_ALCOHOL, this.checkAlcohol.isChecked());
+            editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_ALCOHOL, this.checkAlcohol.isChecked());*/
             editor.putBoolean(KeyValueHelper.KEY_SWITCH_LOCATION, this.switchOnLocationWidget.isChecked());
             editor.apply();
         }
@@ -186,3 +194,4 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
         }
     }
 }
+
