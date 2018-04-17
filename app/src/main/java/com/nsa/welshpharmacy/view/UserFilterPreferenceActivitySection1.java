@@ -30,8 +30,7 @@ public class UserFilterPreferenceActivitySection1 extends AppCompatActivity {
     private AppCompatCheckBox checkHealthCheck;
     private AppCompatCheckBox checkSmoking;
     private AppCompatCheckBox checkAlcohol;
-
-
+    private AppCompatButton btn;
 
 
 
@@ -43,14 +42,6 @@ public class UserFilterPreferenceActivitySection1 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_filter_preference_section1);
-        AppCompatButton nextButton = (AppCompatButton) findViewById(R.id.next_button);
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-             Intent nextButton = new Intent(UserFilterPreferenceActivitySection1.this, UserFilterPreferenceActivitySection2.class);
-             startActivity(nextButton);
-            }
-        });
 
         this.checkMinorAilments = this.findViewById(R.id.check_minor_ailments);
         this.checkFluVac = this.findViewById(R.id.check_flu_vaccines);
@@ -61,9 +52,17 @@ public class UserFilterPreferenceActivitySection1 extends AppCompatActivity {
         this.sharedPreferences = this.getPreferences(MODE_PRIVATE);
 
         initValues();
-
-
+        btn = (AppCompatButton) findViewById(R.id.next_button);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent nextButton = new Intent(UserFilterPreferenceActivitySection1.this, UserFilterPreferenceActivitySection2.class);
+                startActivity(nextButton);
+            }
+        });
     }
+
+
 
     private void initValues(){
         if (this.sharedPreferences != null) {

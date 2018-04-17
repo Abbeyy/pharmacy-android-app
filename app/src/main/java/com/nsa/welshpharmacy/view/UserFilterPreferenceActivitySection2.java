@@ -25,7 +25,6 @@ import java.util.regex.Pattern;
  * This activity allows the user to select their required service and to have their location
  * inputted. The user has a choice of either a valid postcode or allowing the phone GPS to be used.
  *
- * Created by c1712480 on 14/03/2018.
  */
 
 public class UserFilterPreferenceActivitySection2 extends AppCompatActivity implements View.OnClickListener, View.OnLongClickListener, SharedPreferences.OnSharedPreferenceChangeListener{
@@ -50,14 +49,6 @@ public class UserFilterPreferenceActivitySection2 extends AppCompatActivity impl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_filter_preference_section2);
 
-        submitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent submit = new Intent(UserFilterPreferenceActivitySection2.this, MapsActivity.class);
-                startActivity(submit);
-            }
-        });
-
         /*this.checkMinorAilments = this.findViewById(R.id.check_minor_ailments);
         this.checkFluVac = this.findViewById(R.id.check_flu_vaccines);
         this.checkHealthCheck = this.findViewById(R.id.check_health_check);
@@ -68,6 +59,14 @@ public class UserFilterPreferenceActivitySection2 extends AppCompatActivity impl
 
         this.submitButton = this.findViewById(R.id.submit_button);
         this.resetButton = this.findViewById(R.id.reset_button);
+
+        /*submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent submit = new Intent(UserFilterPreferenceActivitySection2.this, MapsActivity.class);
+                startActivity(submit);
+            }
+        });*/
 
         this.sharedPreferences = this.getPreferences(MODE_PRIVATE);
 
@@ -105,7 +104,7 @@ public class UserFilterPreferenceActivitySection2 extends AppCompatActivity impl
 
     @Override
     public void onClick(View view){
-        int id = view.getId();
+        /*int id = view.getId();
         //Adapted from https://stackoverflow.com/a/4531500 Retrieved: 17/3/18
         //Adapted from https://stackoverflow.com/a/8204716 Retrieved 17/3/18
         Pattern POSTCODE_REGEX = Pattern.compile(getString(R.string.postcode_regex));
@@ -124,9 +123,9 @@ public class UserFilterPreferenceActivitySection2 extends AppCompatActivity impl
                 Toast.makeText(this, R.string.location_catch_statement, Toast.LENGTH_SHORT).show();
                 return;
             }
-            Intent pharmacyListView = new Intent(this, ListPharmaciesActivity.class);
+            Intent MapsView = new Intent(this, MapsActivity.class);
             //Intent pharmacyListView = new Intent(this, MapsActivity.class);
-            startActivity(pharmacyListView);
+            startActivity(MapsView);
         }
         if(id == R.id.submit_button && switchOnLocationWidget.isChecked()){
             if(checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
@@ -135,8 +134,8 @@ public class UserFilterPreferenceActivitySection2 extends AppCompatActivity impl
                     LocationServices.loadPhoneLocationViaNetwork(this);
                     Toast.makeText(this, LocationServices.getUserLocation().toString(), Toast.LENGTH_LONG).show();
                     //Then switch view to next activity
-                    Intent pharmacyListView = new Intent(this, ListPharmaciesActivity.class);
-                    startActivity(pharmacyListView);
+                    Intent MapsView = new Intent(this, MapsActivity.class);
+                    startActivity(MapsView);
                 }
             } else{
                 //Fine location permission has not been granted
@@ -151,14 +150,23 @@ public class UserFilterPreferenceActivitySection2 extends AppCompatActivity impl
         //If the submit button is pressed and the shared preferences are null add the shared preferences
         if (id == R.id.submit_button && this.sharedPreferences != null){
             SharedPreferences.Editor editor = this.sharedPreferences.edit();
-            /*editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_AILMENTS, this.checkMinorAilments.isChecked());
+            *//*editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_AILMENTS, this.checkMinorAilments.isChecked());
             editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_FLU, this.checkFluVac.isChecked());
             editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_HEALTH, this.checkHealthCheck.isChecked());
             editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_SMOKING, this.checkSmoking.isChecked());
-            editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_ALCOHOL, this.checkAlcohol.isChecked());*/
+            editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_ALCOHOL, this.checkAlcohol.isChecked());*//*
             editor.putBoolean(KeyValueHelper.KEY_SWITCH_LOCATION, this.switchOnLocationWidget.isChecked());
             editor.apply();
-        }
+        }*/
+
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent submit = new Intent(UserFilterPreferenceActivitySection2.this, MapsActivity.class);
+                startActivity(submit);
+            }
+        });
+
     }
     @Override
     public boolean onLongClick(View view){

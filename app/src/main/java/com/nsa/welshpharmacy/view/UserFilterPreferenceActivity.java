@@ -116,9 +116,11 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
                 Toast.makeText(this, R.string.location_catch_statement, Toast.LENGTH_SHORT).show();
                 return;
             }
-            Intent pharmacyListView = new Intent(this, ListPharmaciesActivity.class);
+            /*Intent pharmacyListView = new Intent(this, ListPharmaciesActivity.class);
             //Intent pharmacyListView = new Intent(this, MapsActivity.class);
-            startActivity(pharmacyListView);
+            startActivity(pharmacyListView);*/
+            Intent mapsView = new Intent(this, MapsActivity.class);
+            startActivity(mapsView);
         }
         if(id == R.id.submit_button && switchOnLocationWidget.isChecked()){
             if(checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
