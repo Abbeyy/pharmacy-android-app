@@ -113,7 +113,7 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
         //1. Toast
         Toast.makeText(getActivity(),
                 String.format("User has selected %s", lView.getItemAtPosition(position)),
-                Toast.LENGTH_SHORT).show();
+        Toast.LENGTH_SHORT).show();
         //2. Switch Fragments
         expandPharmacyInfo(position);
     }
@@ -128,7 +128,7 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
         //Then switch fragments.
         this.fmtManager = getActivity().getSupportFragmentManager();
         this.fmtTrans = this.fmtManager.beginTransaction();
-        this.fmtTrans.replace(R.id.fragments_container, new ListPharmacysDetailsFragment());
+        this.fmtTrans.replace(R.id.fragments_container, new ListPharmacysDetailsFragment()).addToBackStack("fragTwo");
         this.fmtTrans.commit();
     }
 
