@@ -44,7 +44,7 @@ public class MainMenuActivity extends AppCompatActivity {
         final TextView submitRating = findViewById(R.id.rating);
 
         final RatingBar rating =  findViewById(R.id.RatingBar);
-        rating.setOnClickListener(new View.OnClickListener() {
+        submitRating.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -56,7 +56,6 @@ public class MainMenuActivity extends AppCompatActivity {
             }
 
         });
-        
         mLanguage = (Spinner) findViewById(R.id.spLanguage);
         mTextView = (TextView) findViewById (R.id.textView);
         mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.language_option));
@@ -89,9 +88,12 @@ public class MainMenuActivity extends AppCompatActivity {
                          break;
                  }
              }
+
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
+
         });
     }
 

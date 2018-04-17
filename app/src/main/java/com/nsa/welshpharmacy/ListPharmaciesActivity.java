@@ -46,11 +46,6 @@ public class ListPharmaciesActivity extends AppCompatActivity implements Adapter
                     "Superdrug Pharmacy", "Woodville Road Pharmacy",
                     "Lloyds Pharmacy Ltd", "Central Pharmacy"};
 
-
-    @Override
-    protected void attachBaseContext(Context base) {
-        super.attachBaseContext(LocaleManager.onAttach(base, "en"));
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
