@@ -23,11 +23,11 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="41dp"
         android:autoText="false"
+        android:text="@string/Welcome"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toTopOf="@+id/GeneralUsers"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:text="@string/text_translation"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints"
         tools:text=" Welcome to Wales pharmacies " />

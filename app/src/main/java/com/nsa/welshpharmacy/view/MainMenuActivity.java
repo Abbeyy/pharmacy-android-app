@@ -16,7 +16,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.nsa.welshpharmacy.R;
 
 
@@ -57,9 +56,10 @@ public class MainMenuActivity extends AppCompatActivity {
             }
 
         });
+        
         mLanguage = (Spinner) findViewById(R.id.spLanguage);
-        mTextView = (TextView) findViewById(R.id.textView);
-        mAdapter = new ArrayAdapter<String>(MainMenuActivity.this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.language_option));
+        mTextView = (TextView) findViewById (R.id.textView);
+        mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.language_option));
         mLanguage.setAdapter(mAdapter);
 
         if (LocaleManager.getLanguage(MainMenuActivity.this).equalsIgnoreCase("en")) {
@@ -69,7 +69,7 @@ public class MainMenuActivity extends AppCompatActivity {
         } else {
             mLanguage.setSelection(mAdapter.getPosition("Spanish"));
         }
-
+        //switch between the languages
         mLanguage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
              @Override
              public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -78,12 +78,12 @@ public class MainMenuActivity extends AppCompatActivity {
                  switch (i) {
 
                      case 1:
-                         context = LocaleManager.setLocale(MainMenuActivity.this, "en");
+                         context = LocaleManager.setLocale(MainMenuActivity.this, "cy");
                          resources = context.getResources();
                          mTextView.setText(resources.getString(R.string.text_translation));
                          break;
                      case 2:
-                         context = LocaleManager.setLocale(MainMenuActivity.this, "cy");
+                         context = LocaleManager.setLocale(MainMenuActivity.this, "Default");
                          resources = context.getResources();
                          mTextView.setText(resources.getString(R.string.text_translation));
                          break;
@@ -96,6 +96,7 @@ public class MainMenuActivity extends AppCompatActivity {
     }
 
     @Override
+    // override the base context of application to update default locale for this activity
     protected void attachBaseContext(Context newBase) {
         super.attachBaseContext(LocaleManager.onAttach(newBase));
     }

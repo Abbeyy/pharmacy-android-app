@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <string name="app_name">1WelshPharmacy</string>
+    <string name="app_name">WelshPharmacy</string>
     <string name="Welcome">" Fferyllfeydd Cymreig "</string>
     <string name="text_translation">Walech Pharmacies</string>
     <string name="Pharmacist_Transelilation">"Gwasanaeth stopio ysmygu "</string>
@@ -18,27 +18,10 @@
 
     <string name="get_list_buttontext" tools:ignore="DuplicateDefinition">Cael Rhestr</string>
     <string name="GeneralUsers_Translation" tools:ignore="DuplicateDefinition">Defnyddwyr Cyffredinol</string>
-    <string name="Pharmacist_Transelilation" tools:ignore="DuplicateDefinition">" Fferyllydd"</string>
-    <string name="service_smoking" tools:ignore="DuplicateDefinition">Gwasanaeth stopio ysmygu</string>
-    <string name="button_submit_text" tools:ignore="DuplicateDefinition">Cyflwyno</string>
-    <string name="reset_text" tools:ignore="DuplicateDefinition">" Mae ffurfweddiad wedi'i ailosod"</string>
-    <string name="services_in_welsh" translatable="false">Gwasanaethau yn Gymraeg</string>
-    <string name="save_button" tools:ignore="DuplicateDefinition">" Arbed"</string>
-    <string name="text_translation" tools:ignore="DuplicateDefinition">cyfradd yr app</string>
-    <string name="service_ailments" translatable="false" tools:ignore="DuplicateDefinition">Mân anhwylderau</string>
-    <string name="instruction_postcode" tools:ignore="DuplicateDefinition">" Rhowch y cod post"</string>
-    <string name="service_alcohol" tools:ignore="DuplicateDefinition">Cyngor ar yfed alcohol</string>
     <string name="service_alcohol" tools:ignore="DuplicateDefinition">Cyngor ar yfed alcohol</string>
     <string name="instruction_postcode" tools:ignore="DuplicateDefinition">" Rhowch y cod post"</string>
-    <string name="service_flu" tools:ignore="DuplicateDefinition">Brechu ffliw</string>
-    <string name="instructions_service_selection" tools:ignore="DuplicateDefinition">"Dewiswch wasanaethau gofynnol "</string>
-    <string name="toggle_unavailable" tools:ignore="DuplicateDefinition">Am ddim</string>
     <string name="instructions_service_selection" tools:ignore="DuplicateDefinition">" Dewiswch wasanaethau gofynnol"</string>
     <string name="button_filter_text" tools:ignore="DuplicateDefinition">"Ail gychwyn "</string>
-    <string name="toggle_available" tools:ignore="DuplicateDefinition">"Ar gael "</string>
-    <string name="button_filter_text" tools:ignore="DuplicateDefinition">" Ail gychwyn"</string>
-    <string name="service_health" tools:ignore="DuplicateDefinition">"Gwiriad Iechyd y GIG "</string>
-    <string name="pharmacy_one" tools:ignore="DuplicateDefinition">"Fferyllfa 1 "</string>
     <string name="postcode_regex" translatable="false">^[A-Z]{1,2}[0-9R][0-9A-Z]? [0-9][ABD-HJLNP-UW-Z]{2}$</string>
     <string name="location_divider">" ------------ NEU ------------ "</string>
     <string name="postcode_invalid">Nid yw côd post yn ddilys</string>

@@ -3,9 +3,9 @@
     <string name="get_list_buttontext">Get List</string>
 
     <string-array name="language_option">
+        <item>Language</item>
+        <item>Walsh</item>
         <item>English</item>
-        <item>Wales</item>
-        <item>Arabic</item>
 
 
     </string-array>
@@ -20,7 +20,7 @@
     <!-- Filter Preference activity -->
     <string name="instructions_service_selection">Select required services</string>
     <!--Retrieved from: https://howtodoinjava.com/regex/java-regex-validate-u-k-postal-codes-postcodes/ 17/3/18-->
-    <string name="postcode_regex" translatable="false">^[A-Z]{1,2}[0-9R][0-9A-Z]? [0-9][ABD-HJLNP-UW-Z]{2}$</string>
+    <string name="postcode_regex">^[A-Z]{1,2}[0-9R][0-9A-Z]? [0-9][ABD-HJLNP-UW-Z]{2}$</string>
     <string name="location_divider">------------ OR ------------</string>
     <string name="postcode_invalid">Postcode is not valid</string>
     <string name="location_permission">Allow location tracking</string>
@@ -45,10 +45,9 @@
     <string name="Language">English</string>
     <string name="RateTheApp">Rate the app</string>
     <string name="services_in_welsh">Services in Welsh</string>
-    <string name="text_translation">rate the app</string>
+    <string name="text_translation">Rate the app</string>
     <string name="GeneralUsers_Translation">GeneralUsesrs</string>
     <string name="Pharmacist_Transelilation">Parmacist</string>
-
     <string name="contact_details">Contact Details</string>
     <string name="instruction_postcode">Enter postcode</string>
 
