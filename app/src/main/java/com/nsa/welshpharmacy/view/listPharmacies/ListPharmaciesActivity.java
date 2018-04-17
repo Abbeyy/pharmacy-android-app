@@ -51,7 +51,7 @@ public class ListPharmaciesActivity extends AppCompatActivity {
         //setting up main fragment of view
         android.support.v4.app.FragmentManager fmtManager = getSupportFragmentManager();
         android.support.v4.app.FragmentTransaction fmtTransaction = fmtManager.beginTransaction();
-        fmtTransaction.add(R.id.fragments_container, new ListPharmaciesFragment()).addToBackStack("fragOne");
+        fmtTransaction.add(R.id.fragments_container, new ListPharmaciesFragment());
         fmtTransaction.commit();
     }
 
