@@ -24,12 +24,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".view.UserFilterPreferenceActivity"
-            android:exported="true"
-            android:screenOrientation="portrait" />
-        <activity android:name=".view.listPharmacies.ListPharmaciesActivity" />
-        <activity android:name=".view.StaffFilterPreferenceActivity" />
+        <activity android:name=".view.UserFilterPreferenceActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".view.listpharmacies.ListPharmaciesActivity">
+        </activity>
+        <activity android:name=".view.StaffFilterPreferenceActivity">
+        </activity>
 
         <!-- Connect the app with google play services including maps -->
         <meta-data
