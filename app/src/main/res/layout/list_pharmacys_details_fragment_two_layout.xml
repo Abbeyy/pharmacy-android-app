@@ -44,7 +44,7 @@
         android:gravity="end">
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/button_to_map"
             android:background="@color/colorThemeMiddle"
             android:textColor="@color/white"
             android:padding="4dp"
