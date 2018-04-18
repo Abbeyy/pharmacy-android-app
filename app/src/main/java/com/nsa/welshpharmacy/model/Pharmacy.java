@@ -1,6 +1,12 @@
 package com.nsa.welshpharmacy.model;
 
+import android.content.Context;
+
+import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.database.IgnoreExtraProperties;
+import com.nsa.welshpharmacy.services.LocationServices;
+
+import java.io.IOException;
 import java.util.Map;
 
 /**
@@ -60,6 +66,19 @@ public class Pharmacy {
 
     public String getWebsite() {
         return website;
+    }
+
+    /**
+     *  Converts the postcode of a pharmacy into LatLng type
+     */
+    public LatLng getPharmacyLatLng(Context context){
+        LatLng pharmacyLatLng = null;
+        try {
+            pharmacyLatLng = LocationServices.loadPhoneLocationViaPostcode(context, this.getPostcode());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return pharmacyLatLng;
     }
 
     @Override
