@@ -38,6 +38,8 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
     private AppCompatEditText textPostcodeWidget;
     private SwitchCompat switchOnLocationWidget;
 
+    private AppCompatEditText postcodeET;
+
     private AppCompatButton submitButton;
     private AppCompatButton resetButton;
 
@@ -68,6 +70,9 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
         textPostcodeWidget.setOnClickListener(this);
         submitButton.setOnClickListener(this);
         resetButton.setOnLongClickListener(this);
+
+        postcodeET = (AppCompatEditText)findViewById(R.id.text_postcode);
+        postcodeET.setOnClickListener(this);
     }
 
     private void initValues(){
@@ -101,6 +106,10 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
         //Adapted from https://stackoverflow.com/a/4531500 Retrieved: 17/3/18
         //Adapted from https://stackoverflow.com/a/8204716 Retrieved 17/3/18
         Pattern POSTCODE_REGEX = Pattern.compile(getString(R.string.postcode_regex));
+
+        if (id == R.id.text_postcode) {
+            postcodeET.setText("");
+        }
 
         Matcher matcher = POSTCODE_REGEX.matcher(textPostcodeWidget.getText());
         //If there is not a valid postcode and the switch is not checked show a toast warning

@@ -36,6 +36,25 @@
 
     </RelativeLayout>
 
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:gravity="end">
+
+        <Button
+            android:id="@+id/button_to_map"
+            android:background="@color/colorThemeMiddle"
+            android:textColor="@color/white"
+            android:padding="4dp"
+            android:textSize="14dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/see_location_on_map" />
+
+    </LinearLayout>
+
     <Space
         android:layout_width="wrap_content"
         android:layout_height="10dp" />

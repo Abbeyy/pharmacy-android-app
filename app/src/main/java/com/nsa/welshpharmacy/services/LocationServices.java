@@ -12,6 +12,7 @@ import android.support.v4.app.ActivityCompat;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
+import com.nsa.welshpharmacy.model.Pharmacy;
 
 import java.io.IOException;
 import java.util.List;
@@ -82,5 +83,28 @@ public class LocationServices {
             Toast.makeText(context, "Turn on location in settings", Toast.LENGTH_SHORT).show();
         }
         return network_enabled;
+    }
+
+    public static Float getUserDistanceToPharmacy(Context context, Pharmacy pharmacy){
+        Float distance = 0f;
+        LatLng userLocation = getUserLocation();
+        //Adapted from: https://stackoverflow.com/a/8050255
+        //May return null is unable to compute the distance
+        if((pharmacy.getPostcode() != null) && (userLocation != null)) {
+            //Get  latitude and longitude of the pharmacy
+            Location locationA = new Location("Point A");
+
+            locationA.setLatitude(pharmacy.getPharmacyLatLng(context).latitude);
+            locationA.setLongitude(pharmacy.getPharmacyLatLng(context).longitude);
+
+            //Get latitude and longitude of the user
+            Location locationB = new Location("point B");
+
+            locationB.setLatitude(userLocation.latitude);
+            locationB.setLongitude(userLocation.longitude);
+
+            distance = locationB.distanceTo(locationA);
+        }
+    return distance;
     }
 }

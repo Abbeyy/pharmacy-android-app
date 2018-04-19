@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.ListViewCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,7 +28,7 @@ import java.util.List;
  * Created by c1714546 on 4/2/2018.
  */
 
-public class ListPharmacysDetailsFragment extends Fragment implements AdapterView.OnItemClickListener {
+public class ListPharmacysDetailsFragment extends Fragment implements AdapterView.OnItemClickListener, View.OnClickListener {
     ListViewCompat lView;
     List<String> aList;
     //Built-in adapter for string datasource
@@ -53,10 +54,13 @@ public class ListPharmacysDetailsFragment extends Fragment implements AdapterVie
         String json = pharmacies.getString("pharmacy" + pharmacyPosition, "Error");
         MockPharmacy pharmacyToDisplay = gson.fromJson(json, MockPharmacy.class);
 
-        Log.i("Pharmacy name: ", pharmacyToDisplay.getName());
-        Log.i("Pharmacy address: ", pharmacyToDisplay.getAddress());
-        Log.i("Pharmacy phone: ", pharmacyToDisplay.getPhoneNumber());
-        Log.i("Pharmacy email: ", pharmacyToDisplay.getEmail());
+//        Log.i("Pharmacy name: ", pharmacyToDisplay.getName());
+//        Log.i("Pharmacy address: ", pharmacyToDisplay.getAddress());
+//        Log.i("Pharmacy phone: ", pharmacyToDisplay.getPhoneNumber());
+//        Log.i("Pharmacy email: ", pharmacyToDisplay.getEmail());
+
+        AppCompatButton btnToMap = (AppCompatButton)v.findViewById(R.id.button_to_map);
+        btnToMap.setOnClickListener(this);
 
         this.lView = v.findViewById(R.id.listview_pharmacys_details);
 
@@ -114,7 +118,7 @@ public class ListPharmacysDetailsFragment extends Fragment implements AdapterVie
                 //Receiver/Message content
                 anEmailIntent.putExtra(Intent.EXTRA_SUBJECT, "Test/Query");
                 anEmailIntent.putExtra(Intent.EXTRA_TEXT, "Test message.");
-                Log.i("About to start email activity...", "yes!");
+                Log.i("starting email activity", "yes!");
 
                 try {
                     startActivity(Intent.createChooser(anEmailIntent, "Send email.."));
@@ -125,5 +129,16 @@ public class ListPharmacysDetailsFragment extends Fragment implements AdapterVie
             default:
                 break;
         }
+    }
+
+    @Override
+    public void onClick(View v) {
+        Toast.makeText(getActivity(), "Launching map...", Toast.LENGTH_SHORT).show();
+
+        //Code will be populated with launching
+        //Mukhtar's activity once his code
+        //is merged successfully with
+        //development as it is compatible
+        //with the remainder of the project!
     }
 }
