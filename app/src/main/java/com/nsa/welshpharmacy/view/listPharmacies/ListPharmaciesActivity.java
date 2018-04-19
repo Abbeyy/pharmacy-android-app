@@ -1,10 +1,9 @@
-package com.nsa.welshpharmacy.view.listpharmacies;
+package com.nsa.welshpharmacy.view.listPharmacies;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-
 
 import com.google.gson.Gson;
 import com.nsa.welshpharmacy.R;
@@ -51,7 +50,7 @@ public class ListPharmaciesActivity extends AppCompatActivity {
         //setting up main fragment of view
         android.support.v4.app.FragmentManager fmtManager = getSupportFragmentManager();
         android.support.v4.app.FragmentTransaction fmtTransaction = fmtManager.beginTransaction();
-        fmtTransaction.add(R.id.fragments_container, new ListPharmaciesFragment());
+        fmtTransaction.add(R.id.fragments_container, new com.nsa.welshpharmacy.view.listPharmacies.ListPharmaciesFragment());
         fmtTransaction.commit();
     }
 

@@ -1,4 +1,4 @@
-package com.nsa.welshpharmacy.view.listpharmacies;
+package com.nsa.welshpharmacy.view.listPharmacies;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -8,7 +8,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.ListViewCompat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -128,7 +127,7 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
         //Then switch fragments.
         this.fmtManager = getActivity().getSupportFragmentManager();
         this.fmtTrans = this.fmtManager.beginTransaction();
-        this.fmtTrans.replace(R.id.fragments_container, new ListPharmacysDetailsFragment()).addToBackStack("fragTwo");
+        this.fmtTrans.replace(R.id.fragments_container, new com.nsa.welshpharmacy.view.listPharmacies.ListPharmacysDetailsFragment()).addToBackStack("fragTwo");
         this.fmtTrans.commit();
     }
 
