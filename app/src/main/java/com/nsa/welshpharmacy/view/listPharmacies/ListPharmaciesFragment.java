@@ -127,7 +127,7 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
         //Then switch fragments.
         this.fmtManager = getActivity().getSupportFragmentManager();
         this.fmtTrans = this.fmtManager.beginTransaction();
-        this.fmtTrans.replace(R.id.fragments_container, new ListPharmacysDetailsFragment()).addToBackStack("fragTwo");
+        this.fmtTrans.replace(R.id.fragments_container, new com.nsa.welshpharmacy.view.listPharmacies.ListPharmacysDetailsFragment()).addToBackStack("fragTwo");
         this.fmtTrans.commit();
     }
 
