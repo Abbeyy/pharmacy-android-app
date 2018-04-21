@@ -4,8 +4,10 @@
 
     <!-- App permissions -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <uses-feature android:name="android.hardware.location.network" />
     <uses-feature android:name="android.hardware.location.gps" />
+
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
@@ -22,21 +24,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.UserFilterPreferenceActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".view.listPharmacies.ListPharmaciesActivity">
-        </activity>
-        <activity android:name=".view.StaffFilterPreferenceActivity">
-        </activity>
-
-        <!--Connect the app with google play services including maps-->
+        <activity
+            android:name=".view.UserFilterPreferenceActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".view.listPharmacies.ListPharmaciesActivity"></activity>
+        <activity android:name=".view.StaffFilterPreferenceActivity"></activity>
+        <activity
+            android:name=".view.MapsActivity"
+            android:exported="true"></activity>
+        <!-- Connect the app with google play services including maps -->
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCahqq_aJohqGLFIgMLUmrXKjQZPSLK8HU"/>
+            android:value="AIzaSyCahqq_aJohqGLFIgMLUmrXKjQZPSLK8HU" />
+
+        <activity
+            android:name=".view.UserFilterPreferenceActivityTest"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:exported="true"/>
     </application>
 
 </manifest>
