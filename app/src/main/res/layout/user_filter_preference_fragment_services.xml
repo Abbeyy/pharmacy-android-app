@@ -1,17 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.LinearLayoutCompat
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <android.support.v7.widget.LinearLayoutCompat
+        android:orientation="vertical"
+        android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <TextView
-            android:text="Services"
-            android:textSize="100dp"
+        android:gravity="center_vertical">
+
+
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/check_minor_ailments"
+                android:layout_alignStart="@+id/check_flu_vaccines"
+                android:text="@string/instructions_service_selection" />
+        </android.support.v7.widget.LinearLayoutCompat>
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/check_minor_ailments"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/check_flu_vaccines"
+            android:layout_alignEnd="@+id/check_flu_vaccines"
+            android:drawableStart="@drawable/ic_check"
+            android:text="@string/service_ailments" />
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/check_flu_vaccines"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/check_health_check"
+            android:layout_alignStart="@+id/check_health_check"
+            android:drawableStart="@drawable/ic_check"
+            android:text="@string/service_flu" />
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/check_health_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/check_smoking"
+            android:layout_alignStart="@+id/check_smoking"
+            android:drawableStart="@drawable/ic_check"
+            android:text="@string/service_health" />
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/check_smoking"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/check_alcohol"
+            android:layout_alignStart="@+id/check_alcohol"
+            android:drawableStart="@drawable/ic_check"
+            android:text="@string/service_smoking" />
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/check_alcohol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/text_postcode"
+            android:layout_alignStart="@+id/text_postcode"
+            android:layout_marginBottom="29dp"
+            android:drawableStart="@drawable/ic_check"
+            android:text="@string/service_alcohol" />
+
+
     </android.support.v7.widget.LinearLayoutCompat>
-
 </android.support.v7.widget.LinearLayoutCompat>
-

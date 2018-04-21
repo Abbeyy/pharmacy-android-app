@@ -1,16 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.LinearLayoutCompat
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v7.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/text_postcode"
+            android:layout_width="@dimen/widget_width_1"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/textView3"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="28dp"
+            android:maxLength="50"
+            android:text="@string/instruction_postcode" />
+
         <TextView
-            android:textSize="100dp"
-            android:text="location"
+            android:id="@+id/textView3"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent" />
-    </android.support.v7.widget.LinearLayoutCompat>
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/submit_button"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="44dp"
+            android:text="@string/location_divider" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_above="@+id/submit_button"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:paddingStart="60dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal">
+
+                <android.support.v7.widget.SwitchCompat
+                    android:id="@+id/switch_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/location_permission" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/submit_button"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/reset_button"
+            android:layout_alignStart="@+id/text_postcode"
+            android:drawablePadding="@dimen/drawablePadding"
+            android:drawableStart="@drawable/ic_check"
+            android:text="@string/button_submit_text" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/reset_button"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/check_minor_ailments"
+            android:layout_marginBottom="37dp"
+            android:drawablePadding="@dimen/drawablePadding"
+            android:drawableStart="@drawable/ic_check"
+            android:text="@string/button_filter_text" />
 
 </android.support.v7.widget.LinearLayoutCompat>
