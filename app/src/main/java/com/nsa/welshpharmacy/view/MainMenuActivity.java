@@ -32,7 +32,7 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
 
-        currentLang = getPreferences(Context.MODE_PRIVATE);
+        currentLang = getSharedPreferences("currentLanguage", Context.MODE_PRIVATE);
 
         changeLangToEnglish = (AppCompatButton) findViewById(R.id.lang_to_english);
         changeLangToWelsh = (AppCompatButton) findViewById(R.id.lang_to_welsh);
