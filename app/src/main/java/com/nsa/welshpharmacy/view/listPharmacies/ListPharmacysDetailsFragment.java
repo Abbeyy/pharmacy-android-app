@@ -134,7 +134,7 @@ public class ListPharmacysDetailsFragment extends Fragment implements AdapterVie
     @Override
     public void onClick(View v) {
         if (currentLocale == "cy") {
-            Toast.makeText(getActivity(), "Lansio'r map...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Rhedeg y map...", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(getActivity(), "Launching map...", Toast.LENGTH_SHORT).show();
         }

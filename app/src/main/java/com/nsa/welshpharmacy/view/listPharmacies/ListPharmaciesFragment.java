@@ -95,7 +95,11 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
         SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
         String date_today = format.format(todaysDate);
 
-        dateTV.setText("  Today's Date: " + date_today);
+        if (currentLocale == "cy") {
+            dateTV.setText(" Dyddiad heddiw: " + date_today);
+        } else {
+            dateTV.setText("  Today's Date: " + date_today);
+        }
     }
 
     public void generatePharmacies(int numOfPharmacies) {
