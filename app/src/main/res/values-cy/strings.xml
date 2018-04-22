@@ -31,15 +31,15 @@
 
 
     <string name="pharmacy_one">Fferyllfa 1</string>
-    <string name="enter_valid_location" translatable="false">Naill ai rhowch god post dilys neu ganiatáu olrhain lleoliad</string>
-    <string name="list_of_pharmacies" translatable="false">Rhestr o Fferyllfeydd</string>
-    <string name="toast_listview_item_tapped_on" translatable="false">Defnyddiwr wedi dewis %s</string>
-    <string name="Welcome" translatable="false">Cymraeg Fferyllfeydd</string>
-    <string name="GeneralUsers" translatable="false">Defnyddwyr cyffredinol</string>
-    <string name="Pharmacist" translatable="false">Fferyllwyr</string>
-    <string name="Language" translatable="false">Saesneg</string>
-    <string name="RateTheApp" translatable="false">Cyfraddwch yr cais</string>
-    <string name="services_in_welsh" translatable="false">Gwasanaethau yn Gymraeg</string>
+    <string name="enter_valid_location">Naill ai rhowch god post dilys neu ganiatáu olrhain lleoliad</string>
+    <string name="list_of_pharmacies">Rhestr o Fferyllfeydd</string>
+    <string name="toast_listview_item_tapped_on">Defnyddiwr wedi dewis %s</string>
+    <string name="Welcome">Cymraeg Fferyllfeydd</string>
+    <string name="GeneralUsers">Defnyddwyr cyffredinol</string>
+    <string name="Pharmacist">Fferyllwyr</string>
+    <string name="Language">Saesneg</string>
+    <string name="RateTheApp">Cyfraddwch yr cais</string>
+    <string name="services_in_welsh">Gwasanaethau yn Gymraeg</string>
     <string name="contact_details">Manylion cyswllt</string>
     <string name="location_catch_statement">Ni ellid pennu eich lleoliad (Côd post)</string>
     <string name="see_location_on_map">Gweler y lleoliad ar y map</string>

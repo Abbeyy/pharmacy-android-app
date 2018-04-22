@@ -35,7 +35,6 @@ public class ListPharmaciesActivity extends AppCompatActivity {
                     "Rees & Moore Pharmacy", "M W Philips",
                     "MW Phillips Chemists"};
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
