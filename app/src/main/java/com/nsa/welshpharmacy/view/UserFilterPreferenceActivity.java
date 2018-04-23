@@ -63,7 +63,7 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
         this.submitButton = this.findViewById(R.id.submit_button);
         this.resetButton = this.findViewById(R.id.reset_button);
 
-        this.sharedPreferences = this.getPreferences(MODE_PRIVATE);
+        this.sharedPreferences = this.getSharedPreferences("", MODE_PRIVATE);
 
         initValues();
 
