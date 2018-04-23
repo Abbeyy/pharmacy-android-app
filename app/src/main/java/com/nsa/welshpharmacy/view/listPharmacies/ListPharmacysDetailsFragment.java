@@ -89,19 +89,16 @@ public class ListPharmacysDetailsFragment extends Fragment implements AdapterVie
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch (position) {
-//            case 2:
+            case 2:
 //                //Get phone number first
-//                String phoneNumber = this.aList.get(2);
-//                Log.i("Got phone number", phoneNumber);
+                String phoneNumber = this.aList.get(2);
 //                //Create phone call intent
-//                Intent aPhoneCallIntent = new Intent(Intent.ACTION_CALL);
-//                Log.i("Created phone intent", "yes!");
+                Intent aPhoneCallIntent = new Intent(Intent.ACTION_DIAL);
 //                //Pass information to intent
-//                aPhoneCallIntent.setData(Uri.parse("tel:"+phoneNumber));
-//                Log.i("Successfully passed intent data", "Yes!");
-//                //Start intent
-//                startActivity(aPhoneCallIntent);
-//                break;
+                aPhoneCallIntent.setData(Uri.parse("tel:"+phoneNumber));
+                //Start intent
+                startActivity(aPhoneCallIntent);
+                break;
             case 3 :
                 //THE BELOW WORKS IF THE USER SELECTS TO
                 //SEND MAIL VIA "MESSAGES" ON ANDROIDS OPTIONS.
