@@ -18,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.nsa.welshpharmacy.R;
+import com.nsa.welshpharmacy.controller.PharmacyMapActivity;
 import com.nsa.welshpharmacy.model.Pharmacy;
 
 import java.util.ArrayList;
@@ -155,10 +156,7 @@ public class ListPharmacysDetailsFragment extends Fragment implements AdapterVie
             Toast.makeText(getActivity(), "Launching map...", Toast.LENGTH_SHORT).show();
         }
 
-        //Code will be populated with launching
-        //Mukhtar's activity once his code
-        //is merged successfully with
-        //development as it is compatible
-        //with the remainder of the project!
+        Intent mapActivity = new Intent(getActivity(), PharmacyMapActivity.class);
+        startActivity(mapActivity);
     }
 }
