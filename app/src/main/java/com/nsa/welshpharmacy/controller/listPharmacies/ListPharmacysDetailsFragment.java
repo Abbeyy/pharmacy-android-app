@@ -94,44 +94,57 @@ public class ListPharmacysDetailsFragment extends Fragment implements AdapterVie
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch (position) {
-            case 2:
-//                //Get phone number first
-                String phoneNumber = this.aList.get(2);
-//                //Create phone call intent
+            case 1:
+//              //Get phone number first
+                String number = this.aList.get(1);
+                String phoneNumber = removeWhiteSpace(number);
+//              //Create phone call intent
                 Intent aPhoneCallIntent = new Intent(Intent.ACTION_DIAL);
-//                //Pass information to intent
+//              //Pass information to intent
 
                 aPhoneCallIntent.setData(Uri.parse("tel:"+phoneNumber));
-                //Start intent
                 startActivity(aPhoneCallIntent);
                 break;
-            case 3 :
-                //THE BELOW WORKS IF THE USER SELECTS TO
-                //SEND MAIL VIA "MESSAGES" ON ANDROIDS OPTIONS.
+                //app crashing?!...
+//            case 3 :
 
-                //Get email address first
-                String emailAddress = this.aList.get(3);
-                //Create emailing intent
-                Intent anEmailIntent = new Intent(Intent.ACTION_SEND);
-                //Define mail data
-                anEmailIntent.setData(Uri.parse("mailto:"));
-                anEmailIntent.setType("text/plain");
-                //Define to Who
-                anEmailIntent.putExtra(Intent.EXTRA_EMAIL, emailAddress);
-                //Receiver/Message content
-                anEmailIntent.putExtra(Intent.EXTRA_SUBJECT, "Test/Query");
-                anEmailIntent.putExtra(Intent.EXTRA_TEXT, "Test message.");
-                Log.i("starting email activity", "yes!");
+            //Email to be mocked in database and then intent used.
 
-                try {
-                    startActivity(Intent.createChooser(anEmailIntent, "Send email.."));
-                } catch (android.content.ActivityNotFoundException ex) {
-                    Toast.makeText(getActivity(), "There's no email client installed!", Toast.LENGTH_SHORT).show();
-                }
-                break;
+//                //THE BELOW WORKS IF THE USER SELECTS TO
+//                //SEND MAIL VIA "MESSAGES" ON ANDROIDS OPTIONS.
+//
+//                //Get email address first
+//                String emailAddress = this.aList.get(3);
+//                //Create emailing intent
+//                Intent anEmailIntent = new Intent(Intent.ACTION_SEND);
+//                //Define mail data
+//                anEmailIntent.setData(Uri.parse("mailto:"));
+//                anEmailIntent.setType("text/plain");
+//                //Define to Who
+//                anEmailIntent.putExtra(Intent.EXTRA_EMAIL, emailAddress);
+//                //Receiver/Message content
+//                anEmailIntent.putExtra(Intent.EXTRA_SUBJECT, "Test/Query");
+//                anEmailIntent.putExtra(Intent.EXTRA_TEXT, "Test message.");
+//                Log.i("starting email activity", "yes!");
+//
+//                try {
+//                    startActivity(Intent.createChooser(anEmailIntent, "Send email.."));
+//                } catch (android.content.ActivityNotFoundException ex) {
+//                    Toast.makeText(getActivity(), "There's no email client installed!", Toast.LENGTH_SHORT).show();
+//                }
+//                break;
             default:
                 break;
         }
+    }
+
+    public String removeWhiteSpace(String number) {
+        String result = "";
+        for(Character num : number.toCharArray()) {
+            if(Character.isWhitespace(num) == false)
+                result = result + num;
+        }
+        return result;
     }
 
     @Override
