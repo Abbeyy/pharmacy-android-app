@@ -1,4 +1,4 @@
-package com.nsa.welshpharmacy.view;
+package com.nsa.welshpharmacy.controller;
 
 import android.Manifest;
 import android.content.Intent;
@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 import com.nsa.welshpharmacy.R;
 import com.nsa.welshpharmacy.services.LocationServices;
-import com.nsa.welshpharmacy.view.listPharmacies.ListPharmaciesActivity;
+import com.nsa.welshpharmacy.controller.listPharmacies.ListPharmaciesActivity;
 
 import java.io.IOException;
 import java.util.regex.Matcher;

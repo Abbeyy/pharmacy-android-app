@@ -15,19 +15,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.MainMenuActivity">
+        <activity android:name=".controller.MainMenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.UserFilterPreferenceActivity"
+        <activity android:name=".controller.UserFilterPreferenceActivity"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".view.listPharmacies.ListPharmaciesActivity">
+        <activity android:name=".controller.listPharmacies.ListPharmaciesActivity">
         </activity>
-        <activity android:name=".view.StaffFilterPreferenceActivity">
+        <activity android:name=".controller.StaffFilterPreferenceActivity">
         </activity>
 
         <!--Connect the app with google play services including maps-->

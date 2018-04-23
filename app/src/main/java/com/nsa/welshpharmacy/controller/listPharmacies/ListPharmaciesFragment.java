@@ -1,4 +1,4 @@
-package com.nsa.welshpharmacy.view.listPharmacies;
+package com.nsa.welshpharmacy.controller.listPharmacies;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -114,16 +114,24 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
 
     public void expandPharmacyInfo(int position) {
         //First updateSharedPrefs to store position data in activity.
+        /*
         SharedPreferences sharedPrefs = this.getActivity().getSharedPreferences("pharmacyPos", Context.MODE_PRIVATE);
         SharedPreferences.Editor edit = sharedPrefs.edit();
         edit.putInt("position", position);
         edit.apply();
-
+        */
+        // https://stackoverflow.com/a/46298244
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("selectedPharmacy", pharmacies.get(position));
+        //getParentFragment().setArguments(bundle);
+        ListPharmacysDetailsFragment listPharmacysDetailsFragment = new ListPharmacysDetailsFragment();
+        listPharmacysDetailsFragment.setArguments(bundle);
         //Then switch fragments.
-        this.fmtManager = getActivity().getSupportFragmentManager();
-        this.fmtTrans = this.fmtManager.beginTransaction();
-        this.fmtTrans.replace(R.id.fragments_container, new com.nsa.welshpharmacy.view.listPharmacies.ListPharmacysDetailsFragment()).addToBackStack("fragTwo");
-        this.fmtTrans.commit();
+        fmtManager = getActivity().getSupportFragmentManager();
+        fmtTrans = fmtManager.beginTransaction();
+        fmtTrans.replace(R.id.fragments_container, listPharmacysDetailsFragment).addToBackStack("fragTwo");
+        fmtTrans.addToBackStack(null);
+        fmtTrans.commit();
     }
 
     @Override

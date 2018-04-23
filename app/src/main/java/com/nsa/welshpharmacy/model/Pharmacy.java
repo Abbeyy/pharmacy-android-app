@@ -35,14 +35,17 @@ public class Pharmacy  implements Parcelable {
     };
 
     public String id;
+    public String email;
     public String name;
     public String phone;
     public String postcode;
     public Map<String, PharmacyServiceAvailability> services;
     public String website;
 
-    public Pharmacy(String id, String name, String phone, String postcode, Map<String, PharmacyServiceAvailability> services, String website) {
+    public Pharmacy(String id,String email, String name, String phone, String postcode, Map<String,
+            PharmacyServiceAvailability> services, String website) {
         this.id = id;
+        this.email = email;
         this.name = name;
         this.phone = phone;
         this.postcode = postcode;
@@ -63,6 +66,8 @@ public class Pharmacy  implements Parcelable {
     public String getId() {
         return id;
     }
+
+    public String getEmail(){ return email;}
 
     public String getName() {
         return name;
@@ -87,6 +92,7 @@ public class Pharmacy  implements Parcelable {
     //Parcel constructor
     public Pharmacy(Parcel in) {
         id = in.readString();
+        email = in.readString();
         name = in.readString();
         phone = in.readString();
         postcode = in.readString();
@@ -104,6 +110,7 @@ public class Pharmacy  implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags){
         dest.writeString(id);
+        dest.writeString(email);
         dest.writeString(name);
         dest.writeString(phone);
         dest.writeString(postcode);
@@ -128,6 +135,7 @@ public class Pharmacy  implements Parcelable {
     public String toString() {
         return "Pharmacy{" +
                 "id=" + id +
+                ", email='" + email + '\'' +
                 ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
                 ", postcode='" + postcode + '\'' +
