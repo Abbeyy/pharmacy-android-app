@@ -6,8 +6,6 @@ import android.support.annotation.RequiresApi;
 
 import com.nsa.welshpharmacy.model.Pharmacy;
 import com.nsa.welshpharmacy.model.Utils;
-import com.nsa.welshpharmacy.services.FirebaseServices;
-import com.nsa.welshpharmacy.services.LocationServices;
 
 import java.util.HashMap;
 import java.util.List;
@@ -22,12 +20,14 @@ public class PharmacyStore {
 
     private List<Pharmacy> pharmacies = null;
 
+    /*
     public List<Pharmacy> getPharmacies(){
         if(pharmacies == null){
             pharmacies = FirebaseServices.loadPharmacies();
         }
         return pharmacies;
     }
+    */
 
     /**
      * Returns a sorted map of pharmacy objects with their corresponding distance to the user location
@@ -39,12 +39,14 @@ public class PharmacyStore {
     @RequiresApi(api = Build.VERSION_CODES.N)
     public Map<Pharmacy, Float> sortPharmaciesByLocation(Context context){
         Map<Pharmacy, Float> userDistanceToPharmacies = new HashMap<>();
+        /*
         for (Pharmacy pharmacy : this.getPharmacies()){
             if(LocationServices.getUserLocation() != null) {
                 Float distance = LocationServices.getUserDistanceToPharmacy(context, pharmacy);
                 userDistanceToPharmacies.put(pharmacy, distance);
             }
         }
+        */
         Map<Pharmacy, Float> sortedPharmaciesMap = Utils.sortByValue(userDistanceToPharmacies);
         return sortedPharmaciesMap;
     }

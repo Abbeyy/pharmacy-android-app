@@ -16,35 +16,30 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 import com.nsa.welshpharmacy.R;
-import com.nsa.welshpharmacy.model.MockPharmacy;
+import com.nsa.welshpharmacy.model.Pharmacy;
+import com.nsa.welshpharmacy.services.FirebaseServices;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Vector;
 
 /**
  * Created by c1714546 on 3/18/2018.
  */
 
-public class ListPharmaciesFragment extends Fragment implements AdapterView.OnItemClickListener {
-    ListViewCompat lView;
-    List<String> aList;
-    //Built-in adapter for string datasource
-    ArrayAdapter<String> arrayAdpt;
-    public static Vector<MockPharmacy> pharmaciesContainer = new Vector<MockPharmacy>();
-    private String[] pharmacyNames = new String[]
-            {"Boots", "Well", "Cardiff Royal Infirmary Pharmacy",
-                    "Clifton Pharmacy", "Pearn's Pharmacies Ltd",
-                    "Superdrug Pharmacy", "Woodville Road Pharmacy",
-                    "Lloyds Pharmacy Ltd", "Central Pharmacy",
-                    "Crwys Pharmacy", "The Co-operative Pharmacy",
-                    "Rees & Moore Pharmacy", "M W Philips",
-                    "MW Phillips Chemists"};
+public class ListPharmaciesFragment extends Fragment implements AdapterView.OnItemClickListener, ValueEventListener {
+
+    ListViewCompat lv;
+    List<Pharmacy> pharmacies;
+    List<String> listOfNames;
+    private ArrayAdapter<String> la;
+
     private FragmentManager fmtManager;
     private FragmentTransaction fmtTrans;
     private SharedPreferences currentLang;
@@ -64,25 +59,23 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
         currentLang = getActivity().getSharedPreferences("currentLanguage", Context.MODE_PRIVATE);
         currentLocale = currentLang.getString("state", "default");
 
-        this.lView = v.findViewById(R.id.listview_pharmacies); //line 64
+        lv = v.findViewById(R.id.listview_pharmacies); //line 64
 
-        //Created mock datasource of an arraylist of strings;
-        this.aList = new ArrayList<>();
-        generatePharmacies(pharmacyNames.length);
+        pharmacies = new ArrayList<>();
+        listOfNames = new ArrayList<>();
 
-        this.arrayAdpt = new ArrayAdapter<String>(
+        FirebaseServices.loadPharmacies(this);
+
+        la = new ArrayAdapter<String>(
                 getActivity(),
                 android.R.layout.simple_list_item_1,
-                this.aList
-        );
+                listOfNames);
 
-        this.lView.setAdapter(this.arrayAdpt);
-        this.lView.setOnItemClickListener(this);
+        lv.setAdapter(la);
+        lv.setOnItemClickListener(this);
 
         //date stuff
         setUpDate(v);
-
-
         return v;
     }
 
@@ -91,9 +84,9 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
         // https://stackoverflow.com/questions/40310773/android-studio-textview-show-date
         TextView dateTV = (TextView)v.findViewById(R.id.date_text_view);
 
-        Date todaysDate = Calendar.getInstance().getTime();
+        Date currentDate = Calendar.getInstance().getTime();
         SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
-        String date_today = format.format(todaysDate);
+        String date_today = format.format(currentDate);
 
         if (currentLocale == "cy") {
             dateTV.setText(" Dyddiad heddiw: " + date_today);
@@ -102,29 +95,16 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
         }
     }
 
-    public void generatePharmacies(int numOfPharmacies) {
-        SharedPreferences pharmsInstances = getActivity().getSharedPreferences("pharmacies", Context.MODE_PRIVATE);
-        for (int k = 0; k < numOfPharmacies; k++) {
-
-            Gson gson = new Gson();
-            String json = pharmsInstances.getString("pharmacy" + k, "Error");
-            MockPharmacy aPharmacy = gson.fromJson(json, MockPharmacy.class);
-
-            pharmaciesContainer.add(aPharmacy);
-            this.aList.add(aPharmacy.getName());
-        }
-    }
-
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //1. Toast
         if (currentLocale == "cy") {
             Toast.makeText(getActivity(),
-                    String.format("Defnyddiwr wedi dewis %s", lView.getItemAtPosition(position)),
+                    String.format("Defnyddiwr wedi dewis %s", lv.getItemAtPosition(position)),
                     Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(getActivity(),
-                    String.format("User has selected %s", lView.getItemAtPosition(position)),
+                    String.format("User has selected %s", lv.getItemAtPosition(position)),
                     Toast.LENGTH_SHORT).show();
         }
 
@@ -146,4 +126,22 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
         this.fmtTrans.commit();
     }
 
+    @Override
+    public void onDataChange(DataSnapshot dataSnapshot){
+        // see:  https://firebase.google.com/docs/database/android/lists-of-data#listen_for_value_events
+        // Retrieve all  Pharmacy records from the Firebase database in one go
+        for(DataSnapshot pharmacySnapshot : dataSnapshot.getChildren()){
+            Pharmacy pharmacy = pharmacySnapshot.getValue(Pharmacy.class);
+            pharmacy.setId(pharmacySnapshot.getKey());
+            System.out.println("pharmacy : " + pharmacy);
+            pharmacies.add(pharmacy);
+            listOfNames.add(pharmacy.getName());
+        }
+        la.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onCancelled(DatabaseError databaseError){
+        System.out.println("The read failed: " + databaseError.getCode());
+    }
 }
