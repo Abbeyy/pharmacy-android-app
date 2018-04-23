@@ -36,6 +36,7 @@ public class ListPharmacysDetailsFragment extends Fragment implements AdapterVie
     private SharedPreferences currentLang;
     private String currentLocale;
     //private Pharmacy recievedPharmacy;
+    private SharedPreferences pharmacyLatLang;
 
     public ListPharmacysDetailsFragment() {
 
@@ -52,6 +53,11 @@ public class ListPharmacysDetailsFragment extends Fragment implements AdapterVie
 
         Bundle bundle = this.getArguments();
         Pharmacy recievedPharmacy = bundle.getParcelable("selectedPharmacy");
+
+//        SharedPreferences.Editor edit = pharmacyLatLang.edit();
+//        edit.putString("LatitudeLongitude", recievedPharmacy.getPharmacyLatLng(getActivity()).toString());
+        Log.i("DEV lat lang", recievedPharmacy.getPharmacyLatLng(getActivity()).toString());
+//        edit.apply();
         /*
         SharedPreferences sharedPrefs = this.getActivity().getSharedPreferences("pharmacyPos", Context.MODE_PRIVATE);
         int pharmacyPosition = sharedPrefs.getInt("position", -1);
