@@ -29,6 +29,10 @@ import java.util.regex.Pattern;
  */
 
 public class UserFilterPreferenceActivity extends AppCompatActivity implements View.OnClickListener, View.OnLongClickListener, SharedPreferences.OnSharedPreferenceChangeListener{
+    private String welshLanguageCode = "cy";
+    private String englishLanguageCode = "en";
+    private AppCompatButton changeLangToEnglish, changeLangToWelsh;
+    private SharedPreferences currentLang;
 
     private AppCompatCheckBox checkMinorAilments;
     private AppCompatCheckBox checkFluVac;
