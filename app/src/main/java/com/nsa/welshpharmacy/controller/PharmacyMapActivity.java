@@ -21,6 +21,9 @@ public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyC
     // and Longitude and ensure it is rounded to 0dp, and then
     // pop this into a marker.
 
+    //Ensure mocked data for pharmacy's comes from google maps
+    //and we take the numbers beneath NS/, E/W latitude/longitude...
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +49,7 @@ public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyC
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng cardiffCityCentre = new LatLng(-51, 3);
+        LatLng cardiffCityCentre = new LatLng(-3.179100, 51.481600);
 
         //round to 0dp.
         mMap.addMarker(new MarkerOptions().position(cardiffCityCentre).title("Cardiff City Centre"));
