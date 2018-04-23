@@ -49,13 +49,15 @@ public class FirebaseServices {
         return languages;
     }
 
-    public static List<Pharmacy> loadPharmacies(){
+    public static void loadPharmacies(ValueEventListener listener){
         final ArrayList<Pharmacy> pharmacies = new ArrayList<Pharmacy>();
         //Get a reference to the pharmacies
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference("pharmacies");
 
         // Attach a listener to read the data at our pharmacies reference
+        ref.addValueEventListener(listener);
+        /*
         ref.addValueEventListener(new ValueEventListener(){
             @Override
             public void onDataChange(DataSnapshot dataSnapshot){
@@ -75,6 +77,7 @@ public class FirebaseServices {
             }
         });
         return pharmacies;
+        */
     }
 
     public static List<PharmacyService> loadServices(){

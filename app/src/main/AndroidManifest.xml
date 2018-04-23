@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-feature android:name="android.hardware.location.network" />
     <uses-feature android:name="android.hardware.location.gps" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -15,19 +14,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.MainMenuActivity">
+        <!--<activity android:name=".view.MainMenuActivity">-->
+        <!--</activity>-->
+        <activity android:name=".controller.UserFilterPreferenceActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.UserFilterPreferenceActivity"
-            android:screenOrientation="portrait">
+        <activity android:name=".controller.listPharmacies.ListPharmaciesActivity">
         </activity>
-        <activity android:name=".view.listPharmacies.ListPharmaciesActivity">
-        </activity>
-        <activity android:name=".view.StaffFilterPreferenceActivity">
+        <activity android:name=".controller.StaffFilterPreferenceActivity">
         </activity>
 
         <!--Connect the app with google play services including maps-->
