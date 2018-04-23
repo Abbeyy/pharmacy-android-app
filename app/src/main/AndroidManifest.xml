@@ -7,8 +7,11 @@
 
     <uses-feature android:name="android.hardware.location.network" />
     <uses-feature android:name="android.hardware.location.gps" />
+<<<<<<< HEAD
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
+=======
+>>>>>>> 8d729cf71e5d935001364af6d9a67cca27f73f3f
 
     <application
         android:allowBackup="true"

@@ -3,6 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Welsh-Pharmacy-Team4.iml" filepath="$PROJECT_DIR$/Welsh-Pharmacy-Team4.iml" />
+<<<<<<< HEAD
+=======
+      <module fileurl="file://C:\Users\c1712480\AndroidStudioProjects\CP\WelshPharmacy\Welsh-Pharmacy-Team4.iml" filepath="C:\Users\c1712480\AndroidStudioProjects\CP\WelshPharmacy\Welsh-Pharmacy-Team4.iml" />
+      <module fileurl="file://C:\Users\c1714546\Documents\Android6122\WelshPharmacy\Project\Welsh-Pharmacy-Team4\WelshPharmacy.iml" filepath="C:\Users\c1714546\Documents\Android6122\WelshPharmacy\Project\Welsh-Pharmacy-Team4\WelshPharmacy.iml" />
+>>>>>>> 8d729cf71e5d935001364af6d9a67cca27f73f3f
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
