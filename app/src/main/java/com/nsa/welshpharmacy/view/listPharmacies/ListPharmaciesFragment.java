@@ -8,7 +8,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.ListViewCompat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,6 +47,8 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
                     "MW Phillips Chemists"};
     private FragmentManager fmtManager;
     private FragmentTransaction fmtTrans;
+    private SharedPreferences currentLang;
+    private String currentLocale;
 
 
     public ListPharmaciesFragment() {
@@ -60,6 +61,8 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
         //inflating layout list_pharmacies_fragment_one_layout as layout for my fragment, holding both
         //textviews and the listview!
 
+        currentLang = getActivity().getSharedPreferences("currentLanguage", Context.MODE_PRIVATE);
+        currentLocale = currentLang.getString("state", "default");
 
         this.lView = v.findViewById(R.id.listview_pharmacies); //line 64
 
@@ -92,7 +95,11 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
         SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
         String date_today = format.format(todaysDate);
 
-        dateTV.setText("  Today's Date: " + date_today);
+        if (currentLocale == "cy") {
+            dateTV.setText(" Dyddiad heddiw: " + date_today);
+        } else {
+            dateTV.setText("  Today's Date: " + date_today);
+        }
     }
 
     public void generatePharmacies(int numOfPharmacies) {
@@ -111,9 +118,16 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         //1. Toast
-        Toast.makeText(getActivity(),
-                String.format("User has selected %s", lView.getItemAtPosition(position)),
-                Toast.LENGTH_SHORT).show();
+        if (currentLocale == "cy") {
+            Toast.makeText(getActivity(),
+                    String.format("Defnyddiwr wedi dewis %s", lView.getItemAtPosition(position)),
+                    Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getActivity(),
+                    String.format("User has selected %s", lView.getItemAtPosition(position)),
+                    Toast.LENGTH_SHORT).show();
+        }
+
         //2. Switch Fragments
         expandPharmacyInfo(position);
     }
@@ -128,7 +142,7 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
         //Then switch fragments.
         this.fmtManager = getActivity().getSupportFragmentManager();
         this.fmtTrans = this.fmtManager.beginTransaction();
-        this.fmtTrans.replace(R.id.fragments_container, new ListPharmacysDetailsFragment());
+        this.fmtTrans.replace(R.id.fragments_container, new com.nsa.welshpharmacy.view.listPharmacies.ListPharmacysDetailsFragment()).addToBackStack("fragTwo");
         this.fmtTrans.commit();
     }
 

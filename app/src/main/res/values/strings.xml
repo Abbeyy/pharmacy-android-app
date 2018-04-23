@@ -28,15 +28,16 @@
 
 
     <string name="pharmacy_one">Pharmacy 1</string>
-    <string name="enter_valid_location" translatable="false">Either enter a valid postcode or allow location tracking</string>
-    <string name="list_of_pharmacies" translatable="false">List of Pharmacies</string>
-    <string name="toast_listview_item_tapped_on" translatable="false">User has selected %s</string>
-    <string name="Welcome" translatable="false">Welsh pharmacies</string>
-    <string name="GeneralUsers" translatable="false">General users</string>
-    <string name="Pharmacist" translatable="false">Pharmacists</string>
-    <string name="Language" translatable="false">English</string>
-    <string name="RateTheApp" translatable="false">Rate the app</string>
-    <string name="services_in_welsh" translatable="false">Services in Welsh</string>
+    <string name="enter_valid_location">Either enter a valid postcode or allow location tracking</string>
+    <string name="list_of_pharmacies">List of Pharmacies</string>
+    <string name="toast_listview_item_tapped_on">User has selected %s</string>
+    <string name="Welcome">Welsh pharmacies</string>
+    <string name="GeneralUsers">General users</string>
+    <string name="Pharmacist">Pharmacists</string>
+    <string name="Language">Cymraeg</string>
+    <string name="RateTheApp">Rate the app</string>
+    <string name="services_in_welsh">Services in Welsh</string>
     <string name="contact_details">Contact Details</string>
     <string name="location_catch_statement">Location could not be determined from postcode</string>
+    <string name="see_location_on_map">See location on Map</string>
 </resources>

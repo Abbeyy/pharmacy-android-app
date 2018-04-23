@@ -1,5 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">WelshPharmacy</string>
-    <string name="Welcome">" croeso"</string>
+    <!--<string name="app_name">WelshPharmacy</string>-->
+    <!--<string name="Welcome">" croeso"</string>-->
+    <string name="app_name">CymraegFferyllfa</string>
+    <string name="get_list_buttontext" translatable="false">Cael y rhestr</string>
+
+    <!-- General -->
+    <string name="service_ailments">Mân afiechydon</string>
+    <string name="service_flu">Brechu ffliw</string>
+    <string name="service_health">NHS Gwiriad iechyd</string>
+    <string name="service_smoking">Gwasanaeth stopio ysmygu</string>
+    <string name="service_alcohol">Cyngor ar yfed alcohol</string>
+
+    <!-- Filter Preference activity -->
+    <string name="instructions_service_selection">Dewiswch y gwasanaethau sydd eu hangen</string>
+    <string name="instruction_postcode">Rhowch eich cod post</string>
+    <!--Retrieved from: https://howtodoinjava.com/regex/java-regex-validate-u-k-postal-codes-postcodes/ 17/3/18-->
+    <string name="postcode_regex" translatable="false">^[A-Z]{1,2}[0-9R][0-9A-Z]? [0-9][ABD-HJLNP-UW-Z]{2}$</string>
+    <string name="location_divider" translatable="false">------------ NEU ------------</string>
+    <string name="postcode_invalid" translatable="false">Nid yw\'r cod post yn ddilys</string>
+    <string name="location_permission" translatable="false">Caniatáu olrhain lleoliad</string>
+    <string name="button_submit_text">Cyflwyno</string>
+    <string name="button_filter_text">Ailosodiad</string>
+    <string name="reset_text">Ffurfweddiad ailosodiad</string>
+
+    StaffFilterPreferenceActivity-->
+    <string name="toggle_available">Ar gael</string>
+    <string name="toggle_unavailable">Ddim ar gael</string>
+    <string name="save_button">Arbed</string>
+
+
+    <string name="pharmacy_one">Fferyllfa 1</string>
+    <string name="enter_valid_location">Naill ai rhowch god post dilys neu ganiatáu olrhain lleoliad</string>
+    <string name="list_of_pharmacies">Rhestr o Fferyllfeydd</string>
+    <string name="toast_listview_item_tapped_on">Defnyddiwr wedi dewis %s</string>
+    <string name="Welcome">Cymraeg Fferyllfeydd</string>
+    <string name="GeneralUsers">Defnyddwyr cyffredinol</string>
+    <string name="Pharmacist">Fferyllwyr</string>
+    <string name="Language">Saesneg</string>
+    <string name="RateTheApp">Cyfraddwch yr cais</string>
+    <string name="services_in_welsh">Gwasanaethau yn Gymraeg</string>
+    <string name="contact_details">Manylion cyswllt</string>
+    <string name="location_catch_statement">Ni ellid pennu eich lleoliad (Côd post)</string>
+    <string name="see_location_on_map">Gweler y lleoliad ar y map</string>
 </resources>
