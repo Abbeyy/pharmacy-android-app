@@ -1,5 +1,6 @@
 package com.nsa.welshpharmacy.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 /**
@@ -8,7 +9,7 @@ import java.util.HashMap;
  * Created by c1712480 on 30/03/2018.
  */
 
-public class PharmacyServiceAvailability {
+public class PharmacyServiceAvailability implements Serializable {
 
     public HashMap<String, Boolean> defaultAvailability;
 
