@@ -1,4 +1,4 @@
-package com.nsa.welshpharmacy.view;
+package com.nsa.welshpharmacy.controller;
 
 /**
  * Created by c1712480 on 14/03/2018.
