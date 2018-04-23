@@ -33,6 +33,8 @@ public class ListPharmacysDetailsFragment extends Fragment implements AdapterVie
     List<String> aList;
     //Built-in adapter for string datasource
     ArrayAdapter<String> arrayAdpt;
+    private SharedPreferences currentLang;
+    private String currentLocale;
 
     public ListPharmacysDetailsFragment() {
 
@@ -42,6 +44,9 @@ public class ListPharmacysDetailsFragment extends Fragment implements AdapterVie
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.list_pharmacys_details_fragment_two_layout, container, false);
+
+        currentLang = getActivity().getSharedPreferences("currentLanguage", Context.MODE_PRIVATE);
+        currentLocale = currentLang.getString("state", "default");
 
         SharedPreferences sharedPrefs = this.getActivity().getSharedPreferences("pharmacyPos", Context.MODE_PRIVATE);
         int pharmacyPosition = sharedPrefs.getInt("position", -1);
@@ -53,11 +58,6 @@ public class ListPharmacysDetailsFragment extends Fragment implements AdapterVie
         Gson gson = new Gson();
         String json = pharmacies.getString("pharmacy" + pharmacyPosition, "Error");
         MockPharmacy pharmacyToDisplay = gson.fromJson(json, MockPharmacy.class);
-
-//        Log.i("Pharmacy name: ", pharmacyToDisplay.getName());
-//        Log.i("Pharmacy address: ", pharmacyToDisplay.getAddress());
-//        Log.i("Pharmacy phone: ", pharmacyToDisplay.getPhoneNumber());
-//        Log.i("Pharmacy email: ", pharmacyToDisplay.getEmail());
 
         AppCompatButton btnToMap = (AppCompatButton)v.findViewById(R.id.button_to_map);
         btnToMap.setOnClickListener(this);
@@ -133,7 +133,11 @@ public class ListPharmacysDetailsFragment extends Fragment implements AdapterVie
 
     @Override
     public void onClick(View v) {
-        Toast.makeText(getActivity(), "Launching map...", Toast.LENGTH_SHORT).show();
+        if (currentLocale == "cy") {
+            Toast.makeText(getActivity(), "Rhedeg y map...", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getActivity(), "Launching map...", Toast.LENGTH_SHORT).show();
+        }
 
         //Code will be populated with launching
         //Mukhtar's activity once his code
