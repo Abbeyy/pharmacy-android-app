@@ -1,6 +1,7 @@
 package com.nsa.welshpharmacy.view;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -10,11 +11,13 @@ import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.SwitchCompat;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.nsa.welshpharmacy.R;
 import com.nsa.welshpharmacy.services.LocationServices;
+import com.nsa.welshpharmacy.view.language.LanguageManager;
 import com.nsa.welshpharmacy.view.listPharmacies.ListPharmaciesActivity;
 
 import java.io.IOException;
@@ -33,6 +36,7 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
     private String englishLanguageCode = "en";
     private AppCompatButton changeLangToEnglish, changeLangToWelsh;
     private SharedPreferences currentLang;
+    private static int counter = 0;
 
     private AppCompatCheckBox checkMinorAilments;
     private AppCompatCheckBox checkFluVac;
@@ -55,6 +59,12 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_filter_preference);
+
+        currentLang = getSharedPreferences("currentLanguage", Context.MODE_PRIVATE);
+        changeLangToEnglish = (AppCompatButton) findViewById(R.id.lang_to_english);
+        changeLangToWelsh = (AppCompatButton) findViewById(R.id.lang_to_welsh);
+        changeLangToEnglish.setOnClickListener(this);
+        changeLangToWelsh.setOnClickListener(this);
 
         this.checkMinorAilments = this.findViewById(R.id.check_minor_ailments);
         this.checkFluVac = this.findViewById(R.id.check_flu_vaccines);
@@ -114,6 +124,9 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
         if (id == R.id.text_postcode) {
             postcodeET.setText("");
         }
+        if ((id == R.id.lang_to_welsh) || (id == R.id.lang_to_english)) {
+            changeLanguage(id);
+        }
 
         Matcher matcher = POSTCODE_REGEX.matcher(textPostcodeWidget.getText());
         //If there is not a valid postcode and the switch is not checked show a toast warning
@@ -164,6 +177,74 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
             editor.apply();
         }
     }
+
+    public void changeLanguage(int id) {
+        Intent restartActivity = getIntent();
+        String currentLocale = currentLang.getString("state", "error");
+        SharedPreferences.Editor edit = currentLang.edit();
+
+        if (counter == 0) {
+            edit.putString("state", "en");
+            edit.apply();
+        }
+        counter++;
+        switch (id) {
+
+            case R.id.lang_to_english :
+                if (currentLocale != null) {
+                    if (currentLocale != "error") {
+                        if (currentLocale == "en") {
+                            Toast.makeText(this, "Language remaining in English", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(this, "Changing language to English", Toast.LENGTH_SHORT).show();
+
+                            edit.clear();
+                            edit.putString("state", "en");
+                            edit.apply();
+
+                            LanguageManager.changeLang(this.getResources(), englishLanguageCode);
+                            finish();
+                            startActivity(restartActivity);
+                        }
+                    } else {
+                        Log.i("DEV", "Issue switching languages. Error returned from shared pref.");
+                        Toast.makeText(this, "Could not switch language.", Toast.LENGTH_SHORT).show();
+                    }
+                    Log.i("DEV", "Issue switching languages. Nothing in shared prefs");
+                    Toast.makeText(this, "Could not switch language.", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case R.id.lang_to_welsh :
+                if (currentLocale != null) {
+                    if (currentLocale != "error") {
+                        if (currentLocale == "cy") {
+                            Toast.makeText(this, "Iaith yn aros yn Gymraeg", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(this, "Newid iaith i'r Cymraeg", Toast.LENGTH_SHORT).show();
+
+                            edit.clear();
+                            edit.putString("state", "cy");
+                            edit.apply();
+
+                            LanguageManager.changeLang(this.getResources(), welshLanguageCode);
+                            finish();
+                            startActivity(restartActivity);
+                        }
+                    }else {
+                        Log.i("DEV", "Issue switching languages. Error returned from shared pref.");
+                        Toast.makeText(this, "Methu newid iaith.", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Log.i("DEV", "Issue swicthing languages. Nothing in shared prefs.");
+                    Toast.makeText(this, "Methu newid iaith.", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            default :
+                Toast.makeText(this, "Error - language remaining.", Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
+
     @Override
     public boolean onLongClick(View view){
         int id = view.getId();
