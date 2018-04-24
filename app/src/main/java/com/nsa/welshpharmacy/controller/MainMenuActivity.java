@@ -43,6 +43,15 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
             }
         });
 
+        Button btn = (Button)findViewById(R.id.Parmacist);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainMenuActivity.this, PinEntry.class));
+            }
+        });
+
         final TextView rating = (TextView) findViewById(R.id.rating);
         rating.setOnClickListener(new View.OnClickListener() {
             @Override
