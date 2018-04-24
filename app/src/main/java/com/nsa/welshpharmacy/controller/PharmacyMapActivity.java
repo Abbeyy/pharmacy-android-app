@@ -25,6 +25,8 @@ public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyC
     private String pharmacyLatitudeLongitude;
     private double latitude;
     private double longitude;
+    private SharedPreferences currentLang;
+    private String currentLocale;
 
     //Coding ideas....
     //retrieve pharmacies lats and longs and place into ....
@@ -42,6 +44,9 @@ public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pharmacy_map);
+
+        currentLang = getSharedPreferences("currentLanguage", Context.MODE_PRIVATE);
+        currentLocale = currentLang.getString("state", "error");
 
         pharmacyLatLong = getSharedPreferences("pharmacyLatLang", Context.MODE_PRIVATE);
         pharmacyLatitudeLongitude = pharmacyLatLong.getString("LatitudeLongitude", "Error");
@@ -71,8 +76,11 @@ public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyC
             getLatitudeAndLongitude();
             LatLng pharmacyClicked = new LatLng(this.latitude, this.longitude);
 
-            //CHANGE TO PHARM NAME
-            mMap.addMarker(new MarkerOptions().position(pharmacyClicked).title("Pharmacy"));
+            if (currentLocale == "cy") {
+                mMap.addMarker(new MarkerOptions().position(pharmacyClicked).title("Fferyllfa"));
+            } else {
+                mMap.addMarker(new MarkerOptions().position(pharmacyClicked).title("Pharmacy"));
+            }
             mMap.moveCamera(CameraUpdateFactory.newLatLng(pharmacyClicked));
         }
 
