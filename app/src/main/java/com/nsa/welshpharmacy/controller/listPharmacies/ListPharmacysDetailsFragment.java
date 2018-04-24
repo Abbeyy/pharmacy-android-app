@@ -35,8 +35,8 @@ public class ListPharmacysDetailsFragment extends Fragment implements AdapterVie
     ArrayAdapter<String> la;
     private SharedPreferences currentLang;
     private String currentLocale;
-    //private Pharmacy recievedPharmacy;
     private SharedPreferences pharmacyLatLang;
+    //private Pharmacy recievedPharmacy;
 
     public ListPharmacysDetailsFragment() {
 
@@ -54,10 +54,13 @@ public class ListPharmacysDetailsFragment extends Fragment implements AdapterVie
         Bundle bundle = this.getArguments();
         Pharmacy recievedPharmacy = bundle.getParcelable("selectedPharmacy");
 
-//        SharedPreferences.Editor edit = pharmacyLatLang.edit();
-//        edit.putString("LatitudeLongitude", recievedPharmacy.getPharmacyLatLng(getActivity()).toString());
+        pharmacyLatLang = getActivity().getSharedPreferences("pharmacyLatLang", Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit = pharmacyLatLang.edit();
+        edit.putString("LatitudeLongitude", recievedPharmacy.getPharmacyLatLng(getActivity()).toString());
         Log.i("DEV lat lang", recievedPharmacy.getPharmacyLatLng(getActivity()).toString());
-//        edit.apply();
+        edit.apply();
+
+
         /*
         SharedPreferences sharedPrefs = this.getActivity().getSharedPreferences("pharmacyPos", Context.MODE_PRIVATE);
         int pharmacyPosition = sharedPrefs.getInt("position", -1);
@@ -70,6 +73,8 @@ public class ListPharmacysDetailsFragment extends Fragment implements AdapterVie
         String json = pharmacies.getString("pharmacy" + pharmacyPosition, "Error");
         MockPharmacy pharmacyToDisplay = gson.fromJson(json, MockPharmacy.class);
         */
+
+
         AppCompatButton btnToMap = (AppCompatButton) v.findViewById(R.id.button_to_map);
         btnToMap.setOnClickListener(this);
 
