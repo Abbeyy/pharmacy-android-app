@@ -14,6 +14,8 @@
         android:padding="20dp"
         android:layout_marginBottom="10dp">
 
+
+
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/lang_to_english"
             android:layout_width="wrap_content"
@@ -108,6 +110,14 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="44dp"
         android:text="@string/location_divider" />
+    <Switch
+        android:id="@+id/nightmodeswitch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="?attr/backgroundcolor"
+        android:text="Night Mode"
+        android:textColor="?attr/tintcolor" />
 
     <LinearLayout
         android:layout_width="wrap_content"
