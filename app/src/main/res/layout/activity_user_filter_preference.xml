@@ -18,13 +18,13 @@
             android:id="@+id/lang_to_english"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="English"/>
+            android:text="@string/english"/>
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/lang_to_welsh"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cymru"/>
+            android:text="@string/cymraeg"/>
 
     </android.support.v7.widget.LinearLayoutCompat>
 
