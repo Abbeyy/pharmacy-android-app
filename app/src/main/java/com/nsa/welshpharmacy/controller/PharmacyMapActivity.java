@@ -66,7 +66,7 @@ public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyC
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng cardiffCityCentre = new LatLng(-3.179100, 51.481600);
+        LatLng cardiffCityCentre = new LatLng(51.479436, -3.174422);
         if (pharmacyLatitudeLongitude != "Error") {
             getLatitudeAndLongitude();
             LatLng pharmacyClicked = new LatLng(this.latitude, this.longitude);
