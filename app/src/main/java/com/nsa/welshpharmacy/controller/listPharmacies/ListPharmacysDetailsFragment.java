@@ -18,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.nsa.welshpharmacy.R;
+import com.nsa.welshpharmacy.controller.PharmacyMapActivity;
 import com.nsa.welshpharmacy.model.Pharmacy;
 
 import java.util.ArrayList;
@@ -34,6 +35,7 @@ public class ListPharmacysDetailsFragment extends Fragment implements AdapterVie
     ArrayAdapter<String> la;
     private SharedPreferences currentLang;
     private String currentLocale;
+    private SharedPreferences pharmacyLatLang;
     //private Pharmacy recievedPharmacy;
 
     public ListPharmacysDetailsFragment() {
@@ -51,6 +53,14 @@ public class ListPharmacysDetailsFragment extends Fragment implements AdapterVie
 
         Bundle bundle = this.getArguments();
         Pharmacy recievedPharmacy = bundle.getParcelable("selectedPharmacy");
+
+        pharmacyLatLang = getActivity().getSharedPreferences("pharmacyLatLang", Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit = pharmacyLatLang.edit();
+        edit.putString("LatitudeLongitude", recievedPharmacy.getPharmacyLatLng(getActivity()).toString());
+        Log.i("DEV lat lang", recievedPharmacy.getPharmacyLatLng(getActivity()).toString());
+        edit.apply();
+
+
         /*
         SharedPreferences sharedPrefs = this.getActivity().getSharedPreferences("pharmacyPos", Context.MODE_PRIVATE);
         int pharmacyPosition = sharedPrefs.getInt("position", -1);
@@ -63,6 +73,8 @@ public class ListPharmacysDetailsFragment extends Fragment implements AdapterVie
         String json = pharmacies.getString("pharmacy" + pharmacyPosition, "Error");
         MockPharmacy pharmacyToDisplay = gson.fromJson(json, MockPharmacy.class);
         */
+
+
         AppCompatButton btnToMap = (AppCompatButton) v.findViewById(R.id.button_to_map);
         btnToMap.setOnClickListener(this);
 
@@ -155,10 +167,7 @@ public class ListPharmacysDetailsFragment extends Fragment implements AdapterVie
             Toast.makeText(getActivity(), "Launching map...", Toast.LENGTH_SHORT).show();
         }
 
-        //Code will be populated with launching
-        //Mukhtar's activity once his code
-        //is merged successfully with
-        //development as it is compatible
-        //with the remainder of the project!
+        Intent mapActivity = new Intent(getActivity(), PharmacyMapActivity.class);
+        startActivity(mapActivity);
     }
 }

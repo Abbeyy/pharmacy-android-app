@@ -24,6 +24,8 @@ import com.nsa.welshpharmacy.R;
 public class ListPharmaciesActivity extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
     private SharedPreferences pharmacyInstancesData;
+    private SharedPreferences pharmacyLatLang;
+
     /*
     private String[] pharmacyNames = new String[]
             {"Boots", "Well", "Cardiff Royal Infirmary Pharmacy",
@@ -43,6 +45,7 @@ public class ListPharmaciesActivity extends AppCompatActivity {
         //due to use of fragments - but that doesnt work? This does?.... fix!
 
         sharedPreferences = getSharedPreferences("pharmacyPos", Context.MODE_PRIVATE);
+        pharmacyLatLang = getSharedPreferences("pharmacyLatLang", Context.MODE_PRIVATE);
 
         generatePharmaciesData();
 
