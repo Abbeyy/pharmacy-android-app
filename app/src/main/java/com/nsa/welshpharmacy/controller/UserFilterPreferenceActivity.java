@@ -40,7 +40,9 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
     private String currentLocale;
     private SharedPreferences.Editor edit;
     private SharedPreferences.Editor editLangChanged;
-    private int id;
+//    private SharedPreferences buttonWasClicked;
+//    private SharedPreferences.Editor editButtonClicked;
+//    private int id;
 
     private AppCompatCheckBox checkMinorAilments;
     private AppCompatCheckBox checkFluVac;
@@ -73,20 +75,30 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
         String langAlreadyChanged = alreadyChanged.getString("state", "error");
         currentLocale = currentLang.getString("state", "error");
 
+//        buttonWasClicked = getPreferences(Context.MODE_PRIVATE);
+//        String buttonWasClickedToSwitchLang = buttonWasClicked.getString("state", "error");
+
         Log.i("FIRST LOG", langAlreadyChanged + "<!");
 
         if (currentLocale != "error") {
-            Log.i("SECOND LOG", langAlreadyChanged + "<!");
-            if (langAlreadyChanged == "error") {
-                changeLanguage(langAlreadyChanged);
-                Log.i("THIRD LOG", langAlreadyChanged + "<!");
-            } else {
-                Log.i("FOURTH LOG", langAlreadyChanged + "<!");
-                String result = alreadyChanged.getString("state", "error");
-                Log.i("DEV", result + "<!");
-                editLangChanged.clear();
-                editLangChanged.apply();
-            }
+//            if ((buttonWasClickedToSwitchLang == "error") || (buttonWasClickedToSwitchLang == "no")) {
+                Log.i("SECOND LOG", langAlreadyChanged + "<!");
+                if (langAlreadyChanged == "error") {
+                    changeLanguage(langAlreadyChanged);
+                    Log.i("THIRD LOG", langAlreadyChanged + "<!");
+                } else {
+                    Log.i("FOURTH LOG", langAlreadyChanged + "<!");
+                    String result = alreadyChanged.getString("state", "error");
+                    Log.i("DEV", result + "<!");
+                    editLangChanged.clear();
+                    editLangChanged.apply();
+                }
+//            } else if (buttonWasClickedToSwitchLang != "error") {
+//                String answer = buttonWasClicked.getString("state", "error");
+//                Log.i("BUTTON INFO", answer + "<!");
+//                editButtonClicked.clear();
+//                editButtonClicked.apply();
+//            }
         }
 
         changeLangToEnglish = (AppCompatButton) findViewById(R.id.lang_to_english);
@@ -154,6 +166,10 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
         }
 
         if ((id == R.id.lang_to_welsh) || (id == R.id.lang_to_english)) {
+//            editButtonClicked.clear();
+//            editButtonClicked.putString("state", "yes");
+//            editButtonClicked.apply();
+
             Intent restartActivity = getIntent();
 
             switch (id) {
