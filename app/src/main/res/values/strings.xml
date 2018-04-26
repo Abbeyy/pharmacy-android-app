@@ -43,4 +43,6 @@
     <string name="title_activity_pharmacy_map">Map</string>
     <string name="english" translatable="false">English</string>
     <string name="cymraeg" translatable="false">Cymraeg</string>
+    <string name="title_activity_email_pharmacy">EmailPharmacyActivity</string>
+    <string name="enter_message">Please enter your message below</string>
 </resources>
