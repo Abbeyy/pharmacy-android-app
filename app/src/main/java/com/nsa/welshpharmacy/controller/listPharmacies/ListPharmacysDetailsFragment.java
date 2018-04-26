@@ -99,7 +99,7 @@ public class ListPharmacysDetailsFragment extends Fragment implements AdapterVie
         aList.add(selectedPharmacy.getName().toString());
         aList.add(selectedPharmacy.getPhone().toString());
         aList.add(selectedPharmacy.getPostcode().toString());
-       //aList.add(selectedPharmacy.getEmail().toString());
+        aList.add(selectedPharmacy.getEmail().toString());
         aList.add(selectedPharmacy.getWebsite().toString());
     }
 
