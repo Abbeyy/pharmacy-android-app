@@ -44,3 +44,11 @@
     </application>
 
 </manifest>
+
+<!--<activity-->
+<!--android:name=".view.UserFilterPreferenceActivityTest"-->
+<!--android:label="@string/title_activity_main"-->
+<!--android:theme="@style/AppTheme.NoActionBar"-->
+<!--android:exported="true"/>-->
+    <!--android:name=".controller.PharmacyMapActivity"-->
+    <!--android:label="@string/title_activity_pharmacy_map"></activity>-->
