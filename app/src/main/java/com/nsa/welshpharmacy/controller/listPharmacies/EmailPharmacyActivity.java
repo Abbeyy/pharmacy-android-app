@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.nsa.welshpharmacy.R;
@@ -35,21 +36,33 @@ public class EmailPharmacyActivity extends AppCompatActivity implements View.OnC
         String emailAddress = pharmacysEmail.getString("email", "error");
         //Create emailing intent
         if ((emailAddress != "error") && (emailAddress != null)) {
-            Intent anEmailIntent = new Intent(Intent.ACTION_SEND);
-            //Define mail data
-            anEmailIntent.setData(Uri.parse("mailto:"));
-            anEmailIntent.setType("text/plain");
-            //Define to Who
-            anEmailIntent.putExtra(Intent.EXTRA_EMAIL, emailAddress);
-            //Receiver/Message content
-            anEmailIntent.putExtra(Intent.EXTRA_SUBJECT, "Test/Query");
-            anEmailIntent.putExtra(Intent.EXTRA_TEXT, "Test message.");
+            String text = getEmailContent();
+            if (text != "") {
+                Intent anEmailIntent = new Intent(Intent.ACTION_SEND);
+                //Define mail data
+                anEmailIntent.setData(Uri.parse("mailto:"));
+                anEmailIntent.setType("text/plain");
+                //Define to Who
+                anEmailIntent.putExtra(Intent.EXTRA_EMAIL, emailAddress);
+                //Receiver/Message content
+                anEmailIntent.putExtra(Intent.EXTRA_SUBJECT, "Test/Query");
+                anEmailIntent.putExtra(Intent.EXTRA_TEXT, text);
 
-            try {
-                startActivity(Intent.createChooser(anEmailIntent, "Send email.."));
-            } catch (android.content.ActivityNotFoundException ex) {
-                Toast.makeText(this, "There's no email client installed!", Toast.LENGTH_SHORT).show();
+                try {
+                    startActivity(Intent.createChooser(anEmailIntent, "Send email.."));
+                } catch (android.content.ActivityNotFoundException ex) {
+                    Toast.makeText(this, "There's no email client installed!", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(this, "Please write a message first.", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    public String getEmailContent() {
+        String text = "";
+        EditText usersMessage = (EditText)findViewById(R.id.users_msg_edittext);
+        text = usersMessage.getText().toString();
+        return text;
     }
 }

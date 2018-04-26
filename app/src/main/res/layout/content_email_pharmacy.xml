@@ -16,6 +16,7 @@
         android:text="@string/enter_message" />
 
     <EditText
+        android:id="@+id/users_msg_edittext"
         android:layout_width="match_parent"
         android:layout_height="300dp"/>
 
