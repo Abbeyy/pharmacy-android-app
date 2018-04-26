@@ -36,6 +36,7 @@ public class ListPharmacysDetailsFragment extends Fragment implements AdapterVie
     private SharedPreferences currentLang;
     private String currentLocale;
     private SharedPreferences pharmacyLatLang;
+    private SharedPreferences pharmacysEmail;
     //private Pharmacy recievedPharmacy;
 
     public ListPharmacysDetailsFragment() {
@@ -59,6 +60,8 @@ public class ListPharmacysDetailsFragment extends Fragment implements AdapterVie
         edit.putString("LatitudeLongitude", recievedPharmacy.getPharmacyLatLng(getActivity()).toString());
         Log.i("DEV lat lang", recievedPharmacy.getPharmacyLatLng(getActivity()).toString());
         edit.apply();
+
+        pharmacysEmail = getActivity().getSharedPreferences("emailAddress", Context.MODE_PRIVATE);
 
 
         /*
@@ -101,6 +104,11 @@ public class ListPharmacysDetailsFragment extends Fragment implements AdapterVie
         aList.add(selectedPharmacy.getPostcode().toString());
         aList.add(selectedPharmacy.getEmail().toString());
         aList.add(selectedPharmacy.getWebsite().toString());
+
+        SharedPreferences.Editor editEmail = pharmacysEmail.edit();
+        editEmail.clear();
+        editEmail.putString("email", selectedPharmacy.getEmail().toString());
+        editEmail.apply();
     }
 
     @Override
