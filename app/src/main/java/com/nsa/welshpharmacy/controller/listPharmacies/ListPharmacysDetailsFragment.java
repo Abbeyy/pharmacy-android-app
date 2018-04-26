@@ -36,6 +36,7 @@ public class ListPharmacysDetailsFragment extends Fragment implements AdapterVie
     private SharedPreferences currentLang;
     private String currentLocale;
     private SharedPreferences pharmacyLatLang;
+    private SharedPreferences pharmacysEmail;
     //private Pharmacy recievedPharmacy;
 
     public ListPharmacysDetailsFragment() {
@@ -59,6 +60,8 @@ public class ListPharmacysDetailsFragment extends Fragment implements AdapterVie
         edit.putString("LatitudeLongitude", recievedPharmacy.getPharmacyLatLng(getActivity()).toString());
         Log.i("DEV lat lang", recievedPharmacy.getPharmacyLatLng(getActivity()).toString());
         edit.apply();
+
+        pharmacysEmail = getActivity().getSharedPreferences("emailAddress", Context.MODE_PRIVATE);
 
 
         /*
@@ -101,6 +104,11 @@ public class ListPharmacysDetailsFragment extends Fragment implements AdapterVie
         aList.add(selectedPharmacy.getPostcode().toString());
         aList.add(selectedPharmacy.getEmail().toString());
         aList.add(selectedPharmacy.getWebsite().toString());
+
+        SharedPreferences.Editor editEmail = pharmacysEmail.edit();
+        editEmail.clear();
+        editEmail.putString("email", selectedPharmacy.getEmail().toString());
+        editEmail.apply();
     }
 
     @Override
@@ -119,31 +127,6 @@ public class ListPharmacysDetailsFragment extends Fragment implements AdapterVie
                 break;
                 //app crashing?!...
             case 3 :
-
-//            //Email to be mocked in database and then intent used.
-//
-//                //THE BELOW WORKS IF THE USER SELECTS TO
-//                //SEND MAIL VIA "MESSAGES" ON ANDROIDS OPTIONS.
-//
-//                //Get email address first
-//                String emailAddress = this.aList.get(3);
-//                //Create emailing intent
-//                Intent anEmailIntent = new Intent(Intent.ACTION_SEND);
-//                //Define mail data
-//                anEmailIntent.setData(Uri.parse("mailto:"));
-//                anEmailIntent.setType("text/plain");
-//                //Define to Who
-//                anEmailIntent.putExtra(Intent.EXTRA_EMAIL, emailAddress);
-//                //Receiver/Message content
-//                anEmailIntent.putExtra(Intent.EXTRA_SUBJECT, "Test/Query");
-//                anEmailIntent.putExtra(Intent.EXTRA_TEXT, "Test message.");
-//                Log.i("starting email activity", "yes!");
-//
-//                try {
-//                    startActivity(Intent.createChooser(anEmailIntent, "Send email.."));
-//                } catch (android.content.ActivityNotFoundException ex) {
-//                    Toast.makeText(getActivity(), "There's no email client installed!", Toast.LENGTH_SHORT).show();
-//                }
                 Intent launchEmail = new Intent(getActivity(), EmailPharmacyActivity.class);
                         startActivity(launchEmail);
                 break;
