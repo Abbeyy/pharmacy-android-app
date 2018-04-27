@@ -1,13 +1,11 @@
-package com.nsa.welshpharmacy.view.listPharmacies;
+package com.nsa.welshpharmacy.controller.listPharmacies;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import com.google.gson.Gson;
 import com.nsa.welshpharmacy.R;
-import com.nsa.welshpharmacy.model.MockPharmacy;
 
 /**
  * Created by c1714546 on 3/14/2018.
@@ -25,7 +23,10 @@ import com.nsa.welshpharmacy.model.MockPharmacy;
 
 public class ListPharmaciesActivity extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
-    private SharedPreferences pharmacyInstancesMockedData;
+    private SharedPreferences pharmacyInstancesData;
+    private SharedPreferences pharmacyLatLang;
+
+    /*
     private String[] pharmacyNames = new String[]
             {"Boots", "Well", "Cardiff Royal Infirmary Pharmacy",
                     "Clifton Pharmacy", "Pearn's Pharmacies Ltd",
@@ -34,6 +35,7 @@ public class ListPharmaciesActivity extends AppCompatActivity {
                     "Crwys Pharmacy", "The Co-operative Pharmacy",
                     "Rees & Moore Pharmacy", "M W Philips",
                     "MW Phillips Chemists"};
+    */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,20 +45,22 @@ public class ListPharmaciesActivity extends AppCompatActivity {
         //due to use of fragments - but that doesnt work? This does?.... fix!
 
         sharedPreferences = getSharedPreferences("pharmacyPos", Context.MODE_PRIVATE);
+        pharmacyLatLang = getSharedPreferences("pharmacyLatLang", Context.MODE_PRIVATE);
 
-        generatePharmaciesMockedData(pharmacyNames.length);
+        generatePharmaciesData();
 
         //setting up main fragment of view
         android.support.v4.app.FragmentManager fmtManager = getSupportFragmentManager();
         android.support.v4.app.FragmentTransaction fmtTransaction = fmtManager.beginTransaction();
-        fmtTransaction.add(R.id.fragments_container, new com.nsa.welshpharmacy.view.listPharmacies.ListPharmaciesFragment());
+        fmtTransaction.add(R.id.fragments_container, new com.nsa.welshpharmacy.controller.listPharmacies.ListPharmaciesFragment());
         fmtTransaction.commit();
     }
 
-    public void generatePharmaciesMockedData(int numOfPharmacies) {
-        pharmacyInstancesMockedData = getSharedPreferences("pharmacies", Context.MODE_PRIVATE);
-        SharedPreferences.Editor edit = pharmacyInstancesMockedData.edit();
+    public void generatePharmaciesData() {
+        pharmacyInstancesData = getSharedPreferences("pharmacies", Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit = pharmacyInstancesData.edit();
 
+        /*
         for (int k = 0; k < numOfPharmacies; k++) {
             MockPharmacy pharmacy = new MockPharmacy(pharmacyNames[k],
                     "02920688695","Rossa9@cardiff.ac.uk",
@@ -70,6 +74,6 @@ public class ListPharmaciesActivity extends AppCompatActivity {
             edit.putString("pharmacy"+k, json);
         }
         edit.apply();
+        */
     }
-
 }

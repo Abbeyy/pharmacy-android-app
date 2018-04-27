@@ -1,19 +1,14 @@
-package com.nsa.welshpharmacy.view;
+package com.nsa.welshpharmacy.controller;
 
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.widget.ArrayAdapter;
-import android.widget.CompoundButton;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.ToggleButton;
 import android.support.v7.widget.ListViewCompat;
 
 import com.nsa.welshpharmacy.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

@@ -1,5 +1,5 @@
 
-package com.nsa.welshpharmacy.view;
+package com.nsa.welshpharmacy.controller;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,14 +10,11 @@ import android.support.v7.widget.AppCompatButton;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nsa.welshpharmacy.R;
-import com.nsa.welshpharmacy.model.Language;
-import com.nsa.welshpharmacy.view.language.LanguageManager;
+import com.nsa.welshpharmacy.controller.language.LanguageManager;
 
 
 public class MainMenuActivity extends AppCompatActivity implements View.OnClickListener {

@@ -6,10 +6,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end"
+        android:padding="20dp"
+        android:layout_marginBottom="10dp">
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/lang_to_english"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/english"/>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/lang_to_welsh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cymraeg"/>
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+    <android.support.v7.widget.LinearLayoutCompat
         android:orientation="vertical"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent">
+        android:gravity="clip_vertical"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content">
 
         <TextView
             android:id="@+id/textView"
@@ -75,34 +98,42 @@
             android:maxLength="50"
             android:text="@string/instruction_postcode" />
 
+    </android.support.v7.widget.LinearLayoutCompat>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/submit_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="44dp"
+        android:text="@string/location_divider" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_above="@+id/submit_button"
+        android:paddingBottom="10dp">
+
+        <android.support.v7.widget.SwitchCompat
+            android:id="@+id/switch_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
         <TextView
-            android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/submit_button"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="44dp"
-            android:text="@string/location_divider" />
+            android:text="@string/location_permission" />
+    </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_above="@+id/submit_button"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
-            android:paddingStart="60dp">
-
-            <android.support.v7.widget.SwitchCompat
-                android:id="@+id/switch_location"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/location_permission" />
-        </LinearLayout>
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="start"
+        android:padding="20dp"
+        android:layout_marginStart="35dp">
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/submit_button"
@@ -127,5 +158,7 @@
             android:drawableStart="@drawable/ic_check"
             android:text="@string/button_filter_text" />
 
-    </RelativeLayout>
+    </android.support.v7.widget.LinearLayoutCompat>
+
+
 </android.support.v7.widget.LinearLayoutCompat>
