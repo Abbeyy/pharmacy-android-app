@@ -39,9 +39,6 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
     private String currentLocale;
     private SharedPreferences.Editor edit;
     private SharedPreferences.Editor editLangChanged;
-//    private SharedPreferences buttonWasClicked;
-//    private SharedPreferences.Editor editButtonClicked;
-//    private int id;
 
     private AppCompatCheckBox checkMinorAilments;
     private AppCompatCheckBox checkFluVac;
@@ -50,8 +47,6 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
     private AppCompatCheckBox checkAlcohol;
     private AppCompatEditText textPostcodeWidget;
     private SwitchCompat switchOnLocationWidget;
-
-    private AppCompatEditText postcodeET;
 
     private AppCompatButton submitButton;
     private AppCompatButton resetButton;
@@ -74,11 +69,7 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
         String langAlreadyChanged = alreadyChanged.getString("state", "error");
         currentLocale = currentLang.getString("state", "error");
 
-//        buttonWasClicked = getPreferences(Context.MODE_PRIVATE);
-//        String buttonWasClickedToSwitchLang = buttonWasClicked.getString("state", "error");
-
         if (currentLocale != "error") {
-//            if ((buttonWasClickedToSwitchLang == "error") || (buttonWasClickedToSwitchLang == "no")) {
             if (langAlreadyChanged == "error") {
                 changeLanguage(langAlreadyChanged);
             } else {
@@ -86,12 +77,6 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
                 editLangChanged.clear();
                 editLangChanged.apply();
             }
-//            } else if (buttonWasClickedToSwitchLang != "error") {
-//                String answer = buttonWasClicked.getString("state", "error");
-//                Log.i("BUTTON INFO", answer + "<!");
-//                editButtonClicked.clear();
-//                editButtonClicked.apply();
-//            }
         }
 
         changeLangToEnglish = findViewById(R.id.lang_to_english);
@@ -117,7 +102,6 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
         textPostcodeWidget.setOnClickListener(this);
         submitButton.setOnClickListener(this);
         resetButton.setOnLongClickListener(this);
-        postcodeET.setOnClickListener(this);
     }
 
     private void initValues() {
@@ -153,62 +137,11 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
         Pattern POSTCODE_REGEX = Pattern.compile(getString(R.string.postcode_regex));
 
         if (id == R.id.text_postcode) {
-            postcodeET.setText("");
+            textPostcodeWidget.setText("");
         }
 
         if ((id == R.id.lang_to_welsh) || (id == R.id.lang_to_english)) {
-//            editButtonClicked.clear();
-//            editButtonClicked.putString("state", "yes");
-//            editButtonClicked.apply();
-
-            Intent restartActivity = getIntent();
-
-            switch (id) {
-                case R.id.lang_to_english:
-                    if (currentLocale == "en") {
-                        Toast.makeText(this, "Language remaining in English.", Toast.LENGTH_SHORT).show();
-                    } else if (currentLocale != null) {
-//                        if (currentLocale == "en") {
-//                            Toast.makeText(this, "Language remaining in English", Toast.LENGTH_SHORT).show();
-//                        } else {
-                        Toast.makeText(this, "Changing language to English", Toast.LENGTH_SHORT).show();
-
-                        edit.clear();
-                        edit.putString("state", "en");
-                        edit.apply();
-
-                        LanguageManager.changeLang(getResources(), englishLanguageCode);
-                        finish();
-                        startActivity(restartActivity);
-//                        }
-                    } else {
-                        Toast.makeText(this, "Language remaining in English.", Toast.LENGTH_SHORT).show();
-                    }
-                    break;
-                case R.id.lang_to_welsh:
-                    if (currentLocale == "cy") {
-                        Toast.makeText(this, "Iaith yn aros yn Cymraeg.", Toast.LENGTH_SHORT).show();
-                    } else if (currentLocale != null) {
-//                        if (currentLocale == "cy") {
-//                            Toast.makeText(this, "Iaith yn aros yn Gymraeg", Toast.LENGTH_SHORT).show();
-//                        } else {
-                        Toast.makeText(this, "Newid iaith i'r Cymraeg", Toast.LENGTH_SHORT).show();
-
-                        edit.clear();
-                        edit.putString("state", "cy");
-                        edit.apply();
-
-                        LanguageManager.changeLang(this.getResources(), welshLanguageCode);
-                        finish();
-                        startActivity(restartActivity);
-//                        }
-                    } else {
-                        Toast.makeText(this, "Iaith yn aros yn Cymraeg.", Toast.LENGTH_SHORT).show();
-                    }
-                default:
-                    Toast.makeText(this, "Error - language remaining.", Toast.LENGTH_SHORT).show();
-                    break;
-            }
+            languageSwitch(id);
         }
 
         Matcher matcher = POSTCODE_REGEX.matcher(textPostcodeWidget.getText());
@@ -229,35 +162,11 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
             startActivity(pharmacyListView);
         }
         if (id == R.id.submit_button && switchOnLocationWidget.isChecked()) {
-            if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                if (LocationServices.isNetworkEnabled(this)) {
-                    //If fine location permission is already granted then update last known location from network
-                    LocationServices.loadPhoneLocationViaNetwork(this);
-                    Toast.makeText(this, LocationServices.getUserLocation().toString(), Toast.LENGTH_LONG).show();
-                    //Then switch view to next activity
-                    Intent pharmacyListView = new Intent(this, ListPharmaciesActivity.class);
-                    startActivity(pharmacyListView);
-                }
-            } else {
-                //Fine location permission has not been granted
-                //Rationale as to why the user should grant permission
-                if (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)) {
-                    Toast.makeText(this, "Fine location permission is needed to retrieve the location.",
-                            Toast.LENGTH_SHORT).show();
-                }
-                requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_FINE_LOCATION);
-            }
+           networkSelected();
         }
         //If the submit button is pressed and the shared preferences are null add the shared preferences
         if (id == R.id.submit_button && sharedPreferences != null) {
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_AILMENTS, checkMinorAilments.isChecked());
-            editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_FLU, checkFluVac.isChecked());
-            editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_HEALTH, checkHealthCheck.isChecked());
-            editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_SMOKING, checkSmoking.isChecked());
-            editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_ALCOHOL, checkAlcohol.isChecked());
-            editor.putBoolean(KeyValueHelper.KEY_SWITCH_LOCATION, switchOnLocationWidget.isChecked());
-            editor.apply();
+            applySharedPreferences();
         }
     }
 
@@ -326,15 +235,87 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         if (requestCode == REQUEST_FINE_LOCATION) {
-            //Check if the permission has been granted
             if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
                 LocationServices.loadPhoneLocationViaNetwork(this);
             }else{
-                //Fine permission was denied so the feature cannot be used
                 Toast.makeText(this, "Permission was not granted", Toast.LENGTH_SHORT).show();
             }
         }else{
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+    }
+
+    public void languageSwitch(int id){
+        Intent restartActivity = getIntent();
+        switch (id) {
+            case R.id.lang_to_english:
+                if (currentLocale == "en") {
+                    Toast.makeText(this, "Language remaining in English.", Toast.LENGTH_SHORT).show();
+                } else if (currentLocale != null) {
+                    Toast.makeText(this, "Changing language to English", Toast.LENGTH_SHORT).show();
+
+                    edit.clear();
+                    edit.putString("state", "en");
+                    edit.apply();
+
+                    LanguageManager.changeLang(getResources(), englishLanguageCode);
+                    finish();
+                    startActivity(restartActivity);
+                } else {
+                    Toast.makeText(this, "Language remaining in English.", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case R.id.lang_to_welsh:
+                if (currentLocale == "cy") {
+                    Toast.makeText(this, "Iaith yn aros yn Cymraeg.", Toast.LENGTH_SHORT).show();
+                } else if (currentLocale != null) {
+                    Toast.makeText(this, "Newid iaith i'r Cymraeg", Toast.LENGTH_SHORT).show();
+
+                    edit.clear();
+                    edit.putString("state", "cy");
+                    edit.apply();
+
+                    LanguageManager.changeLang(this.getResources(), welshLanguageCode);
+                    finish();
+                    startActivity(restartActivity);
+                } else {
+                    Toast.makeText(this, "Iaith yn aros yn Cymraeg.", Toast.LENGTH_SHORT).show();
+                }
+            default:
+                Toast.makeText(this, "Error - language remaining.", Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
+
+    public void applySharedPreferences(){
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_AILMENTS, checkMinorAilments.isChecked());
+        editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_FLU, checkFluVac.isChecked());
+        editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_HEALTH, checkHealthCheck.isChecked());
+        editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_SMOKING, checkSmoking.isChecked());
+        editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_ALCOHOL, checkAlcohol.isChecked());
+        editor.putBoolean(KeyValueHelper.KEY_SWITCH_LOCATION, switchOnLocationWidget.isChecked());
+        editor.apply();
+    }
+
+    public void networkSelected(){
+        if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            if (LocationServices.isNetworkEnabled(this)) {
+                //If fine location permission is already granted then update last known location from network
+                LocationServices.loadPhoneLocationViaNetwork(this);
+                Toast.makeText(this, LocationServices.getUserLocation().toString(), Toast.LENGTH_LONG).show();
+                //Then switch view to next activity
+                Intent pharmacyListView = new Intent(this, ListPharmaciesActivity.class);
+                startActivity(pharmacyListView);
+            }
+        } else {
+            //Fine location permission has not been granted
+            //Rationale as to why the user should grant permission
+            if (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)) {
+                Toast.makeText(this, "Fine location permission is needed to retrieve the location.",
+                        Toast.LENGTH_SHORT).show();
+            }
+            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_FINE_LOCATION);
         }
     }
 }
