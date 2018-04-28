@@ -31,7 +31,7 @@ import java.util.regex.Pattern;
  * Created by c1712480 on 14/03/2018.
  */
 
-public class UserFilterPreferenceActivity extends AppCompatActivity implements View.OnClickListener, View.OnLongClickListener, SharedPreferences.OnSharedPreferenceChangeListener{
+public class UserFilterPreferenceActivity extends AppCompatActivity implements View.OnClickListener, View.OnLongClickListener, SharedPreferences.OnSharedPreferenceChangeListener {
     private String welshLanguageCode = "cy";
     private String englishLanguageCode = "en";
     private AppCompatButton changeLangToEnglish, changeLangToWelsh;
@@ -78,21 +78,15 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
 //        buttonWasClicked = getPreferences(Context.MODE_PRIVATE);
 //        String buttonWasClickedToSwitchLang = buttonWasClicked.getString("state", "error");
 
-        Log.i("FIRST LOG", langAlreadyChanged + "<!");
-
         if (currentLocale != "error") {
 //            if ((buttonWasClickedToSwitchLang == "error") || (buttonWasClickedToSwitchLang == "no")) {
-                Log.i("SECOND LOG", langAlreadyChanged + "<!");
-                if (langAlreadyChanged == "error") {
-                    changeLanguage(langAlreadyChanged);
-                    Log.i("THIRD LOG", langAlreadyChanged + "<!");
-                } else {
-                    Log.i("FOURTH LOG", langAlreadyChanged + "<!");
-                    String result = alreadyChanged.getString("state", "error");
-                    Log.i("DEV", result + "<!");
-                    editLangChanged.clear();
-                    editLangChanged.apply();
-                }
+            if (langAlreadyChanged == "error") {
+                changeLanguage(langAlreadyChanged);
+            } else {
+                String result = alreadyChanged.getString("state", "error");
+                editLangChanged.clear();
+                editLangChanged.apply();
+            }
 //            } else if (buttonWasClickedToSwitchLang != "error") {
 //                String answer = buttonWasClicked.getString("state", "error");
 //                Log.i("BUTTON INFO", answer + "<!");
@@ -125,11 +119,11 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
         submitButton.setOnClickListener(this);
         resetButton.setOnLongClickListener(this);
 
-        postcodeET = (AppCompatEditText)findViewById(R.id.text_postcode);
+        postcodeET = (AppCompatEditText) findViewById(R.id.text_postcode);
         postcodeET.setOnClickListener(this);
     }
 
-    private void initValues(){
+    private void initValues() {
         if (this.sharedPreferences != null) {
             this.checkMinorAilments.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_AILMENTS, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
             this.checkFluVac.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_FLU, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
@@ -155,7 +149,7 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
     }
 
     @Override
-    public void onClick(View view){
+    public void onClick(View view) {
         int id = view.getId();
         //Adapted from https://stackoverflow.com/a/4531500 Retrieved: 17/3/18
         //Adapted from https://stackoverflow.com/a/8204716 Retrieved 17/3/18
@@ -173,8 +167,10 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
             Intent restartActivity = getIntent();
 
             switch (id) {
-                case R.id.lang_to_english :
-                    if (currentLocale != null) {
+                case R.id.lang_to_english:
+                    if (currentLocale == "en") {
+                        Toast.makeText(this, "Language remaining in English.", Toast.LENGTH_SHORT).show();
+                    } else if (currentLocale != null) {
 //                        if (currentLocale == "en") {
 //                            Toast.makeText(this, "Language remaining in English", Toast.LENGTH_SHORT).show();
 //                        } else {
@@ -184,19 +180,18 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
                         edit.putString("state", "en");
                         edit.apply();
 
-                        Log.i("ENG SWITCH TO LOG", currentLocale + "<!");
-
                         LanguageManager.changeLang(this.getResources(), englishLanguageCode);
                         finish();
                         startActivity(restartActivity);
 //                        }
                     } else {
-                        Log.i("DEV", "Issue switching languages. Nothing in shared prefs");
-                        Toast.makeText(this, "Could not switch language.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Language remaining in English.", Toast.LENGTH_SHORT).show();
                     }
                     break;
-                case R.id.lang_to_welsh :
-                    if (currentLocale != null) {
+                case R.id.lang_to_welsh:
+                    if (currentLocale == "cy") {
+                        Toast.makeText(this, "Iaith yn aros yn Cymraeg.", Toast.LENGTH_SHORT).show();
+                    } else if (currentLocale != null) {
 //                        if (currentLocale == "cy") {
 //                            Toast.makeText(this, "Iaith yn aros yn Gymraeg", Toast.LENGTH_SHORT).show();
 //                        } else {
@@ -206,18 +201,14 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
                         edit.putString("state", "cy");
                         edit.apply();
 
-                        Log.i("WEL SWITCH TO LOG", currentLocale + "<!");
-
                         LanguageManager.changeLang(this.getResources(), welshLanguageCode);
                         finish();
                         startActivity(restartActivity);
 //                        }
                     } else {
-                        Log.i("DEV", "Issue swicthing languages. Nothing in shared prefs.");
-                        Toast.makeText(this, "Methu newid iaith.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Iaith yn aros yn Cymraeg.", Toast.LENGTH_SHORT).show();
                     }
-                    break;
-                default :
+                default:
                     Toast.makeText(this, "Error - language remaining.", Toast.LENGTH_SHORT).show();
                     break;
             }
@@ -226,23 +217,23 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
         Matcher matcher = POSTCODE_REGEX.matcher(textPostcodeWidget.getText());
         //If there is not a valid postcode and the switch is not checked show a toast warning
         //And if both a valid postcode and the switch is checked show the toast warning
-        if((!matcher.matches() && !switchOnLocationWidget.isChecked()) || (matcher.matches() && switchOnLocationWidget.isChecked())){
+        if ((!matcher.matches() && !switchOnLocationWidget.isChecked()) || (matcher.matches() && switchOnLocationWidget.isChecked())) {
             Toast.makeText(this, R.string.enter_valid_location, Toast.LENGTH_SHORT).show();
             return;
         }
-        if(id == R.id.submit_button && matcher.matches()){
+        if (id == R.id.submit_button && matcher.matches()) {
             try {
                 LocationServices.loadPhoneLocationViaPostcode(this, textPostcodeWidget.toString());
-            }catch (IOException e){
+            } catch (IOException e) {
                 Toast.makeText(this, R.string.location_catch_statement, Toast.LENGTH_SHORT).show();
                 return;
             }
             Intent pharmacyListView = new Intent(this, ListPharmaciesActivity.class);
             startActivity(pharmacyListView);
         }
-        if(id == R.id.submit_button && switchOnLocationWidget.isChecked()){
-            if(checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
-                if (LocationServices.isNetworkEnabled(this)){
+        if (id == R.id.submit_button && switchOnLocationWidget.isChecked()) {
+            if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                if (LocationServices.isNetworkEnabled(this)) {
                     //If fine location permission is already granted then update last known location from network
                     LocationServices.loadPhoneLocationViaNetwork(this);
                     Toast.makeText(this, LocationServices.getUserLocation().toString(), Toast.LENGTH_LONG).show();
@@ -250,10 +241,10 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
                     Intent pharmacyListView = new Intent(this, ListPharmaciesActivity.class);
                     startActivity(pharmacyListView);
                 }
-            } else{
+            } else {
                 //Fine location permission has not been granted
                 //Rationale as to why the user should grant permission
-                if(shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)){
+                if (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)) {
                     Toast.makeText(this, "Fine location permission is needed to retrieve the location.",
                             Toast.LENGTH_SHORT).show();
                 }
@@ -261,7 +252,7 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
             }
         }
         //If the submit button is pressed and the shared preferences are null add the shared preferences
-        if (id == R.id.submit_button && this.sharedPreferences != null){
+        if (id == R.id.submit_button && this.sharedPreferences != null) {
             SharedPreferences.Editor editor = this.sharedPreferences.edit();
             editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_AILMENTS, this.checkMinorAilments.isChecked());
             editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_FLU, this.checkFluVac.isChecked());
@@ -274,85 +265,59 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
     }
 
     public void changeLanguage(String langAlreadyChanged) {
-        //id will be passed in as -1 if changing language on first load of app.
         Intent restartActivity = getIntent();
 
         switch (currentLocale) {
-                case "error" :
-                    edit.clear();
-                    edit.putString("state", "cy");
-                    edit.apply();
-                    editLangChanged.clear();
-                    editLangChanged.putString("state", "About to reload");
-                    editLangChanged.apply();
+            case "error":
+                edit.clear();
+                edit.putString("state", "cy");
+                edit.apply();
+                editLangChanged.clear();
+                editLangChanged.putString("state", "About to reload");
+                editLangChanged.apply();
 
-                    Log.i("SWITCH 1", currentLocale + "<!");
+                LanguageManager.changeLang(this.getResources(), welshLanguageCode);
+                finish();
+                startActivity(restartActivity);
+                break;
+            case "cy":
+                edit.clear();
+                edit.putString("state", "cy");
+                edit.apply();
+                editLangChanged.clear();
+                editLangChanged.putString("state", "About to reload");
+                editLangChanged.apply();
 
-                    LanguageManager.changeLang(this.getResources(), welshLanguageCode);
-                    finish();
-                    startActivity(restartActivity);
-                    break;
-                case "cy" :
-                    edit.clear();
-                    edit.putString("state", "cy");
-                    edit.apply();
-                    editLangChanged.clear();
-                    editLangChanged.putString("state", "About to reload");
-                    editLangChanged.apply();
+                LanguageManager.changeLang(this.getResources(), welshLanguageCode);
+                finish();
+                startActivity(restartActivity);
+                break;
+            case "en":
+                edit.clear();
+                edit.putString("state", "en");
+                edit.apply();
+                editLangChanged.clear();
+                editLangChanged.putString("state", "About to reload");
+                editLangChanged.apply();
 
-                    Log.i("SWITCH 2", currentLocale + "<!");
+                LanguageManager.changeLang(this.getResources(), englishLanguageCode);
+                finish();
+                startActivity(restartActivity);
+                break;
+            default:
+                edit.clear();
+                edit.putString("state", "cy");
+                edit.apply();
+                editLangChanged.clear();
+                editLangChanged.putString("state", "About to reload");
+                editLangChanged.apply();
 
-                    LanguageManager.changeLang(this.getResources(), welshLanguageCode);
-                    finish();
-                    startActivity(restartActivity);
-                    break;
-                case "en" :
-                    edit.clear();
-                    edit.putString("state", "en");
-                    edit.apply();
-                    editLangChanged.clear();
-                    editLangChanged.putString("state", "About to reload");
-                    editLangChanged.apply();
-
-                    Log.i("SWITCH 3", currentLocale + "<!");
-
-                    LanguageManager.changeLang(this.getResources(), englishLanguageCode);
-                    finish();
-                    startActivity(restartActivity);
-                    break;
-                default :
-                    edit.clear();
-                    edit.putString("state", "cy");
-                    edit.apply();
-                    editLangChanged.clear();
-                    editLangChanged.putString("state", "About to reload");
-                    editLangChanged.apply();
-
-                    Log.i("SWITCH 4", currentLocale + "<!");
-
-                    LanguageManager.changeLang(this.getResources(), welshLanguageCode);
-                    finish();
-                    startActivity(restartActivity);
-                    break;
-            }
+                LanguageManager.changeLang(this.getResources(), welshLanguageCode);
+                finish();
+                startActivity(restartActivity);
+                break;
         }
-
-//        if (currentLocale == "error") {
-//            Log.i("FIRST RELOAD LOG", currentLocale + "<!");
-//            //this means no language has been chosen before - use welsh as default.
-//            edit.putString("state", "cy");
-//            edit.apply();
-//
-//            Log.i("SECOND RELOAD LOG", currentLocale + "<!");
-//
-//            LanguageManager.changeLang(this.getResources(), welshLanguageCode);
-//            finish();
-//            Log.i("FIRST SWITCH", "before restart");
-//            startActivity(restartActivity);
-//            Log.i("FIRST SWITCH", "after restart...");
-//        } else {
-
-//        }
+    }
 
     @Override
     public boolean onLongClick(View view){
