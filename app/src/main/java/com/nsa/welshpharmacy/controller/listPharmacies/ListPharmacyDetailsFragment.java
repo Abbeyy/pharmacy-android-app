@@ -28,7 +28,7 @@ import java.util.List;
  * Created by c1714546 on 4/2/2018.
  */
 
-public class ListPharmacysDetailsFragment extends Fragment implements AdapterView.OnItemClickListener, View.OnClickListener {
+public class ListPharmacyDetailsFragment extends Fragment implements AdapterView.OnItemClickListener, View.OnClickListener {
     ListViewCompat lv;
     List<String> aList;
     //Built-in adapter for string datasource
@@ -39,7 +39,7 @@ public class ListPharmacysDetailsFragment extends Fragment implements AdapterVie
     private SharedPreferences pharmacysEmail;
     //private Pharmacy recievedPharmacy;
 
-    public ListPharmacysDetailsFragment() {
+    public ListPharmacyDetailsFragment() {
 
     }
 
@@ -99,15 +99,15 @@ public class ListPharmacysDetailsFragment extends Fragment implements AdapterVie
     }
 
     public void populateData(Pharmacy selectedPharmacy) {
-        aList.add(selectedPharmacy.getName().toString());
-        aList.add(selectedPharmacy.getPhone().toString());
-        aList.add(selectedPharmacy.getPostcode().toString());
-        aList.add(selectedPharmacy.getEmail().toString());
-        aList.add(selectedPharmacy.getWebsite().toString());
+        aList.add(selectedPharmacy.getName());
+        aList.add(selectedPharmacy.getPhone());
+        aList.add(selectedPharmacy.getPostcode());
+        aList.add(selectedPharmacy.getEmail());
+        aList.add(selectedPharmacy.getWebsite());
 
         SharedPreferences.Editor editEmail = pharmacysEmail.edit();
         editEmail.clear();
-        editEmail.putString("email", selectedPharmacy.getEmail().toString());
+        editEmail.putString("email", selectedPharmacy.getEmail());
         editEmail.apply();
     }
 

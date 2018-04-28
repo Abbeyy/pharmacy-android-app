@@ -2,9 +2,8 @@ package com.nsa.welshpharmacy.controller;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -71,7 +70,6 @@ public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyC
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
         LatLng cardiffCityCentre = new LatLng(51.479436, -3.174422);
         if (pharmacyLatitudeLongitude != "Error") {
             getLatitudeAndLongitude();
@@ -90,11 +88,8 @@ public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyC
         mMap.moveCamera(CameraUpdateFactory.newLatLng(cardiffCityCentre));
     }
 
-
     public void getLatitudeAndLongitude() {
         //need to extract numbers from ""lat/lng: (51.5036723,-3.1821333999999997)""
-        String latitude = "";
-        String longitude = "";
         String both = pharmacyLatitudeLongitude;
 
         Pattern pattern = Pattern.compile("(([0-9]+)(.{1})([0-9]+)(,{1})+?-?([0-9]+)(.{1})([0-9]+))");
@@ -108,13 +103,11 @@ public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyC
         }
 
         List<String> latLangList = Arrays.asList(both.split(","));
-        latitude = latLangList.get(0);
-        longitude = latLangList.get(1);
+        String latitude = latLangList.get(0);
+        String longitude = latLangList.get(1);
         this.latitude = Double.parseDouble(latitude);
         this.longitude = Double.parseDouble(longitude);
         Log.i("LAT: " + this.latitude, "yay");
         Log.i("LONG: " + this.longitude, "yay");
     }
-
-
 }

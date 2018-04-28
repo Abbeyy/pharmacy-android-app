@@ -16,8 +16,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!-- <activity android:name=".view.MainMenuActivity"> -->
-        <!-- </activity> -->
         <activity
             android:name=".controller.UserFilterPreferenceActivity"
             android:screenOrientation="portrait">
@@ -28,7 +26,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".controller.listPharmacies.ListPharmaciesActivity" />
-        <activity android:name=".controller.StaffFilterPreferenceActivity" />
 
         <!-- Connect the app with google play services including maps -->
         <meta-data

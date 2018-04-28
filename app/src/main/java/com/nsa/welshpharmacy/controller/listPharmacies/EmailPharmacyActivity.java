@@ -5,11 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,23 +14,23 @@ import android.widget.Toast;
 import com.nsa.welshpharmacy.R;
 
 public class EmailPharmacyActivity extends AppCompatActivity implements View.OnClickListener {
-    private SharedPreferences pharmacysEmail;
+    private SharedPreferences pharmacyEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_email_pharmacy);
 
-        pharmacysEmail = getSharedPreferences("emailAddress", Context.MODE_PRIVATE);
+        pharmacyEmail = getSharedPreferences("emailAddress", Context.MODE_PRIVATE);
 
-        Button sendEmail = (Button)findViewById(R.id.send_email_btn);
+        Button sendEmail = findViewById(R.id.send_email_btn);
         sendEmail.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         //Get email address first
-        String emailAddress = pharmacysEmail.getString("email", "error");
+        String emailAddress = pharmacyEmail.getString("email", "error");
         //Create emailing intent
         if ((emailAddress != "error") && (emailAddress != null)) {
             String text = getEmailContent();
@@ -60,9 +56,7 @@ public class EmailPharmacyActivity extends AppCompatActivity implements View.OnC
     }
 
     public String getEmailContent() {
-        String text = "";
-        EditText usersMessage = (EditText)findViewById(R.id.users_msg_edittext);
-        text = usersMessage.getText().toString();
-        return text;
+        EditText usersMessage = findViewById(R.id.users_msg_edittext);
+        return usersMessage.getText().toString();
     }
 }
