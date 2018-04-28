@@ -2,9 +2,8 @@ package com.nsa.welshpharmacy.controller;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -115,6 +114,4 @@ public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyC
         Log.i("LAT: " + this.latitude, "yay");
         Log.i("LONG: " + this.longitude, "yay");
     }
-
-
 }
