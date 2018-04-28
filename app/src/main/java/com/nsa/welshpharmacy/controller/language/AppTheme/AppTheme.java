@@ -1,10 +1,12 @@
 package com.nsa.welshpharmacy.controller.language.AppTheme;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate.NightMode;
 import android.support.v7.widget.AppCompatButton;
+import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
@@ -23,8 +25,9 @@ import com.nsa.welshpharmacy.R;
         import android.widget.CompoundButton;
         import android.widget.LinearLayout;
         import android.widget.Switch;
+import android.widget.Toolbar;
 
-        import com.nsa.welshpharmacy.R;
+import com.nsa.welshpharmacy.R;
 
 /**
  * Created by c1660911 on 4/24/2018.
@@ -33,75 +36,45 @@ import com.nsa.welshpharmacy.R;
 public class AppTheme extends AppCompatActivity {
     private Switch nightmodeswitch;
 
+    private static final String PREFS_NAME = "prefs";
+    private static final String PREF_DARK_THEME = "dark_theme";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-//        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES) {
-//            setTheme(R.style.darkthem);
-//            restartApp();
-//        }
-//        else setTheme(R.style.AppTheme);
+        // Use the chosen theme
+        SharedPreferences preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        boolean useDarkTheme = preferences.getBoolean(PREF_DARK_THEME, false);
+
+        if(useDarkTheme) {
+            setTheme(R.style.darkthem);
+        }
+
         super.onCreate(savedInstanceState);
-//
         setContentView(R.layout.activity_user_filter_preference);
-//
 
 
-        //    System.out.println("############################# " + button.getText());
 
-        ((AppCompatButton) findViewById(R.id.lang_to_english)).setBackgroundColor(R.style.darkthem);
+        nightmodeswitch  = (Switch) findViewById(R.id.nightmodeswitch);
 
-
-        nightmodeswitch = (Switch) findViewById(R.id.nightmodeswitch);
-
-        nightmodeswitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        Switch toggle = (Switch) findViewById(R.id.nightmodeswitch);
+        toggle.setChecked(useDarkTheme);
+        toggle.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    setContentView(R.layout.activity_user_filter_preference);
-                    NightMood();
-
-
-                } else {
-                    setContentView(R.layout.activity_user_filter_preference);
-                    DayMood();
-
-
-                }
+            public void onCheckedChanged(CompoundButton view, boolean isChecked) {
+                toggleTheme(isChecked);
             }
         });
     }
 
+    private void toggleTheme(boolean darkTheme) {
+        SharedPreferences.Editor editor = getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit();
+        editor.putBoolean(PREF_DARK_THEME, darkTheme);
+        editor.apply();
 
-    public void restartApp() {
-        Intent i = new Intent(getApplicationContext(), AppTheme.class);
-        startActivity(i);
+        Intent intent = getIntent();
         finish();
-    }
 
-    public void NightMood() {
-
-        AppCompatButton button = (AppCompatButton) findViewById(R.id.lang_to_english);
-        button.setBackgroundColor(R.style.darkthem);
-        button.setTextColor(R.style.darkthem);
-
-        AppCompatButton button1 = (AppCompatButton) findViewById(R.id.lang_to_welsh);
-        button1.setBackgroundColor(R.style.darkthem);
-        button.setTextColor(R.style.darkthem);
-
-    }
-
-    public void DayMood() {
-
-        AppCompatButton button = (AppCompatButton) findViewById(R.id.lang_to_english);
-        button.setBackgroundColor(R.style.AppTheme);
-        button.setTextColor(R.style.AppTheme);
-        setContentView(R.layout.activity_user_filter_preference);
-
-        AppCompatButton button1 = (AppCompatButton) findViewById(R.id.lang_to_welsh);
-        button1.setBackgroundColor(R.style.AppTheme);
-        button1.setTextColor(R.style.AppTheme);
-        setContentView(R.layout.activity_user_filter_preference);
-
+        startActivity(intent);
     }
 
 
