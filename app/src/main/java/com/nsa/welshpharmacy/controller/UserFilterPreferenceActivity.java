@@ -94,8 +94,8 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
 //            }
         }
 
-        changeLangToEnglish = (AppCompatButton) findViewById(R.id.lang_to_english);
-        changeLangToWelsh = (AppCompatButton) findViewById(R.id.lang_to_welsh);
+        changeLangToEnglish = findViewById(R.id.lang_to_english);
+        changeLangToWelsh = findViewById(R.id.lang_to_welsh);
         changeLangToEnglish.setOnClickListener(this);
         changeLangToWelsh.setOnClickListener(this);
 
@@ -117,8 +117,6 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
         textPostcodeWidget.setOnClickListener(this);
         submitButton.setOnClickListener(this);
         resetButton.setOnLongClickListener(this);
-
-        postcodeET = (AppCompatEditText) findViewById(R.id.text_postcode);
         postcodeET.setOnClickListener(this);
     }
 
@@ -268,27 +266,11 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
 
         switch (currentLocale) {
             case "error":
-                edit.clear();
-                edit.putString("state", "cy");
-                edit.apply();
-                editLangChanged.clear();
-                editLangChanged.putString("state", "About to reload");
-                editLangChanged.apply();
-
-                LanguageManager.changeLang(this.getResources(), welshLanguageCode);
-                finish();
+                changeLanguageToWelsh();
                 startActivity(restartActivity);
                 break;
             case "cy":
-                edit.clear();
-                edit.putString("state", "cy");
-                edit.apply();
-                editLangChanged.clear();
-                editLangChanged.putString("state", "About to reload");
-                editLangChanged.apply();
-
-                LanguageManager.changeLang(this.getResources(), welshLanguageCode);
-                finish();
+                changeLanguageToWelsh();
                 startActivity(restartActivity);
                 break;
             case "en":
@@ -304,18 +286,22 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
                 startActivity(restartActivity);
                 break;
             default:
-                edit.clear();
-                edit.putString("state", "cy");
-                edit.apply();
-                editLangChanged.clear();
-                editLangChanged.putString("state", "About to reload");
-                editLangChanged.apply();
-
-                LanguageManager.changeLang(this.getResources(), welshLanguageCode);
-                finish();
+                changeLanguageToWelsh();
                 startActivity(restartActivity);
                 break;
         }
+    }
+
+    public void changeLanguageToWelsh(){
+        edit.clear();
+        edit.putString("state", "cy");
+        edit.apply();
+        editLangChanged.clear();
+        editLangChanged.putString("state", "About to reload");
+        editLangChanged.apply();
+
+        LanguageManager.changeLang(this.getResources(), welshLanguageCode);
+        finish();
     }
 
     @Override
