@@ -44,10 +44,6 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
     private SharedPreferences currentLang;
     private String currentLocale;
 
-
-    public ListPharmaciesFragment() {
-    }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -82,7 +78,6 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
         mViewModel.getPharmacies().observe(this, pharmacyObserver);
 
         lv = v.findViewById(R.id.listview_pharmacies);
-
         la = new ArrayAdapter<String>(
                 getActivity(),
                 android.R.layout.simple_list_item_1,
@@ -91,20 +86,16 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
         lv.setAdapter(la);
         lv.setOnItemClickListener(this);
 
-        //date stuff
         setUpDate(v);
         return v;
     }
 
     public void setUpDate(View v) {
-        //Code help gathered from:
-        // https://stackoverflow.com/questions/40310773/android-studio-textview-show-date
-        TextView dateTV = (TextView)v.findViewById(R.id.date_text_view);
-
+        //Adapted from: https://stackoverflow.com/questions/40310773/android-studio-textview-show-date
+        TextView dateTV = v.findViewById(R.id.date_text_view);
         Date currentDate = Calendar.getInstance().getTime();
         SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
         String date_today = format.format(currentDate);
-
         if (currentLocale == "cy") {
             dateTV.setText(" Dyddiad heddiw: " + date_today);
         } else {

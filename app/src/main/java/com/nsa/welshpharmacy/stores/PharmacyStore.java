@@ -8,7 +8,6 @@ import com.nsa.welshpharmacy.model.Pharmacy;
 import com.nsa.welshpharmacy.model.Utils;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -17,17 +16,6 @@ import java.util.Map;
  */
 
 public class PharmacyStore {
-
-    private List<Pharmacy> pharmacies = null;
-
-    /*
-    public List<Pharmacy> getPharmacies(){
-        if(pharmacies == null){
-            pharmacies = FirebaseServices.loadPharmacies();
-        }
-        return pharmacies;
-    }
-    */
 
     /**
      * Returns a sorted map of pharmacy objects with their corresponding distance to the user location

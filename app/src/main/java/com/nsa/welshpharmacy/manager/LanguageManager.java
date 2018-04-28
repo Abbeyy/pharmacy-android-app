@@ -1,4 +1,4 @@
-package com.nsa.welshpharmacy.controller.language;
+package com.nsa.welshpharmacy.manager;
 
 import android.content.res.Configuration;
 import android.content.res.Resources;

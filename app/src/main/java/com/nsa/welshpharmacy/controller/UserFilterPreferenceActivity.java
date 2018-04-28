@@ -15,7 +15,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.nsa.welshpharmacy.R;
-import com.nsa.welshpharmacy.controller.language.LanguageManager;
+import com.nsa.welshpharmacy.manager.LanguageManager;
 import com.nsa.welshpharmacy.controller.listPharmacies.ListPharmaciesActivity;
 import com.nsa.welshpharmacy.services.LocationServices;
 
