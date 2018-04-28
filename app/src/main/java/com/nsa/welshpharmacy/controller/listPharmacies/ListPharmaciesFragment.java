@@ -124,12 +124,12 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
         Bundle bundle = new Bundle();
         bundle.putParcelable("selectedPharmacy", pharmacies.get(position));
         //getParentFragment().setArguments(bundle);
-        ListPharmacysDetailsFragment listPharmacysDetailsFragment = new ListPharmacysDetailsFragment();
-        listPharmacysDetailsFragment.setArguments(bundle);
+        ListPharmacyDetailsFragment listPharmacyDetailsFragment = new ListPharmacyDetailsFragment();
+        listPharmacyDetailsFragment.setArguments(bundle);
         //Then switch fragments.
         fmtManager = getActivity().getSupportFragmentManager();
         fmtTrans = fmtManager.beginTransaction();
-        fmtTrans.replace(R.id.fragments_container, listPharmacysDetailsFragment).addToBackStack("fragTwo");
+        fmtTrans.replace(R.id.fragments_container, listPharmacyDetailsFragment).addToBackStack("fragTwo");
         fmtTrans.addToBackStack(null);
         fmtTrans.commit();
     }

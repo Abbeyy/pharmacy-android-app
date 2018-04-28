@@ -26,17 +26,6 @@ public class ListPharmaciesActivity extends AppCompatActivity {
     private SharedPreferences pharmacyInstancesData;
     private SharedPreferences pharmacyLatLang;
 
-    /*
-    private String[] pharmacyNames = new String[]
-            {"Boots", "Well", "Cardiff Royal Infirmary Pharmacy",
-                    "Clifton Pharmacy", "Pearn's Pharmacies Ltd",
-                    "Superdrug Pharmacy", "Woodville Road Pharmacy",
-                    "Lloyds Pharmacy Ltd", "Central Pharmacy",
-                    "Crwys Pharmacy", "The Co-operative Pharmacy",
-                    "Rees & Moore Pharmacy", "M W Philips",
-                    "MW Phillips Chemists"};
-    */
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,21 +48,5 @@ public class ListPharmaciesActivity extends AppCompatActivity {
     public void generatePharmaciesData() {
         pharmacyInstancesData = getSharedPreferences("pharmacies", Context.MODE_PRIVATE);
         SharedPreferences.Editor edit = pharmacyInstancesData.edit();
-
-        /*
-        for (int k = 0; k < numOfPharmacies; k++) {
-            MockPharmacy pharmacy = new MockPharmacy(pharmacyNames[k],
-                    "02920688695","Rossa9@cardiff.ac.uk",
-                    "Capital Shopping Centre, Cardiff",
-                    "Common Ailments Service", "Out of Hours Service",
-                    "Provides EC", "Seasonal Flu Vaccine");
-
-            Gson gson = new Gson();
-            String json = gson.toJson(pharmacy);
-
-            edit.putString("pharmacy"+k, json);
-        }
-        edit.apply();
-        */
     }
 }

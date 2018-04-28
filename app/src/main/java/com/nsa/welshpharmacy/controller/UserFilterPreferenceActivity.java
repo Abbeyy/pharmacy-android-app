@@ -11,7 +11,6 @@ import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.SwitchCompat;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -100,18 +99,18 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
         changeLangToEnglish.setOnClickListener(this);
         changeLangToWelsh.setOnClickListener(this);
 
-        this.checkMinorAilments = this.findViewById(R.id.check_minor_ailments);
-        this.checkFluVac = this.findViewById(R.id.check_flu_vaccines);
-        this.checkHealthCheck = this.findViewById(R.id.check_health_check);
-        this.checkSmoking = this.findViewById(R.id.check_smoking);
-        this.checkAlcohol = this.findViewById(R.id.check_alcohol);
-        this.textPostcodeWidget = this.findViewById(R.id.text_postcode);
-        this.switchOnLocationWidget = this.findViewById(R.id.switch_location);
+        checkMinorAilments = findViewById(R.id.check_minor_ailments);
+        checkFluVac = findViewById(R.id.check_flu_vaccines);
+        checkHealthCheck = findViewById(R.id.check_health_check);
+        checkSmoking = findViewById(R.id.check_smoking);
+        checkAlcohol = findViewById(R.id.check_alcohol);
+        textPostcodeWidget = findViewById(R.id.text_postcode);
+        switchOnLocationWidget = findViewById(R.id.switch_location);
 
-        this.submitButton = this.findViewById(R.id.submit_button);
-        this.resetButton = this.findViewById(R.id.reset_button);
+        submitButton = findViewById(R.id.submit_button);
+        resetButton = findViewById(R.id.reset_button);
 
-        this.sharedPreferences = this.getPreferences(MODE_PRIVATE);
+        sharedPreferences = getPreferences(MODE_PRIVATE);
 
         initValues();
 
@@ -124,28 +123,28 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
     }
 
     private void initValues() {
-        if (this.sharedPreferences != null) {
-            this.checkMinorAilments.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_AILMENTS, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
-            this.checkFluVac.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_FLU, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
-            this.checkHealthCheck.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_HEALTH, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
-            this.checkSmoking.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_SMOKING, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
-            this.checkAlcohol.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_ALCOHOL, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
-            this.switchOnLocationWidget.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_SWITCH_LOCATION, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
+        if (sharedPreferences != null) {
+            checkMinorAilments.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_AILMENTS, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
+            checkFluVac.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_FLU, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
+            checkHealthCheck.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_HEALTH, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
+            checkSmoking.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_SMOKING, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
+            checkAlcohol.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_ALCOHOL, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
+            switchOnLocationWidget.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_SWITCH_LOCATION, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
         }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        if (this.sharedPreferences != null)
-            this.sharedPreferences.registerOnSharedPreferenceChangeListener(this);
+        if (sharedPreferences != null)
+            sharedPreferences.registerOnSharedPreferenceChangeListener(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        if (this.sharedPreferences != null)
-            this.sharedPreferences.unregisterOnSharedPreferenceChangeListener(this);
+        if (sharedPreferences != null)
+            sharedPreferences.unregisterOnSharedPreferenceChangeListener(this);
     }
 
     @Override
@@ -180,7 +179,7 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
                         edit.putString("state", "en");
                         edit.apply();
 
-                        LanguageManager.changeLang(this.getResources(), englishLanguageCode);
+                        LanguageManager.changeLang(getResources(), englishLanguageCode);
                         finish();
                         startActivity(restartActivity);
 //                        }
@@ -252,14 +251,14 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
             }
         }
         //If the submit button is pressed and the shared preferences are null add the shared preferences
-        if (id == R.id.submit_button && this.sharedPreferences != null) {
-            SharedPreferences.Editor editor = this.sharedPreferences.edit();
-            editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_AILMENTS, this.checkMinorAilments.isChecked());
-            editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_FLU, this.checkFluVac.isChecked());
-            editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_HEALTH, this.checkHealthCheck.isChecked());
-            editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_SMOKING, this.checkSmoking.isChecked());
-            editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_ALCOHOL, this.checkAlcohol.isChecked());
-            editor.putBoolean(KeyValueHelper.KEY_SWITCH_LOCATION, this.switchOnLocationWidget.isChecked());
+        if (id == R.id.submit_button && sharedPreferences != null) {
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_AILMENTS, checkMinorAilments.isChecked());
+            editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_FLU, checkFluVac.isChecked());
+            editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_HEALTH, checkHealthCheck.isChecked());
+            editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_SMOKING, checkSmoking.isChecked());
+            editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_ALCOHOL, checkAlcohol.isChecked());
+            editor.putBoolean(KeyValueHelper.KEY_SWITCH_LOCATION, switchOnLocationWidget.isChecked());
             editor.apply();
         }
     }
@@ -323,9 +322,9 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
     public boolean onLongClick(View view){
         int id = view.getId();
 
-        if (id == R.id.reset_button && this.sharedPreferences != null) {
+        if (id == R.id.reset_button && sharedPreferences != null) {
             //Reset values to their default
-            this.sharedPreferences.edit().clear().apply();
+            sharedPreferences.edit().clear().apply();
             //Pop up toast message to say that values have been reset
             Toast.makeText(this, getString(R.string.reset_text), Toast.LENGTH_SHORT).show();
             //Initialise sharedPreferences
