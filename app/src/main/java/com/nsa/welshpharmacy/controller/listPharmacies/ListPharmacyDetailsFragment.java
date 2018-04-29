@@ -40,7 +40,6 @@ public class ListPharmacyDetailsFragment extends Fragment implements AdapterView
     //private Pharmacy recievedPharmacy;
 
     public ListPharmacyDetailsFragment() {
-
     }
 
     @Nullable
@@ -63,7 +62,6 @@ public class ListPharmacyDetailsFragment extends Fragment implements AdapterView
 
         pharmacysEmail = getActivity().getSharedPreferences("emailAddress", Context.MODE_PRIVATE);
 
-
         /*
         SharedPreferences sharedPrefs = this.getActivity().getSharedPreferences("pharmacyPos", Context.MODE_PRIVATE);
         int pharmacyPosition = sharedPrefs.getInt("position", -1);
@@ -72,12 +70,7 @@ public class ListPharmacyDetailsFragment extends Fragment implements AdapterView
 
         //Help gathered from: https://stackoverflow.com/questions/7145606/how-android-sharedpreferences-save-store-object
         SharedPreferences pharmacies = this.getActivity().getSharedPreferences("pharmacies", Context.MODE_PRIVATE);
-        Gson gson = new Gson();
-        String json = pharmacies.getString("pharmacy" + pharmacyPosition, "Error");
-        MockPharmacy pharmacyToDisplay = gson.fromJson(json, MockPharmacy.class);
         */
-
-
         AppCompatButton btnToMap = (AppCompatButton) v.findViewById(R.id.button_to_map);
         btnToMap.setOnClickListener(this);
 

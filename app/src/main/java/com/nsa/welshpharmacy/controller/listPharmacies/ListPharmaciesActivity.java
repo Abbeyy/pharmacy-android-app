@@ -36,12 +36,39 @@ public class ListPharmaciesActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("pharmacyPos", Context.MODE_PRIVATE);
         pharmacyLatLang = getSharedPreferences("pharmacyLatLang", Context.MODE_PRIVATE);
 
+        /**
+         * Get intent data from user activity and then wrapping it into a bundle to pass to the fragment
+         */
+        Bundle data = getIntent().getExtras();
+        Boolean ailment = null;
+        Boolean flu = null;
+        Boolean health = null;
+        Boolean smoking = null;
+        Boolean alcohol = null;
+        if (data != null) {
+            ailment = data.getBoolean("checkAilments");
+            flu = data.getBoolean("checkFlu");
+            health = data.getBoolean("checkHealth");
+            smoking = data.getBoolean("checkSmoking");
+            alcohol = data.getBoolean("checkAlcohol");
+        }
+
+        Bundle bundle = new Bundle();
+        bundle.putBoolean("booleanAilments", ailment);
+        bundle.putBoolean("booleanFlu", flu);
+        bundle.putBoolean("booleanHealth", health);
+        bundle.putBoolean("booleanSmoking", smoking);
+        bundle.putBoolean("booleanAlcohol", alcohol);
+        ListPharmaciesFragment fragment = new ListPharmaciesFragment();
+        fragment.setArguments(bundle);
+
         generatePharmaciesData();
 
         //setting up main fragment of view
         android.support.v4.app.FragmentManager fmtManager = getSupportFragmentManager();
         android.support.v4.app.FragmentTransaction fmtTransaction = fmtManager.beginTransaction();
         fmtTransaction.add(R.id.fragments_container, new com.nsa.welshpharmacy.controller.listPharmacies.ListPharmaciesFragment());
+        fmtTransaction.replace(R.id.fragments_container, fragment); //https://stackoverflow.com/a/21102881
         fmtTransaction.commit();
     }
 

@@ -106,11 +106,6 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
 
     private void initValues() {
         if (sharedPreferences != null) {
-            checkMinorAilments.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_AILMENTS, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
-            checkFluVac.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_FLU, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
-            checkHealthCheck.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_HEALTH, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
-            checkSmoking.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_SMOKING, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
-            checkAlcohol.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_CHECKBOX_ALCOHOL, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
             switchOnLocationWidget.setChecked(sharedPreferences.getBoolean(KeyValueHelper.KEY_SWITCH_LOCATION, KeyValueHelper.DEFAULT_WIDGET_BOOLEAN));
         }
     }
@@ -158,7 +153,15 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
                 Toast.makeText(this, R.string.location_catch_statement, Toast.LENGTH_SHORT).show();
                 return;
             }
+            System.out.println("IN FLU" + checkFluVac.isChecked());
+            System.out.println("IN HEALTH" + checkHealthCheck.isChecked());
+
             Intent pharmacyListView = new Intent(this, ListPharmaciesActivity.class);
+            pharmacyListView.putExtra("checkAilments", checkMinorAilments.isChecked());
+            pharmacyListView.putExtra("checkFlu", checkFluVac.isChecked());
+            pharmacyListView.putExtra("checkHealth", checkHealthCheck.isChecked());
+            pharmacyListView.putExtra("checkSmoking", checkSmoking.isChecked());
+            pharmacyListView.putExtra("checkAlcohol", checkAlcohol.isChecked());
             startActivity(pharmacyListView);
         }
         if (id == R.id.submit_button && switchOnLocationWidget.isChecked()) {
@@ -289,11 +292,7 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
 
     public void applySharedPreferences(){
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_AILMENTS, checkMinorAilments.isChecked());
-        editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_FLU, checkFluVac.isChecked());
-        editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_HEALTH, checkHealthCheck.isChecked());
-        editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_SMOKING, checkSmoking.isChecked());
-        editor.putBoolean(KeyValueHelper.KEY_CHECKBOX_ALCOHOL, checkAlcohol.isChecked());
+        edit.clear();
         editor.putBoolean(KeyValueHelper.KEY_SWITCH_LOCATION, switchOnLocationWidget.isChecked());
         editor.apply();
     }
@@ -306,6 +305,11 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
                 Toast.makeText(this, LocationServices.getUserLocation().toString(), Toast.LENGTH_LONG).show();
                 //Then switch view to next activity
                 Intent pharmacyListView = new Intent(this, ListPharmaciesActivity.class);
+                pharmacyListView.putExtra("checkAilments", checkMinorAilments.isChecked());
+                pharmacyListView.putExtra("checkFlu", checkFluVac.isChecked());
+                pharmacyListView.putExtra("checkHealth", checkHealthCheck.isChecked());
+                pharmacyListView.putExtra("checkSmoking", checkSmoking.isChecked());
+                pharmacyListView.putExtra("checkAlcohol", checkAlcohol.isChecked());
                 startActivity(pharmacyListView);
             }
         } else {
