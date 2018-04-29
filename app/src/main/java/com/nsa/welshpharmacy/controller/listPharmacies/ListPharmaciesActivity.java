@@ -49,13 +49,15 @@ public class ListPharmaciesActivity extends AppCompatActivity {
             smoking = data.getBoolean("checkSmoking");
             alcohol = data.getBoolean("checkAlcohol");
         }
-        //Boolean flu = data.getParcelable("checkFlu");
+
         Bundle bundle = new Bundle();
         bundle.putBoolean("booleanAilments", ailment);
         bundle.putBoolean("booleanFlu", flu);
         bundle.putBoolean("booleanHealth", health);
         bundle.putBoolean("booleanSmoking", smoking);
         bundle.putBoolean("booleanAlcohol", alcohol);
+        ListPharmaciesFragment fragment = new ListPharmaciesFragment();
+        fragment.setArguments(bundle);
 
         generatePharmaciesData();
 
@@ -63,6 +65,7 @@ public class ListPharmaciesActivity extends AppCompatActivity {
         android.support.v4.app.FragmentManager fmtManager = getSupportFragmentManager();
         android.support.v4.app.FragmentTransaction fmtTransaction = fmtManager.beginTransaction();
         fmtTransaction.add(R.id.fragments_container, new com.nsa.welshpharmacy.controller.listPharmacies.ListPharmaciesFragment());
+        fmtTransaction.replace(R.id.fragments_container, fragment); //https://stackoverflow.com/a/21102881
         fmtTransaction.commit();
     }
 

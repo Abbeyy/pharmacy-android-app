@@ -60,7 +60,7 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.list_pharmacies_fragment_one_layout, container, false);
         //inflating layout list_pharmacies_fragment_one_layout as layout for my fragment, holding both
         //textviews and the listview!
@@ -83,7 +83,7 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
         System.out.println("OUT HEALTH" + booleanHealth);
         */
 
-        Bundle bundle = this.getArguments();
+        Bundle bundle = getArguments();
         if (bundle != null){
             booleanAilments = bundle.getBoolean("booleanAilments");
             booleanFlu = bundle.getBoolean("booleanFlu");
