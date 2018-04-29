@@ -16,18 +16,24 @@
         android:theme="@style/AppTheme">
         <!--<activity android:name=".view.MainMenuActivity">-->
         <!--</activity>-->
-        <activity android:name=".controller.UserFilterPreferenceActivity"
-            android:screenOrientation="portrait">
+        <activity
+            android:name="com.nsa.welshpharmacy.controller.UserFilterPreferenceActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.nsa.welshpharmacy.controller.language.AppTheme.AppTheme"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".controller.listPharmacies.ListPharmaciesActivity">
+        <activity android:name="com.nsa.welshpharmacy.controller.listPharmacies.ListPharmaciesActivity" >
         </activity>
-        <activity android:name=".controller.StaffFilterPreferenceActivity">
+        <activity android:name="com.nsa.welshpharmacy.controller.StaffFilterPreferenceActivity" >
         </activity>
+
 
         <!--Connect the app with google play services including maps-->
         <meta-data
