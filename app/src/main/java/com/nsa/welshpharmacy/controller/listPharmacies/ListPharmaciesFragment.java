@@ -9,7 +9,9 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ListViewCompat;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,6 +52,9 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
         View v = inflater.inflate(R.layout.list_pharmacies_fragment_one_layout, container, false);
         //inflating layout list_pharmacies_fragment_one_layout as layout for my fragment, holding both
         //textviews and the listview!
+
+        Toolbar myToolbar = getActivity().findViewById(R.id.my_toolbar);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(myToolbar);
 
         currentLang = getActivity().getSharedPreferences("currentLanguage", Context.MODE_PRIVATE);
         currentLocale = currentLang.getString("state", "default");
