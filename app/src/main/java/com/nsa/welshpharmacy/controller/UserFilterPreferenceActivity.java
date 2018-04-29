@@ -12,6 +12,8 @@ import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.SwitchCompat;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -60,8 +62,10 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_filter_preference);
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+
+        Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
+
         currentLang = getSharedPreferences("currentLanguage", Context.MODE_PRIVATE);
         edit = currentLang.edit();
 
@@ -132,6 +136,27 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id = item.getItemId();
+        switch (id){
+            case R.id.lang_to_english:
+                languageSwitch(id);
+                return true;
+            case R.id.lang_to_welsh:
+                languageSwitch(id);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
     public void onClick(View view) {
         int id = view.getId();
         //Adapted from https://stackoverflow.com/a/4531500 Retrieved: 17/3/18
@@ -141,10 +166,11 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
         if (id == R.id.text_postcode) {
             textPostcodeWidget.setText("");
         }
-
+        /*
         if ((id == R.id.lang_to_welsh) || (id == R.id.lang_to_english)) {
             languageSwitch(id);
         }
+        */
 
         Matcher matcher = POSTCODE_REGEX.matcher(textPostcodeWidget.getText());
         //If there is not a valid postcode and the switch is not checked show a toast warning
