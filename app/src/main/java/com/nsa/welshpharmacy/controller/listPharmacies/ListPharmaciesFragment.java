@@ -53,9 +53,6 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
         //inflating layout list_pharmacies_fragment_one_layout as layout for my fragment, holding both
         //textviews and the listview!
 
-        Toolbar myToolbar = getActivity().findViewById(R.id.my_toolbar);
-        ((AppCompatActivity)getActivity()).setSupportActionBar(myToolbar);
-
         currentLang = getActivity().getSharedPreferences("currentLanguage", Context.MODE_PRIVATE);
         currentLocale = currentLang.getString("state", "default");
         mViewModel = ViewModelProviders.of(this).get(ListPharmaciesViewModel.class);
@@ -90,6 +87,9 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
 
         lv.setAdapter(la);
         lv.setOnItemClickListener(this);
+
+        Toolbar myToolbar = getActivity().findViewById(R.id.my_toolbar);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(myToolbar);
 
         setUpDate(v);
         return v;
