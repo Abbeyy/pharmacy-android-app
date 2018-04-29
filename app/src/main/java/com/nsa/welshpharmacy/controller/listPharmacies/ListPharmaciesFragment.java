@@ -18,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.nsa.welshpharmacy.R;
+import com.nsa.welshpharmacy.controller.KeyValueHelper;
 import com.nsa.welshpharmacy.model.Pharmacy;
 import com.nsa.welshpharmacy.viewModel.ListPharmaciesViewModel;
 
@@ -36,6 +37,7 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
     ListViewCompat lv;
     List<Pharmacy> listOfPharmacies;
     List<String> listOfNames;
+    List<Pharmacy> filteredPharmacies;
     private ListPharmaciesViewModel mViewModel;
     private ArrayAdapter<String> la;
 
@@ -43,6 +45,10 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
     private FragmentTransaction fmtTrans;
     private SharedPreferences currentLang;
     private String currentLocale;
+
+    private SharedPreferences checkboxAilments;
+    private boolean booleanAilments;
+    private SharedPreferences checkboxFlu;
 
     @Nullable
     @Override
@@ -53,9 +59,15 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
 
         currentLang = getActivity().getSharedPreferences("currentLanguage", Context.MODE_PRIVATE);
         currentLocale = currentLang.getString("state", "default");
+        checkboxAilments = getActivity().getSharedPreferences("checkbox_ailments", Context.MODE_PRIVATE);
+        booleanAilments = checkboxAilments.getBoolean(KeyValueHelper.KEY_CHECKBOX_AILMENTS, false);
+        checkboxFlu = getActivity().getSharedPreferences("checkbox_flu", Context.MODE_PRIVATE);
+
         mViewModel = ViewModelProviders.of(this).get(ListPharmaciesViewModel.class);
         listOfPharmacies = new ArrayList<>();
         listOfNames = new ArrayList<>();
+
+
 
         /**
          * Retrieves the pharmacy information from the PharmacyListViewModel
@@ -68,9 +80,12 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
                 if(pharmacies != null){
                     listOfPharmacies.addAll(pharmacies);
                     listOfNames.clear();
+                    /*
                     for(Pharmacy pharmacy : pharmacies){
                         listOfNames.add(pharmacy.getName());
                     }
+                    */
+                    filterPharmacyNames();
                     la.notifyDataSetChanged();
                 }
             }
@@ -123,5 +138,24 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
         fmtTrans.replace(R.id.fragments_container, listPharmacyDetailsFragment).addToBackStack("fragTwo");
         fmtTrans.addToBackStack(null);
         fmtTrans.commit();
+    }
+
+    public List<Pharmacy> filterPharmaciesBySelection(){
+        List<Pharmacy> filteredPharmacies = new ArrayList<>();
+        for(Pharmacy pharmacy : listOfPharmacies){
+            for(String string : pharmacy.getServices().keySet())
+                if(booleanAilments && string == checkboxAilments.toString()){
+                    filteredPharmacies.add(pharmacy);
+                }
+        }
+        return filteredPharmacies;
+    }
+
+    public List<String> filterPharmacyNames(){
+        List<String> listOfNames = new ArrayList<>();
+        for(Pharmacy pharmacy : filterPharmaciesBySelection()){
+            listOfNames.add(pharmacy.getName());
+        }
+        return listOfNames;
     }
 }
