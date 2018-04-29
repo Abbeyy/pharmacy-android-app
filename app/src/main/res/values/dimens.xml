@@ -7,4 +7,5 @@
     <dimen name="lv_names_row_dimension">10dp</dimen>
     <dimen name="activity_horizontal_margin"></dimen>
     <dimen name="title_padding">12dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

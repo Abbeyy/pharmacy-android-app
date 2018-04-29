@@ -40,4 +40,9 @@
     <string name="contact_details">Contact Details</string>
     <string name="location_catch_statement">Location could not be determined from postcode</string>
     <string name="see_location_on_map">See location on Map</string>
+    <string name="title_activity_comments">comments</string>
+    <string name="WriteComments">Write your reveiew of the app</string>
+    <string name="UserComments">Please nter your comments</string>
+    <string name="submmitButton">Submmit</string>
+    <string name="submitButton">submit</string>
 </resources>
