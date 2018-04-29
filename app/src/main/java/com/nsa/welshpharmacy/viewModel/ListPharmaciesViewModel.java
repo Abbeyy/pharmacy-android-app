@@ -53,8 +53,7 @@ public class ListPharmaciesViewModel extends ViewModel implements ValueEventList
         // see:  https://firebase.google.com/docs/database/android/lists-of-data#listen_for_value_events
         // Retrieve all  Pharmacy records from the Firebase database in one go
         for(DataSnapshot pharmacySnapshot : dataSnapshot.getChildren()){
-            Pharmacy pharmacy = pharmacySnapshot.getValue(Pharmacy.class);
-            pharmacy.setId(pharmacySnapshot.getKey());
+            Pharmacy pharmacy = FirebaseServices.constructPharmacy(pharmacySnapshot);
             listOfPharmacies.add(pharmacy);
         }
         pharmacies.setValue(listOfPharmacies);

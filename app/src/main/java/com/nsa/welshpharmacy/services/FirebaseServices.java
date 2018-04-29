@@ -5,10 +5,14 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.nsa.welshpharmacy.model.Pharmacy;
 import com.nsa.welshpharmacy.model.PharmacyService;
+import com.nsa.welshpharmacy.model.PharmacyServiceAvailability;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * This service is linked to Firebase and reads to the Firebase database.
@@ -23,6 +27,17 @@ public class FirebaseServices {
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference("pharmacies");
         ref.addValueEventListener(listener);
+    }
+
+    public static Pharmacy constructPharmacy(DataSnapshot dataSnapshot){
+        String id = dataSnapshot.getKey();
+        String email = (String) dataSnapshot.child("email").getValue();
+        String name = (String) dataSnapshot.child("name").getValue();
+        String phone = (String) dataSnapshot.child("phone").getValue();
+        String postcode = (String) dataSnapshot.child("postcode").getValue();
+        Map<String,PharmacyServiceAvailability> services = new HashMap<>();
+        String website = (String) dataSnapshot.child("website").getValue();
+        return new Pharmacy(id, email, name, phone, postcode, services, website);
     }
 
     public static List<PharmacyService> loadServices(){
