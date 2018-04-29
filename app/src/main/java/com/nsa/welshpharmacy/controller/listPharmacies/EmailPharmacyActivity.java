@@ -41,6 +41,29 @@ public class EmailPharmacyActivity extends AppCompatActivity implements View.OnC
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
+        currentLang = getSharedPreferences("currentLanguage", Context.MODE_PRIVATE);
+        edit = currentLang.edit();
+
+        alreadyChanged = getPreferences(Context.MODE_PRIVATE);
+        editLangChanged = alreadyChanged.edit();
+
+        String langAlreadyChanged = alreadyChanged.getString("state", "error");
+        currentLocale = currentLang.getString("state", "error");
+
+        if (currentLocale != "error") {
+            if (langAlreadyChanged == "error") {
+                changeLanguage(langAlreadyChanged);
+            } else {
+                String result = alreadyChanged.getString("state", "error");
+                editLangChanged.clear();
+                editLangChanged.apply();
+            }
+        }
+
+        changeLangToEnglish = findViewById(R.id.lang_to_english);
+        changeLangToWelsh = findViewById(R.id.lang_to_welsh);
+
+
         pharmacyEmail = getSharedPreferences("emailAddress", Context.MODE_PRIVATE);
 
         Button sendEmail = findViewById(R.id.send_email_btn);
