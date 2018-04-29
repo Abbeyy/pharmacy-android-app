@@ -36,6 +36,27 @@ public class ListPharmaciesActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("pharmacyPos", Context.MODE_PRIVATE);
         pharmacyLatLang = getSharedPreferences("pharmacyLatLang", Context.MODE_PRIVATE);
 
+        Bundle data = getIntent().getExtras();
+        Boolean ailment = null;
+        Boolean flu = null;
+        Boolean health = null;
+        Boolean smoking = null;
+        Boolean alcohol = null;
+        if (data != null) {
+            ailment = data.getBoolean("checkAilments");
+            flu = data.getBoolean("checkFlu");
+            health = data.getBoolean("checkHealth");
+            smoking = data.getBoolean("checkSmoking");
+            alcohol = data.getBoolean("checkAlcohol");
+        }
+        //Boolean flu = data.getParcelable("checkFlu");
+        Bundle bundle = new Bundle();
+        bundle.putBoolean("booleanAilments", ailment);
+        bundle.putBoolean("booleanFlu", flu);
+        bundle.putBoolean("booleanHealth", health);
+        bundle.putBoolean("booleanSmoking", smoking);
+        bundle.putBoolean("booleanAlcohol", alcohol);
+
         generatePharmaciesData();
 
         //setting up main fragment of view

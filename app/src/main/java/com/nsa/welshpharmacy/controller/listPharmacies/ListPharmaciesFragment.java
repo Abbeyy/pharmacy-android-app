@@ -18,7 +18,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.nsa.welshpharmacy.R;
-import com.nsa.welshpharmacy.controller.KeyValueHelper;
 import com.nsa.welshpharmacy.model.Pharmacy;
 import com.nsa.welshpharmacy.model.PharmacyServiceAvailability;
 import com.nsa.welshpharmacy.viewModel.ListPharmaciesViewModel;
@@ -52,6 +51,12 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
     private boolean booleanAilments;
     private SharedPreferences checkboxFlu;
     private boolean booleanFlu;
+    private SharedPreferences checkboxHealth;
+    private boolean booleanHealth;
+    private SharedPreferences checkboxSmoking;
+    private boolean booleanSmoking;
+    private SharedPreferences checkboxAlcohol;
+    private boolean booleanAlcohol;
 
     @Nullable
     @Override
@@ -62,17 +67,34 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
 
         currentLang = getActivity().getSharedPreferences("currentLanguage", Context.MODE_PRIVATE);
         currentLocale = currentLang.getString("state", "default");
+        /*
         checkboxAilments = getActivity().getSharedPreferences("checkbox_ailments", Context.MODE_PRIVATE);
-        booleanAilments = checkboxAilments.getBoolean(KeyValueHelper.KEY_CHECKBOX_AILMENTS, false);
+        booleanAilments = checkboxAilments.getBoolean("checkbox_ailments", false);
         checkboxFlu = getActivity().getSharedPreferences("checkbox_flu", Context.MODE_PRIVATE);
-        booleanFlu = checkboxFlu.getBoolean(KeyValueHelper.KEY_CHECKBOX_FLU, false);
+        booleanFlu = checkboxFlu.getBoolean("checkbox_flu", false);
+        checkboxHealth = getActivity().getSharedPreferences("checkbox_health", Context.MODE_PRIVATE);
+        booleanHealth = checkboxHealth.getBoolean("checkbox_health", false);
+        checkboxSmoking = getActivity().getSharedPreferences("checkbox_smoking", Context.MODE_PRIVATE);
+        booleanSmoking = checkboxSmoking.getBoolean("checkbox_smoking", false);
+        checkboxAlcohol = getActivity().getSharedPreferences("checkbox_alcohol", Context.MODE_PRIVATE);
+        booleanAlcohol = checkboxAlcohol.getBoolean("checkbox_alcohol", false);
 
+        System.out.println("OUT FLU" + booleanFlu);
+        System.out.println("OUT HEALTH" + booleanHealth);
+        */
+
+        Bundle bundle = this.getArguments();
+        if (bundle != null){
+            booleanAilments = bundle.getBoolean("booleanAilments");
+            booleanFlu = bundle.getBoolean("booleanFlu");
+            booleanHealth = bundle.getBoolean("booleanHealth");
+            booleanSmoking = bundle.getBoolean("booleanSmoking");
+            booleanAlcohol = bundle.getBoolean("booleanAlcohol");
+        }
 
         mViewModel = ViewModelProviders.of(this).get(ListPharmaciesViewModel.class);
         listOfPharmacies = new ArrayList<>();
         listOfNames = new ArrayList<>();
-
-
 
         /**
          * Retrieves the pharmacy information from the PharmacyListViewModel
@@ -85,11 +107,6 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
                 if(pharmacies != null){
                     listOfPharmacies.addAll(pharmacies);
                     listOfNames.clear();
-                    /*
-                    for(Pharmacy pharmacy : pharmacies){
-                        listOfNames.add(pharmacy.getName());
-                    }
-                    */
                     listOfNames.addAll(filterPharmacyNames());
                     la.notifyDataSetChanged();
                 }
@@ -145,19 +162,42 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
         fmtTrans.commit();
     }
 
+    /**
+     * Loops through the pharmacy objects to determine what services they ahve and if it is what the
+     * user selected, then add them to a list.
+     * @return list of filtered pharmacies
+     */
     public List<Pharmacy> filterPharmaciesBySelection(){
         List<Pharmacy> filteredPharmacies = new ArrayList<>();
         for(Pharmacy pharmacy : listOfPharmacies){
             for(Map.Entry<String, PharmacyServiceAvailability> pharmacyService : pharmacy.getServices().entrySet()) {
-                System.out.println(pharmacyService);
                 PharmacyServiceAvailability serviceValue = pharmacyService.getValue();
-                System.out.println("SERVICEVALUE " + serviceValue);
-                //System.out.println("TO String " + serviceValue.defaultAvailability.toString());
-                //System.out.println("CYM " + serviceValue.defaultAvailability.get("cym"));
+                System.out.println("BOOLEAN " + booleanFlu);
+                System.out.println("BOOLEANHEALTH " + booleanHealth);
                 if(serviceValue.defaultAvailability != null) {
                     switch (pharmacyService.getKey()) {
                         case "minorAilments":
-                            if (/*booleanAilments && */ serviceValue.defaultAvailability.get("cym")) {
+                            if (booleanAilments && serviceValue.defaultAvailability.get("cym")) {
+                                filteredPharmacies.add(pharmacy);
+                            }
+                            break;
+                        case "fluVac":
+                            if (booleanFlu && serviceValue.defaultAvailability.get("cym")){
+                                filteredPharmacies.add(pharmacy);
+                            }
+                            break;
+                        case "healthCheck":
+                            if (booleanHealth && serviceValue.defaultAvailability.get("cym")){
+                                filteredPharmacies.add(pharmacy);
+                            }
+                            break;
+                        case "smoking":
+                            if (booleanSmoking && serviceValue.defaultAvailability.get("cym")){
+                                filteredPharmacies.add(pharmacy);
+                            }
+                            break;
+                        case "alcohol":
+                            if (booleanAlcohol && serviceValue.defaultAvailability.get("cym")){
                                 filteredPharmacies.add(pharmacy);
                             }
                             break;
