@@ -10,7 +10,10 @@ import java.util.HashMap;
  */
 
 public class PharmacyServiceAvailability implements Serializable {
-
+    /**
+     * String - The language id eg. "cym"
+     * Boolean- Is the language available in that language true or false
+     */
     public HashMap<String, Boolean> defaultAvailability;
 
     public PharmacyServiceAvailability(HashMap<String, Boolean> defaultAvailability) {

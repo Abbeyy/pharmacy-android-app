@@ -20,6 +20,7 @@ import android.widget.TextView;
 import com.nsa.welshpharmacy.R;
 import com.nsa.welshpharmacy.controller.KeyValueHelper;
 import com.nsa.welshpharmacy.model.Pharmacy;
+import com.nsa.welshpharmacy.model.PharmacyServiceAvailability;
 import com.nsa.welshpharmacy.viewModel.ListPharmaciesViewModel;
 
 import java.text.SimpleDateFormat;
@@ -27,6 +28,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by c1714546 on 3/18/2018.
@@ -49,6 +51,7 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
     private SharedPreferences checkboxAilments;
     private boolean booleanAilments;
     private SharedPreferences checkboxFlu;
+    private boolean booleanFlu;
 
     @Nullable
     @Override
@@ -62,6 +65,8 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
         checkboxAilments = getActivity().getSharedPreferences("checkbox_ailments", Context.MODE_PRIVATE);
         booleanAilments = checkboxAilments.getBoolean(KeyValueHelper.KEY_CHECKBOX_AILMENTS, false);
         checkboxFlu = getActivity().getSharedPreferences("checkbox_flu", Context.MODE_PRIVATE);
+        booleanFlu = checkboxFlu.getBoolean(KeyValueHelper.KEY_CHECKBOX_FLU, false);
+
 
         mViewModel = ViewModelProviders.of(this).get(ListPharmaciesViewModel.class);
         listOfPharmacies = new ArrayList<>();
@@ -85,7 +90,7 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
                         listOfNames.add(pharmacy.getName());
                     }
                     */
-                    filterPharmacyNames();
+                    listOfNames.addAll(filterPharmacyNames());
                     la.notifyDataSetChanged();
                 }
             }
@@ -143,19 +148,33 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
     public List<Pharmacy> filterPharmaciesBySelection(){
         List<Pharmacy> filteredPharmacies = new ArrayList<>();
         for(Pharmacy pharmacy : listOfPharmacies){
-            for(String string : pharmacy.getServices().keySet())
-                if(booleanAilments && string == checkboxAilments.toString()){
-                    filteredPharmacies.add(pharmacy);
+            for(Map.Entry<String, PharmacyServiceAvailability> pharmacyService : pharmacy.getServices().entrySet()) {
+                System.out.println(pharmacyService);
+                PharmacyServiceAvailability serviceValue = pharmacyService.getValue();
+                System.out.println("SERVICEVALUE " + serviceValue);
+                //System.out.println("TO String " + serviceValue.defaultAvailability.toString());
+                //System.out.println("CYM " + serviceValue.defaultAvailability.get("cym"));
+                if(serviceValue.defaultAvailability != null) {
+                    switch (pharmacyService.getKey()) {
+                        case "minorAilments":
+                            if (/*booleanAilments && */ serviceValue.defaultAvailability.get("cym")) {
+                                filteredPharmacies.add(pharmacy);
+                            }
+                            break;
+                        default:
+                            break;
+                    }
                 }
+            }
         }
         return filteredPharmacies;
     }
 
     public List<String> filterPharmacyNames(){
-        List<String> listOfNames = new ArrayList<>();
+        List<String> listOfFilteredNames = new ArrayList<>();
         for(Pharmacy pharmacy : filterPharmaciesBySelection()){
-            listOfNames.add(pharmacy.getName());
+            listOfFilteredNames.add(pharmacy.getName());
         }
-        return listOfNames;
+        return listOfFilteredNames;
     }
 }
