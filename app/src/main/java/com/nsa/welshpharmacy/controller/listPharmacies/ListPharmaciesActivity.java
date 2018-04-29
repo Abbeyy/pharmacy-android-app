@@ -36,6 +36,9 @@ public class ListPharmaciesActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("pharmacyPos", Context.MODE_PRIVATE);
         pharmacyLatLang = getSharedPreferences("pharmacyLatLang", Context.MODE_PRIVATE);
 
+        /**
+         * Get intent data from user activity and then wrapping it into a bundle to pass to the fragment
+         */
         Bundle data = getIntent().getExtras();
         Boolean ailment = null;
         Boolean flu = null;

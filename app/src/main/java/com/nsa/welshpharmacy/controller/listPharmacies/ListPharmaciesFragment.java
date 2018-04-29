@@ -47,15 +47,10 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
     private SharedPreferences currentLang;
     private String currentLocale;
 
-    private SharedPreferences checkboxAilments;
     private boolean booleanAilments;
-    private SharedPreferences checkboxFlu;
     private boolean booleanFlu;
-    private SharedPreferences checkboxHealth;
     private boolean booleanHealth;
-    private SharedPreferences checkboxSmoking;
     private boolean booleanSmoking;
-    private SharedPreferences checkboxAlcohol;
     private boolean booleanAlcohol;
 
     @Nullable
@@ -67,22 +62,10 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
 
         currentLang = getActivity().getSharedPreferences("currentLanguage", Context.MODE_PRIVATE);
         currentLocale = currentLang.getString("state", "default");
-        /*
-        checkboxAilments = getActivity().getSharedPreferences("checkbox_ailments", Context.MODE_PRIVATE);
-        booleanAilments = checkboxAilments.getBoolean("checkbox_ailments", false);
-        checkboxFlu = getActivity().getSharedPreferences("checkbox_flu", Context.MODE_PRIVATE);
-        booleanFlu = checkboxFlu.getBoolean("checkbox_flu", false);
-        checkboxHealth = getActivity().getSharedPreferences("checkbox_health", Context.MODE_PRIVATE);
-        booleanHealth = checkboxHealth.getBoolean("checkbox_health", false);
-        checkboxSmoking = getActivity().getSharedPreferences("checkbox_smoking", Context.MODE_PRIVATE);
-        booleanSmoking = checkboxSmoking.getBoolean("checkbox_smoking", false);
-        checkboxAlcohol = getActivity().getSharedPreferences("checkbox_alcohol", Context.MODE_PRIVATE);
-        booleanAlcohol = checkboxAlcohol.getBoolean("checkbox_alcohol", false);
 
-        System.out.println("OUT FLU" + booleanFlu);
-        System.out.println("OUT HEALTH" + booleanHealth);
-        */
-
+        /**
+         * Retrieved the bundle from the activity that contains the boolean values from the checkboxes
+         */
         Bundle bundle = getArguments();
         if (bundle != null){
             booleanAilments = bundle.getBoolean("booleanAilments");
@@ -172,8 +155,6 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
         for(Pharmacy pharmacy : listOfPharmacies){
             for(Map.Entry<String, PharmacyServiceAvailability> pharmacyService : pharmacy.getServices().entrySet()) {
                 PharmacyServiceAvailability serviceValue = pharmacyService.getValue();
-                System.out.println("BOOLEAN " + booleanFlu);
-                System.out.println("BOOLEANHEALTH " + booleanHealth);
                 if(serviceValue.defaultAvailability != null) {
                     switch (pharmacyService.getKey()) {
                         case "minorAilments":
@@ -210,6 +191,10 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
         return filteredPharmacies;
     }
 
+    /**
+     * Creates a list of names from the pharmacies that have been filtered
+     * @return list of filtered pharmacy names
+     */
     public List<String> filterPharmacyNames(){
         List<String> listOfFilteredNames = new ArrayList<>();
         for(Pharmacy pharmacy : filterPharmaciesBySelection()){
