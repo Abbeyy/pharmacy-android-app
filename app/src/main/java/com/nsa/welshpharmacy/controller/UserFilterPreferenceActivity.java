@@ -87,8 +87,6 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
 
         changeLangToEnglish = findViewById(R.id.lang_to_english);
         changeLangToWelsh = findViewById(R.id.lang_to_welsh);
-        changeLangToEnglish.setOnClickListener(this);
-        changeLangToWelsh.setOnClickListener(this);
 
         checkMinorAilments = findViewById(R.id.check_minor_ailments);
         checkFluVac = findViewById(R.id.check_flu_vaccines);
@@ -166,11 +164,6 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
         if (id == R.id.text_postcode) {
             textPostcodeWidget.setText("");
         }
-        /*
-        if ((id == R.id.lang_to_welsh) || (id == R.id.lang_to_english)) {
-            languageSwitch(id);
-        }
-        */
 
         Matcher matcher = POSTCODE_REGEX.matcher(textPostcodeWidget.getText());
         //If there is not a valid postcode and the switch is not checked show a toast warning
