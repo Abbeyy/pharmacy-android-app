@@ -36,8 +36,26 @@ public class FirebaseServices {
         String phone = (String) dataSnapshot.child("phone").getValue();
         String postcode = (String) dataSnapshot.child("postcode").getValue();
         Map<String,PharmacyServiceAvailability> services = new HashMap<>();
+        if(dataSnapshot.child("services").exists()){
+            for(DataSnapshot serviceSnapshot : dataSnapshot.child("services").getChildren()){
+                String serviceId = serviceSnapshot.getKey();
+                PharmacyServiceAvailability pharmacyServiceAvailability = constructServiceAvailability(serviceSnapshot);
+                services.put(serviceId, pharmacyServiceAvailability);
+            }
+        }
         String website = (String) dataSnapshot.child("website").getValue();
         return new Pharmacy(id, email, name, phone, postcode, services, website);
+    }
+
+    private static PharmacyServiceAvailability constructServiceAvailability(DataSnapshot dataSnapshot){
+        Map<String, Boolean> defaultAvailability = new HashMap<>();
+        DataSnapshot defaultSnapshot = dataSnapshot.child("default");
+        for(DataSnapshot languageSnapshot : defaultSnapshot.getChildren()){
+            String language = languageSnapshot.getKey();
+            Boolean availability = (Boolean) languageSnapshot.getValue();
+            defaultAvailability.put(language, availability);
+        }
+        return new PharmacyServiceAvailability(defaultAvailability);
     }
 
     public static List<PharmacyService> loadServices(){
