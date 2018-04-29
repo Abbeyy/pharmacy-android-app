@@ -45,4 +45,6 @@
     <string name="cymraeg" translatable="false">Cymraeg</string>
     <string name="title_activity_email_pharmacy">EmailPharmacyActivity</string>
     <string name="enter_message">Please enter your message below</string>
+    <string name="action_english">English</string>
+    <string name="action_cymraeg">Cymraeg</string>
 </resources>

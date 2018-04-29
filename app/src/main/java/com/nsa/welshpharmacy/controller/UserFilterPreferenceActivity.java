@@ -11,12 +11,13 @@ import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.SwitchCompat;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Toast;
 
 import com.nsa.welshpharmacy.R;
-import com.nsa.welshpharmacy.manager.LanguageManager;
 import com.nsa.welshpharmacy.controller.listPharmacies.ListPharmaciesActivity;
+import com.nsa.welshpharmacy.manager.LanguageManager;
 import com.nsa.welshpharmacy.services.LocationServices;
 
 import java.io.IOException;
@@ -59,7 +60,8 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_filter_preference);
-
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
         currentLang = getSharedPreferences("currentLanguage", Context.MODE_PRIVATE);
         edit = currentLang.edit();
 
