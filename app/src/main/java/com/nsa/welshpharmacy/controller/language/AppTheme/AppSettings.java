@@ -38,8 +38,8 @@ import com.nsa.welshpharmacy.R;
  * Created by c1660911 on 4/24/2018.
  */
 
-public class AppTheme extends AppCompatActivity {
-    private Switch nightModeSwitch;
+public class AppSettings extends AppCompatActivity {
+    private SwitchCompat nightModeSwitch;
     private SwitchCompat allowTrackingSwitch;
     private AppCompatCheckBox minorCheck;
     private AppCompatCheckBox fluCheck;
@@ -76,7 +76,7 @@ public class AppTheme extends AppCompatActivity {
 
 
 
-        nightModeSwitch  = (Switch) findViewById(R.id.nightmodeswitch);
+        nightModeSwitch  = (SwitchCompat) findViewById(R.id.nightmodeswitch);
         minorCheck=(AppCompatCheckBox)findViewById(R.id.check_minor_ailments);
         fluCheck=(AppCompatCheckBox)findViewById(R.id.check_flu_vaccines);
         healthCheck=(AppCompatCheckBox)findViewById(R.id.check_health_check);

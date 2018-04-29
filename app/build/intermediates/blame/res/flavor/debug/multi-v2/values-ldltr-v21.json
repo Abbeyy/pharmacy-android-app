@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Users\\c1660911\\Desktop\\22Welsh-Pharmacy-Team4\\Welsh-Pharmacy-Team4\\app\\build\\intermediates\\incremental\\mergeFlavorDebugResources\\merged.dir\\values-ldltr-v21\\values-ldltr-v21.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\c1660911\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\626bcc4a1a11baabd4034e1c20dc6cf8\\res\\values-ldltr-v21\\values-ldltr-v21.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "112",
+                        "endOffsets": "163"
+                    }
+                }
+            ]
+        }
+    ]
+}

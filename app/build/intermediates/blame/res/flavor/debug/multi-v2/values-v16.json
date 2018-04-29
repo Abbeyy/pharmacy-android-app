@@ -1,0 +1,38 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Users\\c1660911\\Desktop\\22Welsh-Pharmacy-Team4\\Welsh-Pharmacy-Team4\\app\\build\\intermediates\\incremental\\mergeFlavorDebugResources\\merged.dir\\values-v16\\values-v16.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\c1660911\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\626bcc4a1a11baabd4034e1c20dc6cf8\\res\\values-v16\\values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "5",
+                        "endColumns": "12",
+                        "endOffsets": "223"
+                    },
+                    "to": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "121",
+                        "endLines": "6",
+                        "endColumns": "12",
+                        "endOffsets": "289"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\c1660911\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-26.1.0.aar\\ed56b1c6d96e43486b2ade0db7d10ce3\\res\\values-v16\\values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "65",
+                        "endOffsets": "116"
+                    }
+                }
+            ]
+        }
+    ]
+}

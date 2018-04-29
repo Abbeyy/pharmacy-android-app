@@ -1,0 +1,4 @@
+#Sun Apr 29 16:16:43 BST 2018
+base.0=C\:\\Users\\c1660911\\Desktop\\22Welsh-Pharmacy-Team4\\Welsh-Pharmacy-Team4\\app\\build\\intermediates\\transforms\\dexMerger\\flavor\\debug\\1
+path.0=classes.dex
+renamed.0=classes.dex
