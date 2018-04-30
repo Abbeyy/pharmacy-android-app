@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\c1660911\\Desktop\\22Welsh-Pharmacy-Team4\\Welsh-Pharmacy-Team4\\app\\build\\intermediates\\incremental\\mergeFlavorDebugResources\\merged.dir\\values-cy\\values-cy.xml",
+            "outputFile": "C:\\Users\\c1660911\\Desktop\\New folder (3)\\22Welsh-Pharmacy-Team4\\Welsh-Pharmacy-Team4\\app\\build\\intermediates\\incremental\\mergeFlavorDebugResources\\merged.dir\\values-cy\\values-cy.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\c1660911\\Desktop\\22Welsh-Pharmacy-Team4\\Welsh-Pharmacy-Team4\\app\\src\\main\\res\\values-cy\\strings.xml",
+                    "source": "C:\\Users\\c1660911\\Desktop\\New folder (3)\\22Welsh-Pharmacy-Team4\\Welsh-Pharmacy-Team4\\app\\src\\main\\res\\values-cy\\strings.xml",
                     "from": {
                         "startLines": "37,39,38,40,36,4,23,22,42,33,5,16,15,34,43,19,21,32,20,18,24,29,44,8,12,9,10,11,41,35,27,28",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

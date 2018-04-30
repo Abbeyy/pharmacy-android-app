@@ -1,4 +1,4 @@
-#Sun Apr 29 16:14:23 BST 2018
+#Mon Apr 30 10:31:37 BST 2018
 path.3=classes.dex
 path.2=classes.dex
 path.1=classes.dex
@@ -7,7 +7,7 @@ renamed.3=classes4.dex
 renamed.2=classes3.dex
 renamed.1=classes2.dex
 renamed.0=classes.dex
-base.3=C\:\\Users\\c1660911\\Desktop\\22Welsh-Pharmacy-Team4\\Welsh-Pharmacy-Team4\\app\\build\\intermediates\\transforms\\dexMerger\\flavor\\debug\\13
-base.2=C\:\\Users\\c1660911\\Desktop\\22Welsh-Pharmacy-Team4\\Welsh-Pharmacy-Team4\\app\\build\\intermediates\\transforms\\dexMerger\\flavor\\debug\\15
-base.1=C\:\\Users\\c1660911\\Desktop\\22Welsh-Pharmacy-Team4\\Welsh-Pharmacy-Team4\\app\\build\\intermediates\\transforms\\dexMerger\\flavor\\debug\\12
-base.0=C\:\\Users\\c1660911\\Desktop\\22Welsh-Pharmacy-Team4\\Welsh-Pharmacy-Team4\\app\\build\\intermediates\\transforms\\dexMerger\\flavor\\debug\\14
+base.3=C\:\\Users\\c1660911\\Desktop\\New folder (3)\\22Welsh-Pharmacy-Team4\\Welsh-Pharmacy-Team4\\app\\build\\intermediates\\transforms\\dexMerger\\flavor\\debug\\14
+base.2=C\:\\Users\\c1660911\\Desktop\\New folder (3)\\22Welsh-Pharmacy-Team4\\Welsh-Pharmacy-Team4\\app\\build\\intermediates\\transforms\\dexMerger\\flavor\\debug\\12
+base.1=C\:\\Users\\c1660911\\Desktop\\New folder (3)\\22Welsh-Pharmacy-Team4\\Welsh-Pharmacy-Team4\\app\\build\\intermediates\\transforms\\dexMerger\\flavor\\debug\\15
+base.0=C\:\\Users\\c1660911\\Desktop\\New folder (3)\\22Welsh-Pharmacy-Team4\\Welsh-Pharmacy-Team4\\app\\build\\intermediates\\transforms\\dexMerger\\flavor\\debug\\13

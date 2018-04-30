@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:2:1-49:12
-INJECTED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:2:1-49:12
-INJECTED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:2:1-49:12
-INJECTED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:2:1-49:12
+ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:2:1-49:12
+INJECTED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:2:1-49:12
+INJECTED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:2:1-49:12
+INJECTED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:2:1-49:12
 MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\c1660911\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\626bcc4a1a11baabd4034e1c20dc6cf8\AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\c1660911\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\ed03c9e707472f76b29f8d6de4d9ed61\AndroidManifest.xml:2:1-11:12
 MERGED from [com.google.firebase:firebase-database:12.0.0] C:\Users\c1660911\.gradle\caches\transforms-1\files-1.1\firebase-database-12.0.0.aar\d9a457328aa9a4a692845b239932ebcb\AndroidManifest.xml:2:1-8:12
@@ -38,39 +38,39 @@ MERGED from [com.google.firebase:firebase-analytics-license:12.0.0] C:\Users\c16
 MERGED from [com.google.android.gms:play-services-base-license:12.0.0] C:\Users\c1660911\.gradle\caches\transforms-1\files-1.1\play-services-base-license-12.0.0.aar\3f4b1a435b38f5ee72474c1e5bf1bd09\AndroidManifest.xml:2:1-8:12
 MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\c1660911\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\50456dcd4632842173958297387e3c78\AndroidManifest.xml:17:1-30:12
 MERGED from [com.google.firebase:firebase-analytics-impl-license:12.0.0] C:\Users\c1660911\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-license-12.0.0.aar\fd2f6f44b2d7c69983e7dfc639c383dd\AndroidManifest.xml:2:1-8:12
-INJECTED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:2:1-49:12
-INJECTED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:2:1-49:12
-INJECTED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:2:1-49:12
+INJECTED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:2:1-49:12
+INJECTED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:2:1-49:12
+INJECTED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:2:1-49:12
 	package
-		ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:4:5-36
-		INJECTED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:4:5-36
+		INJECTED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:2:1-49:12
-		INJECTED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:2:1-49:12
+		INJECTED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml
 	xmlns:tools
-		ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:3:5-51
+		ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
-		INJECTED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:2:1-49:12
-		INJECTED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:2:1-49:12
+		INJECTED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:2:11-69
+		ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:2:11-69
 uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:7:5-79
+ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:7:5-79
 	android:name
-		ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:7:22-76
+		ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:7:22-76
 uses-feature#android.hardware.location.network
-ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:8:5-70
+ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:8:5-70
 	android:name
-		ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:8:19-67
+		ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:8:19-67
 uses-feature#android.hardware.location.gps
-ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:9:5-66
+ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:9:5-66
 	android:name
-		ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:9:19-63
+		ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:9:19-63
 application
-ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:11:5-47:19
+ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:11:5-47:19
 MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\c1660911\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\626bcc4a1a11baabd4034e1c20dc6cf8\AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\c1660911\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\626bcc4a1a11baabd4034e1c20dc6cf8\AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\c1660911\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\ed03c9e707472f76b29f8d6de4d9ed61\AndroidManifest.xml:9:5-20
@@ -136,65 +136,65 @@ MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\c1660911\.gradle\cac
 MERGED from [com.google.firebase:firebase-analytics-impl-license:12.0.0] C:\Users\c1660911\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-license-12.0.0.aar\fd2f6f44b2d7c69983e7dfc639c383dd\AndroidManifest.xml:5:5-6:19
 MERGED from [com.google.firebase:firebase-analytics-impl-license:12.0.0] C:\Users\c1660911\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-license-12.0.0.aar\fd2f6f44b2d7c69983e7dfc639c383dd\AndroidManifest.xml:5:5-6:19
 	android:supportsRtl
-		ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:16:9-35
+		ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:16:9-35
 	android:label
-		ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:14:9-41
+		ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:14:9-41
 	android:roundIcon
-		ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:15:9-54
+		ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:15:9-54
 	android:icon
-		ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:13:9-50
+		ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:13:9-50
 	android:allowBackup
-		ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:12:9-35
+		ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:12:9-35
 	android:theme
-		ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:17:9-40
+		ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:17:9-40
 activity#com.nsa.welshpharmacy.controller.UserFilterPreferenceActivity
-ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:20:9-23:20
+ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:20:9-23:20
 	android:screenOrientation
-		ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:22:13-49
+		ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:22:13-49
 	android:name
-		ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:21:13-89
+		ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:21:13-89
 activity#com.nsa.welshpharmacy.controller.language.AppTheme.AppSettings
-ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:24:9-32:20
+ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:24:9-32:20
 	android:screenOrientation
-		ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:26:13-49
+		ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:26:13-49
 	android:name
-		ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:25:13-90
+		ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:25:13-90
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:27:13-31:29
+ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:27:13-31:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:28:17-69
+ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:28:17-69
 	android:name
-		ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:28:25-66
+		ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:28:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:30:17-77
+ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:30:17-77
 	android:name
-		ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:30:27-74
+		ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:30:27-74
 activity#com.nsa.welshpharmacy.controller.listPharmacies.ListPharmaciesActivity
-ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:34:9-35:20
+ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:34:9-35:20
 	android:name
-		ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:34:19-104
+		ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:34:19-104
 activity#com.nsa.welshpharmacy.controller.StaffFilterPreferenceActivity
-ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:36:9-37:20
+ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:36:9-37:20
 	android:name
-		ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:36:19-96
+		ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:36:19-96
 meta-data#com.google.android.gms.version
-ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:41:9-43:69
+ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:41:9-43:69
 MERGED from [com.google.android.gms:play-services-basement:12.0.0] C:\Users\c1660911\.gradle\caches\transforms-1\files-1.1\play-services-basement-12.0.0.aar\063c177c8d9ffe9b417368eeb2010578\AndroidManifest.xml:23:9-25:69
 MERGED from [com.google.android.gms:play-services-basement:12.0.0] C:\Users\c1660911\.gradle\caches\transforms-1\files-1.1\play-services-basement-12.0.0.aar\063c177c8d9ffe9b417368eeb2010578\AndroidManifest.xml:23:9-25:69
 	android:value
-		ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:43:13-66
+		ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:43:13-66
 	android:name
-		ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:42:13-58
+		ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:42:13-58
 meta-data#com.google.android.geo.API_KEY
-ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:44:9-46:70
+ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:44:9-46:70
 	android:value
-		ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:46:13-68
+		ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:46:13-68
 	android:name
-		ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:45:13-58
+		ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:45:13-58
 uses-sdk
-INJECTED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml
-INJECTED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml
 MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\c1660911\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\626bcc4a1a11baabd4034e1c20dc6cf8\AndroidManifest.xml:21:5-23:78
 MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\c1660911\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\626bcc4a1a11baabd4034e1c20dc6cf8\AndroidManifest.xml:21:5-23:78
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\c1660911\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\ed03c9e707472f76b29f8d6de4d9ed61\AndroidManifest.xml:5:5-7:41
@@ -241,18 +241,18 @@ MERGED from [com.android.support:support-compat:26.1.0] C:\Users\c1660911\.gradl
 MERGED from [com.android.support:support-compat:26.1.0] C:\Users\c1660911\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\ed56b1c6d96e43486b2ade0db7d10ce3\AndroidManifest.xml:21:5-23:58
 MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\c1660911\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\50456dcd4632842173958297387e3c78\AndroidManifest.xml:20:5-22:41
 MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\c1660911\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\50456dcd4632842173958297387e3c78\AndroidManifest.xml:20:5-22:41
-INJECTED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml
-INJECTED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml
 	tools:overrideLibrary
 		ADDED from [com.android.support:appcompat-v7:26.1.0] C:\Users\c1660911\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\626bcc4a1a11baabd4034e1c20dc6cf8\AndroidManifest.xml:23:9-75
 	android:targetSdkVersion
-		INJECTED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml
 meta-data#android.support.VERSION
 ADDED from [com.android.support:appcompat-v7:26.1.0] C:\Users\c1660911\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\626bcc4a1a11baabd4034e1c20dc6cf8\AndroidManifest.xml:26:9-28:38
 MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\c1660911\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\9e06d56d4f9d34a8f665cf6e88456123\AndroidManifest.xml:23:9-25:38
@@ -438,11 +438,11 @@ ADDED from [com.google.android.gms:play-services-base:12.0.0] C:\Users\c1660911\
 	android:name
 		ADDED from [com.google.android.gms:play-services-base:12.0.0] C:\Users\c1660911\.gradle\caches\transforms-1\files-1.1\play-services-base-12.0.0.aar\2d2485217c09ffedd78554d00b97dc59\AndroidManifest.xml:24:13-79
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-IMPLIED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:2:1-49:12 reason: com.google.android.gms.license has a targetSdkVersion < 4
+IMPLIED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:2:1-49:12 reason: com.google.android.gms.license has a targetSdkVersion < 4
 uses-permission#android.permission.READ_PHONE_STATE
-IMPLIED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:2:1-49:12 reason: com.google.android.gms.license has a targetSdkVersion < 4
+IMPLIED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:2:1-49:12 reason: com.google.android.gms.license has a targetSdkVersion < 4
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-IMPLIED from C:\Users\c1660911\Desktop\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:2:1-49:12 reason: com.google.android.gms.license requested WRITE_EXTERNAL_STORAGE
+IMPLIED from C:\Users\c1660911\Desktop\New folder (3)\22Welsh-Pharmacy-Team4\Welsh-Pharmacy-Team4\app\src\main\AndroidManifest.xml:2:1-49:12 reason: com.google.android.gms.license requested WRITE_EXTERNAL_STORAGE
 meta-data#android.arch.lifecycle.VERSION
 ADDED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\c1660911\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\50456dcd4632842173958297387e3c78\AndroidManifest.xml:25:9-27:47
 	android:value
