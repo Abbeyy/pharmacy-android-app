@@ -48,7 +48,7 @@ public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyC
         currentLang = getSharedPreferences("currentLanguage", Context.MODE_PRIVATE);
         currentLocale = currentLang.getString("state", "error");
 
-        latLongs = getSharedPreferences("pharmacyLatLang", Context.MODE_PRIVATE);
+        latLongs = getSharedPreferences("latitudeLongitudes", Context.MODE_PRIVATE);
         pharmacyLatitudeLongitude = latLongs.getString("pharmLatLong", "Error");
         userLatitudeLongitude = latLongs.getString("userLatLong", "Error");
 
@@ -82,8 +82,6 @@ public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyC
                 mMap.addMarker(new MarkerOptions().position(pharmacyClicked).title("Pharmacy"));
             }
             mMap.moveCamera(CameraUpdateFactory.newLatLng(pharmacyClicked));
-
-            Log.i("MAP", pharmacyClicked.toString() + "!!!");
         }
         this.latitude = 0;
         this.longitude = 0;
@@ -98,8 +96,6 @@ public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyC
                 mMap.addMarker(new MarkerOptions().position(userClicked).title("You"));
             }
             mMap.moveCamera(CameraUpdateFactory.newLatLng(userClicked));
-
-            Log.i("MAP", userClicked.toString() + "!!!");
         }
 
         //round to 0dp.
@@ -108,25 +104,23 @@ public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyC
         mMap.moveCamera(CameraUpdateFactory.newLatLng(cardiffCityCentre));
     }
 
-    public void getLatitudeAndLongitude(String latLong) {
+    public void getLatitudeAndLongitude(String latLang) {
         //need to extract numbers from ""lat/lng: (51.5036723,-3.1821333999999997)""
 
         Pattern pattern = Pattern.compile("(([0-9]+)(.{1})([0-9]+)(,{1})+?-?([0-9]+)(.{1})([0-9]+))");
         //finds 1+ digits, a decimal point, 1+ digits, comma, optional +-, 1+ digits, a decimal point, 1+ digits, end of line
         // /[1-9]+.[1-9]+,+?-?[1-9]+.[1-9]+/
 
-        Matcher matcher = pattern.matcher(latLong);
+        Matcher matcher = pattern.matcher(latLang);
         if (matcher.find()) {
-            Log.i("regex", matcher.group(0) + "!");
-            latLong = matcher.group(0);
+            latLang = matcher.group(0);
         }
 
-        List<String> latLongList = Arrays.asList(latLong.split(","));
+        List<String> latLongList = Arrays.asList(latLang.split(","));
         String latitude = latLongList.get(0);
         String longitude = latLongList.get(1);
+        Log.i("DEV", latitude + ", " + longitude);
         this.latitude = Double.parseDouble(latitude);
         this.longitude = Double.parseDouble(longitude);
-        Log.i("LAT: " + this.latitude, "yay");
-        Log.i("LONG: " + this.longitude, "yay");
     }
 }
