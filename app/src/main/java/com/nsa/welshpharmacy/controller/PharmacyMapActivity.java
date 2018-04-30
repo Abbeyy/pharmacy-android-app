@@ -21,8 +21,8 @@ import java.util.regex.Pattern;
 
 public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
-    private SharedPreferences pharmacyLatLong;
-    private String pharmacyLatitudeLongitude;
+    private SharedPreferences latLongs;
+    private String pharmacyLatitudeLongitude, userLatitudeLongitude;
     private double latitude;
     private double longitude;
     private SharedPreferences currentLang;
@@ -48,8 +48,9 @@ public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyC
         currentLang = getSharedPreferences("currentLanguage", Context.MODE_PRIVATE);
         currentLocale = currentLang.getString("state", "error");
 
-        pharmacyLatLong = getSharedPreferences("pharmacyLatLang", Context.MODE_PRIVATE);
-        pharmacyLatitudeLongitude = pharmacyLatLong.getString("LatitudeLongitude", "Error");
+        latLongs = getSharedPreferences("pharmacyLatLang", Context.MODE_PRIVATE);
+        pharmacyLatitudeLongitude = latLongs.getString("pharmLatLong", "Error");
+        userLatitudeLongitude = latLongs.getString("userLatLong", "Error");
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -70,9 +71,9 @@ public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyC
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        LatLng cardiffCityCentre = new LatLng(51.479436, -3.174422);
         if (pharmacyLatitudeLongitude != "Error") {
-            getLatitudeAndLongitude();
+            String pharmLatLong = pharmacyLatitudeLongitude;
+            getLatitudeAndLongitude(pharmLatLong);
             LatLng pharmacyClicked = new LatLng(this.latitude, this.longitude);
 
             if (currentLocale == "cy") {
@@ -81,30 +82,48 @@ public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyC
                 mMap.addMarker(new MarkerOptions().position(pharmacyClicked).title("Pharmacy"));
             }
             mMap.moveCamera(CameraUpdateFactory.newLatLng(pharmacyClicked));
+
+            Log.i("MAP", pharmacyClicked.toString() + "!!!");
+        }
+        this.latitude = 0;
+        this.longitude = 0;
+        if (userLatitudeLongitude != "Error") {
+            String userLatLong = userLatitudeLongitude;
+            getLatitudeAndLongitude(userLatLong);
+            LatLng userClicked = new LatLng(this.latitude, this.longitude);
+
+            if (currentLocale == "cy") {
+                mMap.addMarker(new MarkerOptions().position(userClicked).title("Chi"));
+            } else {
+                mMap.addMarker(new MarkerOptions().position(userClicked).title("You"));
+            }
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(userClicked));
+
+            Log.i("MAP", userClicked.toString() + "!!!");
         }
 
         //round to 0dp.
+        LatLng cardiffCityCentre = new LatLng(51.479436, -3.174422);
         mMap.addMarker(new MarkerOptions().position(cardiffCityCentre).title("Cardiff City Centre"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(cardiffCityCentre));
     }
 
-    public void getLatitudeAndLongitude() {
+    public void getLatitudeAndLongitude(String latLong) {
         //need to extract numbers from ""lat/lng: (51.5036723,-3.1821333999999997)""
-        String both = pharmacyLatitudeLongitude;
 
         Pattern pattern = Pattern.compile("(([0-9]+)(.{1})([0-9]+)(,{1})+?-?([0-9]+)(.{1})([0-9]+))");
         //finds 1+ digits, a decimal point, 1+ digits, comma, optional +-, 1+ digits, a decimal point, 1+ digits, end of line
         // /[1-9]+.[1-9]+,+?-?[1-9]+.[1-9]+/
 
-        Matcher matcher = pattern.matcher(both);
+        Matcher matcher = pattern.matcher(latLong);
         if (matcher.find()) {
             Log.i("regex", matcher.group(0) + "!");
-            both = matcher.group(0);
+            latLong = matcher.group(0);
         }
 
-        List<String> latLangList = Arrays.asList(both.split(","));
-        String latitude = latLangList.get(0);
-        String longitude = latLangList.get(1);
+        List<String> latLongList = Arrays.asList(latLong.split(","));
+        String latitude = latLongList.get(0);
+        String longitude = latLongList.get(1);
         this.latitude = Double.parseDouble(latitude);
         this.longitude = Double.parseDouble(longitude);
         Log.i("LAT: " + this.latitude, "yay");
