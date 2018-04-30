@@ -24,7 +24,7 @@ import com.nsa.welshpharmacy.R;
 public class ListPharmaciesActivity extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
     private SharedPreferences pharmacyInstancesData;
-    private SharedPreferences pharmacyLatLang;
+    private SharedPreferences latLongs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,10 @@ public class ListPharmaciesActivity extends AppCompatActivity {
         //due to use of fragments - but that doesnt work? This does?.... fix!
 
         sharedPreferences = getSharedPreferences("pharmacyPos", Context.MODE_PRIVATE);
-        pharmacyLatLang = getSharedPreferences("pharmacyLatLang", Context.MODE_PRIVATE);
+        latLongs = getSharedPreferences("latitudeLongitudes", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editLatLong = latLongs.edit();
+        editLatLong.clear();
+        editLatLong.apply();
 
         /**
          * Get intent data from user activity and then wrapping it into a bundle to pass to the fragment
