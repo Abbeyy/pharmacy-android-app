@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -22,6 +21,18 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * This class uses Google Play Store and an
+ * API key generated in Manifest to display a
+ * Google Map to users. Markers are pinned on
+ * the map in methods below.
+ *
+ * Created by c1714546 on 3/14/2018.
+ *
+ * @author Abbey Ross.
+ * @version 1.0 April 30th, 2018.
+ */
+
 public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
     private GoogleMap mMap;
     private SharedPreferences latLongs;
@@ -36,9 +47,13 @@ public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pharmacy_map);
 
+        // Access the language that the application
+        // is currently in.
         currentLang = getSharedPreferences("currentLanguage", Context.MODE_PRIVATE);
         currentLocale = currentLang.getString("state", "error");
 
+        // Access the Pharmacy's Lat/Long value as well
+        // as the user's Lat/Long.
         latLongs = getSharedPreferences("latitudeLongitudes", Context.MODE_PRIVATE);
         pharmacyLatitudeLongitude = latLongs.getString("pharmLatLong", "Error");
         userLatitudeLongitude = latLongs.getString("userLatLong", "Error");
@@ -62,6 +77,7 @@ public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyC
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        //Marking the Pharmacy's pin on the map.
         if (pharmacyLatitudeLongitude != "Error") {
             String pharmLatLong = pharmacyLatitudeLongitude;
             getLatitudeAndLongitude(pharmLatLong);
@@ -82,10 +98,9 @@ public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyC
         }
         this.latitude = 0;
         this.longitude = 0;
-        if (userLatitudeLongitude != "Error") {
-            // Users location IS printing, but is
-            // currently the same as the Pharmacys.
 
+        //Marking the User's pin on the map.
+        if (userLatitudeLongitude != "Error") {
             String userLatLong = userLatitudeLongitude;
             getLatitudeAndLongitude(userLatLong);
             LatLng userClicked = new LatLng(this.latitude, this.longitude);
@@ -104,7 +119,7 @@ public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyC
             mMap.moveCamera(CameraUpdateFactory.newLatLng(userClicked));
         }
 
-        //round to 0dp.
+        //Marking Cardiff City Centre on the map.
         LatLng cardiffCityCentre = new LatLng(51.479436, -3.174422);
         mMap.addMarker(new MarkerOptions()
                 .position(cardiffCityCentre)
@@ -115,9 +130,15 @@ public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyC
         mMap.setOnMarkerClickListener(this);
     }
 
+    /**
+     * This method extracts the Latitude and Longitude
+     * values, which are doubles, from a returned String.
+     *
+     * @param latLang String, in the format of e.g.
+     * "lat/long:    (12.0398303, -3.92084092)
+     */
     public void getLatitudeAndLongitude(String latLang) {
         //Extracting Lat Long numbers from returned string e.g. "lat/long:   (num1, num2)"
-
         Pattern pattern = Pattern.compile("(([0-9]+)(.{1})([0-9]+)(,{1})+?-?([0-9]+)(.{1})([0-9]+))");
         //finds 1+ digits, a decimal point, 1+ digits, comma, optional +-, 1+ digits, a decimal point, 1+ digits, end of line
         // /[1-9]+.[1-9]+,+?-?[1-9]+.[1-9]+/
@@ -134,6 +155,13 @@ public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyC
         this.longitude = Double.parseDouble(longitude);
     }
 
+    /**
+     * This method creates Toast messages to display to the
+     * user upon the click of a particular marker on the map.
+     *
+     * @param marker Marker, a marker pinned somewhere on the map.
+     * @return Boolean, see Google's API documentation.
+     */
     @Override
     public boolean onMarkerClick(Marker marker) {
         String title = marker.getTitle();
