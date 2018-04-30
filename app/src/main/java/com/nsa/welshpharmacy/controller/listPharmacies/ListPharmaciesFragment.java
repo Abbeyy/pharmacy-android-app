@@ -152,6 +152,9 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
      */
     public List<Pharmacy> filterPharmaciesBySelection(){
         List<Pharmacy> filteredPharmacies = new ArrayList<>();
+        if(!booleanAilments && !booleanFlu && !booleanHealth && !booleanSmoking && !booleanAlcohol){
+            filteredPharmacies.addAll(listOfPharmacies);
+        }
         for(Pharmacy pharmacy : listOfPharmacies){
             for(Map.Entry<String, PharmacyServiceAvailability> pharmacyService : pharmacy.getServices().entrySet()) {
                 PharmacyServiceAvailability serviceValue = pharmacyService.getValue();
