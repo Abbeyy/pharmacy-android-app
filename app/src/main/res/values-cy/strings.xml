@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--<string name="app_name">WelshPharmacy</string>-->
-    <!--<string name="Welcome">" croeso"</string>-->
-    <string name="app_name">CymraegFferyllfa</string>
-    <string name="get_list_buttontext" translatable="false">Cael y rhestr</string>
+    <string name="app_name">Cymraeg Fferyllfa</string>
+    <string name="get_list_buttontext">Cael y rhestr</string>
 
     <!-- General -->
     <string name="service_ailments">Mân afiechydon</string>
@@ -43,4 +41,5 @@
     <string name="contact_details">Manylion cyswllt</string>
     <string name="location_catch_statement">Ni ellid pennu eich lleoliad (Côd post)</string>
     <string name="see_location_on_map">Gweler y lleoliad ar y map</string>
+    <string name="enter_message">Rhowch eich neges isod</string>
 </resources>
