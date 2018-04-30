@@ -28,18 +28,6 @@ public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyC
     private SharedPreferences currentLang;
     private String currentLocale;
 
-    //Coding ideas....
-    //retrieve pharmacies lats and longs and place into ....
-    //pinpoint as markers on map.
-    //Use pharmacy.getPharmacyLatLang, to separate out Latitude
-    // and Longitude and ensure it is rounded to 0dp, and then
-    // pop this into a marker.
-
-    //Ensure mocked data for pharmacy's comes from google maps
-    //and we take the numbers beneath NS/, E/W latitude/longitude...
-    //https://developers.google.com/maps/documentation/android-api/marker
-    //https://developers.google.com/maps/documentation/android-api/views
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,6 +74,9 @@ public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyC
         this.latitude = 0;
         this.longitude = 0;
         if (userLatitudeLongitude != "Error") {
+            // Users location IS printing, but is
+            // currently the same as the Pharmacys.
+
             String userLatLong = userLatitudeLongitude;
             getLatitudeAndLongitude(userLatLong);
             LatLng userClicked = new LatLng(this.latitude, this.longitude);
@@ -105,7 +96,7 @@ public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyC
     }
 
     public void getLatitudeAndLongitude(String latLang) {
-        //need to extract numbers from ""lat/lng: (51.5036723,-3.1821333999999997)""
+        //Extracting Lat Long numbers from returned string e.g. "lat/long:   (num1, num2)"
 
         Pattern pattern = Pattern.compile("(([0-9]+)(.{1})([0-9]+)(,{1})+?-?([0-9]+)(.{1})([0-9]+))");
         //finds 1+ digits, a decimal point, 1+ digits, comma, optional +-, 1+ digits, a decimal point, 1+ digits, end of line
@@ -119,7 +110,6 @@ public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyC
         List<String> latLongList = Arrays.asList(latLang.split(","));
         String latitude = latLongList.get(0);
         String longitude = latLongList.get(1);
-        Log.i("DEV", latitude + ", " + longitude);
         this.latitude = Double.parseDouble(latitude);
         this.longitude = Double.parseDouble(longitude);
     }
