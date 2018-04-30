@@ -53,4 +53,11 @@
 
     <!--ListPharmacyDetailsFragment-->
     <string name="launch_map">Launching map...</string>
+
+    <!--EmailPharmacyActivity-->
+    <string name="no_email_client">There is no email client installed.</string>
+
+    <!--PharmacyMapActivity-->
+    <string name="users_loc_msg">You have clicked on the marker showing your location.</string>
+
 </resources>

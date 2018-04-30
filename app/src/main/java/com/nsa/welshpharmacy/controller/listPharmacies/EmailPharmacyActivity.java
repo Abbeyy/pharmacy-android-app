@@ -50,7 +50,7 @@ public class EmailPharmacyActivity extends AppCompatActivity implements View.OnC
             try {
                 startActivity(Intent.createChooser(anEmailIntent, "Send email.."));
             } catch (android.content.ActivityNotFoundException ex) {
-                Toast.makeText(this, "There's no email client installed!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.no_email_client, Toast.LENGTH_SHORT).show();
             }
         }
     }

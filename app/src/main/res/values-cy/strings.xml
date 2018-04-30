@@ -50,4 +50,10 @@
     <!--ListPharmacyDetailsFragment-->
     <string name="launch_map">Rhedeg y map...</string>
 
+    <!--EmailPharmacyActivity-->
+    <string name="no_email_client">Nid oes cleient e-bost wedi\'i osod.</string>
+
+    <!--PharmacyMapActivity-->
+    <string name="users_loc_msg">Rydych wedi clicio ar y marcydd yn dangos eich lleoliad.</string>
+
 </resources>
