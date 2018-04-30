@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -167,27 +166,37 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
                     switch (pharmacyService.getKey()) {
                         case "minorAilments":
                             if (booleanAilments && serviceValue.defaultAvailability.get("cym")) {
-                                filteredPharmacies.add(pharmacy);
+                                if(!filteredPharmacies.contains(pharmacy)){
+                                    filteredPharmacies.add(pharmacy);
+                                }
                             }
                             break;
                         case "fluVac":
                             if (booleanFlu && serviceValue.defaultAvailability.get("cym")){
-                                filteredPharmacies.add(pharmacy);
+                                if(!filteredPharmacies.contains(pharmacy)){
+                                    filteredPharmacies.add(pharmacy);
+                                }
                             }
                             break;
                         case "healthCheck":
                             if (booleanHealth && serviceValue.defaultAvailability.get("cym")){
-                                filteredPharmacies.add(pharmacy);
+                                if(!filteredPharmacies.contains(pharmacy)){
+                                    filteredPharmacies.add(pharmacy);
+                                }
                             }
                             break;
                         case "smoking":
                             if (booleanSmoking && serviceValue.defaultAvailability.get("cym")){
-                                filteredPharmacies.add(pharmacy);
+                                if(!filteredPharmacies.contains(pharmacy)){
+                                    filteredPharmacies.add(pharmacy);
+                                }
                             }
                             break;
                         case "alcohol":
                             if (booleanAlcohol && serviceValue.defaultAvailability.get("cym")){
-                                filteredPharmacies.add(pharmacy);
+                                if(!filteredPharmacies.contains(pharmacy)){
+                                    filteredPharmacies.add(pharmacy);
+                                }
                             }
                             break;
                         default:
