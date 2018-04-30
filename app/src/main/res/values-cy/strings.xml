@@ -42,4 +42,9 @@
     <string name="location_catch_statement">Ni ellid pennu eich lleoliad (Côd post)</string>
     <string name="see_location_on_map">Gweler y lleoliad ar y map</string>
     <string name="enter_message">Rhowch eich neges isod</string>
+    <string name="perm_not_granted">Ni roddwyd caniatâd.</string>
+    <string name="lang_remaining">Iaith yn aros yn Cymraeg.</string>
+    <string name="lang_changing">Changing language to English.</string>
+    <string name="fine_loc">Rhaid i chi roi caniatâd fel bod modd casglu'ch lleoliad.</string>
+
 </resources>

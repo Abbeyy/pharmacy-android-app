@@ -241,9 +241,9 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
             if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
                 LocationServices.loadPhoneLocationViaNetwork(this);
             }else{
-                Toast.makeText(this, "Permission was not granted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.perm_not_granted, Toast.LENGTH_SHORT).show();
             }
-        }else{
+        } else {
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
@@ -253,9 +253,9 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
         switch (id) {
             case R.id.lang_to_english:
                 if (currentLocale == "en") {
-                    Toast.makeText(this, "Language remaining in English.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.lang_remaining, Toast.LENGTH_SHORT).show();
                 } else if (currentLocale != null) {
-                    Toast.makeText(this, "Changing language to English", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.lang_changing, Toast.LENGTH_SHORT).show();
 
                     edit.clear();
                     edit.putString("state", "en");
@@ -265,14 +265,14 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
                     finish();
                     startActivity(restartActivity);
                 } else {
-                    Toast.makeText(this, "Language remaining in English.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.lang_remaining, Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.lang_to_welsh:
                 if (currentLocale == "cy") {
-                    Toast.makeText(this, "Iaith yn aros yn Cymraeg.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.lang_remaining, Toast.LENGTH_SHORT).show();
                 } else if (currentLocale != null) {
-                    Toast.makeText(this, "Newid iaith i'r Cymraeg", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.lang_changing, Toast.LENGTH_SHORT).show();
 
                     edit.clear();
                     edit.putString("state", "cy");
@@ -282,10 +282,11 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
                     finish();
                     startActivity(restartActivity);
                 } else {
-                    Toast.makeText(this, "Iaith yn aros yn Cymraeg.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.lang_remaining, Toast.LENGTH_SHORT).show();
                 }
+                break;
             default:
-                Toast.makeText(this, "Error - language remaining.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.error_lang_remaining, Toast.LENGTH_SHORT).show();
                 break;
         }
     }
@@ -316,7 +317,7 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
             //Fine location permission has not been granted
             //Rationale as to why the user should grant permission
             if (shouldShowRequestPermissionRationale(Manifest.permission.ACCESS_FINE_LOCATION)) {
-                Toast.makeText(this, "Fine location permission is needed to retrieve the location.",
+                Toast.makeText(this, R.string.fine_loc,
                         Toast.LENGTH_SHORT).show();
             }
             requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_FINE_LOCATION);

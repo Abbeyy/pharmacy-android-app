@@ -45,4 +45,9 @@
     <string name="cymraeg" translatable="false">Cymraeg</string>
     <string name="title_activity_email_pharmacy">EmailPharmacyActivity</string>
     <string name="enter_message">Please enter your message below</string>
+    <string name="perm_not_granted">Permission was not granted.</string>
+    <string name="lang_remaining">Language remaining in English.</string>
+    <string name="lang_changing">Newid iaith i\'r Cymraeg.</string>
+    <string name="error_lang_remaining" translatable="false">Error - language remaining.</string>
+    <string name="fine_loc">Fine location permission is needed to retrieve the location.</string>
 </resources>
