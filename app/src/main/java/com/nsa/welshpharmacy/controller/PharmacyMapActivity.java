@@ -5,12 +5,15 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.nsa.welshpharmacy.R;
 
@@ -19,7 +22,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyCallback {
+public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
     private GoogleMap mMap;
     private SharedPreferences latLongs;
     private String pharmacyLatitudeLongitude, userLatitudeLongitude;
@@ -65,9 +68,15 @@ public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyC
             LatLng pharmacyClicked = new LatLng(this.latitude, this.longitude);
 
             if (currentLocale == "cy") {
-                mMap.addMarker(new MarkerOptions().position(pharmacyClicked).title("Fferyllfa"));
+                mMap.addMarker(new MarkerOptions()
+                        .position(pharmacyClicked)
+                        .title("Fferyllfa")
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
             } else {
-                mMap.addMarker(new MarkerOptions().position(pharmacyClicked).title("Pharmacy"));
+                mMap.addMarker(new MarkerOptions()
+                        .position(pharmacyClicked)
+                        .title("Pharmacy")
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
             }
             mMap.moveCamera(CameraUpdateFactory.newLatLng(pharmacyClicked));
         }
@@ -82,17 +91,28 @@ public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyC
             LatLng userClicked = new LatLng(this.latitude, this.longitude);
 
             if (currentLocale == "cy") {
-                mMap.addMarker(new MarkerOptions().position(userClicked).title("Chi"));
+                mMap.addMarker(new MarkerOptions()
+                        .position(userClicked)
+                        .title("Chi")
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE)));
             } else {
-                mMap.addMarker(new MarkerOptions().position(userClicked).title("You"));
+                mMap.addMarker(new MarkerOptions()
+                        .position(userClicked)
+                        .title("You")
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE)));
             }
             mMap.moveCamera(CameraUpdateFactory.newLatLng(userClicked));
         }
 
         //round to 0dp.
         LatLng cardiffCityCentre = new LatLng(51.479436, -3.174422);
-        mMap.addMarker(new MarkerOptions().position(cardiffCityCentre).title("Cardiff City Centre"));
+        mMap.addMarker(new MarkerOptions()
+                .position(cardiffCityCentre)
+                .title("Cardiff City Centre")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(cardiffCityCentre));
+
+        mMap.setOnMarkerClickListener(this);
     }
 
     public void getLatitudeAndLongitude(String latLang) {
@@ -112,5 +132,23 @@ public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyC
         String longitude = latLongList.get(1);
         this.latitude = Double.parseDouble(latitude);
         this.longitude = Double.parseDouble(longitude);
+    }
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        String title = marker.getTitle();
+
+        switch (title) {
+            case "Chi" :
+                Toast.makeText(this, "Rydych wedi clicio ar y marcydd yn dangos eich lleoliad.", Toast.LENGTH_SHORT).show();
+                break;
+            case "You" :
+                Toast.makeText(this, "You have clicked on the marker showing your location.", Toast.LENGTH_SHORT).show();
+                break;
+            default :
+                break;
+        }
+
+        return false;
     }
 }
