@@ -11,22 +11,20 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="end"
-        android:padding="20dp"
-        android:layout_marginBottom="10dp">
-
-
+        android:padding="5dp"
+        android:layout_marginBottom="1dp">
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/lang_to_english"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="English"/>
+            android:text="@string/english"/>
 
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/lang_to_welsh"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cymru"/>
+            android:text="@string/cymraeg"/>
 
     </android.support.v7.widget.LinearLayoutCompat>
 
@@ -86,7 +84,7 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/text_postcode"
             android:layout_alignStart="@+id/text_postcode"
-            android:layout_marginBottom="29dp"
+            android:layout_marginBottom="10dp"
             android:drawableStart="@drawable/ic_check"
             android:text="@string/service_alcohol" />
 
@@ -96,7 +94,7 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/textView3"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="28dp"
+            android:layout_marginBottom="10dp"
             android:maxLength="50"
             android:text="@string/instruction_postcode" />
 
@@ -127,16 +125,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/location_permission" />
-
-        <android.support.v7.widget.SwitchCompat
-            android:id="@+id/nightmodeswitch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Night Mode" />
     </LinearLayout>
 
     <android.support.v7.widget.LinearLayoutCompat
@@ -144,7 +132,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="start"
-        android:padding="20dp"
+        android:padding="1dp"
         android:layout_marginStart="35dp">
 
         <android.support.v7.widget.AppCompatButton
