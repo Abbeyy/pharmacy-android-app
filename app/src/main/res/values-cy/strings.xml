@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--<string name="app_name">WelshPharmacy</string>-->
-    <!--<string name="Welcome">" croeso"</string>-->
-    <string name="app_name">CymraegFferyllfa</string>
-    <string name="get_list_buttontext" translatable="false">Cael y rhestr</string>
+    <string name="app_name">Cymraeg Fferyllfa</string>
+    <string name="get_list_buttontext">Cael y rhestr</string>
 
     <!-- General -->
     <string name="service_ailments">Mân afiechydon</string>
@@ -43,4 +41,21 @@
     <string name="contact_details">Manylion cyswllt</string>
     <string name="location_catch_statement">Ni ellid pennu eich lleoliad (Côd post)</string>
     <string name="see_location_on_map">Gweler y lleoliad ar y map</string>
+    <string name="enter_message">Rhowch eich neges isod</string>
+    <string name="perm_not_granted">Ni roddwyd caniatâd.</string>
+    <string name="lang_remaining">Iaith yn aros yn Cymraeg.</string>
+    <string name="lang_changing">Changing language to English.</string>
+    <string name="fine_loc">Rhaid i chi roi caniatâd fel bod modd casglu\'ch lleoliad.</string>
+
+    <!--ListPharmacyDetailsFragment-->
+    <string name="launch_map">Rhedeg y map...</string>
+
+    <!--EmailPharmacyActivity-->
+    <string name="no_email_client">Nid oes cleient e-bost wedi\'i osod.</string>
+
+    <!--PharmacyMapActivity-->
+    <string name="users_loc_msg">Rydych wedi clicio ar y marcydd yn dangos eich lleoliad.</string>
+    <string name="pharm_marker_loc">Rydych wedi clicio ar y marcydd yn dangos lleoliad y Fferyllfa.</string>
+    <string name="cardiff_marker_loc">Rydych wedi clicio ar y marcydd yn dangos lleoliad Canol Dinas Caerdydd.</string>
+
 </resources>

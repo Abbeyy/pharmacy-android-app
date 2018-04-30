@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -116,10 +117,14 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
         Date currentDate = Calendar.getInstance().getTime();
         SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
         String date_today = format.format(currentDate);
+
+        //Accessed via hardcoded due to retrieval from
+        // string resources grabbing integers instead
+        // of the string value.
         if (currentLocale == "cy") {
-            dateTV.setText(" Dyddiad heddiw: " + date_today);
+            dateTV.setText(" Dyddiad heddiw:  " + date_today);
         } else {
-            dateTV.setText("  Today's Date: " + date_today);
+            dateTV.setText(" Today's Date:  " + date_today);
         }
     }
 
@@ -146,7 +151,7 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
     }
 
     /**
-     * Loops through the pharmacy objects to determine what services they ahve and if it is what the
+     * Loops through the pharmacy objects to determine what services they have and if it is what the
      * user selected, then add them to a list.
      * @return list of filtered pharmacies
      */
