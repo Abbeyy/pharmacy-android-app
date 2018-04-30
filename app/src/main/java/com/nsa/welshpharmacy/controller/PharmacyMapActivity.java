@@ -5,12 +5,15 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.nsa.welshpharmacy.R;
 
@@ -19,26 +22,14 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyCallback {
+public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
     private GoogleMap mMap;
-    private SharedPreferences pharmacyLatLong;
-    private String pharmacyLatitudeLongitude;
+    private SharedPreferences latLongs;
+    private String pharmacyLatitudeLongitude, userLatitudeLongitude;
     private double latitude;
     private double longitude;
     private SharedPreferences currentLang;
     private String currentLocale;
-
-    //Coding ideas....
-    //retrieve pharmacies lats and longs and place into ....
-    //pinpoint as markers on map.
-    //Use pharmacy.getPharmacyLatLang, to separate out Latitude
-    // and Longitude and ensure it is rounded to 0dp, and then
-    // pop this into a marker.
-
-    //Ensure mocked data for pharmacy's comes from google maps
-    //and we take the numbers beneath NS/, E/W latitude/longitude...
-    //https://developers.google.com/maps/documentation/android-api/marker
-    //https://developers.google.com/maps/documentation/android-api/views
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +39,9 @@ public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyC
         currentLang = getSharedPreferences("currentLanguage", Context.MODE_PRIVATE);
         currentLocale = currentLang.getString("state", "error");
 
-        pharmacyLatLong = getSharedPreferences("pharmacyLatLang", Context.MODE_PRIVATE);
-        pharmacyLatitudeLongitude = pharmacyLatLong.getString("LatitudeLongitude", "Error");
+        latLongs = getSharedPreferences("latitudeLongitudes", Context.MODE_PRIVATE);
+        pharmacyLatitudeLongitude = latLongs.getString("pharmLatLong", "Error");
+        userLatitudeLongitude = latLongs.getString("userLatLong", "Error");
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -70,44 +62,93 @@ public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyC
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        LatLng cardiffCityCentre = new LatLng(51.479436, -3.174422);
         if (pharmacyLatitudeLongitude != "Error") {
-            getLatitudeAndLongitude();
+            String pharmLatLong = pharmacyLatitudeLongitude;
+            getLatitudeAndLongitude(pharmLatLong);
             LatLng pharmacyClicked = new LatLng(this.latitude, this.longitude);
 
             if (currentLocale == "cy") {
-                mMap.addMarker(new MarkerOptions().position(pharmacyClicked).title("Fferyllfa"));
+                mMap.addMarker(new MarkerOptions()
+                        .position(pharmacyClicked)
+                        .title("Fferyllfa")
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
             } else {
-                mMap.addMarker(new MarkerOptions().position(pharmacyClicked).title("Pharmacy"));
+                mMap.addMarker(new MarkerOptions()
+                        .position(pharmacyClicked)
+                        .title("Pharmacy")
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)));
             }
             mMap.moveCamera(CameraUpdateFactory.newLatLng(pharmacyClicked));
         }
+        this.latitude = 0;
+        this.longitude = 0;
+        if (userLatitudeLongitude != "Error") {
+            // Users location IS printing, but is
+            // currently the same as the Pharmacys.
+
+            String userLatLong = userLatitudeLongitude;
+            getLatitudeAndLongitude(userLatLong);
+            LatLng userClicked = new LatLng(this.latitude, this.longitude);
+
+            if (currentLocale == "cy") {
+                mMap.addMarker(new MarkerOptions()
+                        .position(userClicked)
+                        .title("Chi")
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE)));
+            } else {
+                mMap.addMarker(new MarkerOptions()
+                        .position(userClicked)
+                        .title("You")
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ROSE)));
+            }
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(userClicked));
+        }
 
         //round to 0dp.
-        mMap.addMarker(new MarkerOptions().position(cardiffCityCentre).title("Cardiff City Centre"));
+        LatLng cardiffCityCentre = new LatLng(51.479436, -3.174422);
+        mMap.addMarker(new MarkerOptions()
+                .position(cardiffCityCentre)
+                .title("Cardiff City Centre")
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(cardiffCityCentre));
+
+        mMap.setOnMarkerClickListener(this);
     }
 
-    public void getLatitudeAndLongitude() {
-        //need to extract numbers from ""lat/lng: (51.5036723,-3.1821333999999997)""
-        String both = pharmacyLatitudeLongitude;
+    public void getLatitudeAndLongitude(String latLang) {
+        //Extracting Lat Long numbers from returned string e.g. "lat/long:   (num1, num2)"
 
         Pattern pattern = Pattern.compile("(([0-9]+)(.{1})([0-9]+)(,{1})+?-?([0-9]+)(.{1})([0-9]+))");
         //finds 1+ digits, a decimal point, 1+ digits, comma, optional +-, 1+ digits, a decimal point, 1+ digits, end of line
         // /[1-9]+.[1-9]+,+?-?[1-9]+.[1-9]+/
 
-        Matcher matcher = pattern.matcher(both);
+        Matcher matcher = pattern.matcher(latLang);
         if (matcher.find()) {
-            Log.i("regex", matcher.group(0) + "!");
-            both = matcher.group(0);
+            latLang = matcher.group(0);
         }
 
-        List<String> latLangList = Arrays.asList(both.split(","));
-        String latitude = latLangList.get(0);
-        String longitude = latLangList.get(1);
+        List<String> latLongList = Arrays.asList(latLang.split(","));
+        String latitude = latLongList.get(0);
+        String longitude = latLongList.get(1);
         this.latitude = Double.parseDouble(latitude);
         this.longitude = Double.parseDouble(longitude);
-        Log.i("LAT: " + this.latitude, "yay");
-        Log.i("LONG: " + this.longitude, "yay");
+    }
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        String title = marker.getTitle();
+
+        switch (title) {
+            case "Chi" :
+                Toast.makeText(this, "Rydych wedi clicio ar y marcydd yn dangos eich lleoliad.", Toast.LENGTH_SHORT).show();
+                break;
+            case "You" :
+                Toast.makeText(this, "You have clicked on the marker showing your location.", Toast.LENGTH_SHORT).show();
+                break;
+            default :
+                break;
+        }
+
+        return false;
     }
 }

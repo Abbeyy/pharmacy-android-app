@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.nsa.welshpharmacy.R;
 import com.nsa.welshpharmacy.controller.PharmacyMapActivity;
 import com.nsa.welshpharmacy.model.Pharmacy;
+import com.nsa.welshpharmacy.services.LocationServices;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +36,7 @@ public class ListPharmacyDetailsFragment extends Fragment implements AdapterView
     ArrayAdapter<String> la;
     private SharedPreferences currentLang;
     private String currentLocale;
-    private SharedPreferences pharmacyLatLang;
+    private SharedPreferences latLongs;
     private SharedPreferences pharmacysEmail;
     //private Pharmacy recievedPharmacy;
 
@@ -54,10 +55,12 @@ public class ListPharmacyDetailsFragment extends Fragment implements AdapterView
         Bundle bundle = this.getArguments();
         Pharmacy recievedPharmacy = bundle.getParcelable("selectedPharmacy");
 
-        pharmacyLatLang = getActivity().getSharedPreferences("pharmacyLatLang", Context.MODE_PRIVATE);
-        SharedPreferences.Editor edit = pharmacyLatLang.edit();
-        edit.putString("LatitudeLongitude", recievedPharmacy.getPharmacyLatLng(getActivity()).toString());
-        Log.i("DEV lat lang", recievedPharmacy.getPharmacyLatLng(getActivity()).toString());
+        latLongs = getActivity().getSharedPreferences("latitudeLongitudes", Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit = latLongs.edit();
+        edit.putString("pharmLatLong", recievedPharmacy.getPharmacyLatLng(getActivity()).toString());
+        edit.putString("userLatLong", LocationServices.getUserLocation().toString());
+        Log.i("PHARM lat lang", recievedPharmacy.getPharmacyLatLng(getActivity()).toString());
+        Log.i("USER lat lang", LocationServices.getUserLocation().toString());
         edit.apply();
 
         pharmacysEmail = getActivity().getSharedPreferences("emailAddress", Context.MODE_PRIVATE);
