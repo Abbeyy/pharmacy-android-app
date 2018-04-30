@@ -12,6 +12,7 @@ import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.SwitchCompat;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import com.nsa.welshpharmacy.R;
@@ -55,10 +56,162 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
 
     private static final int REQUEST_FINE_LOCATION = 1;
 
+
+    private static final String PREFS_NAME = "prefs";
+    private static final String PREF_DARK_THEME = "dark_theme";
+    private static final String PREF_TRACK= "allow_tracking";
+    private static final String PREF_MINOR = "minor";
+    private static final String PREF_FLU = "flu";
+    private static final String PREF_HEALTH = "health";
+    private static final String PREF_SMOKING = "smoking";
+    private static final String PREF_ALCOHOL = "alcohol";
+    private static final String PREF_POSTCODE = "postcode";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Saving user choices below.
+        SharedPreferences preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        boolean useDarkTheme = preferences.getBoolean(PREF_DARK_THEME, false);
+        SharedPreferences.Editor editor = getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit();
+
+
+        if(useDarkTheme) {
+            setTheme(R.style.darkthem);
+        }
+
+        //Setting up activity and inflating layout.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_filter_preference);
+
+        //Other setups.
+        currentLang = getSharedPreferences("currentLanguage", Context.MODE_PRIVATE);
+        edit = currentLang.edit();
+
+        alreadyChanged = getPreferences(Context.MODE_PRIVATE);
+        editLangChanged = alreadyChanged.edit();
+
+        String langAlreadyChanged = alreadyChanged.getString("state", "error");
+        currentLocale = currentLang.getString("state", "error");
+
+        if (currentLocale != "error") {
+            if (langAlreadyChanged == "error") {
+                changeLanguage(langAlreadyChanged);
+            } else {
+                String result = alreadyChanged.getString("state", "error");
+                editLangChanged.clear();
+                editLangChanged.apply();
+            }
+        }
+
+        changeLangToEnglish = findViewById(R.id.lang_to_english);
+        changeLangToWelsh = findViewById(R.id.lang_to_welsh);
+        changeLangToEnglish.setOnClickListener(this);
+        changeLangToWelsh.setOnClickListener(this);
+
+        checkMinorAilments = findViewById(R.id.check_minor_ailments);
+        checkFluVac = findViewById(R.id.check_flu_vaccines);
+        checkHealthCheck = findViewById(R.id.check_health_check);
+        checkSmoking = findViewById(R.id.check_smoking);
+        checkAlcohol = findViewById(R.id.check_alcohol);
+        textPostcodeWidget = findViewById(R.id.text_postcode);
+        switchOnLocationWidget = findViewById(R.id.switch_location);
+
+        submitButton = findViewById(R.id.submit_button);
+        resetButton = findViewById(R.id.reset_button);
+
+        sharedPreferences = getPreferences(MODE_PRIVATE);
+
+        initValues();
+
+        textPostcodeWidget.setOnClickListener(this);
+        submitButton.setOnClickListener(this);
+        resetButton.setOnLongClickListener(this);
+
+        //Additional code to save user choices.
+
+        SwitchCompat nightModeSwitch = (SwitchCompat) findViewById(R.id.nightmodeswitch);
+        AppCompatCheckBox minorCheck=(AppCompatCheckBox)findViewById(R.id.check_minor_ailments);
+        AppCompatCheckBox fluCheck=(AppCompatCheckBox)findViewById(R.id.check_flu_vaccines);
+        AppCompatCheckBox healthCheck=(AppCompatCheckBox)findViewById(R.id.check_health_check);
+        AppCompatCheckBox smokingCheck=(AppCompatCheckBox)findViewById(R.id.check_smoking);
+        AppCompatCheckBox alcoholCheck=(AppCompatCheckBox)findViewById(R.id.check_alcohol);
+        AppCompatEditText postcode=(AppCompatEditText)findViewById(R.id.text_postcode);
+        SwitchCompat allowTrackingSwitch = (SwitchCompat) findViewById(R.id.switch_location);
+
+        nightModeSwitch.setChecked(useDarkTheme);
+        minorCheck.setChecked(preferences.getBoolean(PREF_MINOR, false));
+        fluCheck.setChecked(preferences.getBoolean(PREF_FLU, false));
+        healthCheck.setChecked(preferences.getBoolean(PREF_HEALTH, false));
+        smokingCheck.setChecked(preferences.getBoolean(PREF_SMOKING, false));
+        alcoholCheck.setChecked(preferences.getBoolean(PREF_ALCOHOL, false));
+        postcode.setText(preferences.getString(PREF_POSTCODE, ""));
+        allowTrackingSwitch.setChecked(preferences.getBoolean(PREF_TRACK, false));
+
+        minorCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                editor.putBoolean(PREF_MINOR, b);
+                editor.apply();
+            }
+        });
+        fluCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                editor.putBoolean(PREF_FLU, b);
+                editor.apply();
+            }
+        });
+        healthCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                editor.putBoolean(PREF_HEALTH, b);
+                editor.apply();
+            }
+        });
+        smokingCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                editor.putBoolean(PREF_SMOKING, b);
+                editor.apply();
+            }
+        });
+        alcoholCheck.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                editor.putBoolean(PREF_ALCOHOL, b);
+                editor.apply();
+            }
+        });
+
+
+        nightModeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton view, boolean isChecked) {
+                toggleTheme(isChecked);
+            }
+        });
+
+    }
+
+
+    private void toggleTheme(boolean darkTheme) {
+        SharedPreferences.Editor editor = getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit();
+        editor.putBoolean(PREF_DARK_THEME, darkTheme);
+        editor.apply();
+
+        Intent intent = getIntent();
+        finish();
+
+        startActivity(intent);
+    }
+
+    private void toggleTrack(boolean track) {
+        SharedPreferences.Editor editor = getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit();
+        editor.putBoolean(PREF_TRACK, track);
+        editor.apply();
+
+
+
 
         currentLang = getSharedPreferences("currentLanguage", Context.MODE_PRIVATE);
         edit = currentLang.edit();
@@ -103,6 +256,7 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
         submitButton.setOnClickListener(this);
         resetButton.setOnLongClickListener(this);
     }
+
 
     private void initValues() {
         if (sharedPreferences != null) {
