@@ -153,16 +153,7 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
                 Toast.makeText(this, R.string.location_catch_statement, Toast.LENGTH_SHORT).show();
                 return;
             }
-            System.out.println("IN FLU" + checkFluVac.isChecked());
-            System.out.println("IN HEALTH" + checkHealthCheck.isChecked());
-
-            Intent pharmacyListView = new Intent(this, ListPharmaciesActivity.class);
-            pharmacyListView.putExtra("checkAilments", checkMinorAilments.isChecked());
-            pharmacyListView.putExtra("checkFlu", checkFluVac.isChecked());
-            pharmacyListView.putExtra("checkHealth", checkHealthCheck.isChecked());
-            pharmacyListView.putExtra("checkSmoking", checkSmoking.isChecked());
-            pharmacyListView.putExtra("checkAlcohol", checkAlcohol.isChecked());
-            startActivity(pharmacyListView);
+            intentToList();
         }
         if (id == R.id.submit_button && switchOnLocationWidget.isChecked()) {
            networkSelected();
@@ -303,15 +294,10 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
             if (LocationServices.isNetworkEnabled(this)) {
                 //If fine location permission is already granted then update last known location from network
                 LocationServices.loadPhoneLocationViaNetwork(this);
-                Toast.makeText(this, LocationServices.getUserLocation().toString(), Toast.LENGTH_LONG).show();
+                //Use to check if location is still working: note- Turn on your phone's location!
+                //Toast.makeText(this, LocationServices.getUserLocation().toString(), Toast.LENGTH_LONG).show();
                 //Then switch view to next activity
-                Intent pharmacyListView = new Intent(this, ListPharmaciesActivity.class);
-                pharmacyListView.putExtra("checkAilments", checkMinorAilments.isChecked());
-                pharmacyListView.putExtra("checkFlu", checkFluVac.isChecked());
-                pharmacyListView.putExtra("checkHealth", checkHealthCheck.isChecked());
-                pharmacyListView.putExtra("checkSmoking", checkSmoking.isChecked());
-                pharmacyListView.putExtra("checkAlcohol", checkAlcohol.isChecked());
-                startActivity(pharmacyListView);
+                intentToList();
             }
         } else {
             //Fine location permission has not been granted
@@ -322,5 +308,15 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
             }
             requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_FINE_LOCATION);
         }
+    }
+
+    public void intentToList(){
+        Intent pharmacyListView = new Intent(this, ListPharmaciesActivity.class);
+        pharmacyListView.putExtra("checkAilments", checkMinorAilments.isChecked());
+        pharmacyListView.putExtra("checkFlu", checkFluVac.isChecked());
+        pharmacyListView.putExtra("checkHealth", checkHealthCheck.isChecked());
+        pharmacyListView.putExtra("checkSmoking", checkSmoking.isChecked());
+        pharmacyListView.putExtra("checkAlcohol", checkAlcohol.isChecked());
+        startActivity(pharmacyListView);
     }
 }
