@@ -59,5 +59,7 @@
 
     <!--PharmacyMapActivity-->
     <string name="users_loc_msg">You have clicked on the marker showing your location.</string>
+    <string name="pharm_marker_loc">You have clicked on the marker showing the Pharmacy\'s location.</string>
+    <string name="cardiff_marker_loc">You have clicked on the marker showing the location of Cardiff City Centre.</string>
 
 </resources>

@@ -55,5 +55,7 @@
 
     <!--PharmacyMapActivity-->
     <string name="users_loc_msg">Rydych wedi clicio ar y marcydd yn dangos eich lleoliad.</string>
+    <string name="pharm_marker_loc">Rydych wedi clicio ar y marcydd yn dangos lleoliad y Fferyllfa.</string>
+    <string name="cardiff_marker_loc">Rydych wedi clicio ar y marcydd yn dangos lleoliad Canol Dinas Caerdydd.</string>
 
 </resources>
