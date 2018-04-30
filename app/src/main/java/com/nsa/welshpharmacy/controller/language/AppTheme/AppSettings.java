@@ -74,8 +74,6 @@ public class AppSettings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_filter_preference);
 
-
-
         nightModeSwitch  = (SwitchCompat) findViewById(R.id.nightmodeswitch);
         minorCheck=(AppCompatCheckBox)findViewById(R.id.check_minor_ailments);
         fluCheck=(AppCompatCheckBox)findViewById(R.id.check_flu_vaccines);
