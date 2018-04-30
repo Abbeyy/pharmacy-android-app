@@ -9,7 +9,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.ListViewCompat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,19 +25,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * This class is the second fragment to be displayed
+ * for ListPharmaciesActivity. It displays a listview of
+ * the full details of the Pharmacy chosen in the
+ * previous fragment, ListPharmaciesFragment, and more.
+ *
  * Created by c1714546 on 4/2/2018.
+ *
+ * @author Abbey Ross.
+ * @version 1.0 April 30th, 2018.
  */
 
 public class ListPharmacyDetailsFragment extends Fragment implements AdapterView.OnItemClickListener, View.OnClickListener {
     ListViewCompat lv;
     List<String> aList;
-    //Built-in adapter for string datasource
     ArrayAdapter<String> la;
     private SharedPreferences currentLang;
     private String currentLocale;
     private SharedPreferences latLongs;
     private SharedPreferences pharmacysEmail;
-    //private Pharmacy recievedPharmacy;
 
     public ListPharmacyDetailsFragment() {
     }
@@ -59,21 +64,10 @@ public class ListPharmacyDetailsFragment extends Fragment implements AdapterView
         SharedPreferences.Editor edit = latLongs.edit();
         edit.putString("pharmLatLong", recievedPharmacy.getPharmacyLatLng(getActivity()).toString());
         edit.putString("userLatLong", LocationServices.getUserLocation().toString());
-        Log.i("PHARM lat lang", recievedPharmacy.getPharmacyLatLng(getActivity()).toString());
-        Log.i("USER lat lang", LocationServices.getUserLocation().toString());
         edit.apply();
 
         pharmacysEmail = getActivity().getSharedPreferences("emailAddress", Context.MODE_PRIVATE);
 
-        /*
-        SharedPreferences sharedPrefs = this.getActivity().getSharedPreferences("pharmacyPos", Context.MODE_PRIVATE);
-        int pharmacyPosition = sharedPrefs.getInt("position", -1);
-        Log.i("Pharmacy position: ", pharmacyPosition+ "!");
-        //Reminder, 1st listed item will have a position of 0.
-
-        //Help gathered from: https://stackoverflow.com/questions/7145606/how-android-sharedpreferences-save-store-object
-        SharedPreferences pharmacies = this.getActivity().getSharedPreferences("pharmacies", Context.MODE_PRIVATE);
-        */
         AppCompatButton btnToMap = (AppCompatButton) v.findViewById(R.id.button_to_map);
         btnToMap.setOnClickListener(this);
 
@@ -107,24 +101,34 @@ public class ListPharmacyDetailsFragment extends Fragment implements AdapterView
         editEmail.apply();
     }
 
+    /**
+     * This method decides whether an intent should be invoked upon the
+     * user's click of a particular listview item. If the user clicks
+     * the item containing a phone number, an ACTION_DIAL intent is invoked.
+     * If the user click's an item containing an email address, the
+     * EmailPharmacyActivity is launched via an intent.
+     *
+     * @param parent
+     * @param view View.
+     * @param position int.
+     * @param id long.
+     */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch (position) {
             case 1:
-//              //Get phone number first
+                //Get phone number first
                 String number = this.aList.get(1);
                 String phoneNumber = removeWhiteSpace(number);
-//              //Create phone call intent
+                //Create phone call intent
                 Intent aPhoneCallIntent = new Intent(Intent.ACTION_DIAL);
-//              //Pass information to intent
-
+                //Pass information to intent
                 aPhoneCallIntent.setData(Uri.parse("tel:"+phoneNumber));
                 startActivity(aPhoneCallIntent);
                 break;
-                //app crashing?!...
             case 3 :
                 Intent launchEmail = new Intent(getActivity(), EmailPharmacyActivity.class);
-                        startActivity(launchEmail);
+                startActivity(launchEmail);
                 break;
             default:
                 break;
@@ -140,13 +144,16 @@ public class ListPharmacyDetailsFragment extends Fragment implements AdapterView
         return result;
     }
 
+    /**
+     *
+     * This method launches the PharmacyMapActivity via an intent if a
+     * particular button is clicked by the user on this fragment.
+     *
+     * @param v View.
+     */
     @Override
     public void onClick(View v) {
-        if (currentLocale == "cy") {
-            Toast.makeText(getActivity(), "Rhedeg y map...", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(getActivity(), "Launching map...", Toast.LENGTH_SHORT).show();
-        }
+        Toast.makeText(getActivity(), R.string.launch_map, Toast.LENGTH_SHORT).show();
 
         Intent mapActivity = new Intent(getActivity(), PharmacyMapActivity.class);
         startActivity(mapActivity);
