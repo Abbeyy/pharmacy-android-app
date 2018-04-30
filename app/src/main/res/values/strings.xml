@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">WelshPharmacy</string>
-    <string name="get_list_buttontext" translatable="false">Get List</string>
+    <string name="app_name">Welsh Pharmacy</string>
+    <string name="get_list_buttontext">Get List</string>
 
     <!-- General -->
     <string name="service_ailments">Minor ailments</string>
@@ -21,12 +21,12 @@
     <string name="button_filter_text">Reset</string>
     <string name="reset_text">Configuration has been reset</string>
 
-    StaffFilterPreferenceActivity-->
+    <!--StaffFilterPreferenceActivity-->
     <string name="toggle_available">Available</string>
     <string name="toggle_unavailable">Unavailable</string>
     <string name="save_button">Save</string>
 
-
+    <!--User Filter Preferences-->
     <string name="pharmacy_one">Pharmacy 1</string>
     <string name="enter_valid_location">Either enter a valid postcode or allow location tracking</string>
     <string name="list_of_pharmacies">List of Pharmacies</string>
@@ -45,4 +45,21 @@
     <string name="cymraeg" translatable="false">Cymraeg</string>
     <string name="title_activity_email_pharmacy">EmailPharmacyActivity</string>
     <string name="enter_message">Please enter your message below</string>
+    <string name="perm_not_granted">Permission was not granted.</string>
+    <string name="lang_remaining">Language remaining in English.</string>
+    <string name="lang_changing">Newid iaith i\'r Cymraeg.</string>
+    <string name="error_lang_remaining" translatable="false">Error - language remaining.</string>
+    <string name="fine_loc">Fine location permission is needed to retrieve the location.</string>>
+
+    <!--ListPharmacyDetailsFragment-->
+    <string name="launch_map">Launching map...</string>
+
+    <!--EmailPharmacyActivity-->
+    <string name="no_email_client">There is no email client installed.</string>
+
+    <!--PharmacyMapActivity-->
+    <string name="users_loc_msg">You have clicked on the marker showing your location.</string>
+    <string name="pharm_marker_loc">You have clicked on the marker showing the Pharmacy\'s location.</string>
+    <string name="cardiff_marker_loc">You have clicked on the marker showing the location of Cardiff City Centre.</string>
+
 </resources>

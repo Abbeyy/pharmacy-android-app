@@ -140,11 +140,19 @@ public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyC
 
         switch (title) {
             case "Chi" :
-                Toast.makeText(this, "Rydych wedi clicio ar y marcydd yn dangos eich lleoliad.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.users_loc_msg, Toast.LENGTH_SHORT).show();
                 break;
             case "You" :
-                Toast.makeText(this, "You have clicked on the marker showing your location.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.users_loc_msg, Toast.LENGTH_SHORT).show();
                 break;
+            case "Fferyllfa" :
+                Toast.makeText(this, R.string.pharm_marker_loc, Toast.LENGTH_SHORT).show();
+                break;
+            case "Pharmacy" :
+                Toast.makeText(this, R.string.pharm_marker_loc, Toast.LENGTH_SHORT).show();
+                break;
+            case "Cardiff City Centre" :
+                Toast.makeText(this, R.string.cardiff_marker_loc, Toast.LENGTH_SHORT).show();
             default :
                 break;
         }
