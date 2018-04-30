@@ -1,7 +1,7 @@
 package com.nsa.welshpharmacy.model;
 
 import java.io.Serializable;
-import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Represents whether a service provided by the pharmacy is available or not
@@ -10,10 +10,13 @@ import java.util.HashMap;
  */
 
 public class PharmacyServiceAvailability implements Serializable {
+    /**
+     * String - The language id eg. "cym"
+     * Boolean- Is the language available in that language true or false
+     */
+    public Map<String, Boolean> defaultAvailability;
 
-    public HashMap<String, Boolean> defaultAvailability;
-
-    public PharmacyServiceAvailability(HashMap<String, Boolean> defaultAvailability) {
+    public PharmacyServiceAvailability(Map<String, Boolean> defaultAvailability) {
         this.defaultAvailability = defaultAvailability;
     }
 

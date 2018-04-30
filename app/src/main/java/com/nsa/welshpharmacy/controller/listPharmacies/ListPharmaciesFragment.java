@@ -1,5 +1,7 @@
 package com.nsa.welshpharmacy.controller.listPharmacies;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -14,30 +16,30 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.ValueEventListener;
 import com.nsa.welshpharmacy.R;
 import com.nsa.welshpharmacy.model.Pharmacy;
-import com.nsa.welshpharmacy.services.FirebaseServices;
+import com.nsa.welshpharmacy.model.PharmacyServiceAvailability;
+import com.nsa.welshpharmacy.viewModel.ListPharmaciesViewModel;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by c1714546 on 3/18/2018.
  */
 
-public class ListPharmaciesFragment extends Fragment implements AdapterView.OnItemClickListener, ValueEventListener {
+public class ListPharmaciesFragment extends Fragment implements AdapterView.OnItemClickListener {
 
     ListViewCompat lv;
-    List<Pharmacy> pharmacies;
+    List<Pharmacy> listOfPharmacies;
     List<String> listOfNames;
+    List<Pharmacy> filteredPharmacies;
+    private ListPharmaciesViewModel mViewModel;
     private ArrayAdapter<String> la;
 
     private FragmentManager fmtManager;
@@ -45,13 +47,15 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
     private SharedPreferences currentLang;
     private String currentLocale;
 
-
-    public ListPharmaciesFragment() {
-    }
+    private boolean booleanAilments;
+    private boolean booleanFlu;
+    private boolean booleanHealth;
+    private boolean booleanSmoking;
+    private boolean booleanAlcohol;
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.list_pharmacies_fragment_one_layout, container, false);
         //inflating layout list_pharmacies_fragment_one_layout as layout for my fragment, holding both
         //textviews and the listview!
@@ -59,13 +63,41 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
         currentLang = getActivity().getSharedPreferences("currentLanguage", Context.MODE_PRIVATE);
         currentLocale = currentLang.getString("state", "default");
 
-        lv = v.findViewById(R.id.listview_pharmacies); //line 64
+        /**
+         * Retrieved the bundle from the activity that contains the boolean values from the checkboxes
+         */
+        Bundle bundle = getArguments();
+        if (bundle != null){
+            booleanAilments = bundle.getBoolean("booleanAilments");
+            booleanFlu = bundle.getBoolean("booleanFlu");
+            booleanHealth = bundle.getBoolean("booleanHealth");
+            booleanSmoking = bundle.getBoolean("booleanSmoking");
+            booleanAlcohol = bundle.getBoolean("booleanAlcohol");
+        }
 
-        pharmacies = new ArrayList<>();
+        mViewModel = ViewModelProviders.of(this).get(ListPharmaciesViewModel.class);
+        listOfPharmacies = new ArrayList<>();
         listOfNames = new ArrayList<>();
 
-        FirebaseServices.loadPharmacies(this);
+        /**
+         * Retrieves the pharmacy information from the PharmacyListViewModel
+         * Adds the pharmacy data into a list of pharmacies and a list of pharmacy names
+         * The list adapter is then notified of the data change
+         */
+        final Observer<List<Pharmacy>> pharmacyObserver = new Observer<List<Pharmacy>>(){
+            @Override
+            public void onChanged(@Nullable final List<Pharmacy> pharmacies) {
+                if(pharmacies != null){
+                    listOfPharmacies.addAll(pharmacies);
+                    listOfNames.clear();
+                    listOfNames.addAll(filterPharmacyNames());
+                    la.notifyDataSetChanged();
+                }
+            }
+        };
+        mViewModel.getPharmacies().observe(this, pharmacyObserver);
 
+        lv = v.findViewById(R.id.listview_pharmacies);
         la = new ArrayAdapter<String>(
                 getActivity(),
                 android.R.layout.simple_list_item_1,
@@ -74,20 +106,16 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
         lv.setAdapter(la);
         lv.setOnItemClickListener(this);
 
-        //date stuff
         setUpDate(v);
         return v;
     }
 
     public void setUpDate(View v) {
-        //Code help gathered from:
-        // https://stackoverflow.com/questions/40310773/android-studio-textview-show-date
-        TextView dateTV = (TextView)v.findViewById(R.id.date_text_view);
-
+        //Adapted from: https://stackoverflow.com/questions/40310773/android-studio-textview-show-date
+        TextView dateTV = v.findViewById(R.id.date_text_view);
         Date currentDate = Calendar.getInstance().getTime();
         SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
         String date_today = format.format(currentDate);
-
         if (currentLocale == "cy") {
             dateTV.setText(" Dyddiad heddiw: " + date_today);
         } else {
@@ -97,59 +125,81 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        //1. Toast
-        if (currentLocale == "cy") {
-            Toast.makeText(getActivity(),
-                    String.format("Defnyddiwr wedi dewis %s", lv.getItemAtPosition(position)),
-                    Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(getActivity(),
-                    String.format("User has selected %s", lv.getItemAtPosition(position)),
-                    Toast.LENGTH_SHORT).show();
-        }
-
-        //2. Switch Fragments
+        //Switch Fragments
         expandPharmacyInfo(position);
     }
 
     public void expandPharmacyInfo(int position) {
-        //First updateSharedPrefs to store position data in activity.
-        /*
-        SharedPreferences sharedPrefs = this.getActivity().getSharedPreferences("pharmacyPos", Context.MODE_PRIVATE);
-        SharedPreferences.Editor edit = sharedPrefs.edit();
-        edit.putInt("position", position);
-        edit.apply();
-        */
+        List<Pharmacy> pharmacies = listOfPharmacies;
         // https://stackoverflow.com/a/46298244
         Bundle bundle = new Bundle();
         bundle.putParcelable("selectedPharmacy", pharmacies.get(position));
         //getParentFragment().setArguments(bundle);
-        ListPharmacysDetailsFragment listPharmacysDetailsFragment = new ListPharmacysDetailsFragment();
-        listPharmacysDetailsFragment.setArguments(bundle);
+        ListPharmacyDetailsFragment listPharmacyDetailsFragment = new ListPharmacyDetailsFragment();
+        listPharmacyDetailsFragment.setArguments(bundle);
         //Then switch fragments.
         fmtManager = getActivity().getSupportFragmentManager();
         fmtTrans = fmtManager.beginTransaction();
-        fmtTrans.replace(R.id.fragments_container, listPharmacysDetailsFragment).addToBackStack("fragTwo");
+        fmtTrans.replace(R.id.fragments_container, listPharmacyDetailsFragment).addToBackStack("fragTwo");
         fmtTrans.addToBackStack(null);
         fmtTrans.commit();
     }
 
-    @Override
-    public void onDataChange(DataSnapshot dataSnapshot){
-        // see:  https://firebase.google.com/docs/database/android/lists-of-data#listen_for_value_events
-        // Retrieve all  Pharmacy records from the Firebase database in one go
-        for(DataSnapshot pharmacySnapshot : dataSnapshot.getChildren()){
-            Pharmacy pharmacy = pharmacySnapshot.getValue(Pharmacy.class);
-            pharmacy.setId(pharmacySnapshot.getKey());
-            System.out.println("pharmacy : " + pharmacy);
-            pharmacies.add(pharmacy);
-            listOfNames.add(pharmacy.getName());
+    /**
+     * Loops through the pharmacy objects to determine what services they ahve and if it is what the
+     * user selected, then add them to a list.
+     * @return list of filtered pharmacies
+     */
+    public List<Pharmacy> filterPharmaciesBySelection(){
+        List<Pharmacy> filteredPharmacies = new ArrayList<>();
+        for(Pharmacy pharmacy : listOfPharmacies){
+            for(Map.Entry<String, PharmacyServiceAvailability> pharmacyService : pharmacy.getServices().entrySet()) {
+                PharmacyServiceAvailability serviceValue = pharmacyService.getValue();
+                if(serviceValue.defaultAvailability != null) {
+                    switch (pharmacyService.getKey()) {
+                        case "minorAilments":
+                            if (booleanAilments && serviceValue.defaultAvailability.get("cym")) {
+                                filteredPharmacies.add(pharmacy);
+                            }
+                            break;
+                        case "fluVac":
+                            if (booleanFlu && serviceValue.defaultAvailability.get("cym")){
+                                filteredPharmacies.add(pharmacy);
+                            }
+                            break;
+                        case "healthCheck":
+                            if (booleanHealth && serviceValue.defaultAvailability.get("cym")){
+                                filteredPharmacies.add(pharmacy);
+                            }
+                            break;
+                        case "smoking":
+                            if (booleanSmoking && serviceValue.defaultAvailability.get("cym")){
+                                filteredPharmacies.add(pharmacy);
+                            }
+                            break;
+                        case "alcohol":
+                            if (booleanAlcohol && serviceValue.defaultAvailability.get("cym")){
+                                filteredPharmacies.add(pharmacy);
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
         }
-        la.notifyDataSetChanged();
+        return filteredPharmacies;
     }
 
-    @Override
-    public void onCancelled(DatabaseError databaseError){
-        System.out.println("The read failed: " + databaseError.getCode());
+    /**
+     * Creates a list of names from the pharmacies that have been filtered
+     * @return list of filtered pharmacy names
+     */
+    public List<String> filterPharmacyNames(){
+        List<String> listOfFilteredNames = new ArrayList<>();
+        for(Pharmacy pharmacy : filterPharmaciesBySelection()){
+            listOfFilteredNames.add(pharmacy.getName());
+        }
+        return listOfFilteredNames;
     }
 }

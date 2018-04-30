@@ -58,6 +58,19 @@ public class Pharmacy  implements Parcelable {
         //Reflection
     }
 
+    //Parcel constructor
+    public Pharmacy(Parcel in) {
+        id = in.readString();
+        email = in.readString();
+        name = in.readString();
+        phone = in.readString();
+        postcode = in.readString();
+        //https://stackoverflow.com/questions/43471996/pass-parcelable-object-containing-map-between-activity/43478206#43478206
+        services = new HashMap<String, PharmacyServiceAvailability>();
+        in.readMap(services, PharmacyServiceAvailability.class.getClassLoader());
+        website = in.readString();
+    }
+
     //This is only for use when reading from Firebase
     public void setId(String id) {
         this.id = id;
@@ -81,25 +94,16 @@ public class Pharmacy  implements Parcelable {
         return postcode;
     }
 
+    /**
+     * String: service id eg. minorAilments
+     * @return
+     */
     public Map<String, PharmacyServiceAvailability> getServices() {
         return services;
     }
 
     public String getWebsite() {
         return website;
-    }
-
-    //Parcel constructor
-    public Pharmacy(Parcel in) {
-        id = in.readString();
-        email = in.readString();
-        name = in.readString();
-        phone = in.readString();
-        postcode = in.readString();
-        //https://stackoverflow.com/questions/43471996/pass-parcelable-object-containing-map-between-activity/43478206#43478206
-        services = new HashMap<String, PharmacyServiceAvailability>();
-        in.readMap(services, PharmacyServiceAvailability.class.getClassLoader());
-        website = in.readString();
     }
 
     @Override

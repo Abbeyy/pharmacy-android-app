@@ -8,14 +8,19 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.nsa.welshpharmacy.model.Pharmacy;
+import com.nsa.welshpharmacy.model.Utils;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * This service allows the location of the user to be retrieved whether they enter a valid postcode
@@ -106,5 +111,26 @@ public class LocationServices {
             distance = locationB.distanceTo(locationA);
         }
     return distance;
+    }
+    /**
+     * Returns a sorted map of pharmacy objects with their corresponding distance to the user location
+     * Nearest distance first
+     * Distance must be computed to added to the map
+     * @param context
+     * @return
+     */
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public Map<Pharmacy, Float> sortPharmaciesByLocation(Context context){
+        Map<Pharmacy, Float> userDistanceToPharmacies = new HashMap<>();
+        /*
+        for (Pharmacy pharmacy : this.getPharmacies()){
+            if(LocationServices.getUserLocation() != null) {
+                Float distance = LocationServices.getUserDistanceToPharmacy(context, pharmacy);
+                userDistanceToPharmacies.put(pharmacy, distance);
+            }
+        }
+        */
+        Map<Pharmacy, Float> sortedPharmaciesMap = Utils.sortByValue(userDistanceToPharmacies);
+        return sortedPharmaciesMap;
     }
 }

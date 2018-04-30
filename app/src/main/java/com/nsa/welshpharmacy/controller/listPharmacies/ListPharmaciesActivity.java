@@ -24,16 +24,7 @@ import com.nsa.welshpharmacy.R;
 public class ListPharmaciesActivity extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
     private SharedPreferences pharmacyInstancesData;
-    /*
-    private String[] pharmacyNames = new String[]
-            {"Boots", "Well", "Cardiff Royal Infirmary Pharmacy",
-                    "Clifton Pharmacy", "Pearn's Pharmacies Ltd",
-                    "Superdrug Pharmacy", "Woodville Road Pharmacy",
-                    "Lloyds Pharmacy Ltd", "Central Pharmacy",
-                    "Crwys Pharmacy", "The Co-operative Pharmacy",
-                    "Rees & Moore Pharmacy", "M W Philips",
-                    "MW Phillips Chemists"};
-    */
+    private SharedPreferences pharmacyLatLang;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +34,33 @@ public class ListPharmaciesActivity extends AppCompatActivity {
         //due to use of fragments - but that doesnt work? This does?.... fix!
 
         sharedPreferences = getSharedPreferences("pharmacyPos", Context.MODE_PRIVATE);
+        pharmacyLatLang = getSharedPreferences("pharmacyLatLang", Context.MODE_PRIVATE);
+
+        /**
+         * Get intent data from user activity and then wrapping it into a bundle to pass to the fragment
+         */
+        Bundle data = getIntent().getExtras();
+        Boolean ailment = null;
+        Boolean flu = null;
+        Boolean health = null;
+        Boolean smoking = null;
+        Boolean alcohol = null;
+        if (data != null) {
+            ailment = data.getBoolean("checkAilments");
+            flu = data.getBoolean("checkFlu");
+            health = data.getBoolean("checkHealth");
+            smoking = data.getBoolean("checkSmoking");
+            alcohol = data.getBoolean("checkAlcohol");
+        }
+
+        Bundle bundle = new Bundle();
+        bundle.putBoolean("booleanAilments", ailment);
+        bundle.putBoolean("booleanFlu", flu);
+        bundle.putBoolean("booleanHealth", health);
+        bundle.putBoolean("booleanSmoking", smoking);
+        bundle.putBoolean("booleanAlcohol", alcohol);
+        ListPharmaciesFragment fragment = new ListPharmaciesFragment();
+        fragment.setArguments(bundle);
 
         generatePharmaciesData();
 
@@ -50,27 +68,12 @@ public class ListPharmaciesActivity extends AppCompatActivity {
         android.support.v4.app.FragmentManager fmtManager = getSupportFragmentManager();
         android.support.v4.app.FragmentTransaction fmtTransaction = fmtManager.beginTransaction();
         fmtTransaction.add(R.id.fragments_container, new com.nsa.welshpharmacy.controller.listPharmacies.ListPharmaciesFragment());
+        fmtTransaction.replace(R.id.fragments_container, fragment); //https://stackoverflow.com/a/21102881
         fmtTransaction.commit();
     }
 
     public void generatePharmaciesData() {
         pharmacyInstancesData = getSharedPreferences("pharmacies", Context.MODE_PRIVATE);
         SharedPreferences.Editor edit = pharmacyInstancesData.edit();
-
-        /*
-        for (int k = 0; k < numOfPharmacies; k++) {
-            MockPharmacy pharmacy = new MockPharmacy(pharmacyNames[k],
-                    "02920688695","Rossa9@cardiff.ac.uk",
-                    "Capital Shopping Centre, Cardiff",
-                    "Common Ailments Service", "Out of Hours Service",
-                    "Provides EC", "Seasonal Flu Vaccine");
-
-            Gson gson = new Gson();
-            String json = gson.toJson(pharmacy);
-
-            edit.putString("pharmacy"+k, json);
-        }
-        edit.apply();
-        */
     }
 }

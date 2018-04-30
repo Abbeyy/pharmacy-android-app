@@ -18,6 +18,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.nsa.welshpharmacy.R;
+import com.nsa.welshpharmacy.controller.PharmacyMapActivity;
 import com.nsa.welshpharmacy.model.Pharmacy;
 
 import java.util.ArrayList;
@@ -27,17 +28,18 @@ import java.util.List;
  * Created by c1714546 on 4/2/2018.
  */
 
-public class ListPharmacysDetailsFragment extends Fragment implements AdapterView.OnItemClickListener, View.OnClickListener {
+public class ListPharmacyDetailsFragment extends Fragment implements AdapterView.OnItemClickListener, View.OnClickListener {
     ListViewCompat lv;
     List<String> aList;
     //Built-in adapter for string datasource
     ArrayAdapter<String> la;
     private SharedPreferences currentLang;
     private String currentLocale;
+    private SharedPreferences pharmacyLatLang;
+    private SharedPreferences pharmacysEmail;
     //private Pharmacy recievedPharmacy;
 
-    public ListPharmacysDetailsFragment() {
-
+    public ListPharmacyDetailsFragment() {
     }
 
     @Nullable
@@ -51,6 +53,15 @@ public class ListPharmacysDetailsFragment extends Fragment implements AdapterVie
 
         Bundle bundle = this.getArguments();
         Pharmacy recievedPharmacy = bundle.getParcelable("selectedPharmacy");
+
+        pharmacyLatLang = getActivity().getSharedPreferences("pharmacyLatLang", Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit = pharmacyLatLang.edit();
+        edit.putString("LatitudeLongitude", recievedPharmacy.getPharmacyLatLng(getActivity()).toString());
+        Log.i("DEV lat lang", recievedPharmacy.getPharmacyLatLng(getActivity()).toString());
+        edit.apply();
+
+        pharmacysEmail = getActivity().getSharedPreferences("emailAddress", Context.MODE_PRIVATE);
+
         /*
         SharedPreferences sharedPrefs = this.getActivity().getSharedPreferences("pharmacyPos", Context.MODE_PRIVATE);
         int pharmacyPosition = sharedPrefs.getInt("position", -1);
@@ -59,9 +70,6 @@ public class ListPharmacysDetailsFragment extends Fragment implements AdapterVie
 
         //Help gathered from: https://stackoverflow.com/questions/7145606/how-android-sharedpreferences-save-store-object
         SharedPreferences pharmacies = this.getActivity().getSharedPreferences("pharmacies", Context.MODE_PRIVATE);
-        Gson gson = new Gson();
-        String json = pharmacies.getString("pharmacy" + pharmacyPosition, "Error");
-        MockPharmacy pharmacyToDisplay = gson.fromJson(json, MockPharmacy.class);
         */
         AppCompatButton btnToMap = (AppCompatButton) v.findViewById(R.id.button_to_map);
         btnToMap.setOnClickListener(this);
@@ -84,11 +92,16 @@ public class ListPharmacysDetailsFragment extends Fragment implements AdapterVie
     }
 
     public void populateData(Pharmacy selectedPharmacy) {
-        aList.add(selectedPharmacy.getName().toString());
-        aList.add(selectedPharmacy.getPhone().toString());
-        aList.add(selectedPharmacy.getPostcode().toString());
-       //aList.add(selectedPharmacy.getEmail().toString());
-        aList.add(selectedPharmacy.getWebsite().toString());
+        aList.add(selectedPharmacy.getName());
+        aList.add(selectedPharmacy.getPhone());
+        aList.add(selectedPharmacy.getPostcode());
+        aList.add(selectedPharmacy.getEmail());
+        aList.add(selectedPharmacy.getWebsite());
+
+        SharedPreferences.Editor editEmail = pharmacysEmail.edit();
+        editEmail.clear();
+        editEmail.putString("email", selectedPharmacy.getEmail());
+        editEmail.apply();
     }
 
     @Override
@@ -106,33 +119,10 @@ public class ListPharmacysDetailsFragment extends Fragment implements AdapterVie
                 startActivity(aPhoneCallIntent);
                 break;
                 //app crashing?!...
-//            case 3 :
-
-            //Email to be mocked in database and then intent used.
-
-//                //THE BELOW WORKS IF THE USER SELECTS TO
-//                //SEND MAIL VIA "MESSAGES" ON ANDROIDS OPTIONS.
-//
-//                //Get email address first
-//                String emailAddress = this.aList.get(3);
-//                //Create emailing intent
-//                Intent anEmailIntent = new Intent(Intent.ACTION_SEND);
-//                //Define mail data
-//                anEmailIntent.setData(Uri.parse("mailto:"));
-//                anEmailIntent.setType("text/plain");
-//                //Define to Who
-//                anEmailIntent.putExtra(Intent.EXTRA_EMAIL, emailAddress);
-//                //Receiver/Message content
-//                anEmailIntent.putExtra(Intent.EXTRA_SUBJECT, "Test/Query");
-//                anEmailIntent.putExtra(Intent.EXTRA_TEXT, "Test message.");
-//                Log.i("starting email activity", "yes!");
-//
-//                try {
-//                    startActivity(Intent.createChooser(anEmailIntent, "Send email.."));
-//                } catch (android.content.ActivityNotFoundException ex) {
-//                    Toast.makeText(getActivity(), "There's no email client installed!", Toast.LENGTH_SHORT).show();
-//                }
-//                break;
+            case 3 :
+                Intent launchEmail = new Intent(getActivity(), EmailPharmacyActivity.class);
+                        startActivity(launchEmail);
+                break;
             default:
                 break;
         }
@@ -155,10 +145,7 @@ public class ListPharmacysDetailsFragment extends Fragment implements AdapterVie
             Toast.makeText(getActivity(), "Launching map...", Toast.LENGTH_SHORT).show();
         }
 
-        //Code will be populated with launching
-        //Mukhtar's activity once his code
-        //is merged successfully with
-        //development as it is compatible
-        //with the remainder of the project!
+        Intent mapActivity = new Intent(getActivity(), PharmacyMapActivity.class);
+        startActivity(mapActivity);
     }
 }
