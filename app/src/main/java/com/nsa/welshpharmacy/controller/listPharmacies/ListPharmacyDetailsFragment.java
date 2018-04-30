@@ -59,8 +59,6 @@ public class ListPharmacyDetailsFragment extends Fragment implements AdapterView
         SharedPreferences.Editor edit = latLongs.edit();
         edit.putString("pharmLatLong", recievedPharmacy.getPharmacyLatLng(getActivity()).toString());
         edit.putString("userLatLong", LocationServices.getUserLocation().toString());
-        Log.i("PHARM lat lang", recievedPharmacy.getPharmacyLatLng(getActivity()).toString());
-        Log.i("USER lat lang", LocationServices.getUserLocation().toString());
         edit.apply();
 
         pharmacysEmail = getActivity().getSharedPreferences("emailAddress", Context.MODE_PRIVATE);
@@ -111,20 +109,18 @@ public class ListPharmacyDetailsFragment extends Fragment implements AdapterView
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch (position) {
             case 1:
-//              //Get phone number first
+                //Get phone number first
                 String number = this.aList.get(1);
                 String phoneNumber = removeWhiteSpace(number);
-//              //Create phone call intent
+                //Create phone call intent
                 Intent aPhoneCallIntent = new Intent(Intent.ACTION_DIAL);
-//              //Pass information to intent
-
+                //Pass information to intent
                 aPhoneCallIntent.setData(Uri.parse("tel:"+phoneNumber));
                 startActivity(aPhoneCallIntent);
                 break;
-                //app crashing?!...
             case 3 :
                 Intent launchEmail = new Intent(getActivity(), EmailPharmacyActivity.class);
-                        startActivity(launchEmail);
+                startActivity(launchEmail);
                 break;
             default:
                 break;
@@ -142,11 +138,7 @@ public class ListPharmacyDetailsFragment extends Fragment implements AdapterView
 
     @Override
     public void onClick(View v) {
-        if (currentLocale == "cy") {
-            Toast.makeText(getActivity(), "Rhedeg y map...", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(getActivity(), "Launching map...", Toast.LENGTH_SHORT).show();
-        }
+        Toast.makeText(getActivity(), R.string.launch_map, Toast.LENGTH_SHORT).show();
 
         Intent mapActivity = new Intent(getActivity(), PharmacyMapActivity.class);
         startActivity(mapActivity);

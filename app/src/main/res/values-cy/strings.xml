@@ -47,7 +47,7 @@
     <string name="lang_changing">Changing language to English.</string>
     <string name="fine_loc">Rhaid i chi roi caniatâd fel bod modd casglu\'ch lleoliad.</string>
 
-    <!--ListPharmaciesFragment-->
-    <string name="todays_date">Dyddiad heddiw:</string>
+    <!--ListPharmacyDetailsFragment-->
+    <string name="launch_map">Rhedeg y map...</string>
 
 </resources>
