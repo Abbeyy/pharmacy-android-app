@@ -116,11 +116,7 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
         Date currentDate = Calendar.getInstance().getTime();
         SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
         String date_today = format.format(currentDate);
-        if (currentLocale == "cy") {
-            dateTV.setText(" Dyddiad heddiw: " + date_today);
-        } else {
-            dateTV.setText("  Today's Date: " + date_today);
-        }
+        dateTV.setText(R.string.todays_date + date_today);
     }
 
     @Override
@@ -146,7 +142,7 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
     }
 
     /**
-     * Loops through the pharmacy objects to determine what services they ahve and if it is what the
+     * Loops through the pharmacy objects to determine what services they have and if it is what the
      * user selected, then add them to a list.
      * @return list of filtered pharmacies
      */

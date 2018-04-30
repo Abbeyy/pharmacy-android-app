@@ -21,12 +21,12 @@
     <string name="button_filter_text">Reset</string>
     <string name="reset_text">Configuration has been reset</string>
 
-    StaffFilterPreferenceActivity-->
+    <!--StaffFilterPreferenceActivity-->
     <string name="toggle_available">Available</string>
     <string name="toggle_unavailable">Unavailable</string>
     <string name="save_button">Save</string>
 
-
+    <!--User Filter Preferences-->
     <string name="pharmacy_one">Pharmacy 1</string>
     <string name="enter_valid_location">Either enter a valid postcode or allow location tracking</string>
     <string name="list_of_pharmacies">List of Pharmacies</string>
@@ -50,4 +50,7 @@
     <string name="lang_changing">Newid iaith i\'r Cymraeg.</string>
     <string name="error_lang_remaining" translatable="false">Error - language remaining.</string>
     <string name="fine_loc">Fine location permission is needed to retrieve the location.</string>
+
+    <!--ListPharmaciesFragment-->
+    <string name="todays_date">Today\'s Date:</string>
 </resources>
