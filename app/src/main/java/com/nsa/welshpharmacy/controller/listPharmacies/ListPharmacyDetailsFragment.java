@@ -9,7 +9,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.ListViewCompat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,19 +25,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * This class is the second fragment to be displayed
+ * for ListPharmaciesActivity. It displays a listview of
+ * the full details of the Pharmacy chosen in the
+ * previous fragment, ListPharmaciesFragment, and more.
+ *
  * Created by c1714546 on 4/2/2018.
+ *
+ * @author Abbey Ross.
+ * @version 1.0 April 30th, 2018.
  */
 
 public class ListPharmacyDetailsFragment extends Fragment implements AdapterView.OnItemClickListener, View.OnClickListener {
     ListViewCompat lv;
     List<String> aList;
-    //Built-in adapter for string datasource
     ArrayAdapter<String> la;
     private SharedPreferences currentLang;
     private String currentLocale;
     private SharedPreferences latLongs;
     private SharedPreferences pharmacysEmail;
-    //private Pharmacy recievedPharmacy;
 
     public ListPharmacyDetailsFragment() {
     }
@@ -63,15 +68,6 @@ public class ListPharmacyDetailsFragment extends Fragment implements AdapterView
 
         pharmacysEmail = getActivity().getSharedPreferences("emailAddress", Context.MODE_PRIVATE);
 
-        /*
-        SharedPreferences sharedPrefs = this.getActivity().getSharedPreferences("pharmacyPos", Context.MODE_PRIVATE);
-        int pharmacyPosition = sharedPrefs.getInt("position", -1);
-        Log.i("Pharmacy position: ", pharmacyPosition+ "!");
-        //Reminder, 1st listed item will have a position of 0.
-
-        //Help gathered from: https://stackoverflow.com/questions/7145606/how-android-sharedpreferences-save-store-object
-        SharedPreferences pharmacies = this.getActivity().getSharedPreferences("pharmacies", Context.MODE_PRIVATE);
-        */
         AppCompatButton btnToMap = (AppCompatButton) v.findViewById(R.id.button_to_map);
         btnToMap.setOnClickListener(this);
 
@@ -105,6 +101,18 @@ public class ListPharmacyDetailsFragment extends Fragment implements AdapterView
         editEmail.apply();
     }
 
+    /**
+     * This method decides whether an intent should be invoked upon the
+     * user's click of a particular listview item. If the user clicks
+     * the item containing a phone number, an ACTION_DIAL intent is invoked.
+     * If the user click's an item containing an email address, the
+     * EmailPharmacyActivity is launched via an intent.
+     *
+     * @param parent
+     * @param view View.
+     * @param position int.
+     * @param id long.
+     */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch (position) {
@@ -136,6 +144,13 @@ public class ListPharmacyDetailsFragment extends Fragment implements AdapterView
         return result;
     }
 
+    /**
+     *
+     * This method launches the PharmacyMapActivity via an intent if a
+     * particular button is clicked by the user on this fragment.
+     *
+     * @param v View.
+     */
     @Override
     public void onClick(View v) {
         Toast.makeText(getActivity(), R.string.launch_map, Toast.LENGTH_SHORT).show();

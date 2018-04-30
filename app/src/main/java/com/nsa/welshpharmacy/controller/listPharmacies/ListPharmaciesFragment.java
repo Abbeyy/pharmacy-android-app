@@ -31,7 +31,15 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * This class is the first fragment displayed when
+ * ListPharmaciesActivity is launched by an intent.
+ * It contains a Listview to list Pharmacies gathered
+ * from a Firebase database, by name.
+ *
  * Created by c1714546 on 3/18/2018.
+ *
+ * @author Abbey Ross.
+ * @version 1.0 April 30th, 2018.
  */
 
 public class ListPharmaciesFragment extends Fragment implements AdapterView.OnItemClickListener {
@@ -58,8 +66,6 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.list_pharmacies_fragment_one_layout, container, false);
-        //inflating layout list_pharmacies_fragment_one_layout as layout for my fragment, holding both
-        //textviews and the listview!
 
         currentLang = getActivity().getSharedPreferences("currentLanguage", Context.MODE_PRIVATE);
         currentLocale = currentLang.getString("state", "default");
@@ -111,14 +117,26 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
         return v;
     }
 
+    /**
+     * This method programatically generates today's date and then populates
+     * the text of a textview with the result. Depending on whether the
+     * application is in English or Welsh, the appropriate message will
+     * be displayed.
+     *
+     * @param v View.
+     */
     public void setUpDate(View v) {
-        //Adapted from: https://stackoverflow.com/questions/40310773/android-studio-textview-show-date
+
+        // Adapted from: https://stackoverflow.com/questions/40310773/android-studio-textview-show-date
+//        STARTS HERE
         TextView dateTV = v.findViewById(R.id.date_text_view);
         Date currentDate = Calendar.getInstance().getTime();
         SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
         String date_today = format.format(currentDate);
+//        ENDS HERE
 
-        //Accessed via hardcoded due to retrieval from
+
+        // Accessed via hardcoded due to retrieval from
         // string resources grabbing integers instead
         // of the string value.
         if (currentLocale == "cy") {
@@ -130,10 +148,19 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        //Switch Fragments
+        //Switch fragments
         expandPharmacyInfo(position);
     }
 
+    /**
+     * This method passes a Pharmacy object picked by the user upon
+     * a tap of a listview item, and then switches this fragment
+     * out for ListPharmacyDetailsFragment.
+     *
+     * @param position int, stores the order number of the
+     * listview item picked e.g.
+     * 1st item, position will be 0.
+     */
     public void expandPharmacyInfo(int position) {
         List<Pharmacy> pharmacies = listOfPharmacies;
         // https://stackoverflow.com/a/46298244
