@@ -151,6 +151,12 @@ public class PharmacyMapActivity extends FragmentActivity implements OnMapReadyC
             case "Pharmacy" :
                 Toast.makeText(this, "You have clicked on the marker showing the Pharmacy's location.", Toast.LENGTH_SHORT).show();
                 break;
+            case "Cardiff City Centre" :
+                if (currentLocale == "cy") {
+                    Toast.makeText(this, "Rydych wedi clicio ar y marcydd yn dangos lleoliad Canol Dinas Caerdydd.", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "You have clicked on the marker showing the location of Cardiff City Centre.", Toast.LENGTH_SHORT).show();
+                }
             default :
                 break;
         }
