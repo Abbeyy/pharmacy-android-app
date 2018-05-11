@@ -1,17 +1,13 @@
 package com.nsa.welshpharmacy.services;
 
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.nsa.welshpharmacy.model.Pharmacy;
-import com.nsa.welshpharmacy.model.PharmacyService;
 import com.nsa.welshpharmacy.model.PharmacyServiceAvailability;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -58,31 +54,4 @@ public class FirebaseServices {
         return new PharmacyServiceAvailability(defaultAvailability);
     }
 
-    public static List<PharmacyService> loadServices(){
-        final ArrayList<PharmacyService> pharmacyServices = new ArrayList<PharmacyService>();
-        //Get a reference to the services
-        final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference("services");
-
-        // Attach a listener to read the data at the services reference
-        ref.addValueEventListener(new ValueEventListener(){
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot){
-                // see:  https://firebase.google.com/docs/database/android/lists-of-data#listen_for_value_events
-                // Retrieve all  Pharmacy records from the Firebase database in one go
-                for(DataSnapshot pharmacyServiceSnapshot : dataSnapshot.getChildren()){
-                    PharmacyService pharmacyService = pharmacyServiceSnapshot.getValue(PharmacyService.class);
-                    pharmacyService.setId(pharmacyServiceSnapshot.getKey());
-                    //System.out.println(pharmacyService);
-                    pharmacyServices.add(pharmacyService);
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError){
-                System.out.println("The read failed: " + databaseError.getCode());
-            }
-        });
-        return pharmacyServices;
-    }
 }
