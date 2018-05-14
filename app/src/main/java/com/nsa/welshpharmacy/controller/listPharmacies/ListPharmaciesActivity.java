@@ -1,6 +1,5 @@
 package com.nsa.welshpharmacy.controller.listPharmacies;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -37,13 +36,17 @@ public class ListPharmaciesActivity extends AppCompatActivity {
         Boolean health = null;
         Boolean smoking = null;
         Boolean alcohol = null;
+        Object location = null;
         if (data != null) {
             ailment = data.getBoolean("checkAilments");
             flu = data.getBoolean("checkFlu");
             health = data.getBoolean("checkHealth");
             smoking = data.getBoolean("checkSmoking");
             alcohol = data.getBoolean("checkAlcohol");
+            location = data.get("userLocation");
         }
+
+        String stringLocation = location.toString();
 
         Bundle bundle = new Bundle();
         bundle.putBoolean("booleanAilments", ailment);
@@ -51,6 +54,7 @@ public class ListPharmaciesActivity extends AppCompatActivity {
         bundle.putBoolean("booleanHealth", health);
         bundle.putBoolean("booleanSmoking", smoking);
         bundle.putBoolean("booleanAlcohol", alcohol);
+        bundle.putString("userLocation", stringLocation);
         ListPharmaciesFragment fragment = new ListPharmaciesFragment();
         fragment.setArguments(bundle);
 

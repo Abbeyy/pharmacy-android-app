@@ -1,11 +1,14 @@
 package com.nsa.welshpharmacy.controller.listPharmacies;
 
+import android.annotation.TargetApi;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -20,6 +23,7 @@ import android.widget.TextView;
 import com.nsa.welshpharmacy.R;
 import com.nsa.welshpharmacy.model.Pharmacy;
 import com.nsa.welshpharmacy.model.PharmacyServiceAvailability;
+import com.nsa.welshpharmacy.services.LocationServices;
 import com.nsa.welshpharmacy.viewModel.ListPharmaciesViewModel;
 
 import java.text.SimpleDateFormat;
@@ -60,7 +64,9 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
     private boolean booleanHealth;
     private boolean booleanSmoking;
     private boolean booleanAlcohol;
+    private String stringUserLocation;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -79,6 +85,7 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
             booleanHealth = bundle.getBoolean("booleanHealth");
             booleanSmoking = bundle.getBoolean("booleanSmoking");
             booleanAlcohol = bundle.getBoolean("booleanAlcohol");
+            stringUserLocation = bundle.getString("userLocation");
         }
 
         mViewModel = ViewModelProviders.of(this).get(ListPharmaciesViewModel.class);
@@ -95,9 +102,9 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
             public void onChanged(@Nullable final List<Pharmacy> pharmacies) {
                 if(pharmacies != null){
                     listOfPharmacies.addAll(pharmacies);
-                    listOfNames.clear();
-                    listOfNames.addAll(filterPharmacyNames());
-                    la.notifyDataSetChanged();
+                    //listOfNames.clear();
+                    //listOfNames.addAll(filterPharmacyNames());
+                    pharmaciesByDistance(listOfPharmacies);
                 }
             }
         };
@@ -245,5 +252,16 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
             listOfFilteredNames.add(pharmacy.getName());
         }
         return listOfFilteredNames;
+    }
+
+    @TargetApi(Build.VERSION_CODES.N)
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void pharmaciesByDistance(List<Pharmacy> pharmacyList){
+        listOfNames.clear();
+        Map<Pharmacy, Float> map = LocationServices.sortPharmaciesByLocation(getContext(), pharmacyList);
+        for(Pharmacy pharmacy : map.keySet()){
+            listOfNames.add(pharmacy.getName());
+        }
+        la.notifyDataSetChanged();
     }
 }
