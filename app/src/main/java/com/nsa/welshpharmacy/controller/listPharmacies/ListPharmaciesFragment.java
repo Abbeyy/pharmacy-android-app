@@ -20,6 +20,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.nsa.welshpharmacy.R;
 import com.nsa.welshpharmacy.model.Pharmacy;
 import com.nsa.welshpharmacy.model.PharmacyServiceAvailability;
@@ -85,7 +86,7 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
             booleanHealth = bundle.getBoolean("booleanHealth");
             booleanSmoking = bundle.getBoolean("booleanSmoking");
             booleanAlcohol = bundle.getBoolean("booleanAlcohol");
-            stringUserLocation = bundle.getString("userLocation");
+            //stringUserLocation = bundle.getString("userLocation");
         }
 
         mViewModel = ViewModelProviders.of(this).get(ListPharmaciesViewModel.class);
@@ -102,9 +103,10 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
             public void onChanged(@Nullable final List<Pharmacy> pharmacies) {
                 if(pharmacies != null){
                     listOfPharmacies.addAll(pharmacies);
-                    //listOfNames.clear();
-                    //listOfNames.addAll(filterPharmacyNames());
-                    pharmaciesByDistance(listOfPharmacies);
+                    listOfNames.clear();
+                    listOfNames.addAll(filterPharmacyNames());
+                    //pharmaciesByDistance(listOfPharmacies);
+                    la.notifyDataSetChanged();
                 }
             }
         };
@@ -263,5 +265,12 @@ public class ListPharmaciesFragment extends Fragment implements AdapterView.OnIt
             listOfNames.add(pharmacy.getName());
         }
         la.notifyDataSetChanged();
+    }
+
+    public LatLng constructLatLngFromString(String stringLocation){
+        String[] location =  stringLocation.split(",");
+        double latitude = Double.parseDouble(location[0]);
+        double longitude = Double.parseDouble(location[1]);
+        return new LatLng(latitude, longitude);
     }
 }

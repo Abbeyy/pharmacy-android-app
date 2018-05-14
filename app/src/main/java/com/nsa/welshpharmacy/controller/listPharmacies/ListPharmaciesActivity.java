@@ -46,7 +46,12 @@ public class ListPharmaciesActivity extends AppCompatActivity {
             location = data.get("userLocation");
         }
 
+        /*
         String stringLocation = location.toString();
+        String[] locationSplit =  stringLocation.split(",");
+        double latitude = Double.parseDouble(locationSplit[0]);
+        double longitude = Double.parseDouble(locationSplit[1]);
+        */
 
         Bundle bundle = new Bundle();
         bundle.putBoolean("booleanAilments", ailment);
@@ -54,7 +59,9 @@ public class ListPharmaciesActivity extends AppCompatActivity {
         bundle.putBoolean("booleanHealth", health);
         bundle.putBoolean("booleanSmoking", smoking);
         bundle.putBoolean("booleanAlcohol", alcohol);
-        bundle.putString("userLocation", stringLocation);
+        //bundle.putString("userLocation", stringLocation);
+        //bundle.putDouble("latitude", latitude);
+        //bundle.putDouble("longitude", longitude);
         ListPharmaciesFragment fragment = new ListPharmaciesFragment();
         fragment.setArguments(bundle);
 
