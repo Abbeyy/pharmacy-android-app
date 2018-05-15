@@ -35,7 +35,6 @@ public class UtilsTest {
         expectedOrderMap.put("Pharmacy 4", 27.5f);
 
         //Then
-        System.out.println(testMap.keySet());
         Assert.assertNotNull(testMap);
         Assert.assertFalse(testMap.isEmpty());
         Assert.assertEquals(4,testMap.values().size());
