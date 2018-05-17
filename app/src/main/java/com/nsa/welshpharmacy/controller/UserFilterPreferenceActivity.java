@@ -15,9 +15,10 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.nsa.welshpharmacy.R;
-import com.nsa.welshpharmacy.manager.LanguageManager;
 import com.nsa.welshpharmacy.controller.listPharmacies.ListPharmaciesActivity;
+import com.nsa.welshpharmacy.manager.LanguageManager;
 import com.nsa.welshpharmacy.services.LocationServices;
 
 import java.io.IOException;
@@ -298,16 +299,17 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
         //And if both a valid postcode and the switch is checked show the toast warning
         if ((!matcher.matches() && !switchOnLocationWidget.isChecked()) || (matcher.matches() && switchOnLocationWidget.isChecked())) {
             Toast.makeText(this, R.string.enter_valid_location, Toast.LENGTH_SHORT).show();
-            return;
         }
+
         if (id == R.id.submit_button && matcher.matches()) {
             try {
                 LocationServices.loadPhoneLocationViaPostcode(this, textPostcodeWidget.toString());
+                LatLng userLocation = LocationServices.getUserLocation();
+                intentToList(userLocation);
             } catch (IOException e) {
                 Toast.makeText(this, R.string.location_catch_statement, Toast.LENGTH_SHORT).show();
                 return;
             }
-            intentToList();
         }
         if (id == R.id.submit_button && switchOnLocationWidget.isChecked()) {
            networkSelected();
@@ -448,10 +450,11 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
             if (LocationServices.isNetworkEnabled(this)) {
                 //If fine location permission is already granted then update last known location from network
                 LocationServices.loadPhoneLocationViaNetwork(this);
+                LatLng userLocation = LocationServices.getUserLocation();
                 //Use to check if location is still working: note- Turn on your phone's location!
                 //Toast.makeText(this, LocationServices.getUserLocation().toString(), Toast.LENGTH_LONG).show();
                 //Then switch view to next activity
-                intentToList();
+                intentToList(userLocation);
             }
         } else {
             //Fine location permission has not been granted
@@ -464,13 +467,14 @@ public class UserFilterPreferenceActivity extends AppCompatActivity implements V
         }
     }
 
-    public void intentToList(){
+    public void intentToList(LatLng latLng){
         Intent pharmacyListView = new Intent(this, ListPharmaciesActivity.class);
         pharmacyListView.putExtra("checkAilments", checkMinorAilments.isChecked());
         pharmacyListView.putExtra("checkFlu", checkFluVac.isChecked());
         pharmacyListView.putExtra("checkHealth", checkHealthCheck.isChecked());
         pharmacyListView.putExtra("checkSmoking", checkSmoking.isChecked());
         pharmacyListView.putExtra("checkAlcohol", checkAlcohol.isChecked());
+        pharmacyListView.putExtra("userLocation", latLng);
         startActivity(pharmacyListView);
     }
 }
