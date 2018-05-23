@@ -18,14 +18,26 @@
 
         <activity
             android:name=".controller.UserFilterPreferenceActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".controller.listPharmacies.ListPharmaciesActivity" />
+        <activity
+            android:name=".controller.listPharmacies.ListPharmaciesActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".controller.PharmacyMapActivity"
+            android:label="@string/title_activity_pharmacy_map"
+            android:exported="false"/>
+        <activity
+            android:name=".controller.listPharmacies.EmailPharmacyActivity"
+            android:label="@string/title_activity_email_pharmacy"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:exported="false"/>
 
         <!-- Connect the app with google play services including maps -->
         <meta-data
@@ -34,14 +46,6 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCahqq_aJohqGLFIgMLUmrXKjQZPSLK8HU" />
-
-        <activity
-            android:name=".controller.PharmacyMapActivity"
-            android:label="@string/title_activity_pharmacy_map" />
-        <activity
-            android:name=".controller.listPharmacies.EmailPharmacyActivity"
-            android:label="@string/title_activity_email_pharmacy"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest> <!-- <activity --><!-- android:name=".view.UserFilterPreferenceActivityTest" --><!-- android:label="@string/title_activity_main" --><!-- android:theme="@style/AppTheme.NoActionBar" --><!-- android:exported="true"/> --><!-- android:name=".controller.PharmacyMapActivity" --><!-- android:label="@string/title_activity_pharmacy_map"></activity> -->
