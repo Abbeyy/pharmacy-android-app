@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nsa.welshpharmacy">
 
+    <permission android:name="permission"
+        android:protectionLevel="signature" />
+
     <!-- App permissions -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
